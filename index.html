@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prod.essential</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">prod.essential</a>
+  <nav>
+    <a href="#beats">Beats</a>
+    <a href="#kits">Kits</a>
+    <a href="#licensing">Licensing</a>
+    <a href="#contact">Contact</a>
+    <a href="#beats" class="nav-cta">FREE STUFF</a>
+    <button class="nav-cart" aria-label="Shopping cart">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M16 10a4 4 0 0 1-8 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<div class="promo-bar" id="promoBar" onclick="window.location.href='#beats'">
+  <span class="promo-bar-text"><span class="promo-highlight">BUY 2 GET 1 FREE:</span> MIX &amp; MATCH ANYTHING IN THE STORE</span>
+  <button class="promo-bar-close" onclick="event.stopPropagation(); document.getElementById('promoBar').style.display='none'" aria-label="Dismiss">
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-kicker">Based In Michigan</p>
+    <h1 class="hero-headline"><em>prod. essential</em></h1>
+    <p class="hero-desc">Browse beats, drum kits, one shot kits, loops and tons of free stuff.</p>
+    <div class="hero-actions">
+      <a href="#beats" class="btn-primary">Browse Beats</a>
+      <a href="#kits" class="btn-ghost">Shop Kits</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <p class="hero-right-label">Featured Beats</p>
+    <div class="beat-card">
+      <div class="beat-cover no-img" style="background: linear-gradient(135deg, #1a1226 0%, #2d1f4a 100%);">
+        <div class="play-overlay"><div class="play-triangle"></div></div>
+      </div>
+      <div class="beat-info">
+        <span class="beat-title">Ghost Protocol</span>
+        <span class="beat-bpm-key">140 BPM &nbsp;&middot;&nbsp; Am</span>
+        <div class="beat-tags">
+          <span class="beat-tag">Trap</span>
+          <span class="beat-tag">Dark</span>
+        </div>
+      </div>
+      <span class="beat-price">From $25</span>
+    </div>
+    <div class="beat-card">
+      <div class="beat-cover no-img" style="background: linear-gradient(135deg, #0d1a1f 0%, #1a3040 100%);">
+        <div class="play-overlay"><div class="play-triangle"></div></div>
+      </div>
+      <div class="beat-info">
+        <span class="beat-title">Cold Hours</span>
+        <span class="beat-bpm-key">138 BPM &nbsp;&middot;&nbsp; Dm</span>
+        <div class="beat-tags">
+          <span class="beat-tag">Dark Trap</span>
+          <span class="beat-tag">Melodic</span>
+        </div>
+      </div>
+      <span class="beat-price">From $25</span>
+    </div>
+  </div>
+</section>
+
+<div class="contact-wrapper" id="contact">
+  <div class="contact-header">
+    <h2 class="contact-title">Contacts</h2>
+    <p class="contact-email">Inquiries: <a href="mailto:prodessential@gmail.com">prodessential@gmail.com</a></p>
+  </div>
+  
+  <section class="producer-contacts">
+    <a href="mailto:prodessential@gmail.com" class="social-link email-link">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      Email
+    </a>
+    <a href="https://www.youtube.com/@prod.essential" target="_blank" rel="noopener noreferrer" class="social-link yt-link">
+      <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+      YouTube
+    </a>
+    <a href="https://www.instagram.com/prod.essential" target="_blank" rel="noopener noreferrer" class="social-link ig-link">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      Instagram
+    </a>
+    <a href="https://www.tiktok.com/@prod.essential" target="_blank" rel="noopener noreferrer" class="social-link tt-link">
+      <svg viewBox="0 0 24 24" class="tiktok-icon"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+      TikTok
+    </a>
+  </section>
+</div>
+
+<div class="lower-grid">
+  <section id="beats" class="grid-column left-col">
+    <div class="section-header">
+      <div class="section-label">
+        <span>Beat Store</span>
+        <hr>
+      </div>
+      <div class="tag-filters" id="beatFilters"></div>
+      
+      <div class="filter-controls-row">
+        <div class="filter-mode-wrap">
+          <span class="mode-label">Match:</span>
+          <button id="modeAny" class="mode-toggle-btn active" onclick="setFilterMode('any')">Any</button>
+          <button id="modeAll" class="mode-toggle-btn" onclick="setFilterMode('all')">All</button>
+        </div>
+        
+        <div class="sort-wrap">
+          <span class="mode-label">Sort:</span>
+          <div class="custom-select" id="customSort">
+            <button class="custom-select-btn" id="sortBtn" onclick="toggleSortDropdown(event)">
+              <span id="sortLabel">Date (Newest)</span>
+              <svg class="select-arrow" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="custom-select-list" id="sortList">
+              <li class="custom-select-item active" data-value="newest" onclick="selectSort(this)">Date (Newest)</li>
+              <li class="custom-select-item" data-value="oldest" onclick="selectSort(this)">Date (Oldest)</li>
+              <li class="custom-select-item" data-value="bpm_high" onclick="selectSort(this)">BPM: High → Low</li>
+              <li class="custom-select-item" data-value="bpm_low" onclick="selectSort(this)">BPM: Low → High</li>
+              <li class="custom-select-item" data-value="name_az" onclick="selectSort(this)">Name (A-Z)</li>
+              <li class="custom-select-item" data-value="name_za" onclick="selectSort(this)">Name (Z-A)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-count" id="beatCount"></div>
+    </div>
+    <div class="scroll-list" id="beatList"></div>
+  </section>
+
+  <section id="kits" class="grid-column">
+    <div class="section-header">
+      <div class="section-label">
+        <span>Kits &amp; Packs</span>
+        <hr>
+      </div>
+      <div class="tag-filters" id="kitFilters"></div>
+      
+      <div class="filter-controls-row kit-controls-row">
+        <div class="sort-wrap">
+          <span class="mode-label">Sort:</span>
+          <div class="custom-select" id="customKitSort">
+            <button class="custom-select-btn" id="kitSortBtn" onclick="toggleKitSortDropdown(event)">
+              <span id="kitSortLabel">Date (Newest)</span>
+              <svg class="select-arrow" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="custom-select-list" id="kitSortList">
+              <li class="custom-select-item active" data-value="newest" onclick="selectKitSort(this)">Date (Newest)</li>
+              <li class="custom-select-item" data-value="oldest" onclick="selectKitSort(this)">Date (Oldest)</li>
+              <li class="custom-select-item" data-value="price_low" onclick="selectKitSort(this)">Price (Low-High)</li>
+              <li class="custom-select-item" data-value="price_high" onclick="selectKitSort(this)">Price (High-Low)</li>
+              <li class="custom-select-item" data-value="name_az" onclick="selectKitSort(this)">Name (A-Z)</li>
+              <li class="custom-select-item" data-value="name_za" onclick="selectKitSort(this)">Name (Z-A)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-count" id="kitCount"></div>
+    </div>
+    <div class="scroll-list" id="kitList"></div>
+  </section>
+</div>
+
+
+
+<section class="newsletter" id="newsletter">
+  <button class="newsletter-close" onclick="toggleNewsletter()" aria-label="Collapse">
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <div class="newsletter-toggle" onclick="toggleNewsletter()" title="Collapse section">
+    <span class="newsletter-toggle-label">Free Loops Weekly</span>
+  </div>
+  <div class="newsletter-content" id="newsletterContent">
+    <h2 class="newsletter-headline">Free Loops Weekly</h2>
+    <p class="newsletter-desc">Join the list to get weekly free loops, exclusive kits and early access to new beats sent straight to your inbox.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+      <input type="email" placeholder="YOUR EMAIL ADDRESS" required class="newsletter-input">
+      <button type="submit" class="btn-primary" style="border: none;">SUBSCRIBE</button>
+    </form>
+  </div>
+</section>
+
+<section class="licensing" id="licensing">
+  <div class="licensing-header">
+    <h2 class="licensing-title">Licensing</h2>
+    <p class="licensing-sub">Every beat comes with a license. Pick the tier that fits your release.</p>
+  </div>
+
+  <div class="license-grid">
+
+    <div class="license-card">
+      <div class="license-top">
+        <span class="license-name">Basic</span>
+        <span class="license-price">$25</span>
+        <span class="license-format">MP3 (Tagged)</span>
+      </div>
+      <ul class="license-features">
+        <li>Tagged MP3 file</li>
+        <li>Up to 10,000 streams</li>
+        <li>Up to 1,000 copies</li>
+        <li>1 music video</li>
+        <li>Non-profit performances</li>
+        <li>Non-exclusive</li>
+      </ul>
+      <a href="#" class="license-btn">Read Full License</a>
+    </div>
+
+    <div class="license-card">
+      <div class="license-top">
+        <span class="license-name">Premium</span>
+        <span class="license-price">$40</span>
+        <span class="license-format">WAV + MP3 (Untagged)</span>
+      </div>
+      <ul class="license-features">
+        <li>Untagged WAV + MP3</li>
+        <li>Up to 100,000 streams</li>
+        <li>Up to 3,000 copies</li>
+        <li>1 music video</li>
+        <li>For-profit performances</li>
+        <li>Non-exclusive</li>
+      </ul>
+      <a href="#" class="license-btn">Read Full License</a>
+    </div>
+
+    <div class="license-card license-card--featured">
+      <div class="license-badge">Most Popular</div>
+      <div class="license-top">
+        <span class="license-name">Premium + Stems</span>
+        <span class="license-price">$90</span>
+        <span class="license-format">WAV + MP3 + Track Stems</span>
+      </div>
+      <ul class="license-features">
+        <li>Untagged WAV + MP3</li>
+        <li>Full track stems included</li>
+        <li>Up to 500,000 streams</li>
+        <li>Up to 10,000 copies</li>
+        <li>Unlimited music videos</li>
+        <li>For-profit performances</li>
+        <li>Non-exclusive</li>
+      </ul>
+      <a href="#" class="license-btn license-btn--featured">Read Full License</a>
+    </div>
+
+
+    <div class="license-card">
+      <div class="license-top">
+        <span class="license-name">Unlimited</span>
+        <span class="license-price">$250</span>
+        <span class="license-format">WAV + MP3 + Stems</span>
+      </div>
+      <ul class="license-features">
+        <li>Untagged WAV + MP3 + stems</li>
+        <li>Unlimited streams</li>
+        <li>Unlimited distribution</li>
+        <li>Unlimited music videos</li>
+        <li>For-profit + radio</li>
+        <li>Non-exclusive</li>
+      </ul>
+      <a href="#" class="license-btn">Read Full License</a>
+    </div>
+
+    <div class="license-card license-card--exclusive">
+      <div class="license-top">
+        <span class="license-name">Exclusive</span>
+        <span class="license-price">Negotiable</span>
+        <span class="license-format">All Files Included</span>
+      </div>
+      <ul class="license-features">
+        <li>WAV + MP3 + stems</li>
+        <li>Sole usage rights</li>
+        <li>Beat removed from store</li>
+        <li>Unlimited everything</li>
+        <li>Full commercial rights</li>
+        <li>Contact to discuss</li>
+      </ul>
+      <a href="mailto:prodessential@gmail.com" class="license-btn">Get In Touch</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // ─── CUSTOM SORT DROPDOWN ─────────────────────────────────────────────────
+  let currentSort = 'newest';
+  let currentKitSort = 'newest';
+
+  function toggleSortDropdown(e) {
+    e.stopPropagation();
+    const wrap = document.getElementById('customSort');
+    wrap.classList.toggle('open');
+    document.getElementById('customKitSort').classList.remove('open');
+  }
+
+  function toggleKitSortDropdown(e) {
+    e.stopPropagation();
+    const wrap = document.getElementById('customKitSort');
+    wrap.classList.toggle('open');
+    document.getElementById('customSort').classList.remove('open');
+  }
+
+  function selectSort(el) {
+    currentSort = el.dataset.value;
+    document.getElementById('sortLabel').textContent = el.textContent;
+    document.querySelectorAll('#sortList .custom-select-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('customSort').classList.remove('open');
+    renderList('beatList', beats, selectedBeatTags, 'beat');
+  }
+
+  function selectKitSort(el) {
+    currentKitSort = el.dataset.value;
+    document.getElementById('kitSortLabel').textContent = el.textContent;
+    document.querySelectorAll('#kitSortList .custom-select-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('customKitSort').classList.remove('open');
+    renderList('kitList', kits, selectedKitTags, 'kit');
+  }
+
+  document.addEventListener('click', () => {
+    document.getElementById('customSort').classList.remove('open');
+    document.getElementById('customKitSort').classList.remove('open');
+  });
+
+  // ─── DATA ─────────────────────────────────────────────────────────────────
+  const beats = [
+    { title: "Ghost Protocol", bpm: 140, key: "Am", tags: ["trap", "dark"], price: 25, imgGradient: "linear-gradient(135deg, #1a1226 0%, #2d1f4a 100%)" },
+    { title: "Cold Hours", bpm: 138, key: "Dm", tags: ["dark", "melodic"], price: 25, imgGradient: "linear-gradient(135deg, #0d1a1f 0%, #1a3040 100%)" },
+    { title: "Detroit Soul", bpm: 165, key: "Cm", tags: ["detroit", "piano"], price: 25, imgGradient: "linear-gradient(135deg, #222 0%, #444 100%)" },
+    { title: "Hyperdrive", bpm: 150, key: "E", tags: ["rage", "trap"], price: 25, imgGradient: "linear-gradient(135deg, #4b0082 0%, #000 100%)" },
+    { title: "Sample Gold", bpm: 90, key: "Gm", tags: ["sample", "boom bap"], price: 25, imgGradient: "linear-gradient(135deg, #d4af37 0%, #000 100%)" },
+    { title: "Lucki Style", bpm: 135, key: "Bbm", tags: ["lucki", "melodic"], price: 25, imgGradient: "linear-gradient(135deg, #1a1a1a 0%, #333 100%)" }
+  ];
+
+  const kits = [
+    { title: "Essential Drums Vol 1", type: "Drum kits", price: 20, imgGradient: "linear-gradient(135deg, #333 0%, #111 100%)" },
+    { title: "Melodic Textures", type: "Loop packs", price: 35, imgGradient: "linear-gradient(135deg, #444 0%, #222 100%)" },
+    { title: "Vintage Keys", type: "One shot kits", price: 15, imgGradient: "linear-gradient(135deg, #555 0%, #333 100%)" },
+    { title: "Progression MIDI", type: "Midi packs", price: 10, imgGradient: "linear-gradient(135deg, #666 0%, #444 100%)" }
+  ];
+
+  // ─── STATE ────────────────────────────────────────────────────────────────
+  const beatTagList = ["All", "ambient", "sample", "lucki", "dark", "melodic", "boom bap", "rage", "trap", "piano", "detroit"];
+  const kitTagList = ["All", "Drum kits", "one shot kits", "loop packs", "midi packs", "Vocal Presets", "Zenology Banks", "Serum Banks", "Portal Banks"];
+
+  let selectedBeatTags = ["All"];
+  let selectedKitTags = ["All"];
+  let beatFilterMode = 'any'; // 'any' or 'all'
+
+  // ─── FILTER LOGIC ──────────────────────────────────────────────────────────
+  function setFilterMode(mode) {
+    beatFilterMode = mode;
+    document.getElementById('modeAny').classList.toggle('active', mode === 'any');
+    document.getElementById('modeAll').classList.toggle('active', mode === 'all');
+    renderList('beatList', beats, selectedBeatTags, 'beat');
+  }
+
+  function handleTagClick(tag, type) {
+    if (type === 'beat') {
+      if (tag === "All") {
+        selectedBeatTags = ["All"];
+      } else {
+        selectedBeatTags = selectedBeatTags.filter(t => t !== "All");
+        if (selectedBeatTags.includes(tag)) {
+          selectedBeatTags = selectedBeatTags.filter(t => t !== tag);
+          if (selectedBeatTags.length === 0) selectedBeatTags = ["All"];
+        } else {
+          selectedBeatTags.push(tag);
+          if (selectedBeatTags.length > 5) selectedBeatTags.shift();
+        }
+      }
+      renderFilters('beatFilters', beatTagList, selectedBeatTags, 'beat');
+      renderList('beatList', beats, selectedBeatTags, 'beat');
+    } else {
+      // SINGLE SELECT LOGIC FOR KITS
+      selectedKitTags = [tag];
+      renderFilters('kitFilters', kitTagList, selectedKitTags, 'kit');
+      renderList('kitList', kits, selectedKitTags, 'kit');
+    }
+  }
+
+  function renderFilters(containerId, tagList, activeTags, type) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+    tagList.forEach(tag => {
+      const btn = document.createElement("button");
+      btn.className = "tag-filter-btn" + (activeTags.includes(tag) ? " active" : "");
+      btn.textContent = tag;
+      btn.onclick = () => handleTagClick(tag, type);
+      container.appendChild(btn);
+    });
+  }
+
+  function renderList(containerId, data, activeTags, type) {
+    const container = document.getElementById(containerId);
+    const countEl = document.getElementById(type + 'Count');
+
+    let filtered;
+    if (activeTags.includes("All")) {
+      filtered = [...data];
+    } else {
+      if (type === 'beat') {
+        filtered = data.filter(item => {
+          if (beatFilterMode === 'any') {
+            return item.tags.some(t => activeTags.includes(t));
+          } else {
+            return activeTags.every(t => item.tags.includes(t));
+          }
+        });
+      } else {
+        filtered = data.filter(item => activeTags.includes(item.type));
+      }
+    }
+
+    if (type === 'beat') {
+      filtered.sort((a, b) => {
+        switch (currentSort) {
+          case 'price_low': return a.price - b.price;
+          case 'price_high': return b.price - a.price;
+          case 'bpm_high': return b.bpm - a.bpm;
+          case 'bpm_low': return a.bpm - b.bpm;
+          case 'name_az': return a.title.localeCompare(b.title);
+          case 'name_za': return b.title.localeCompare(a.title);
+          default: return 0;
+        }
+      });
+    } else {
+      filtered.sort((a, b) => {
+        switch (currentKitSort) {
+          case 'price_low': return a.price - b.price;
+          case 'price_high': return b.price - a.price;
+          case 'name_az': return a.title.localeCompare(b.title);
+          case 'name_za': return b.title.localeCompare(a.title);
+          default: return 0;
+        }
+      });
+    }
+
+    countEl.textContent = `${filtered.length} item${filtered.length !== 1 ? "s" : ""}`;
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<div class="no-results">No items match criteria</div>`;
+      return;
+    }
+
+    container.innerHTML = filtered.map(item => `
+      <div class="beat-card">
+        <div class="beat-cover no-img" style="background: ${item.imgGradient}">
+          <div class="play-overlay"><div class="play-triangle"></div></div>
+        </div>
+        <div class="beat-info">
+          <span class="beat-title">${item.title}</span>
+          <span class="beat-bpm-key">
+            ${type === 'beat' ? `${item.bpm} BPM &middot; ${item.key}` : item.type}
+          </span>
+          <div class="beat-tags">
+            ${type === 'beat' ? item.tags.map(t => `<span class="beat-tag">${t}</span>`).join('') : `<span class="beat-tag">${item.type}</span>`}
+          </div>
+        </div>
+        <span class="beat-price">From $${item.price}</span>
+      </div>
+    `).join('');
+  }
+
+  // ─── INIT ─────────────────────────────────────────────────────────────────
+  renderFilters('beatFilters', beatTagList, selectedBeatTags, 'beat');
+  renderList('beatList', beats, selectedBeatTags, 'beat');
+  renderFilters('kitFilters', kitTagList, selectedKitTags, 'kit');
+  renderList('kitList', kits, selectedKitTags, 'kit');
+  // ─── NEWSLETTER TOGGLE ────────────────────────────────────────────────────
+  let newsletterOpen = true;
+
+  function toggleNewsletter() {
+    newsletterOpen = !newsletterOpen;
+    const section = document.getElementById('newsletter');
+    const content = document.getElementById('newsletterContent');
+    const label = document.querySelector('.newsletter-toggle-label');
+    const btn = document.querySelector('.newsletter-close');
+
+    if (newsletterOpen) {
+      section.classList.remove('newsletter--collapsed');
+      btn.style.opacity = '1';
+      label.style.opacity = '0';
+    } else {
+      section.classList.add('newsletter--collapsed');
+      btn.style.opacity = '0';
+      label.style.opacity = '1';
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+{
+  "beats": [
+    {
+      "id": "ghost-protocol",
+      "title": "Ghost Protocol",
+      "bpm": 140,
+      "key": "Am",
+      "tags": ["trap", "dark"],
+      "basePrice": 25,
+      "dateAdded": "2026-05-14",
+      "imgGradient": "linear-gradient(135deg, #1a1226 0%, #2d1f4a 100%)",
+      "imgFile": null,
+      "audioFile": "audio/ghost-protocol-preview.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "cold-hours",
+      "title": "Cold Hours",
+      "bpm": 138,
+      "key": "Dm",
+      "tags": ["dark", "melodic"],
+      "basePrice": 25,
+      "dateAdded": "2026-05-13",
+      "imgGradient": "linear-gradient(135deg, #0d1a1f 0%, #1a3040 100%)",
+      "imgFile": null,
+      "audioFile": "audio/cold-hours-preview.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "detroit-soul",
+      "title": "Detroit Soul",
+      "bpm": 165,
+      "key": "Cm",
+      "tags": ["detroit", "piano"],
+      "basePrice": 25,
+      "dateAdded": "2026-05-12",
+      "imgGradient": "linear-gradient(135deg, #222 0%, #444 100%)",
+      "imgFile": null,
+      "audioFile": "audio/detroit-soul-preview.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "hyperdrive",
+      "title": "Hyperdrive",
+      "bpm": 150,
+      "key": "E",
+      "tags": ["rage", "trap"],
+      "basePrice": 25,
+      "dateAdded": "2026-05-11",
+      "imgGradient": "linear-gradient(135deg, #4b0082 0%, #000 100%)",
+      "imgFile": null,
+      "audioFile": "audio/hyperdrive-preview.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "sample-gold",
+      "title": "Sample Gold",
+      "bpm": 90,
+      "key": "Gm",
+      "tags": ["sample", "boom bap"],
+      "basePrice": 25,
+      "dateAdded": "2026-05-10",
+      "imgGradient": "linear-gradient(135deg, #d4af37 0%, #000 100%)",
+      "imgFile": null,
+      "audioFile": "audio/sample-gold-preview.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "lucki-style",
+      "title": "Lucki Style",
+      "bpm": 135,
+      "key": "Bbm",
+      "tags": ["lucki", "melodic"],
+      "basePrice": 25,
+      "dateAdded": "2026-05-09",
+      "imgGradient": "linear-gradient(135deg, #1a1a1a 0%, #333 100%)",
+      "imgFile": null,
+      "audioFile": "audio/lucki-style-preview.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    }
+  ],
+  "kits": [
+    {
+      "id": "essential-drums-vol-1",
+      "title": "Essential Drums Vol. 1",
+      "type": "Drum kits",
+      "price": 20,
+      "dateAdded": "2026-05-10",
+      "imgGradient": "linear-gradient(135deg, #333 0%, #111 100%)",
+      "imgFile": null,
+      "checkoutUrl": "#",
+      "description": "Core 808s, snares, hi-hats and perc. Built for trap and underground rap."
+    },
+    {
+      "id": "melodic-textures",
+      "title": "Melodic Textures",
+      "type": "Loop packs",
+      "price": 35,
+      "dateAdded": "2026-05-08",
+      "imgGradient": "linear-gradient(135deg, #444 0%, #222 100%)",
+      "imgFile": null,
+      "checkoutUrl": "#",
+      "description": "Atmospheric loops and melodic phrases. Keys, pads, textures."
+    },
+    {
+      "id": "vintage-keys",
+      "title": "Vintage Keys",
+      "type": "One shot kits",
+      "price": 15,
+      "dateAdded": "2026-05-06",
+      "imgGradient": "linear-gradient(135deg, #555 0%, #333 100%)",
+      "imgFile": null,
+      "checkoutUrl": "#",
+      "description": "One-shots sampled from vintage keyboards. Ready to chop and flip."
+    },
+    {
+      "id": "progression-midi",
+      "title": "Progression MIDI",
+      "type": "Midi packs",
+      "price": 10,
+      "dateAdded": "2026-05-04",
+      "imgGradient": "linear-gradient(135deg, #666 0%, #444 100%)",
+      "imgFile": null,
+      "checkoutUrl": "#",
+      "description": "MIDI chord progressions and melodies. Drop into any DAW and build."
+    }
+  ]
+}

@@ -19,13 +19,6 @@
     <a href="#licensing">Licensing</a>
     <a href="#contact">Contact</a>
     <a href="#beats" class="nav-cta">FREE STUFF</a>
-    <button class="nav-cart" aria-label="Shopping cart">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M16 10a4 4 0 0 1-8 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
   </nav>
 </header>
 
@@ -51,34 +44,7 @@
 
   <div class="hero-right">
     <p class="hero-right-label">Featured Beats</p>
-    <div class="beat-card">
-      <div class="beat-cover no-img" style="background: linear-gradient(135deg, #1a1226 0%, #2d1f4a 100%);">
-        <div class="play-overlay"><div class="play-triangle"></div></div>
-      </div>
-      <div class="beat-info">
-        <span class="beat-title">Ghost Protocol</span>
-        <span class="beat-bpm-key">140 BPM &nbsp;&middot;&nbsp; Am</span>
-        <div class="beat-tags">
-          <span class="beat-tag">Trap</span>
-          <span class="beat-tag">Dark</span>
-        </div>
-      </div>
-      <span class="beat-price">From $25</span>
-    </div>
-    <div class="beat-card">
-      <div class="beat-cover no-img" style="background: linear-gradient(135deg, #0d1a1f 0%, #1a3040 100%);">
-        <div class="play-overlay"><div class="play-triangle"></div></div>
-      </div>
-      <div class="beat-info">
-        <span class="beat-title">Cold Hours</span>
-        <span class="beat-bpm-key">138 BPM &nbsp;&middot;&nbsp; Dm</span>
-        <div class="beat-tags">
-          <span class="beat-tag">Dark Trap</span>
-          <span class="beat-tag">Melodic</span>
-        </div>
-      </div>
-      <span class="beat-price">From $25</span>
-    </div>
+    <div id="heroFeatured"></div>
   </div>
 </section>
 
@@ -87,7 +53,6 @@
     <h2 class="contact-title">Contacts</h2>
     <p class="contact-email">Inquiries: <a href="mailto:prodessential@gmail.com">prodessential@gmail.com</a></p>
   </div>
-  
   <section class="producer-contacts">
     <a href="mailto:prodessential@gmail.com" class="social-link email-link">
       <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -116,14 +81,12 @@
         <hr>
       </div>
       <div class="tag-filters" id="beatFilters"></div>
-      
       <div class="filter-controls-row">
         <div class="filter-mode-wrap">
           <span class="mode-label">Match:</span>
           <button id="modeAny" class="mode-toggle-btn active" onclick="setFilterMode('any')">Any</button>
           <button id="modeAll" class="mode-toggle-btn" onclick="setFilterMode('all')">All</button>
         </div>
-        
         <div class="sort-wrap">
           <span class="mode-label">Sort:</span>
           <div class="custom-select" id="customSort">
@@ -136,15 +99,14 @@
             <ul class="custom-select-list" id="sortList">
               <li class="custom-select-item active" data-value="newest" onclick="selectSort(this)">Date (Newest)</li>
               <li class="custom-select-item" data-value="oldest" onclick="selectSort(this)">Date (Oldest)</li>
-              <li class="custom-select-item" data-value="bpm_high" onclick="selectSort(this)">BPM: High → Low</li>
-              <li class="custom-select-item" data-value="bpm_low" onclick="selectSort(this)">BPM: Low → High</li>
+              <li class="custom-select-item" data-value="bpm_high" onclick="selectSort(this)">BPM: High to Low</li>
+              <li class="custom-select-item" data-value="bpm_low" onclick="selectSort(this)">BPM: Low to High</li>
               <li class="custom-select-item" data-value="name_az" onclick="selectSort(this)">Name (A-Z)</li>
               <li class="custom-select-item" data-value="name_za" onclick="selectSort(this)">Name (Z-A)</li>
             </ul>
           </div>
         </div>
       </div>
-
       <div class="item-count" id="beatCount"></div>
     </div>
     <div class="scroll-list" id="beatList"></div>
@@ -157,7 +119,6 @@
         <hr>
       </div>
       <div class="tag-filters" id="kitFilters"></div>
-      
       <div class="filter-controls-row kit-controls-row">
         <div class="sort-wrap">
           <span class="mode-label">Sort:</span>
@@ -179,14 +140,11 @@
           </div>
         </div>
       </div>
-
       <div class="item-count" id="kitCount"></div>
     </div>
     <div class="scroll-list" id="kitList"></div>
   </section>
 </div>
-
-
 
 <section class="newsletter" id="newsletter">
   <button class="newsletter-close" onclick="toggleNewsletter()" aria-label="Collapse">
@@ -212,9 +170,7 @@
     <h2 class="licensing-title">Licensing</h2>
     <p class="licensing-sub">Every beat comes with a license. Pick the tier that fits your release.</p>
   </div>
-
   <div class="license-grid">
-
     <div class="license-card">
       <div class="license-top">
         <span class="license-name">Basic</span>
@@ -231,7 +187,6 @@
       </ul>
       <a href="#" class="license-btn">Read Full License</a>
     </div>
-
     <div class="license-card">
       <div class="license-top">
         <span class="license-name">Premium</span>
@@ -248,7 +203,6 @@
       </ul>
       <a href="#" class="license-btn">Read Full License</a>
     </div>
-
     <div class="license-card license-card--featured">
       <div class="license-badge">Most Popular</div>
       <div class="license-top">
@@ -267,8 +221,6 @@
       </ul>
       <a href="#" class="license-btn license-btn--featured">Read Full License</a>
     </div>
-
-
     <div class="license-card">
       <div class="license-top">
         <span class="license-name">Unlimited</span>
@@ -285,7 +237,6 @@
       </ul>
       <a href="#" class="license-btn">Read Full License</a>
     </div>
-
     <div class="license-card license-card--exclusive">
       <div class="license-top">
         <span class="license-name">Exclusive</span>
@@ -302,11 +253,338 @@
       </ul>
       <a href="mailto:prodessential@gmail.com" class="license-btn">Get In Touch</a>
     </div>
-
   </div>
 </section>
 
+<!-- ─── BEAT MODAL ──────────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Cover art + player -->
+    <div class="modal-cover" id="modalCover">
+      <div class="modal-cover-art" id="modalCoverArt">
+        <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleAudio()" aria-label="Play/Pause">
+          <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="none">
+            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+          </svg>
+          <svg class="pause-icon" id="pauseIcon" viewBox="0 0 24 24" fill="none" style="display:none">
+            <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
+            <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-progress-wrap">
+        <div class="modal-progress-bar" id="progressBar" onclick="seekAudio(event)">
+          <div class="modal-progress-fill" id="progressFill"></div>
+          <div class="modal-progress-thumb" id="progressThumb"></div>
+        </div>
+        <div class="modal-time-row">
+          <span class="modal-time" id="timeElapsed">0:00</span>
+          <span class="modal-time" id="timeDuration">0:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="modal-info">
+      <div class="modal-meta-row">
+        <span class="modal-bpm-key" id="modalBpmKey"></span>
+        <div class="modal-tags" id="modalTags"></div>
+      </div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+
+      <!-- License selector -->
+      <div class="modal-license-wrap">
+        <label class="modal-license-label">License</label>
+        <div class="modal-license-grid" id="modalLicenseGrid"></div>
+      </div>
+
+      <!-- Price + buy -->
+      <div class="modal-buy-row">
+        <div class="modal-price-wrap">
+          <span class="modal-price-label">Price</span>
+          <span class="modal-price-value" id="modalPrice"></span>
+        </div>
+        <a class="modal-buy-btn" id="modalBuyBtn" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
+      </div>
+
+      <!-- Share link -->
+      <button class="modal-share-btn" id="modalShareBtn" onclick="copyShareLink()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        <span id="shareBtnLabel">Copy Link</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── KIT MODAL ───────────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="kitModalOverlay" onclick="handleKitOverlayClick(event)">
+  <div class="modal modal--kit" id="kitModal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeKitModal()" aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="modal-cover">
+      <div class="modal-cover-art modal-cover-art--kit" id="kitModalCoverArt"></div>
+    </div>
+    <div class="modal-info">
+      <div class="modal-meta-row">
+        <span class="modal-kit-type" id="kitModalType"></span>
+      </div>
+      <h2 class="modal-title" id="kitModalTitle"></h2>
+      <p class="modal-kit-desc" id="kitModalDesc"></p>
+      <div class="modal-buy-row modal-buy-row--kit">
+        <div class="modal-price-wrap">
+          <span class="modal-price-label">Price</span>
+          <span class="modal-price-value" id="kitModalPrice"></span>
+        </div>
+        <a class="modal-buy-btn" id="kitModalBuyBtn" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
+      </div>
+      <button class="modal-share-btn" id="kitModalShareBtn" onclick="copyKitShareLink()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        <span id="kitShareBtnLabel">Copy Link</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<audio id="audioPlayer" preload="none"></audio>
+
 <script>
+  // ─── AUDIO ────────────────────────────────────────────────────────────────
+  const audio = document.getElementById('audioPlayer');
+  let audioLoaded = false;
+
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressThumb').style.left = pct + '%';
+    document.getElementById('timeElapsed').textContent = formatTime(audio.currentTime);
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    document.getElementById('timeDuration').textContent = formatTime(audio.duration);
+  });
+
+  audio.addEventListener('ended', () => {
+    setPlayState(false);
+    document.getElementById('progressFill').style.width = '0%';
+    document.getElementById('progressThumb').style.left = '0%';
+    document.getElementById('timeElapsed').textContent = '0:00';
+  });
+
+  function formatTime(s) {
+    if (!s || isNaN(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + String(sec).padStart(2, '0');
+  }
+
+  function setPlayState(playing) {
+    document.getElementById('playIcon').style.display = playing ? 'none' : 'block';
+    document.getElementById('pauseIcon').style.display = playing ? 'block' : 'none';
+  }
+
+  function toggleAudio() {
+    if (audio.paused) {
+      audio.play();
+      setPlayState(true);
+    } else {
+      audio.pause();
+      setPlayState(false);
+    }
+  }
+
+  function seekAudio(e) {
+    if (!audio.duration) return;
+    const bar = document.getElementById('progressBar');
+    const rect = bar.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    audio.currentTime = pct * audio.duration;
+  }
+
+  function stopAudio() {
+    audio.pause();
+    audio.currentTime = 0;
+    setPlayState(false);
+    document.getElementById('progressFill').style.width = '0%';
+    document.getElementById('progressThumb').style.left = '0%';
+    document.getElementById('timeElapsed').textContent = '0:00';
+    document.getElementById('timeDuration').textContent = '0:00';
+  }
+
+  // ─── MODAL ────────────────────────────────────────────────────────────────
+  let currentBeat = null;
+  let currentLicense = 'basic';
+  let currentKitItem = null;
+
+  function openModal(beat) {
+    currentBeat = beat;
+    currentLicense = 'basic';
+
+    // Cover art
+    const art = document.getElementById('modalCoverArt');
+    if (beat.imgFile) {
+      art.style.backgroundImage = `url(${beat.imgFile})`;
+      art.style.backgroundSize = 'cover';
+      art.style.backgroundPosition = 'center';
+    } else {
+      art.style.background = beat.imgGradient;
+    }
+
+    // Info
+    document.getElementById('modalTitle').textContent = beat.title;
+    document.getElementById('modalBpmKey').textContent = `${beat.bpm} BPM  /  ${beat.key}`;
+
+    // Tags
+    const tagsEl = document.getElementById('modalTags');
+    tagsEl.innerHTML = beat.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+
+    // License buttons
+    buildLicenseGrid(beat);
+
+    // Audio
+    stopAudio();
+    if (beat.audioFile) {
+      audio.src = beat.audioFile;
+      audio.load();
+    } else {
+      audio.src = '';
+    }
+
+    // URL
+    history.pushState({ beatId: beat.id }, '', `?beat=${beat.id}`);
+
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function buildLicenseGrid(beat) {
+    const grid = document.getElementById('modalLicenseGrid');
+    const licenseKeys = ['basic', 'premium', 'stems', 'unlimited', 'exclusive'];
+    grid.innerHTML = licenseKeys.map(key => {
+      const lic = beat.licenses[key];
+      if (!lic) return '';
+      return `<button
+        class="modal-license-btn${key === currentLicense ? ' active' : ''}"
+        data-license="${key}"
+        onclick="selectLicense('${key}')"
+      >${lic.label}</button>`;
+    }).join('');
+    updateBuyBtn();
+  }
+
+  function selectLicense(key) {
+    currentLicense = key;
+    document.querySelectorAll('.modal-license-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.license === key);
+    });
+    updateBuyBtn();
+  }
+
+  function updateBuyBtn() {
+    if (!currentBeat) return;
+    const lic = currentBeat.licenses[currentLicense];
+    const priceEl = document.getElementById('modalPrice');
+    const buyBtn = document.getElementById('modalBuyBtn');
+    if (lic.price === null) {
+      priceEl.textContent = 'Negotiable';
+      buyBtn.textContent = 'Get In Touch';
+    } else {
+      priceEl.textContent = '$' + lic.price;
+      buyBtn.textContent = 'Buy Now';
+    }
+    buyBtn.href = lic.checkoutUrl;
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    stopAudio();
+    currentBeat = null;
+    history.pushState({}, '', window.location.pathname);
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  function copyShareLink() {
+    if (!currentBeat) return;
+    const url = `${location.origin}${location.pathname}?beat=${currentBeat.id}`;
+    navigator.clipboard.writeText(url).then(() => {
+      const label = document.getElementById('shareBtnLabel');
+      label.textContent = 'Copied!';
+      setTimeout(() => label.textContent = 'Copy Link', 2000);
+    });
+  }
+
+  // ─── KIT MODAL ────────────────────────────────────────────────────────────
+  function openKitModal(kit) {
+    currentKitItem = kit;
+    const art = document.getElementById('kitModalCoverArt');
+    if (kit.imgFile) {
+      art.style.backgroundImage = `url(${kit.imgFile})`;
+      art.style.backgroundSize = 'cover';
+      art.style.backgroundPosition = 'center';
+    } else {
+      art.style.background = kit.imgGradient;
+    }
+    document.getElementById('kitModalTitle').textContent = kit.title;
+    document.getElementById('kitModalType').textContent = kit.type;
+    document.getElementById('kitModalDesc').textContent = kit.description || '';
+    document.getElementById('kitModalPrice').textContent = '$' + kit.price;
+    document.getElementById('kitModalBuyBtn').href = kit.checkoutUrl;
+    history.pushState({ kitId: kit.id }, '', `?kit=${kit.id}`);
+    document.getElementById('kitModalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeKitModal() {
+    document.getElementById('kitModalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    currentKitItem = null;
+    history.pushState({}, '', window.location.pathname);
+  }
+
+  function handleKitOverlayClick(e) {
+    if (e.target === document.getElementById('kitModalOverlay')) closeKitModal();
+  }
+
+  function copyKitShareLink() {
+    if (!currentKitItem) return;
+    const url = `${location.origin}${location.pathname}?kit=${currentKitItem.id}`;
+    navigator.clipboard.writeText(url).then(() => {
+      const label = document.getElementById('kitShareBtnLabel');
+      label.textContent = 'Copied!';
+      setTimeout(() => label.textContent = 'Copy Link', 2000);
+    });
+  }
+
+  // Keyboard close
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeModal();
+      closeKitModal();
+    }
+  });
+
   // ─── CUSTOM SORT DROPDOWN ─────────────────────────────────────────────────
   let currentSort = 'newest';
   let currentKitSort = 'newest';
@@ -331,7 +609,7 @@
     document.querySelectorAll('#sortList .custom-select-item').forEach(i => i.classList.remove('active'));
     el.classList.add('active');
     document.getElementById('customSort').classList.remove('open');
-    renderList('beatList', beats, selectedBeatTags, 'beat');
+    renderList('beatList', beatsData, selectedBeatTags, 'beat');
   }
 
   function selectKitSort(el) {
@@ -340,7 +618,7 @@
     document.querySelectorAll('#kitSortList .custom-select-item').forEach(i => i.classList.remove('active'));
     el.classList.add('active');
     document.getElementById('customKitSort').classList.remove('open');
-    renderList('kitList', kits, selectedKitTags, 'kit');
+    renderList('kitList', kitsData, selectedKitTags, 'kit');
   }
 
   document.addEventListener('click', () => {
@@ -349,68 +627,53 @@
   });
 
   // ─── DATA ─────────────────────────────────────────────────────────────────
-  const beats = [
-    { title: "Ghost Protocol", bpm: 140, key: "Am", tags: ["trap", "dark"], price: 25, imgGradient: "linear-gradient(135deg, #1a1226 0%, #2d1f4a 100%)" },
-    { title: "Cold Hours", bpm: 138, key: "Dm", tags: ["dark", "melodic"], price: 25, imgGradient: "linear-gradient(135deg, #0d1a1f 0%, #1a3040 100%)" },
-    { title: "Detroit Soul", bpm: 165, key: "Cm", tags: ["detroit", "piano"], price: 25, imgGradient: "linear-gradient(135deg, #222 0%, #444 100%)" },
-    { title: "Hyperdrive", bpm: 150, key: "E", tags: ["rage", "trap"], price: 25, imgGradient: "linear-gradient(135deg, #4b0082 0%, #000 100%)" },
-    { title: "Sample Gold", bpm: 90, key: "Gm", tags: ["sample", "boom bap"], price: 25, imgGradient: "linear-gradient(135deg, #d4af37 0%, #000 100%)" },
-    { title: "Lucki Style", bpm: 135, key: "Bbm", tags: ["lucki", "melodic"], price: 25, imgGradient: "linear-gradient(135deg, #1a1a1a 0%, #333 100%)" }
-  ];
-
-  const kits = [
-    { title: "Essential Drums Vol 1", type: "Drum kits", price: 20, imgGradient: "linear-gradient(135deg, #333 0%, #111 100%)" },
-    { title: "Melodic Textures", type: "Loop packs", price: 35, imgGradient: "linear-gradient(135deg, #444 0%, #222 100%)" },
-    { title: "Vintage Keys", type: "One shot kits", price: 15, imgGradient: "linear-gradient(135deg, #555 0%, #333 100%)" },
-    { title: "Progression MIDI", type: "Midi packs", price: 10, imgGradient: "linear-gradient(135deg, #666 0%, #444 100%)" }
-  ];
+  let beatsData = [];
+  let kitsData = [];
 
   // ─── STATE ────────────────────────────────────────────────────────────────
-  const beatTagList = ["All", "ambient", "sample", "lucki", "dark", "melodic", "boom bap", "rage", "trap", "piano", "detroit"];
-  const kitTagList = ["All", "Drum kits", "one shot kits", "loop packs", "midi packs", "Vocal Presets", "Zenology Banks", "Serum Banks", "Portal Banks"];
-
-  let selectedBeatTags = ["All"];
-  let selectedKitTags = ["All"];
-  let beatFilterMode = 'any'; // 'any' or 'all'
+  let beatTagList = ['All'];
+  let kitTagList = ['All'];
+  let selectedBeatTags = ['All'];
+  let selectedKitTags = ['All'];
+  let beatFilterMode = 'any';
 
   // ─── FILTER LOGIC ──────────────────────────────────────────────────────────
   function setFilterMode(mode) {
     beatFilterMode = mode;
     document.getElementById('modeAny').classList.toggle('active', mode === 'any');
     document.getElementById('modeAll').classList.toggle('active', mode === 'all');
-    renderList('beatList', beats, selectedBeatTags, 'beat');
+    renderList('beatList', beatsData, selectedBeatTags, 'beat');
   }
 
   function handleTagClick(tag, type) {
     if (type === 'beat') {
-      if (tag === "All") {
-        selectedBeatTags = ["All"];
+      if (tag === 'All') {
+        selectedBeatTags = ['All'];
       } else {
-        selectedBeatTags = selectedBeatTags.filter(t => t !== "All");
+        selectedBeatTags = selectedBeatTags.filter(t => t !== 'All');
         if (selectedBeatTags.includes(tag)) {
           selectedBeatTags = selectedBeatTags.filter(t => t !== tag);
-          if (selectedBeatTags.length === 0) selectedBeatTags = ["All"];
+          if (selectedBeatTags.length === 0) selectedBeatTags = ['All'];
         } else {
           selectedBeatTags.push(tag);
           if (selectedBeatTags.length > 5) selectedBeatTags.shift();
         }
       }
       renderFilters('beatFilters', beatTagList, selectedBeatTags, 'beat');
-      renderList('beatList', beats, selectedBeatTags, 'beat');
+      renderList('beatList', beatsData, selectedBeatTags, 'beat');
     } else {
-      // SINGLE SELECT LOGIC FOR KITS
       selectedKitTags = [tag];
       renderFilters('kitFilters', kitTagList, selectedKitTags, 'kit');
-      renderList('kitList', kits, selectedKitTags, 'kit');
+      renderList('kitList', kitsData, selectedKitTags, 'kit');
     }
   }
 
   function renderFilters(containerId, tagList, activeTags, type) {
     const container = document.getElementById(containerId);
-    container.innerHTML = "";
+    container.innerHTML = '';
     tagList.forEach(tag => {
-      const btn = document.createElement("button");
-      btn.className = "tag-filter-btn" + (activeTags.includes(tag) ? " active" : "");
+      const btn = document.createElement('button');
+      btn.className = 'tag-filter-btn' + (activeTags.includes(tag) ? ' active' : '');
       btn.textContent = tag;
       btn.onclick = () => handleTagClick(tag, type);
       container.appendChild(btn);
@@ -420,18 +683,14 @@
   function renderList(containerId, data, activeTags, type) {
     const container = document.getElementById(containerId);
     const countEl = document.getElementById(type + 'Count');
-
     let filtered;
-    if (activeTags.includes("All")) {
+    if (activeTags.includes('All')) {
       filtered = [...data];
     } else {
       if (type === 'beat') {
         filtered = data.filter(item => {
-          if (beatFilterMode === 'any') {
-            return item.tags.some(t => activeTags.includes(t));
-          } else {
-            return activeTags.every(t => item.tags.includes(t));
-          }
+          if (beatFilterMode === 'any') return item.tags.some(t => activeTags.includes(t));
+          else return activeTags.every(t => item.tags.includes(t));
         });
       } else {
         filtered = data.filter(item => activeTags.includes(item.type));
@@ -441,68 +700,136 @@
     if (type === 'beat') {
       filtered.sort((a, b) => {
         switch (currentSort) {
-          case 'price_low': return a.price - b.price;
-          case 'price_high': return b.price - a.price;
+          case 'oldest': return new Date(a.dateAdded) - new Date(b.dateAdded);
           case 'bpm_high': return b.bpm - a.bpm;
           case 'bpm_low': return a.bpm - b.bpm;
           case 'name_az': return a.title.localeCompare(b.title);
           case 'name_za': return b.title.localeCompare(a.title);
-          default: return 0;
+          default: return new Date(b.dateAdded) - new Date(a.dateAdded);
         }
       });
     } else {
       filtered.sort((a, b) => {
         switch (currentKitSort) {
+          case 'oldest': return new Date(a.dateAdded) - new Date(b.dateAdded);
           case 'price_low': return a.price - b.price;
           case 'price_high': return b.price - a.price;
           case 'name_az': return a.title.localeCompare(b.title);
           case 'name_za': return b.title.localeCompare(a.title);
-          default: return 0;
+          default: return new Date(b.dateAdded) - new Date(a.dateAdded);
         }
       });
     }
 
-    countEl.textContent = `${filtered.length} item${filtered.length !== 1 ? "s" : ""}`;
+    countEl.textContent = `${filtered.length} item${filtered.length !== 1 ? 's' : ''}`;
 
     if (filtered.length === 0) {
       container.innerHTML = `<div class="no-results">No items match criteria</div>`;
       return;
     }
 
-    container.innerHTML = filtered.map(item => `
-      <div class="beat-card">
-        <div class="beat-cover no-img" style="background: ${item.imgGradient}">
+    if (type === 'beat') {
+      container.innerHTML = filtered.map(item => `
+        <div class="beat-card" onclick='openModal(${JSON.stringify(item)})'>
+          <div class="beat-cover no-img" style="background: ${item.imgGradient}">
+            <div class="play-overlay"><div class="play-triangle"></div></div>
+          </div>
+          <div class="beat-info">
+            <span class="beat-title">${item.title}</span>
+            <span class="beat-bpm-key">${item.bpm} BPM &middot; ${item.key}</span>
+            <div class="beat-tags">
+              ${item.tags.map(t => `<span class="beat-tag">${t}</span>`).join('')}
+            </div>
+          </div>
+          <span class="beat-price">From $${item.basePrice}</span>
+        </div>
+      `).join('');
+    } else {
+      container.innerHTML = filtered.map(item => `
+        <div class="beat-card" onclick='openKitModal(${JSON.stringify(item)})'>
+          <div class="beat-cover no-img" style="background: ${item.imgGradient}">
+            <div class="play-overlay" style="opacity:0.6">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="beat-info">
+            <span class="beat-title">${item.title}</span>
+            <span class="beat-bpm-key">${item.type}</span>
+          </div>
+          <span class="beat-price">$${item.price}</span>
+        </div>
+      `).join('');
+    }
+  }
+
+  function renderHeroFeatured(beats) {
+    const el = document.getElementById('heroFeatured');
+    el.innerHTML = beats.slice(0, 2).map(beat => `
+      <div class="beat-card" onclick='openModal(${JSON.stringify(beat)})'>
+        <div class="beat-cover no-img" style="background: ${beat.imgGradient}">
           <div class="play-overlay"><div class="play-triangle"></div></div>
         </div>
         <div class="beat-info">
-          <span class="beat-title">${item.title}</span>
-          <span class="beat-bpm-key">
-            ${type === 'beat' ? `${item.bpm} BPM &middot; ${item.key}` : item.type}
-          </span>
+          <span class="beat-title">${beat.title}</span>
+          <span class="beat-bpm-key">${beat.bpm} BPM &nbsp;&middot;&nbsp; ${beat.key}</span>
           <div class="beat-tags">
-            ${type === 'beat' ? item.tags.map(t => `<span class="beat-tag">${t}</span>`).join('') : `<span class="beat-tag">${item.type}</span>`}
+            ${beat.tags.map(t => `<span class="beat-tag">${t}</span>`).join('')}
           </div>
         </div>
-        <span class="beat-price">From $${item.price}</span>
+        <span class="beat-price">From $${beat.basePrice}</span>
       </div>
     `).join('');
   }
 
-  // ─── INIT ─────────────────────────────────────────────────────────────────
-  renderFilters('beatFilters', beatTagList, selectedBeatTags, 'beat');
-  renderList('beatList', beats, selectedBeatTags, 'beat');
-  renderFilters('kitFilters', kitTagList, selectedKitTags, 'kit');
-  renderList('kitList', kits, selectedKitTags, 'kit');
-  // ─── NEWSLETTER TOGGLE ────────────────────────────────────────────────────
+  // ─── LOAD PRODUCTS + DEEP LINK ────────────────────────────────────────────
+  fetch('products.json')
+    .then(r => r.json())
+    .then(data => {
+      beatsData = data.beats || [];
+      kitsData = data.kits || [];
+
+      // Build tag lists from actual data
+      const allBeatTags = new Set();
+      beatsData.forEach(b => b.tags.forEach(t => allBeatTags.add(t)));
+      beatTagList = ['All', ...Array.from(allBeatTags).sort()];
+
+      const allKitTypes = new Set();
+      kitsData.forEach(k => allKitTypes.add(k.type));
+      kitTagList = ['All', ...Array.from(allKitTypes).sort()];
+
+      renderHeroFeatured(beatsData);
+      renderFilters('beatFilters', beatTagList, selectedBeatTags, 'beat');
+      renderList('beatList', beatsData, selectedBeatTags, 'beat');
+      renderFilters('kitFilters', kitTagList, selectedKitTags, 'kit');
+      renderList('kitList', kitsData, selectedKitTags, 'kit');
+
+      // Deep link
+      const params = new URLSearchParams(window.location.search);
+      const beatParam = params.get('beat');
+      const kitParam = params.get('kit');
+      if (beatParam) {
+        const beat = beatsData.find(b => b.id === beatParam);
+        if (beat) openModal(beat);
+      } else if (kitParam) {
+        const kit = kitsData.find(k => k.id === kitParam);
+        if (kit) openKitModal(kit);
+      }
+    })
+    .catch(() => {
+      // Fallback if products.json not found yet
+      console.warn('products.json not found. Using inline fallback data.');
+    });
+
+  // ─── NEWSLETTER ───────────────────────────────────────────────────────────
   let newsletterOpen = true;
 
   function toggleNewsletter() {
     newsletterOpen = !newsletterOpen;
     const section = document.getElementById('newsletter');
-    const content = document.getElementById('newsletterContent');
-    const label = document.querySelector('.newsletter-toggle-label');
     const btn = document.querySelector('.newsletter-close');
-
+    const label = document.querySelector('.newsletter-toggle-label');
     if (newsletterOpen) {
       section.classList.remove('newsletter--collapsed');
       btn.style.opacity = '1';

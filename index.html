@@ -266,44 +266,51 @@
       </svg>
     </button>
 
-    <!-- Cover art + player -->
-    <div class="modal-cover" id="modalCover">
-      <div class="modal-cover-art" id="modalCoverArt">
-        <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleAudio()" aria-label="Play/Pause">
-          <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="none">
-            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
-          </svg>
-          <svg class="pause-icon" id="pauseIcon" viewBox="0 0 24 24" fill="none" style="display:none">
-            <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
-            <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
-          </svg>
-        </button>
+    <!-- Top: square art + title/meta side by side -->
+    <div class="modal-top-row">
+      <!-- Square cover art with player -->
+      <div class="modal-art-col">
+        <div class="modal-cover-art" id="modalCoverArt">
+          <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleAudio()" aria-label="Play/Pause">
+            <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="none">
+              <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+            </svg>
+            <svg class="pause-icon" id="pauseIcon" viewBox="0 0 24 24" fill="none" style="display:none">
+              <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
+              <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+        <!-- Progress bar under art -->
+        <div class="modal-progress-wrap">
+          <div class="modal-progress-bar" id="progressBar" onclick="seekAudio(event)">
+            <div class="modal-progress-fill" id="progressFill"></div>
+            <div class="modal-progress-thumb" id="progressThumb"></div>
+          </div>
+          <div class="modal-time-row">
+            <span class="modal-time" id="timeElapsed">0:00</span>
+            <span class="modal-time" id="timeDuration">0:00</span>
+          </div>
+        </div>
       </div>
 
-      <div class="modal-progress-wrap">
-        <div class="modal-progress-bar" id="progressBar" onclick="seekAudio(event)">
-          <div class="modal-progress-fill" id="progressFill"></div>
-          <div class="modal-progress-thumb" id="progressThumb"></div>
+      <!-- Title + meta -->
+      <div class="modal-title-col">
+        <div class="modal-meta-row">
+          <span class="modal-bpm-key" id="modalBpmKey"></span>
         </div>
-        <div class="modal-time-row">
-          <span class="modal-time" id="timeElapsed">0:00</span>
-          <span class="modal-time" id="timeDuration">0:00</span>
-        </div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-tags" id="modalTags"></div>
       </div>
     </div>
 
-    <!-- Info -->
+    <!-- License selector + details -->
     <div class="modal-info">
-      <div class="modal-meta-row">
-        <span class="modal-bpm-key" id="modalBpmKey"></span>
-        <div class="modal-tags" id="modalTags"></div>
-      </div>
-      <h2 class="modal-title" id="modalTitle"></h2>
-
-      <!-- License selector -->
       <div class="modal-license-wrap">
-        <label class="modal-license-label">License</label>
+        <label class="modal-license-label">Select License</label>
         <div class="modal-license-grid" id="modalLicenseGrid"></div>
+        <!-- License detail bullets -->
+        <div class="modal-license-details" id="modalLicenseDetails"></div>
       </div>
 
       <!-- Price + buy -->
@@ -336,15 +343,20 @@
         <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
     </button>
-    <div class="modal-cover">
-      <div class="modal-cover-art modal-cover-art--kit" id="kitModalCoverArt"></div>
-    </div>
-    <div class="modal-info">
-      <div class="modal-meta-row">
-        <span class="modal-kit-type" id="kitModalType"></span>
+
+    <!-- Top: square art + title side by side -->
+    <div class="modal-top-row">
+      <div class="modal-art-col modal-art-col--kit">
+        <div class="modal-cover-art modal-cover-art--kit" id="kitModalCoverArt"></div>
       </div>
-      <h2 class="modal-title" id="kitModalTitle"></h2>
-      <p class="modal-kit-desc" id="kitModalDesc"></p>
+      <div class="modal-title-col">
+        <span class="modal-kit-type" id="kitModalType"></span>
+        <h2 class="modal-title" id="kitModalTitle"></h2>
+        <p class="modal-kit-desc" id="kitModalDesc"></p>
+      </div>
+    </div>
+
+    <div class="modal-info">
       <div class="modal-buy-row modal-buy-row--kit">
         <div class="modal-price-wrap">
           <span class="modal-price-label">Price</span>
@@ -475,6 +487,29 @@
     document.body.style.overflow = 'hidden';
   }
 
+  const LICENSE_DETAILS = {
+    basic: {
+      format: 'MP3 (Tagged)',
+      bullets: ['Tagged MP3 file', 'Up to 10,000 streams', 'Up to 1,000 copies', '1 music video', 'Non-profit performances', 'Non-exclusive']
+    },
+    premium: {
+      format: 'WAV + MP3 (Untagged)',
+      bullets: ['Untagged WAV + MP3', 'Up to 100,000 streams', 'Up to 3,000 copies', '1 music video', 'For-profit performances', 'Non-exclusive']
+    },
+    stems: {
+      format: 'WAV + MP3 + Track Stems',
+      bullets: ['Untagged WAV + MP3', 'Full track stems included', 'Up to 500,000 streams', 'Up to 10,000 copies', 'Unlimited music videos', 'For-profit performances', 'Non-exclusive']
+    },
+    unlimited: {
+      format: 'WAV + MP3 + Stems',
+      bullets: ['Untagged WAV + MP3 + stems', 'Unlimited streams', 'Unlimited distribution', 'Unlimited music videos', 'For-profit + radio', 'Non-exclusive']
+    },
+    exclusive: {
+      format: 'All Files + Sole Rights',
+      bullets: ['WAV + MP3 + stems', 'Sole usage rights', 'Beat removed from store', 'Unlimited everything', 'Full commercial rights', 'Contact to discuss']
+    }
+  };
+
   function buildLicenseGrid(beat) {
     const grid = document.getElementById('modalLicenseGrid');
     const licenseKeys = ['basic', 'premium', 'stems', 'unlimited', 'exclusive'];
@@ -511,6 +546,18 @@
       buyBtn.textContent = 'Buy Now';
     }
     buyBtn.href = lic.checkoutUrl;
+
+    // Update license details panel
+    const details = LICENSE_DETAILS[currentLicense];
+    const detailsEl = document.getElementById('modalLicenseDetails');
+    if (details) {
+      detailsEl.innerHTML = `
+        <span class="modal-license-format">${details.format}</span>
+        <ul class="modal-license-bullets">
+          ${details.bullets.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+      `;
+    }
   }
 
   function closeModal() {

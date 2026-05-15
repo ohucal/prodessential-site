@@ -266,55 +266,49 @@
       </svg>
     </button>
 
-    <!-- Top: square art + title/meta side by side -->
-    <div class="modal-top-row">
-      <!-- Square cover art with player -->
-      <div class="modal-art-col">
-        <div class="modal-cover-art" id="modalCoverArt">
-          <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleAudio()" aria-label="Play/Pause">
-            <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="none">
-              <polygon points="5,3 19,12 5,21" fill="currentColor"/>
-            </svg>
-            <svg class="pause-icon" id="pauseIcon" viewBox="0 0 24 24" fill="none" style="display:none">
-              <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
-              <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
-            </svg>
-          </button>
-        </div>
-        <!-- Progress bar under art -->
-        <div class="modal-progress-wrap">
-          <div class="modal-progress-bar" id="progressBar" onclick="seekAudio(event)">
-            <div class="modal-progress-fill" id="progressFill"></div>
-            <div class="modal-progress-thumb" id="progressThumb"></div>
-          </div>
-          <div class="modal-time-row">
-            <span class="modal-time" id="timeElapsed">0:00</span>
-            <span class="modal-time" id="timeDuration">0:00</span>
-          </div>
-        </div>
+    <!-- Centered cover art -->
+    <div class="modal-cover-section">
+      <div class="modal-cover-art" id="modalCoverArt">
+        <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleAudio()" aria-label="Play/Pause">
+          <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="none">
+            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+          </svg>
+          <svg class="pause-icon" id="pauseIcon" viewBox="0 0 24 24" fill="none" style="display:none">
+            <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
+            <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
+          </svg>
+        </button>
       </div>
-
-      <!-- Title + meta -->
-      <div class="modal-title-col">
-        <div class="modal-meta-row">
-          <span class="modal-bpm-key" id="modalBpmKey"></span>
+      <!-- Progress bar -->
+      <div class="modal-progress-wrap">
+        <div class="modal-progress-bar" id="progressBar" onclick="seekAudio(event)">
+          <div class="modal-progress-fill" id="progressFill"></div>
+          <div class="modal-progress-thumb" id="progressThumb"></div>
         </div>
-        <h2 class="modal-title" id="modalTitle"></h2>
-        <div class="modal-tags" id="modalTags"></div>
+        <div class="modal-time-row">
+          <span class="modal-time" id="timeElapsed">0:00</span>
+          <span class="modal-time" id="timeDuration">0:00</span>
+        </div>
       </div>
     </div>
 
-    <!-- License selector + details -->
+    <!-- Centered title + meta -->
+    <div class="modal-header-section">
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <span class="modal-bpm-key" id="modalBpmKey"></span>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+
+    <!-- License + buy -->
     <div class="modal-info">
       <div class="modal-license-wrap">
         <label class="modal-license-label">Select License</label>
         <div class="modal-license-grid" id="modalLicenseGrid"></div>
-        <!-- License detail bullets -->
         <div class="modal-license-details" id="modalLicenseDetails"></div>
       </div>
 
-      <!-- Price + buy -->
-      <div class="modal-buy-row">
+      <!-- Centered price + buy -->
+      <div class="modal-buy-section">
         <div class="modal-price-wrap">
           <span class="modal-price-label">Price</span>
           <span class="modal-price-value" id="modalPrice"></span>
@@ -324,7 +318,7 @@
 
       <!-- Share link -->
       <button class="modal-share-btn" id="modalShareBtn" onclick="copyShareLink()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
           <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
           <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
         </svg>
@@ -344,20 +338,20 @@
       </svg>
     </button>
 
-    <!-- Top: square art + title side by side -->
-    <div class="modal-top-row">
-      <div class="modal-art-col modal-art-col--kit">
-        <div class="modal-cover-art modal-cover-art--kit" id="kitModalCoverArt"></div>
-      </div>
-      <div class="modal-title-col">
-        <span class="modal-kit-type" id="kitModalType"></span>
-        <h2 class="modal-title" id="kitModalTitle"></h2>
-        <p class="modal-kit-desc" id="kitModalDesc"></p>
-      </div>
+    <!-- Centered cover art -->
+    <div class="modal-cover-section">
+      <div class="modal-cover-art modal-cover-art--kit" id="kitModalCoverArt"></div>
+    </div>
+
+    <!-- Centered title + meta -->
+    <div class="modal-header-section">
+      <span class="modal-kit-type" id="kitModalType"></span>
+      <h2 class="modal-title" id="kitModalTitle"></h2>
+      <p class="modal-kit-desc" id="kitModalDesc"></p>
     </div>
 
     <div class="modal-info">
-      <div class="modal-buy-row modal-buy-row--kit">
+      <div class="modal-buy-section">
         <div class="modal-price-wrap">
           <span class="modal-price-label">Price</span>
           <span class="modal-price-value" id="kitModalPrice"></span>
@@ -365,7 +359,7 @@
         <a class="modal-buy-btn" id="kitModalBuyBtn" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
       </div>
       <button class="modal-share-btn" id="kitModalShareBtn" onclick="copyKitShareLink()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
           <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
           <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
         </svg>
@@ -556,6 +550,7 @@
         <ul class="modal-license-bullets">
           ${details.bullets.map(b => `<li>${b}</li>`).join('')}
         </ul>
+        <a href="#licensing" class="modal-read-license" onclick="closeModal()">Read Full License &rarr;</a>
       `;
     }
   }

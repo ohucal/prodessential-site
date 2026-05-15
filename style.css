@@ -1124,7 +1124,7 @@ nav a:hover { color: var(--yellow); }
   background: var(--warm-gray);
   border: 0.5px solid var(--border-light);
   width: 100%;
-  max-width: 580px;
+  max-width: 660px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1137,17 +1137,14 @@ nav a:hover { color: var(--yellow); }
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
-.modal-overlay.active .modal {
-  transform: translateY(0);
-}
-
+.modal-overlay.active .modal { transform: translateY(0); }
 .modal::-webkit-scrollbar { width: 3px; }
 .modal::-webkit-scrollbar-thumb { background: var(--border-light); }
 
 .modal-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 16px;
+  right: 16px;
   background: none;
   border: none;
   color: var(--mid-gray);
@@ -1159,36 +1156,21 @@ nav a:hover { color: var(--yellow); }
   justify-content: center;
   transition: color 0.15s;
 }
-
 .modal-close:hover { color: var(--near-black); }
+.modal-close svg { width: 14px; height: 14px; }
 
-.modal-close svg {
-  width: 13px;
-  height: 13px;
-}
-
-/* ─── MODAL TOP ROW: square art + title ───────────────────────────────────── */
-.modal-top-row {
+/* ─── CENTERED COVER SECTION ──────────────────────────────────────────────── */
+.modal-cover-section {
   display: flex;
-  gap: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 40px 0;
   border-bottom: 0.5px solid var(--border-light);
 }
 
-.modal-art-col {
-  flex-shrink: 0;
-  width: 180px;
-  border-right: 0.5px solid var(--border-light);
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-art-col--kit {
-  padding: 0;
-}
-
 .modal-cover-art {
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   position: relative;
   display: flex;
   align-items: center;
@@ -1197,15 +1179,31 @@ nav a:hover { color: var(--yellow); }
   flex-shrink: 0;
 }
 
-.modal-cover-art--kit {
-  width: 180px;
-  height: 180px;
-}
+.modal-cover-art--kit { width: 220px; height: 220px; }
 
+/* ─── PLAY BUTTON ─────────────────────────────────────────────────────────── */
+.modal-play-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.28);
+  border: 1.5px solid rgba(255,255,255,0.65);
+  color: var(--off-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.12s;
+  flex-shrink: 0;
+}
+.modal-play-btn:hover { background: rgba(0,0,0,0.48); transform: scale(1.06); }
+.modal-play-btn svg { width: 20px; height: 20px; }
+.play-icon { margin-left: 3px; }
+
+/* ─── PROGRESS BAR ────────────────────────────────────────────────────────── */
 .modal-progress-wrap {
-  padding: 10px 12px 12px;
-  background: var(--warm-gray);
-  border-top: 0.5px solid var(--border-light);
+  width: 100%;
+  padding: 14px 0 16px;
 }
 
 .modal-progress-bar {
@@ -1214,7 +1212,7 @@ nav a:hover { color: var(--yellow); }
   background: var(--border-light);
   position: relative;
   cursor: pointer;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .modal-progress-fill {
@@ -1226,8 +1224,8 @@ nav a:hover { color: var(--yellow); }
 }
 
 .modal-progress-thumb {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background: var(--near-black);
   border-radius: 50%;
   position: absolute;
@@ -1238,37 +1236,37 @@ nav a:hover { color: var(--yellow); }
   transition: left 0.1s linear;
 }
 
-.modal-time-row {
-  display: flex;
-  justify-content: space-between;
-}
+.modal-time-row { display: flex; justify-content: space-between; }
 
 .modal-time {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   color: var(--mid-gray);
   font-family: 'DM Mono', monospace;
 }
 
-/* ─── MODAL TITLE COL ─────────────────────────────────────────────────────── */
-.modal-title-col {
-  flex: 1;
-  padding: 20px 44px 20px 20px;
+/* ─── CENTERED HEADER SECTION ─────────────────────────────────────────────── */
+.modal-header-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  min-width: 0;
+  align-items: center;
+  text-align: center;
+  padding: 24px 40px 20px;
+  gap: 10px;
+  border-bottom: 0.5px solid var(--border-light);
 }
 
-.modal-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+.modal-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  font-style: italic;
+  color: var(--near-black);
+  line-height: 1.1;
+  margin: 0;
 }
 
 .modal-bpm-key {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mid-gray);
@@ -1276,68 +1274,61 @@ nav a:hover { color: var(--yellow); }
 }
 
 .modal-kit-type {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--deep-purple);
   font-family: 'DM Mono', monospace;
   border: 0.5px solid var(--purple);
-  padding: 3px 8px;
+  padding: 4px 10px;
   display: inline-block;
 }
 
 .modal-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 5px;
+  justify-content: center;
 }
 
 .modal-tag {
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--deep-purple);
   border: 0.5px solid var(--purple);
-  padding: 2px 6px;
+  padding: 3px 8px;
   line-height: 1.4;
   font-family: 'DM Mono', monospace;
 }
 
-.modal-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 24px;
-  font-style: italic;
-  color: var(--near-black);
-  line-height: 1.1;
-  margin: 0;
-}
-
 .modal-kit-desc {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.7;
   color: var(--mid-gray);
   letter-spacing: 0.03em;
   font-family: 'DM Mono', monospace;
-  margin-top: 4px;
+  max-width: 420px;
+  text-align: center;
 }
 
 /* ─── MODAL INFO SECTION ──────────────────────────────────────────────────── */
 .modal-info {
-  padding: 20px 24px 24px;
+  padding: 24px 40px 28px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* ─── LICENSE SELECTOR ────────────────────────────────────────────────────── */
 .modal-license-wrap {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .modal-license-label {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mid-gray);
@@ -1347,15 +1338,15 @@ nav a:hover { color: var(--yellow); }
 .modal-license-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 6px;
 }
 
 .modal-license-btn {
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 7px 13px;
+  padding: 9px 16px;
   border: 1px solid var(--border-light);
   background: var(--off-white);
   color: var(--mid-gray);
@@ -1380,15 +1371,15 @@ nav a:hover { color: var(--yellow); }
 .modal-license-details {
   background: var(--off-white);
   border: 0.5px solid var(--border-light);
-  padding: 12px 14px;
+  padding: 14px 18px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .modal-license-format {
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--near-black);
@@ -1400,17 +1391,17 @@ nav a:hover { color: var(--yellow); }
   padding: 0;
   margin: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 14px;
+  flex-direction: column;
+  gap: 7px;
 }
 
 .modal-license-bullets li {
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.06em;
+  font-size: 10px;
+  letter-spacing: 0.05em;
   color: var(--mid-gray);
   line-height: 1.5;
-  padding-left: 10px;
+  padding-left: 14px;
   position: relative;
 }
 
@@ -1418,36 +1409,53 @@ nav a:hover { color: var(--yellow); }
   content: '';
   position: absolute;
   left: 0;
-  top: 6px;
-  width: 3px;
-  height: 3px;
+  top: 7px;
+  width: 4px;
+  height: 4px;
   background: var(--mid-gray);
   border-radius: 50%;
 }
 
-/* ─── BUY ROW ─────────────────────────────────────────────────────────────── */
-.modal-buy-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  border-top: 0.5px solid var(--border-light);
-  padding-top: 16px;
+.modal-read-license {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s;
+  display: inline-block;
+  border-bottom: 0.5px solid var(--border-light);
+  padding-bottom: 1px;
+  align-self: flex-start;
+  margin-top: 2px;
 }
 
-.modal-buy-row--kit {
-  margin-top: 4px;
+.modal-read-license:hover {
+  color: var(--near-black);
+  border-bottom-color: var(--near-black);
+}
+
+/* ─── CENTERED BUY SECTION ────────────────────────────────────────────────── */
+.modal-buy-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  border-top: 0.5px solid var(--border-light);
+  padding-top: 20px;
 }
 
 .modal-price-wrap {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 3px;
 }
 
 .modal-price-label {
-  font-size: 8px;
-  letter-spacing: 0.2em;
+  font-size: 9px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--mid-gray);
   font-family: 'DM Mono', monospace;
@@ -1455,7 +1463,7 @@ nav a:hover { color: var(--yellow); }
 
 .modal-price-value {
   font-family: 'DM Serif Display', serif;
-  font-size: 30px;
+  font-size: 38px;
   color: var(--near-black);
   line-height: 1;
 }
@@ -1464,17 +1472,16 @@ nav a:hover { color: var(--yellow); }
   background: var(--near-black);
   color: var(--yellow);
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 14px 28px;
+  padding: 16px 48px;
   border: 1px solid var(--near-black);
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .modal-buy-btn:hover {
@@ -1486,118 +1493,38 @@ nav a:hover { color: var(--yellow); }
 /* ─── SHARE BUTTON ────────────────────────────────────────────────────────── */
 .modal-share-btn {
   background: none;
-  border: none;
-  color: var(--light-gray);
+  border: 1px solid var(--border-light);
+  color: var(--near-black);
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   cursor: pointer;
-  padding: 0;
+  padding: 8px 14px;
   display: flex;
   align-items: center;
-  gap: 7px;
-  transition: color 0.15s;
+  gap: 8px;
+  transition: border-color 0.15s, background 0.15s;
   align-self: flex-start;
 }
 
-.modal-share-btn:hover { color: var(--near-black); }
-
-/* ─── PLAY BUTTON ─────────────────────────────────────────────────────────── */
-.modal-play-btn {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.25);
-  border: 1.5px solid rgba(255,255,255,0.6);
-  color: var(--off-white);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, transform 0.12s;
-  flex-shrink: 0;
+.modal-share-btn:hover {
+  background: #ebe9e4;
+  border-color: var(--near-black);
 }
-
-.modal-play-btn:hover {
-  background: rgba(0,0,0,0.45);
-  transform: scale(1.06);
-}
-
-.modal-play-btn svg {
-  width: 18px;
-  height: 18px;
-}
-
-.play-icon { margin-left: 3px; }
 
 /* ─── MODAL MOBILE ────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .modal {
-    max-width: 100%;
-    border-left: none;
-    border-right: none;
-  }
-
-  .modal-overlay {
-    padding: 0;
-    align-items: flex-end;
-  }
-
-  .modal {
-    border-bottom: none;
-    max-height: 92vh;
-  }
-
-  .modal-top-row {
-    flex-direction: column;
-  }
-
-  .modal-art-col {
-    width: 100%;
-    border-right: none;
-    border-bottom: 0.5px solid var(--border-light);
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .modal-cover-art {
-    width: 120px;
-    height: 120px;
-    flex-shrink: 0;
-  }
-
-  .modal-cover-art--kit {
-    width: 120px;
-    height: 120px;
-  }
-
-  .modal-progress-wrap {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top: none;
-    border-left: 0.5px solid var(--border-light);
-  }
-
-  .modal-title { font-size: 20px; }
-  .modal-price-value { font-size: 24px; }
-
-  .modal-buy-btn {
-    padding: 12px 20px;
-  }
-
-  .modal-license-btn {
-    padding: 7px 10px;
-    font-size: 8px;
-  }
-
-  .modal-title-col {
-    padding: 16px 16px 16px 16px;
-  }
-
-  .modal-info {
-    padding: 16px 16px 20px;
-  }
+  .modal { max-width: 100%; border-left: none; border-right: none; }
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { border-bottom: none; max-height: 92vh; }
+  .modal-cover-section { padding: 24px 24px 0; }
+  .modal-cover-art { width: 160px; height: 160px; }
+  .modal-cover-art--kit { width: 160px; height: 160px; }
+  .modal-header-section { padding: 18px 24px 16px; }
+  .modal-title { font-size: 26px; }
+  .modal-price-value { font-size: 30px; }
+  .modal-info { padding: 20px 24px 24px; }
+  .modal-buy-btn { padding: 14px 36px; }
+  .modal-license-btn { padding: 8px 12px; font-size: 9px; }
 }

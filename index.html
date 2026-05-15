@@ -266,37 +266,37 @@
       </svg>
     </button>
 
-    <!-- Centered cover art -->
-    <div class="modal-cover-section">
-      <div class="modal-cover-art" id="modalCoverArt">
-        <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleAudio()" aria-label="Play/Pause">
-          <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="none">
-            <polygon points="5,3 19,12 5,21" fill="currentColor"/>
-          </svg>
-          <svg class="pause-icon" id="pauseIcon" viewBox="0 0 24 24" fill="none" style="display:none">
-            <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
-            <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
-          </svg>
-        </button>
-      </div>
-      <!-- Progress bar -->
-      <div class="modal-progress-wrap">
-        <div class="modal-progress-bar" id="progressBar" onclick="seekAudio(event)">
-          <div class="modal-progress-fill" id="progressFill"></div>
-          <div class="modal-progress-thumb" id="progressThumb"></div>
+    <!-- Top: art left, title/meta right -->
+    <div class="modal-top-row">
+      <div class="modal-art-col">
+        <div class="modal-cover-art" id="modalCoverArt">
+          <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleAudio()" aria-label="Play/Pause">
+            <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="none">
+              <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+            </svg>
+            <svg class="pause-icon" id="pauseIcon" viewBox="0 0 24 24" fill="none" style="display:none">
+              <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
+              <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
+            </svg>
+          </button>
         </div>
-        <div class="modal-time-row">
-          <span class="modal-time" id="timeElapsed">0:00</span>
-          <span class="modal-time" id="timeDuration">0:00</span>
+        <div class="modal-progress-wrap">
+          <div class="modal-progress-bar" id="progressBar" onclick="seekAudio(event)">
+            <div class="modal-progress-fill" id="progressFill"></div>
+            <div class="modal-progress-thumb" id="progressThumb"></div>
+          </div>
+          <div class="modal-time-row">
+            <span class="modal-time" id="timeElapsed">0:00</span>
+            <span class="modal-time" id="timeDuration">0:00</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Centered title + meta -->
-    <div class="modal-header-section">
-      <h2 class="modal-title" id="modalTitle"></h2>
-      <span class="modal-bpm-key" id="modalBpmKey"></span>
-      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-header-col">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <span class="modal-bpm-key" id="modalBpmKey"></span>
+        <div class="modal-tags" id="modalTags"></div>
+      </div>
     </div>
 
     <!-- License + buy -->
@@ -307,8 +307,8 @@
         <div class="modal-license-details" id="modalLicenseDetails"></div>
       </div>
 
-      <!-- Centered price + buy -->
-      <div class="modal-buy-section">
+      <!-- Price left, buy right -->
+      <div class="modal-buy-row">
         <div class="modal-price-wrap">
           <span class="modal-price-label">Price</span>
           <span class="modal-price-value" id="modalPrice"></span>
@@ -316,7 +316,6 @@
         <a class="modal-buy-btn" id="modalBuyBtn" href="#" target="_blank" rel="noopener noreferrer">Buy Now</a>
       </div>
 
-      <!-- Share link -->
       <button class="modal-share-btn" id="modalShareBtn" onclick="copyShareLink()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
           <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
@@ -338,20 +337,19 @@
       </svg>
     </button>
 
-    <!-- Centered cover art -->
-    <div class="modal-cover-section">
-      <div class="modal-cover-art modal-cover-art--kit" id="kitModalCoverArt"></div>
-    </div>
-
-    <!-- Centered title + meta -->
-    <div class="modal-header-section">
-      <span class="modal-kit-type" id="kitModalType"></span>
-      <h2 class="modal-title" id="kitModalTitle"></h2>
-      <p class="modal-kit-desc" id="kitModalDesc"></p>
+    <div class="modal-top-row">
+      <div class="modal-art-col modal-art-col--kit">
+        <div class="modal-cover-art modal-cover-art--kit" id="kitModalCoverArt"></div>
+      </div>
+      <div class="modal-header-col">
+        <span class="modal-kit-type" id="kitModalType"></span>
+        <h2 class="modal-title" id="kitModalTitle"></h2>
+        <p class="modal-kit-desc" id="kitModalDesc"></p>
+      </div>
     </div>
 
     <div class="modal-info">
-      <div class="modal-buy-section">
+      <div class="modal-buy-row">
         <div class="modal-price-wrap">
           <span class="modal-price-label">Price</span>
           <span class="modal-price-value" id="kitModalPrice"></span>

@@ -281,7 +281,7 @@
           </button>
         </div>
         <div class="modal-progress-wrap">
-          <div class="modal-progress-bar" id="progressBar" onclick="seekAudio(event)">
+          <div class="modal-progress-bar" id="progressBar">
             <div class="modal-progress-fill" id="progressFill"></div>
             <div class="modal-progress-thumb" id="progressThumb"></div>
           </div>
@@ -289,6 +289,7 @@
             <span class="modal-time" id="timeElapsed">0:00</span>
             <span class="modal-time" id="timeDuration">0:00</span>
           </div>
+
         </div>
       </div>
 
@@ -370,28 +371,12 @@
 <audio id="audioPlayer" preload="none"></audio>
 
 <script>
-  // ─── AUDIO ────────────────────────────────────────────────────────────────
+  // ─── AUDIO ENGINE ─────────────────────────────────────────────────────────
   const audio = document.getElementById('audioPlayer');
-  let audioLoaded = false;
 
-  audio.addEventListener('timeupdate', () => {
-    if (!audio.duration) return;
-    const pct = (audio.currentTime / audio.duration) * 100;
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressThumb').style.left = pct + '%';
-    document.getElementById('timeElapsed').textContent = formatTime(audio.currentTime);
-  });
-
-  audio.addEventListener('loadedmetadata', () => {
-    document.getElementById('timeDuration').textContent = formatTime(audio.duration);
-  });
-
-  audio.addEventListener('ended', () => {
-    setPlayState(false);
-    document.getElementById('progressFill').style.width = '0%';
-    document.getElementById('progressThumb').style.left = '0%';
-    document.getElementById('timeElapsed').textContent = '0:00';
-  });
+  // Track what's currently loaded/playing
+  let activeCardId = null;   // beat id playing in the card inline player
+  let modalIsOpen  = false;  // whether the beat modal is showing
 
   function formatTime(s) {
     if (!s || isNaN(s)) return '0:00';
@@ -400,37 +385,261 @@
     return m + ':' + String(sec).padStart(2, '0');
   }
 
-  function setPlayState(playing) {
-    document.getElementById('playIcon').style.display = playing ? 'none' : 'block';
-    document.getElementById('pauseIcon').style.display = playing ? 'block' : 'none';
+  // ── Update ALL currently-visible progress UIs ──────────────────────────────
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    const elapsed = formatTime(audio.currentTime);
+
+    // Modal progress (always update if modal open)
+    const mFill  = document.getElementById('progressFill');
+    const mThumb = document.getElementById('progressThumb');
+    const mElap  = document.getElementById('timeElapsed');
+    if (mFill)  mFill.style.width  = pct + '%';
+    if (mThumb) mThumb.style.left  = pct + '%';
+    if (mElap)  mElap.textContent  = elapsed;
+
+    // Card inline progress
+    if (activeCardId) {
+      const card = document.querySelector(`.beat-card[data-id="${activeCardId}"]`);
+      if (card) {
+        const fill  = card.querySelector('.card-prog-fill');
+        const thumb = card.querySelector('.card-prog-thumb');
+        const elap  = card.querySelector('.card-time-elapsed');
+        if (fill)  fill.style.width = pct + '%';
+        if (thumb) thumb.style.left = pct + '%';
+        if (elap)  elap.textContent = elapsed;
+      }
+    }
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    const dur = formatTime(audio.duration);
+    const mDur = document.getElementById('timeDuration');
+    if (mDur) mDur.textContent = dur;
+
+    if (activeCardId) {
+      const card = document.querySelector(`.beat-card[data-id="${activeCardId}"]`);
+      if (card) {
+        const durEl = card.querySelector('.card-time-dur');
+        if (durEl) durEl.textContent = dur;
+      }
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    setModalPlayState(false);
+    setCardPlayState(activeCardId, false);
+    const mFill  = document.getElementById('progressFill');
+    const mThumb = document.getElementById('progressThumb');
+    const mElap  = document.getElementById('timeElapsed');
+    if (mFill)  mFill.style.width  = '0%';
+    if (mThumb) mThumb.style.left  = '0%';
+    if (mElap)  mElap.textContent  = '0:00';
+    if (activeCardId) resetCardProgress(activeCardId);
+  });
+
+  // ── Modal play/pause icons ─────────────────────────────────────────────────
+  function setModalPlayState(playing) {
+    const pi = document.getElementById('playIcon');
+    const pa = document.getElementById('pauseIcon');
+    if (pi) pi.style.display = playing ? 'none' : 'block';
+    if (pa) pa.style.display = playing ? 'block' : 'none';
   }
 
+  // ── Card play/pause icon ───────────────────────────────────────────────────
+  function setCardPlayState(beatId, playing) {
+    if (!beatId) return;
+    const card = document.querySelector(`.beat-card[data-id="${beatId}"]`);
+    if (!card) return;
+    const playBtn = card.querySelector('.card-play-btn');
+    if (!playBtn) return;
+    playBtn.innerHTML = playing
+      ? `<svg viewBox="0 0 24 24" fill="none" width="14" height="14"><rect x="5" y="3" width="4" height="18" fill="currentColor"/><rect x="15" y="3" width="4" height="18" fill="currentColor"/></svg>`
+      : `<svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>`;
+  }
+
+  function resetCardProgress(beatId) {
+    if (!beatId) return;
+    const card = document.querySelector(`.beat-card[data-id="${beatId}"]`);
+    if (!card) return;
+    const fill  = card.querySelector('.card-prog-fill');
+    const thumb = card.querySelector('.card-prog-thumb');
+    const elap  = card.querySelector('.card-time-elapsed');
+    if (fill)  fill.style.width = '0%';
+    if (thumb) thumb.style.left = '0%';
+    if (elap)  elap.textContent = '0:00';
+  }
+
+  // ── Hide inline controls on a card ────────────────────────────────────────
+  function hideCardControls(beatId) {
+    if (!beatId) return;
+    const card = document.querySelector(`.beat-card[data-id="${beatId}"]`);
+    if (!card) return;
+    const ctrl = card.querySelector('.card-inline-player');
+    const price = card.querySelector('.beat-price');
+    if (ctrl)  ctrl.classList.remove('visible');
+    if (price) price.style.display = '';
+  }
+
+  // ── Show inline controls on a card ────────────────────────────────────────
+  function showCardControls(beatId) {
+    const card = document.querySelector(`.beat-card[data-id="${beatId}"]`);
+    if (!card) return;
+    const ctrl  = card.querySelector('.card-inline-player');
+    const price = card.querySelector('.beat-price');
+    if (ctrl)  ctrl.classList.add('visible');
+    if (price) price.style.display = 'none';
+  }
+
+  // ── Called when the small play button on a card thumbnail is clicked ───────
+  function cardPlayClick(e, beat) {
+    e.stopPropagation(); // don't open modal
+
+    const isSame = activeCardId === beat.id;
+
+    if (isSame) {
+      // Toggle play/pause for same beat
+      if (audio.paused) {
+        audio.play();
+        setCardPlayState(beat.id, true);
+        if (modalIsOpen) setModalPlayState(true);
+      } else {
+        audio.pause();
+        setCardPlayState(beat.id, false);
+        if (modalIsOpen) setModalPlayState(false);
+      }
+      return;
+    }
+
+    // Different beat — stop and hide previous
+    if (activeCardId) {
+      audio.pause();
+      setCardPlayState(activeCardId, false);
+      hideCardControls(activeCardId);
+      resetCardProgress(activeCardId);
+    }
+
+    // Load new beat
+    activeCardId = beat.id;
+    if (beat.audioFile) {
+      audio.src = beat.audioFile;
+      audio.load();
+      audio.play().catch(() => {});
+    }
+    showCardControls(beat.id);
+    setCardPlayState(beat.id, true);
+  }
+
+  // ── Card inline progress bar scrubbing ────────────────────────────────────
+  let cardDragging = false;
+  let cardDragBar  = null;
+
+  document.addEventListener('mousedown', e => {
+    const bar = e.target.closest('.card-prog-bar');
+    if (!bar) return;
+    e.preventDefault();
+    e.stopPropagation();
+    cardDragging = true;
+    cardDragBar  = bar;
+    scrubCardBar(bar, e.clientX);
+  });
+
+  document.addEventListener('touchstart', e => {
+    const bar = e.target.closest('.card-prog-bar');
+    if (!bar) return;
+    cardDragging = true;
+    cardDragBar  = bar;
+    scrubCardBar(bar, e.touches[0].clientX);
+  }, { passive: true });
+
+  document.addEventListener('mousemove', e => {
+    if (!cardDragging || !cardDragBar) return;
+    scrubCardBar(cardDragBar, e.clientX);
+  });
+
+  document.addEventListener('touchmove', e => {
+    if (!cardDragging || !cardDragBar) return;
+    scrubCardBar(cardDragBar, e.touches[0].clientX);
+  }, { passive: true });
+
+  document.addEventListener('mouseup',  () => { cardDragging = false; cardDragBar = null; });
+  document.addEventListener('touchend', () => { cardDragging = false; cardDragBar = null; });
+
+  function scrubCardBar(bar, clientX) {
+    if (!audio.duration) return;
+    const rect = bar.getBoundingClientRect();
+    const pct  = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    audio.currentTime = pct * audio.duration;
+  }
+
+  // ── Modal toggleAudio (play/pause button inside modal) ────────────────────
   function toggleAudio() {
     if (audio.paused) {
       audio.play();
-      setPlayState(true);
+      setModalPlayState(true);
+      if (activeCardId) setCardPlayState(activeCardId, true);
     } else {
       audio.pause();
-      setPlayState(false);
+      setModalPlayState(false);
+      if (activeCardId) setCardPlayState(activeCardId, false);
     }
   }
 
-  function seekAudio(e) {
-    if (!audio.duration) return;
-    const bar = document.getElementById('progressBar');
-    const rect = bar.getBoundingClientRect();
-    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    audio.currentTime = pct * audio.duration;
-  }
+  // ─── MODAL PROGRESS BAR DRAG-TO-SEEK ──────────────────────────────────────
+  (function setupProgressScrub() {
+    let dragging = false;
+
+    function getPct(clientX) {
+      const bar = document.getElementById('progressBar');
+      const rect = bar.getBoundingClientRect();
+      return Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    }
+
+    function applyPct(pct) {
+      if (!audio.duration) return;
+      audio.currentTime = pct * audio.duration;
+    }
+
+    document.getElementById('progressBar').addEventListener('mousedown', e => {
+      dragging = true;
+      applyPct(getPct(e.clientX));
+      e.preventDefault();
+    });
+
+    document.getElementById('progressBar').addEventListener('touchstart', e => {
+      dragging = true;
+      applyPct(getPct(e.touches[0].clientX));
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      applyPct(getPct(e.clientX));
+    });
+
+    document.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      applyPct(getPct(e.touches[0].clientX));
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('mouseup',  () => { dragging = false; });
+    document.addEventListener('touchend', () => { dragging = false; });
+  })();
 
   function stopAudio() {
     audio.pause();
     audio.currentTime = 0;
-    setPlayState(false);
-    document.getElementById('progressFill').style.width = '0%';
-    document.getElementById('progressThumb').style.left = '0%';
-    document.getElementById('timeElapsed').textContent = '0:00';
-    document.getElementById('timeDuration').textContent = '0:00';
+    setModalPlayState(false);
+    const mFill  = document.getElementById('progressFill');
+    const mThumb = document.getElementById('progressThumb');
+    const mElap  = document.getElementById('timeElapsed');
+    const mDur   = document.getElementById('timeDuration');
+    if (mFill)  mFill.style.width  = '0%';
+    if (mThumb) mThumb.style.left  = '0%';
+    if (mElap)  mElap.textContent  = '0:00';
+    if (mDur)   mDur.textContent   = '0:00';
   }
 
   // ─── MODAL ────────────────────────────────────────────────────────────────
@@ -439,8 +648,12 @@
   let currentKitItem = null;
 
   function openModal(beat) {
+    const isContinuing = activeCardId === beat.id && !audio.paused;
+    const savedTime    = (activeCardId === beat.id) ? audio.currentTime : 0;
+
     currentBeat = beat;
     currentLicense = 'basic';
+    modalIsOpen = true;
 
     // Cover art
     const art = document.getElementById('modalCoverArt');
@@ -463,13 +676,48 @@
     // License buttons
     buildLicenseGrid(beat);
 
-    // Audio
-    stopAudio();
-    if (beat.audioFile) {
-      audio.src = beat.audioFile;
-      audio.load();
+    // Audio — if same beat is already loaded, continue from current position
+    if (activeCardId === beat.id) {
+      // Hide the inline card player (modal takes over display)
+      hideCardControls(beat.id);
+      // Sync modal progress bar to current time
+      if (audio.duration) {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        const mFill  = document.getElementById('progressFill');
+        const mThumb = document.getElementById('progressThumb');
+        const mElap  = document.getElementById('timeElapsed');
+        const mDur   = document.getElementById('timeDuration');
+        if (mFill)  mFill.style.width  = pct + '%';
+        if (mThumb) mThumb.style.left  = pct + '%';
+        if (mElap)  mElap.textContent  = formatTime(audio.currentTime);
+        if (mDur)   mDur.textContent   = formatTime(audio.duration);
+      }
+      setModalPlayState(!audio.paused);
     } else {
-      audio.src = '';
+      // Different beat — stop previous card audio
+      if (activeCardId) {
+        audio.pause();
+        setCardPlayState(activeCardId, false);
+        hideCardControls(activeCardId);
+        resetCardProgress(activeCardId);
+      }
+      activeCardId = beat.id;
+      if (beat.audioFile) {
+        audio.src = beat.audioFile;
+        audio.load();
+      } else {
+        audio.src = '';
+      }
+      setModalPlayState(false);
+      // Reset modal progress
+      const mFill  = document.getElementById('progressFill');
+      const mThumb = document.getElementById('progressThumb');
+      const mElap  = document.getElementById('timeElapsed');
+      const mDur   = document.getElementById('timeDuration');
+      if (mFill)  mFill.style.width  = '0%';
+      if (mThumb) mThumb.style.left  = '0%';
+      if (mElap)  mElap.textContent  = '0:00';
+      if (mDur)   mDur.textContent   = '0:00';
     }
 
     // URL
@@ -556,7 +804,20 @@
   function closeModal() {
     document.getElementById('modalOverlay').classList.remove('active');
     document.body.style.overflow = '';
-    stopAudio();
+    modalIsOpen = false;
+
+    // If audio is still playing, restore the inline card controls
+    if (activeCardId && !audio.paused) {
+      showCardControls(activeCardId);
+      setCardPlayState(activeCardId, true);
+    } else if (activeCardId) {
+      // Was paused — stop fully and clean up
+      stopAudio();
+      hideCardControls(activeCardId);
+      resetCardProgress(activeCardId);
+      activeCardId = null;
+    }
+
     currentBeat = null;
     history.pushState({}, '', window.location.pathname);
   }
@@ -770,15 +1031,27 @@
 
     if (type === 'beat') {
       container.innerHTML = filtered.map(item => `
-        <div class="beat-card" onclick='openModal(${JSON.stringify(item)})'>
-          <div class="beat-cover no-img" style="background: ${item.imgGradient}">
-            <div class="play-overlay"><div class="play-triangle"></div></div>
+        <div class="beat-card" data-id="${item.id}" onclick='openModal(${JSON.stringify(item)})'>
+          <div class="beat-cover${item.imgFile ? '' : ' no-img'}" style="${item.imgFile ? `background-image: url('${item.imgFile}'); background-size: cover; background-position: center;` : `background: ${item.imgGradient}`}">
+            <button class="card-play-btn" onclick='cardPlayClick(event, ${JSON.stringify(item)})' aria-label="Play preview">
+              <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+            </button>
           </div>
           <div class="beat-info">
             <span class="beat-title">${item.title}</span>
             <span class="beat-bpm-key">${item.bpm} BPM &middot; ${item.key}</span>
             <div class="beat-tags">
               ${item.tags.map(t => `<span class="beat-tag">${t}</span>`).join('')}
+            </div>
+          </div>
+          <div class="card-inline-player">
+            <div class="card-prog-bar">
+              <div class="card-prog-fill"></div>
+              <div class="card-prog-thumb"></div>
+            </div>
+            <div class="card-time-row">
+              <span class="card-time card-time-elapsed">0:00</span>
+              <span class="card-time card-time-dur">0:00</span>
             </div>
           </div>
           <span class="beat-price">From $${item.basePrice}</span>
@@ -808,7 +1081,7 @@
     const el = document.getElementById('heroFeatured');
     el.innerHTML = beats.slice(0, 2).map(beat => `
       <div class="beat-card" onclick='openModal(${JSON.stringify(beat)})'>
-        <div class="beat-cover no-img" style="background: ${beat.imgGradient}">
+        <div class="beat-cover${beat.imgFile ? '' : ' no-img'}" style="${beat.imgFile ? `background-image: url('${beat.imgFile}'); background-size: cover; background-position: center;` : `background: ${beat.imgGradient}`}">
           <div class="play-overlay"><div class="play-triangle"></div></div>
         </div>
         <div class="beat-info">

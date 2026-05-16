@@ -1159,13 +1159,15 @@ nav a:hover { color: var(--yellow); }
   display: flex;
   align-items: stretch;
   border-bottom: 0.5px solid var(--border-light);
+  padding-top: 28px;
 }
 
 .modal-art-col {
   flex-shrink: 0;
-  width: 220px;
+  width: auto; 
   display: flex;
   flex-direction: column;
+  padding-left: 32px; 
 }
 
 .modal-cover-art {
@@ -1200,29 +1202,48 @@ nav a:hover { color: var(--yellow); }
 
 /* ─── PROGRESS BAR ────────────────────────────────────────────────────────── */
 .modal-progress-wrap {
-  padding: 12px 14px 14px;
-  background: var(--warm-gray);
+  padding: 12px 0 14px; 
+  background: transparent;
   border-top: 0.5px solid var(--border-light);
+  width: 220px; 
 }
 
 .modal-progress-bar {
   width: 100%;
-  height: 2px;
-  background: var(--border-light);
+  height: 18px; /* expanded hit area */
+  background: transparent;
   position: relative;
   cursor: pointer;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
 }
+
+/* The visible track line */
+.modal-progress-bar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--border-light);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 .modal-progress-fill {
-  height: 100%;
+  height: 2px;
   background: var(--near-black);
   width: 0%;
   transition: width 0.1s linear;
   pointer-events: none;
+  align-self: center;
 }
+
 .modal-progress-thumb {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background: var(--near-black);
   border-radius: 50%;
   position: absolute;
@@ -1231,8 +1252,13 @@ nav a:hover { color: var(--yellow); }
   transform: translate(-50%, -50%);
   pointer-events: none;
   transition: left 0.1s linear;
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
 }
-.modal-time-row { display: flex; justify-content: space-between; }
+
+.modal-progress-thumb:active { cursor: grabbing; }
+
+.modal-time-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
 .modal-time {
   font-size: 10px;
   letter-spacing: 0.06em;
@@ -1240,13 +1266,112 @@ nav a:hover { color: var(--yellow); }
   font-family: 'DM Mono', monospace;
 }
 
+/* ─── CARD PLAY BUTTON (on thumbnail) ───────────────────────────────────── */
+.card-play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  cursor: pointer;
+  color: var(--off-white);
+  opacity: 0;
+  transition: opacity 0.15s;
+  padding: 0;
+}
+
+.beat-card:hover .card-play-btn { opacity: 1; }
+
+/* Keep visible when inline player is showing */
+.beat-card:has(.card-inline-player.visible) .card-play-btn { opacity: 1; }
+
+/* ─── CARD INLINE PLAYER ─────────────────────────────────────────────────── */
+.card-inline-player {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  padding: 0 8px 0 12px;
+}
+
+.card-inline-player.visible {
+  display: flex;
+}
+
+/* When inline player is visible, hide beat-info so we have room */
+.beat-card:has(.card-inline-player.visible) .beat-info {
+  display: none;
+}
+
+.card-prog-bar {
+  position: relative;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* The track line */
+.card-prog-bar::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 1px;
+}
+
+.card-prog-fill {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: var(--yellow);
+  width: 0%;
+  pointer-events: none;
+  border-radius: 1px;
+}
+
+.card-prog-thumb {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--off-white);
+  border-radius: 50%;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.card-time-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--mid-gray);
+}
+
+
 /* ─── HEADER COL (right of art) ───────────────────────────────────────────── */
 .modal-header-col {
   flex: 1;
-  padding: 28px 52px 28px 28px;
+  padding: 0 52px 28px 28px; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
   min-width: 0;
 }
@@ -1428,15 +1553,19 @@ nav a:hover { color: var(--yellow); }
 /* ─── BUY ROW: price left, button right ───────────────────────────────────── */
 .modal-buy-row {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  gap: 20px;
+  background: #ebe9e4; 
+  border: 1px solid var(--border-light);
+  gap: 0; 
+  margin-top: 10px;
 }
 
 .modal-price-wrap {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  justify-content: center;
+  padding: 0 24px;
 }
 
 .modal-price-label {
@@ -1449,7 +1578,7 @@ nav a:hover { color: var(--yellow); }
 
 .modal-price-value {
   font-family: 'DM Serif Display', serif;
-  font-size: 42px;
+  font-size: 32px; 
   color: var(--near-black);
   line-height: 1;
 }
@@ -1458,22 +1587,25 @@ nav a:hover { color: var(--yellow); }
   background: var(--near-black);
   color: var(--yellow);
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 20px 52px;
-  border: 1px solid var(--near-black);
+  padding: 0 60px;
+  height: 80px; 
+  border: none;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
   white-space: nowrap;
-  flex-shrink: 0;
 }
+
 .modal-buy-btn:hover {
-  background: var(--yellow);
-  color: var(--near-black);
-  border-color: var(--yellow);
+  background: #222;
+  color: var(--yellow);
 }
 
 /* ─── SHARE BUTTON ────────────────────────────────────────────────────────── */
@@ -1505,7 +1637,7 @@ nav a:hover { color: var(--yellow); }
   .modal-art-col { width: 100%; flex-direction: row; align-items: stretch; border-bottom: 0.5px solid var(--border-light); }
   .modal-cover-art { width: 130px; height: 130px; flex-shrink: 0; }
   .modal-cover-art--kit { width: 130px; height: 130px; }
-  .modal-progress-wrap { flex: 1; border-top: none; border-left: 0.5px solid var(--border-light); display: flex; flex-direction: column; justify-content: center; }
+  .modal-progress-wrap { flex: 1; border-top: none; border-left: 0.5px solid var(--border-light); display: flex; flex-direction: column; justify-content: center; padding: 10px 12px; width: auto; }
   .modal-header-col { padding: 18px 18px 18px 18px; justify-content: flex-start; }
   .modal-title { font-size: 22px; }
   .modal-info { padding: 20px 18px 24px; }

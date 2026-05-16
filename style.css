@@ -371,15 +371,21 @@ nav a:hover { color: var(--yellow); }
 /* BEAT CARD */
 .beat-card {
   background: var(--near-black);
-  padding: 14px 16px;
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  align-items: stretch;
   cursor: pointer;
   transition: background 0.15s;
 }
 
 .beat-card:hover { background: #1c1c1c; }
+
+.beat-card-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+}
 
 .beat-cover {
   width: 52px;
@@ -1291,20 +1297,13 @@ nav a:hover { color: var(--yellow); }
 .card-inline-player {
   display: none;
   flex-direction: column;
-  justify-content: center;
   gap: 4px;
-  flex: 1;
-  min-width: 0;
-  padding: 0 8px 0 12px;
+  padding: 0 16px 10px;
+  border-top: 0.5px solid rgba(255,255,255,0.08);
 }
 
 .card-inline-player.visible {
   display: flex;
-}
-
-/* When inline player is visible, hide beat-info so we have room */
-.beat-card:has(.card-inline-player.visible) .beat-info {
-  display: none;
 }
 
 .card-prog-bar {

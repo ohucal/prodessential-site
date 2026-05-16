@@ -485,7 +485,13 @@
     const card = document.querySelector(`.beat-card[data-id="${beatId}"]`);
     if (!card) return;
     const ctrl = card.querySelector('.card-inline-player');
-    if (ctrl) ctrl.classList.add('visible');
+    if (ctrl) {
+      ctrl.classList.add('visible');
+      // After layout, scroll the timeline into view if clipped by the scroll container
+      requestAnimationFrame(() => {
+        ctrl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
   }
 
   // ── Called when the small play button on a card thumbnail is clicked ───────

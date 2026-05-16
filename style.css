@@ -472,6 +472,15 @@ nav a:hover { color: var(--yellow); }
   align-self: center;
 }
 
+/* Anchor scroll offset — clears the 60px sticky header plus breathing room */
+#beats,
+#kits,
+#contact,
+#licensing,
+#newsletter {
+  scroll-margin-top: 76px;
+}
+
 /* LOWER GRID */
 .lower-grid {
   display: flex;

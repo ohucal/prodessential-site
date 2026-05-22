@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://payhip.com/payhip.js"></script>
 </head>
 <body>
 
@@ -789,7 +790,26 @@
       priceEl.textContent = '$' + lic.price;
       buyBtn.textContent = 'Buy Now';
     }
-    buyBtn.href = lic.checkoutUrl;
+    if (lic.payhipKey) {
+      const key = lic.payhipKey;
+      buyBtn.href = 'javascript:void(0)';
+      buyBtn.removeAttribute('target');
+      buyBtn.removeAttribute('rel');
+      buyBtn.onclick = function(e) {
+        e.preventDefault();
+        if (window.Payhip && window.Payhip.Checkout) {
+          Payhip.Checkout.open({ product: key });
+        } else {
+          window.open('https://payhip.com/b/' + key, '_blank');
+        }
+      };
+    } else {
+      buyBtn.href = lic.checkoutUrl;
+      buyBtn.removeAttribute('onclick');
+      buyBtn.onclick = null;
+      buyBtn.setAttribute('target', '_blank');
+      buyBtn.setAttribute('rel', 'noopener noreferrer');
+    }
 
     // Update license details panel
     const details = LICENSE_DETAILS[currentLicense];

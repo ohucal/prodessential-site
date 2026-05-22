@@ -1467,8 +1467,8 @@ nav a:hover { color: var(--yellow); }
 
 .modal-license-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .modal-license-btn {
@@ -1476,7 +1476,7 @@ nav a:hover { color: var(--yellow); }
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 11px 18px;
+  padding: 7px 18px;
   border: 1px solid var(--border-light);
   background: var(--off-white);
   color: var(--mid-gray);
@@ -1639,6 +1639,37 @@ nav a:hover { color: var(--yellow); }
 }
 .modal-share-btn:hover { background: #ebe9e4; border-color: var(--near-black); }
 
+/* ─── MODAL NAV ARROWS ────────────────────────────────────────────────────── */
+.modal-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 80px;
+  background: transparent;
+  border: none;
+  color: var(--mid-gray);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  z-index: 20;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.modal-overlay.active .modal-nav-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--near-black);
+}
+.modal-nav-prev { left: 0; }
+.modal-nav-next { right: 0; }
+
 /* ─── MODAL MOBILE ────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .modal { max-width: 100%; border-left: none; border-right: none; border-bottom: none; }
@@ -1655,5 +1686,5 @@ nav a:hover { color: var(--yellow); }
   .modal-info { padding: 20px 18px 24px; }
   .modal-price-value { font-size: 32px; }
   .modal-buy-btn { padding: 16px 28px; font-size: 11px; }
-  .modal-license-btn { padding: 9px 13px; font-size: 10px; }
+  .modal-license-btn { padding: 6px 0; font-size: 10px; }
 }

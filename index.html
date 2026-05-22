@@ -267,6 +267,13 @@
       </svg>
     </button>
 
+    <button class="modal-nav-btn modal-nav-prev" onclick="navigateBeat(-1)" aria-label="Previous beat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="modal-nav-btn modal-nav-next" onclick="navigateBeat(1)" aria-label="Next beat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
     <!-- Top: art left, title/meta right -->
     <div class="modal-top-row">
       <div class="modal-art-col">
@@ -337,6 +344,13 @@
       <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
+    </button>
+
+    <button class="modal-nav-btn modal-nav-prev" onclick="navigateKit(-1)" aria-label="Previous kit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="modal-nav-btn modal-nav-next" onclick="navigateKit(1)" aria-label="Next kit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </button>
 
     <div class="modal-top-row">
@@ -881,6 +895,30 @@
     document.body.style.overflow = 'hidden';
   }
 
+  function navigateKit(dir) {
+    if (!currentKitItem) return;
+
+    // Kits currently visible in the store (respects active type filter + sort)
+    const filteredIds = [...document.querySelectorAll('#kitList .beat-card')].map(el => el.dataset.id);
+    const filteredSet = new Set(filteredIds);
+
+    // Remaining kits not in the filtered view, sorted by date (newest first)
+    const overflow = [...kitsData]
+      .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+      .map(k => String(k.id))
+      .filter(id => !filteredSet.has(id));
+
+    // Navigate filtered kits first, then spill into the rest by date
+    const list = [...filteredIds, ...overflow];
+
+    const idx = list.indexOf(String(currentKitItem.id));
+    if (idx === -1) return;
+
+    const nextIdx = (idx + dir + list.length) % list.length;
+    const kit = kitsData.find(k => String(k.id) === list[nextIdx]);
+    if (kit) openKitModal(kit);
+  }
+
   function closeKitModal() {
     document.getElementById('kitModalOverlay').classList.remove('active');
     document.body.style.overflow = '';
@@ -909,6 +947,30 @@
       closeKitModal();
     }
   });
+
+  function navigateBeat(dir) {
+    if (!currentBeat) return;
+
+    // Beats currently visible in the store (respects active filters + sort)
+    const filteredIds = [...document.querySelectorAll('#beatList .beat-card')].map(el => el.dataset.id);
+    const filteredSet = new Set(filteredIds);
+
+    // Remaining beats not in the filtered view, sorted by date (newest first)
+    const overflow = [...beatsData]
+      .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+      .map(b => String(b.id))
+      .filter(id => !filteredSet.has(id));
+
+    // Navigate filtered beats first, then spill into the rest by date
+    const list = [...filteredIds, ...overflow];
+
+    const idx = list.indexOf(String(currentBeat.id));
+    if (idx === -1) return;
+
+    const nextIdx = (idx + dir + list.length) % list.length;
+    const beat = beatsData.find(b => String(b.id) === list[nextIdx]);
+    if (beat) openModal(beat);
+  }
 
   // ─── CUSTOM SORT DROPDOWN ─────────────────────────────────────────────────
   let currentSort = 'newest';
@@ -1136,7 +1198,7 @@
       }
     } else {
       container.innerHTML = filtered.map(item => `
-        <div class="beat-card" onclick='openKitModal(${JSON.stringify(item)})'>
+        <div class="beat-card" data-id="${item.id}" onclick='openKitModal(${JSON.stringify(item)})'>
           <div class="beat-card-main">
             <div class="beat-cover${item.imgFile ? '' : ' no-img'}" style="${item.imgFile ? `background-image: url('${item.imgFile}'); background-size: cover; background-position: center;` : `background: ${item.imgGradient}`}"></div>
             <div class="beat-info">

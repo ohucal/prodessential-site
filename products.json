@@ -33,11 +33,11 @@
       "imgFile": "images/eclipse.jpg",
       "audioFile": "audio/eclipse.mp3",
       "licenses": {
-        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
-        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
-        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&link=mWMi7&variant_combination[mWMi7]=1779516940577" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BmWMi7%5D=1779516944139&cart_links%5B%5D=mWMi7&qty%5BmWMi7%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BmWMi7%5D=1779516961514&cart_links%5B%5D=mWMi7&qty%5BmWMi7%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
-        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BmWMi7%5D=1779516962867&cart_links%5B%5D=mWMi7&qty%5BmWMi7%5D=1" }
       }
     },
     {
@@ -93,11 +93,11 @@
       "imgFile": "images/farm.jpg",
       "audioFile": "audio/farm.mp3",
       "licenses": {
-        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
-        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
-        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BeGUAz%5D=1779517649530&cart_links%5B%5D=eGUAz&qty%5BeGUAz%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BeGUAz%5D=1779517652968&cart_links%5B%5D=eGUAz&qty%5BeGUAz%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BeGUAz%5D=1779517653893&cart_links%5B%5D=eGUAz&qty%5BeGUAz%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
-        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BeGUAz%5D=1779517655130&cart_links%5B%5D=eGUAz&qty%5BeGUAz%5D=1" }
       }
     },
     {
@@ -133,11 +133,11 @@
       "imgFile": "images/solstice.jpg",
       "audioFile": "audio/solstice.mp3",
       "licenses": {
-        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
-        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
-        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8j3Zh%5D=1779514304688&cart_links%5B%5D=8j3Zh&qty%5B8j3Zh%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8j3Zh%5D=1779514306435&cart_links%5B%5D=8j3Zh&qty%5B8j3Zh%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8j3Zh%5D=1779514307366&cart_links%5B%5D=8j3Zh&qty%5B8j3Zh%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
-        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8j3Zh%5D=1779514308398&qty%5B8j3Zh%5D=1&cart_links%5B%5D=8j3Zh" }
       }
     },
     {
@@ -153,11 +153,11 @@
       "imgFile": "images/mercy.jpg",
       "audioFile": "audio/mercy.mp3",
       "licenses": {
-        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "#" },
-        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "#" },
-        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "#" },
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BfDH5T%5D=1779515396272&cart_links%5B%5D=fDH5T&qty%5BfDH5T%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BfDH5T%5D=1779515397512&cart_links%5B%5D=fDH5T&qty%5BfDH5T%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BfDH5T%5D=1779515398529&cart_links%5B%5D=fDH5T&qty%5BfDH5T%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "#" },
-        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BfDH5T%5D=1779515399307&cart_links%5B%5D=fDH5T&qty%5BfDH5T%5D=1" }
       }
     },
     {

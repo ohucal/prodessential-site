@@ -1674,17 +1674,33 @@ nav a:hover { color: var(--yellow); }
 @media (max-width: 600px) {
   .modal { max-width: 100%; border-left: none; border-right: none; border-bottom: none; }
   .modal-overlay { padding: 0; align-items: flex-end; }
-  .modal { max-height: 92vh; }
+  .modal { max-height: 88vh; }
+
+  /* Sticky close button — stays visible as the user scrolls the modal */
+  .modal-close {
+    position: sticky;
+    top: 0;
+    align-self: flex-end;
+    margin: 10px 12px 0 auto;
+    background: var(--warm-gray);
+    padding: 10px;
+    min-width: 40px;
+    min-height: 40px;
+    z-index: 20;
+  }
+
+  /* Nav arrows are unusable in a bottom-sheet on mobile */
+  .modal-nav-btn { display: none; }
 
   .modal-top-row { flex-direction: column; }
   .modal-art-col { width: 100%; flex-direction: row; align-items: stretch; border-bottom: 0.5px solid var(--border-light); }
   .modal-cover-art { width: 130px; height: 130px; flex-shrink: 0; }
   .modal-cover-art--kit { width: 130px; height: 130px; }
   .modal-progress-wrap { flex: 1; border-top: none; border-left: 0.5px solid var(--border-light); display: flex; flex-direction: column; justify-content: center; padding: 10px 12px; width: auto; }
-  .modal-header-col { padding: 18px 18px 18px 18px; justify-content: flex-start; }
-  .modal-title { font-size: 22px; }
-  .modal-info { padding: 20px 18px 24px; }
-  .modal-price-value { font-size: 32px; }
-  .modal-buy-btn { padding: 16px 28px; font-size: 11px; }
+  .modal-header-col { padding: 14px 16px; justify-content: flex-start; }
+  .modal-title { font-size: 20px; }
+  .modal-info { padding: 16px 16px 20px; }
+  .modal-price-value { font-size: 26px; }
+  .modal-buy-btn { padding: 0 28px; height: 56px; font-size: 11px; }
   .modal-license-btn { padding: 6px 0; font-size: 10px; }
 }

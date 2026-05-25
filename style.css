@@ -468,12 +468,30 @@ nav a:hover { color: var(--yellow); }
   line-height: 1.4;
 }
 
+.beat-price-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.beat-new-badge {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #2d1f4a;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+}
+
 .beat-price {
   font-size: 12px;
   color: var(--yellow);
   letter-spacing: 0.05em;
-  flex-shrink: 0;
-  align-self: center;
 }
 
 /* Anchor scroll offset — clears the 60px sticky header plus breathing room */
@@ -585,12 +603,13 @@ nav a:hover { color: var(--yellow); }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 6px 12px;
-  border: 1px solid var(--purple); 
-  border-radius: 12px; 
+  border: 1px solid var(--purple);
+  border-radius: 12px;
   background: transparent;
   cursor: pointer;
   color: var(--deep-purple);
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .mode-toggle-btn:hover {
@@ -599,9 +618,9 @@ nav a:hover { color: var(--yellow); }
 }
 
 .mode-toggle-btn.active {
-  border-color: var(--purple);
+  border-color: #2d1f4a;
   color: var(--warm-gray);
-  background: var(--purple);
+  background: #2d1f4a;
 }
 
 /* CUSTOM SORT DROPDOWN */
@@ -1669,6 +1688,106 @@ nav a:hover { color: var(--yellow); }
 }
 .modal-nav-prev { left: 0; }
 .modal-nav-next { right: 0; }
+
+/* ─── LICENSE MODAL ───────────────────────────────────────────────────────── */
+.license-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.license-modal-overlay.active { opacity: 1; pointer-events: all; }
+
+.license-modal {
+  background: var(--warm-gray);
+  border: 0.5px solid var(--border-light);
+  width: 100%;
+  max-width: 680px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  position: relative;
+  padding: 44px 48px 52px;
+  transform: translateY(12px);
+  transition: transform 0.22s ease;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-light) transparent;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.license-modal-overlay.active .license-modal { transform: translateY(0); }
+.license-modal::-webkit-scrollbar { width: 3px; }
+.license-modal::-webkit-scrollbar-thumb { background: var(--border-light); }
+
+.license-modal-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--near-black);
+  margin: 0 0 32px;
+  padding-right: 36px;
+  line-height: 1.5;
+}
+
+.lic-meta-block {
+  background: rgba(0,0,0,0.04);
+  border-left: 2px solid var(--border-light);
+  padding: 12px 16px;
+  margin-bottom: 28px;
+}
+.lic-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--mid-gray);
+  margin: 0 0 3px;
+  line-height: 1.6;
+}
+.lic-meta:last-child { margin-bottom: 0; }
+
+.lic-section {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--near-black);
+  margin: 28px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 0.5px solid var(--border-light);
+}
+.lic-section:first-of-type { margin-top: 0; }
+
+.lic-para {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--near-black);
+  margin: 0 0 12px;
+}
+
+.lic-item {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--near-black);
+  margin: 0 0 6px;
+  padding-left: 18px;
+  text-indent: -4px;
+}
+
+.lic-spacer { height: 4px; }
+
+@media (max-width: 600px) {
+  .license-modal-overlay { padding: 0; align-items: flex-end; }
+  .license-modal { max-width: 100%; max-height: 88vh; padding: 32px 20px 40px; border-left: none; border-right: none; border-bottom: none; }
+  .license-modal-title { font-size: 11px; margin-bottom: 24px; }
+}
 
 /* ─── MODAL MOBILE ────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {

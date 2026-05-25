@@ -85,8 +85,8 @@
       <div class="filter-controls-row">
         <div class="filter-mode-wrap">
           <span class="mode-label">Match:</span>
-          <button id="modeAny" class="mode-toggle-btn active" onclick="setFilterMode('any')">Any</button>
-          <button id="modeAll" class="mode-toggle-btn" onclick="setFilterMode('all')">All</button>
+          <button id="modeAny" class="mode-toggle-btn active" onclick="setFilterMode('any')">Any Tag</button>
+          <button id="modeAll" class="mode-toggle-btn" onclick="setFilterMode('all')">All Tags</button>
         </div>
         <div class="sort-wrap">
           <span class="mode-label">Sort:</span>
@@ -186,7 +186,7 @@
         <li>Non-profit performances</li>
         <li>Non-exclusive</li>
       </ul>
-      <a href="#" class="license-btn">Read Full License</a>
+      <a href="#" class="license-btn" onclick="openLicenseModal('basic'); return false;">Read Full License</a>
     </div>
     <div class="license-card">
       <div class="license-top">
@@ -202,7 +202,7 @@
         <li>For-profit performances</li>
         <li>Non-exclusive</li>
       </ul>
-      <a href="#" class="license-btn">Read Full License</a>
+      <a href="#" class="license-btn" onclick="openLicenseModal('premium'); return false;">Read Full License</a>
     </div>
     <div class="license-card license-card--featured">
       <div class="license-badge">Most Popular</div>
@@ -220,7 +220,7 @@
         <li>For-profit performances</li>
         <li>Non-exclusive</li>
       </ul>
-      <a href="#" class="license-btn license-btn--featured">Read Full License</a>
+      <a href="#" class="license-btn license-btn--featured" onclick="openLicenseModal('stems'); return false;">Read Full License</a>
     </div>
     <div class="license-card">
       <div class="license-top">
@@ -236,7 +236,7 @@
         <li>For-profit + radio</li>
         <li>Non-exclusive</li>
       </ul>
-      <a href="#" class="license-btn">Read Full License</a>
+      <a href="#" class="license-btn" onclick="openLicenseModal('unlimited'); return false;">Read Full License</a>
     </div>
     <div class="license-card license-card--exclusive">
       <div class="license-top">
@@ -380,6 +380,19 @@
         <span id="kitShareBtnLabel">Copy Link</span>
       </button>
     </div>
+  </div>
+</div>
+
+<!-- ─── LICENSE MODAL ──────────────────────────────────────────────────── -->
+<div class="license-modal-overlay" id="licenseModalOverlay" onclick="handleLicenseOverlayClick(event)">
+  <div class="license-modal" id="licenseModal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeLicenseModal()" aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <h2 class="license-modal-title" id="licenseModalTitle"></h2>
+    <div id="licenseModalBody"></div>
   </div>
 </div>
 
@@ -834,7 +847,7 @@
         <ul class="modal-license-bullets">
           ${details.bullets.map(b => `<li>${b}</li>`).join('')}
         </ul>
-        <a href="#licensing" class="modal-read-license" onclick="closeModal()">Read Full License &rarr;</a>
+        <a href="#" class="modal-read-license" onclick="openLicenseModal('${currentLicense}'); return false;">Read Full License &rarr;</a>
       `;
     }
   }
@@ -943,8 +956,12 @@
   // Keyboard close
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
-      closeModal();
-      closeKitModal();
+      if (document.getElementById('licenseModalOverlay').classList.contains('active')) {
+        closeLicenseModal();
+      } else {
+        closeModal();
+        closeKitModal();
+      }
     }
   });
 
@@ -1126,7 +1143,9 @@
     }
 
     if (type === 'beat') {
-      container.innerHTML = filtered.map(item => `
+      container.innerHTML = filtered.map(item => {
+        const isNew = item.dateAdded && (Date.now() - new Date(item.dateAdded).getTime()) / 86400000 <= 30;
+        return `
         <div class="beat-card" data-id="${item.id}" onclick='openModal(${JSON.stringify(item)})'>
           <div class="beat-card-main">
             <div class="beat-cover${item.imgFile ? '' : ' no-img'}" style="${item.imgFile ? `background-image: url('${item.imgFile}'); background-size: cover; background-position: center;` : `background: ${item.imgGradient}`}">
@@ -1141,7 +1160,10 @@
                 ${item.tags.map(t => `<span class="beat-tag">${t}</span>`).join('')}
               </div>
             </div>
-            <span class="beat-price">From $${item.basePrice}</span>
+            <div class="beat-price-wrap">
+              ${isNew ? '<span class="beat-new-badge">NEW</span>' : ''}
+              <span class="beat-price">From $${item.basePrice}</span>
+            </div>
           </div>
           <div class="card-inline-player">
             <div class="card-prog-bar">
@@ -1154,7 +1176,8 @@
             </div>
           </div>
         </div>
-      `).join('');
+      `;
+      }).join('');
 
       // After re-rendering, sync the active beat's state with the fresh DOM
       if (activeCardId) {
@@ -1197,7 +1220,9 @@
         }
       }
     } else {
-      container.innerHTML = filtered.map(item => `
+      container.innerHTML = filtered.map(item => {
+        const isNew = item.dateAdded && (Date.now() - new Date(item.dateAdded).getTime()) / 86400000 <= 30;
+        return `
         <div class="beat-card" data-id="${item.id}" onclick='openKitModal(${JSON.stringify(item)})'>
           <div class="beat-card-main">
             <div class="beat-cover${item.imgFile ? '' : ' no-img'}" style="${item.imgFile ? `background-image: url('${item.imgFile}'); background-size: cover; background-position: center;` : `background: ${item.imgGradient}`}"></div>
@@ -1205,10 +1230,14 @@
               <span class="beat-title">${item.title}</span>
               <span class="beat-bpm-key">${item.type}</span>
             </div>
-            <span class="beat-price">$${item.price}</span>
+            <div class="beat-price-wrap">
+              ${isNew ? '<span class="beat-new-badge">NEW</span>' : ''}
+              <span class="beat-price">$${item.price}</span>
+            </div>
           </div>
         </div>
-      `).join('');
+      `;
+      }).join('');
     }
   }
 
@@ -1290,6 +1319,525 @@
       // Fallback if products.json not found yet
       console.warn('products.json not found. Using inline fallback data.');
     });
+
+  // ─── LICENSE MODAL ────────────────────────────────────────────────────────
+  const LICENSE_TEXTS = {
+    basic: {
+      title: 'Basic Non-Exclusive MP3 License Agreement',
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $25.00 USD (the "License Fee")
+Format Delivered: Tagged MP3
+Tier: Basic
+
+This Basic Non-Exclusive MP3 License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below.
+
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable license to use the Beat to create one (1) new musical work that combines the Beat with the Licensee's original lyrics and/or original musical elements (the "New Song"), subject to every restriction in this Agreement.
+The Beat is delivered as a high-quality MP3 file containing an embedded vocal producer tag (the "Producer Tag"). Delivery is made by digital download immediately following payment.
+
+2. Term
+This license is granted for a term of ten (10) years from the Effective Date. After the term expires, all rights granted under this Agreement revert to the Licensor unless renewed in writing.
+
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, or distribute the Beat to any number of other licensees on the same or different terms. The Licensee acknowledges that other artists may license and release songs using the same Beat.
+
+4. Producer Tag
+The Beat delivered under this Basic tier is the tagged version. If a Producer Tag is present in the file delivered to the Licensee, the Licensee must keep the Producer Tag fully audible and unaltered in every release, distribution, performance, broadcast, and synchronization of the New Song. The Licensee may not remove, edit out, mute, cover, mask, replace, distort, drown out, or otherwise obscure the Producer Tag.
+If a Producer Tag is not present in the delivered file, this section does not apply and no tag-related obligations are imposed on the Licensee under this Agreement.
+To release the New Song without the Producer Tag, the Licensee must upgrade to the Premium tier or higher. Any release of the New Song with the Producer Tag removed, obscured, or altered while operating under this Basic tier is a material breach of this Agreement.
+
+5. Permitted Uses
+Subject to the restrictions in Section 6 and Section 7, the Licensee may:
+(a) Record original lyrics and/or original musical elements over the Beat to create the New Song;
+(b) Modify the arrangement, length, tempo, or pitch of the Beat in the course of creating the New Song;
+(c) Distribute the New Song in physical and digital formats (digital downloads, CD, vinyl) up to a cumulative total of two thousand (2,000) units across all formats combined;
+(d) Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) up to a cumulative total of fifty thousand (50,000) audio streams across all platforms combined;
+(e) Upload one (1) music video synchronized with the New Song to YouTube or other video platforms, on a non-monetized basis only (no advertising revenue, no YouTube Partner Program monetization, no sponsorships embedded in the video);
+(f) Use the New Song for non-profit live performances and non-profit promotional purposes; and
+(g) Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+
+6. Prohibited Uses
+The Licensee may NOT:
+(a) Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
+(b) Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+(c) Use the Beat or the New Song for any for-profit performance, including paid live shows, paid concerts, paid festivals, ticketed events, or any other performance where the Licensee or any third party receives compensation;
+(d) Monetize any music video, video upload, or other audiovisual work containing the New Song through advertising, sponsorship, the YouTube Partner Program, or any equivalent revenue-generating program;
+(e) Synchronize the Beat or the New Song with any audiovisual work other than the one (1) permitted non-monetized music video, including but not limited to film, television, commercials, video games, theatrical productions, or branded content;
+(f) Register the Beat or the New Song with any content identification system, music distributor, record label, digital aggregator, or rights administration service (including but not limited to YouTube Content ID, TuneCore, DistroKid, CD Baby, AdRev, Identifyy, or any equivalent service);
+(g) Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
+(h) Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
+(i) Falsely claim authorship, ownership, or production credit for the Beat;
+(j) Upload the Beat to any peer-to-peer network, file-sharing service, sample library, or platform that enables third parties to obtain the Beat.
+
+7. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee.
+The Licensee owns the original lyrics and any original musical elements solely created by the Licensee and added to the New Song, but does not own the Beat, the master recording of the New Song, or any portion of the New Song derived from the Beat.
+The New Song is a derivative work of the Beat under United States copyright law. No joint authorship of the Beat is created by this Agreement.
+
+8. Publishing Splits
+The parties agree that the underlying composition of the New Song is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: One hundred percent (100%) to the Licensor.
+If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+
+9. Mechanical License
+If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay mechanical royalties to the Licensor at one hundred percent (100%) of the applicable statutory minimum rate for the Licensor's fifty percent (50%) writer share of the underlying composition.
+
+10. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of the New Song. The required credit format is: Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+
+11. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+
+12. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has five (5) business days from receipt of such notice to fully cure the breach.
+If the Licensee fails to cure the breach within five (5) business days, the Licensor may terminate this license immediately, in which case the Licensee must immediately remove the New Song from all distribution channels, streaming platforms, video platforms, and physical retail.
+The Licensee acknowledges that any unauthorized commercial exploitation of the Beat, removal or alteration of the Producer Tag in violation of Section 4, registration of the Beat or the New Song with any content identification or rights administration service in violation of Section 6(f), or distribution of the Beat in its original form in violation of Section 6(b) causes irreparable harm to the Licensor that cannot be adequately compensated by monetary damages alone. In such cases, the Licensor is entitled to seek injunctive relief in addition to any monetary remedies available at law.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial exploitation of the Beat or the New Song.
+
+13. Buyer's Option to Upgrade
+The Licensee may upgrade this license to a higher tier (Premium, Premium + Stems, Unlimited, or Exclusive) at any time by paying the difference between the License Fee paid and the price of the higher tier in effect at the time of upgrade. Upon upgrade, the terms of the higher tier replace the terms of this Agreement.
+
+14. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+
+15. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+
+16. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor: Owen Hucal, p/k/a prod.essential — prodessential@gmail.com — prodessential.com
+By paying the License Fee, the Licensee accepts every term of this Agreement.`
+    },
+
+    premium: {
+      title: 'Premium Non-Exclusive WAV + MP3 License Agreement',
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $40.00 USD (the "License Fee")
+Format Delivered: Untagged WAV + Untagged MP3
+Tier: Premium
+
+This Premium Non-Exclusive License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below.
+
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable license to use the Beat to create one (1) new musical work that combines the Beat with the Licensee's original lyrics and/or original musical elements (the "New Song"), subject to every restriction in this Agreement.
+The Beat is delivered as a high-quality untagged WAV file and a high-quality untagged MP3 file, each without any embedded producer tag. Delivery is made by digital download immediately following payment.
+
+2. Term
+This license is granted for a term of ten (10) years from the Effective Date. After the term expires, all rights granted under this Agreement revert to the Licensor unless renewed in writing.
+
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, or distribute the Beat to any number of other licensees on the same or different terms. The Licensee acknowledges that other artists may license and release songs using the same Beat.
+
+4. Permitted Uses
+Subject to the restrictions in Section 5 and Section 6, the Licensee may:
+(a) Record original lyrics and/or original musical elements over the Beat to create the New Song;
+(b) Modify the arrangement, length, tempo, or pitch of the Beat in the course of creating the New Song;
+(c) Distribute the New Song in physical and digital formats (digital downloads, CD, vinyl) up to a cumulative total of three thousand (3,000) units across all formats combined;
+(d) Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) up to a cumulative total of one hundred thousand (100,000) audio streams across all platforms combined;
+(e) Upload one (1) music video synchronized with the New Song to YouTube or other video platforms, and the Licensee may monetize that one music video through the YouTube Partner Program or equivalent advertising programs;
+(f) Use the New Song for live performances, including for-profit live performances and ticketed events; and
+(g) Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+
+5. Prohibited Uses
+The Licensee may NOT:
+(a) Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
+(b) Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+(c) Synchronize the Beat or the New Song with any audiovisual work other than the one (1) permitted music video, including but not limited to film, television, commercials, video games, theatrical productions, or branded content (a separate sync license must be negotiated with the Licensor for any such use);
+(d) Register the Beat or the New Song with any content identification system, music distributor, record label, digital aggregator, or rights administration service (including but not limited to YouTube Content ID, TuneCore, DistroKid, CD Baby, AdRev, Identifyy, or any equivalent service);
+(e) Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
+(f) Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
+(g) Falsely claim authorship, ownership, or production credit for the Beat;
+(h) Upload the Beat to any peer-to-peer network, file-sharing service, sample library, or platform that enables third parties to obtain the Beat.
+
+6. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee.
+The Licensee owns the original lyrics and any original musical elements solely created by the Licensee and added to the New Song, but does not own the Beat, the master recording of the New Song, or any portion of the New Song derived from the Beat.
+The New Song is a derivative work of the Beat under United States copyright law. No joint authorship of the Beat is created by this Agreement.
+
+7. Publishing Splits
+The parties agree that the underlying composition of the New Song is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: One hundred percent (100%) to the Licensor.
+If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+
+8. Mechanical License
+If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay mechanical royalties to the Licensor at one hundred percent (100%) of the applicable statutory minimum rate for the Licensor's fifty percent (50%) writer share of the underlying composition.
+
+9. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of the New Song. The required credit format is: Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+
+10. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+
+11. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has five (5) business days from receipt of such notice to fully cure the breach.
+If the Licensee fails to cure the breach within five (5) business days, the Licensor may terminate this license immediately, in which case the Licensee must immediately remove the New Song from all distribution channels, streaming platforms, video platforms, and physical retail.
+The Licensee acknowledges that any unauthorized commercial exploitation of the Beat, registration of the Beat or the New Song with any content identification or rights administration service, or distribution of the Beat in its original form causes irreparable harm to the Licensor that cannot be adequately compensated by monetary damages alone. In such cases, the Licensor is entitled to seek injunctive relief in addition to any monetary remedies available at law.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial exploitation of the Beat or the New Song.
+
+12. Buyer's Option to Upgrade
+The Licensee may upgrade this license to a higher tier (Premium + Stems, Unlimited, or Exclusive) at any time by paying the difference between the License Fee paid and the price of the higher tier in effect at the time of upgrade. Upon upgrade, the terms of the higher tier replace the terms of this Agreement.
+
+13. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+
+14. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+
+15. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor: Owen Hucal, p/k/a prod.essential — prodessential@gmail.com — prodessential.com
+By paying the License Fee, the Licensee accepts every term of this Agreement.`
+    },
+
+    stems: {
+      title: 'Premium + Stems Non-Exclusive License Agreement',
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $90.00 USD (the "License Fee")
+Format Delivered: Untagged WAV + Untagged MP3 + Track Stems
+Tier: Premium + Stems
+
+This Premium + Stems Non-Exclusive License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below.
+
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable license to use the Beat to create one (1) new musical work that combines the Beat with the Licensee's original lyrics and/or original musical elements (the "New Song"), subject to every restriction in this Agreement.
+The Beat is delivered as a high-quality untagged WAV file, a high-quality untagged MP3 file, and the full track stems (the individual instrument and audio elements that make up the Beat), each without any embedded producer tag. Delivery is made by digital download immediately following payment.
+
+2. Term
+This license is granted for a term of ten (10) years from the Effective Date. After the term expires, all rights granted under this Agreement revert to the Licensor unless renewed in writing.
+
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, or distribute the Beat to any number of other licensees on the same or different terms. The Licensee acknowledges that other artists may license and release songs using the same Beat.
+
+4. Permitted Uses
+Subject to the restrictions in Section 5 and Section 6, the Licensee may:
+(a) Record original lyrics and/or original musical elements over the Beat to create the New Song;
+(b) Modify the arrangement, length, tempo, or pitch of the Beat in the course of creating the New Song;
+(c) Distribute the New Song in physical and digital formats (digital downloads, CD, vinyl) up to a cumulative total of ten thousand (10,000) units across all formats combined;
+(d) Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) up to a cumulative total of five hundred thousand (500,000) audio streams across all platforms combined;
+(e) Upload an unlimited number of music videos synchronized with the New Song to YouTube or other video platforms, and the Licensee may monetize those music videos through the YouTube Partner Program or equivalent advertising programs;
+(f) Use the New Song for live performances, including for-profit live performances and ticketed events; and
+(g) Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+
+5. Prohibited Uses
+The Licensee may NOT:
+(a) Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
+(b) Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+(c) Synchronize the Beat or the New Song with any audiovisual work other than the music videos permitted under Section 4, including but not limited to film, television, commercials, video games, theatrical productions, or branded content (a separate sync license must be negotiated with the Licensor for any such use);
+(d) Register the Beat or the New Song with any content identification system, music distributor, record label, digital aggregator, or rights administration service (including but not limited to YouTube Content ID, TuneCore, DistroKid, CD Baby, AdRev, Identifyy, or any equivalent service);
+(e) Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
+(f) Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
+(g) Falsely claim authorship, ownership, or production credit for the Beat;
+(h) Upload the Beat to any peer-to-peer network, file-sharing service, sample library, or platform that enables third parties to obtain the Beat.
+
+6. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee.
+The Licensee owns the original lyrics and any original musical elements solely created by the Licensee and added to the New Song, but does not own the Beat, the master recording of the New Song, or any portion of the New Song derived from the Beat.
+The New Song is a derivative work of the Beat under United States copyright law. No joint authorship of the Beat is created by this Agreement.
+
+7. Publishing Splits
+The parties agree that the underlying composition of the New Song is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: One hundred percent (100%) to the Licensor.
+If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+
+8. Mechanical License
+If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay mechanical royalties to the Licensor at one hundred percent (100%) of the applicable statutory minimum rate for the Licensor's fifty percent (50%) writer share of the underlying composition.
+
+9. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of the New Song. The required credit format is: Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+
+10. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+
+11. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has five (5) business days from receipt of such notice to fully cure the breach.
+If the Licensee fails to cure the breach within five (5) business days, the Licensor may terminate this license immediately, in which case the Licensee must immediately remove the New Song from all distribution channels, streaming platforms, video platforms, and physical retail.
+The Licensee acknowledges that any unauthorized commercial exploitation of the Beat, registration of the Beat or the New Song with any content identification or rights administration service, or distribution of the Beat in its original form causes irreparable harm to the Licensor that cannot be adequately compensated by monetary damages alone. In such cases, the Licensor is entitled to seek injunctive relief in addition to any monetary remedies available at law.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial exploitation of the Beat or the New Song.
+
+12. Buyer's Option to Upgrade
+The Licensee may upgrade this license to a higher tier (Unlimited or Exclusive) at any time by paying the difference between the License Fee paid and the price of the higher tier in effect at the time of upgrade. Upon upgrade, the terms of the higher tier replace the terms of this Agreement.
+
+13. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+
+14. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+
+15. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor: Owen Hucal, p/k/a prod.essential — prodessential@gmail.com — prodessential.com
+By paying the License Fee, the Licensee accepts every term of this Agreement.`
+    },
+
+    unlimited: {
+      title: 'Unlimited Non-Exclusive License Agreement',
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $250.00 USD (the "License Fee")
+Format Delivered: Untagged WAV + Untagged MP3 + Track Stems
+Tier: Unlimited
+
+This Unlimited Non-Exclusive License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below.
+
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable license to use the Beat to create one (1) new musical work that combines the Beat with the Licensee's original lyrics and/or original musical elements (the "New Song"), subject to every restriction in this Agreement.
+The Beat is delivered as a high-quality untagged WAV file, a high-quality untagged MP3 file, and the full track stems (the individual instrument and audio elements that make up the Beat), each without any embedded producer tag. Delivery is made by digital download immediately following payment.
+
+2. Term
+This license is granted for a term of ten (10) years from the Effective Date. After the term expires, all rights granted under this Agreement revert to the Licensor unless renewed in writing.
+
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, or distribute the Beat to any number of other licensees on the same or different terms. The Licensee acknowledges that other artists may license and release songs using the same Beat.
+
+4. Permitted Uses
+Subject to the restrictions in Section 5 and Section 6, the Licensee may:
+(a) Record original lyrics and/or original musical elements over the Beat to create the New Song;
+(b) Modify the arrangement, length, tempo, or pitch of the Beat in the course of creating the New Song;
+(c) Distribute the New Song in physical and digital formats (digital downloads, CD, vinyl) in unlimited quantities;
+(d) Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) for unlimited streams;
+(e) Upload an unlimited number of music videos synchronized with the New Song to YouTube or other video platforms, and the Licensee may monetize those music videos through the YouTube Partner Program or equivalent advertising programs;
+(f) Use the New Song for unlimited live performances, including for-profit live performances, ticketed events, concerts, festivals, and nightclubs; and
+(g) Broadcast the New Song on terrestrial radio, satellite radio (including SiriusXM), and internet radio stations in unlimited markets; and
+(h) Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+
+5. Prohibited Uses
+The Licensee may NOT:
+(a) Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
+(b) Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+(c) Synchronize the Beat or the New Song in any film, television show, commercial, advertisement, video game, theatrical production, or branded content campaign without first obtaining a separate written synchronization license from the Licensor;
+(d) Register the Beat or the New Song with any content identification system, music distributor, record label, digital aggregator, or rights administration service (including but not limited to YouTube Content ID, TuneCore, DistroKid, CD Baby, AdRev, Identifyy, or any equivalent service);
+(e) Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
+(f) Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
+(g) Falsely claim authorship, ownership, or production credit for the Beat;
+(h) Upload the Beat to any peer-to-peer network, file-sharing service, sample library, or platform that enables third parties to obtain the Beat.
+
+6. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee.
+The Licensee owns the original lyrics and any original musical elements solely created by the Licensee and added to the New Song, but does not own the Beat, the master recording of the New Song, or any portion of the New Song derived from the Beat.
+The New Song is a derivative work of the Beat under United States copyright law. No joint authorship of the Beat is created by this Agreement.
+
+7. Publishing Splits
+The parties agree that the underlying composition of the New Song is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: One hundred percent (100%) to the Licensor.
+If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+
+8. Mechanical License
+If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay mechanical royalties to the Licensor at one hundred percent (100%) of the applicable statutory minimum rate for the Licensor's fifty percent (50%) writer share of the underlying composition.
+
+9. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of the New Song. The required credit format is: Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+
+10. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+
+11. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has five (5) business days from receipt of such notice to fully cure the breach.
+If the Licensee fails to cure the breach within five (5) business days, the Licensor may terminate this license immediately, in which case the Licensee must immediately remove the New Song from all distribution channels, streaming platforms, video platforms, and physical retail.
+The Licensee acknowledges that any unauthorized commercial exploitation of the Beat, registration of the Beat or the New Song with any content identification or rights administration service, or distribution of the Beat in its original form causes irreparable harm to the Licensor that cannot be adequately compensated by monetary damages alone. In such cases, the Licensor is entitled to seek injunctive relief in addition to any monetary remedies available at law.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial exploitation of the Beat or the New Song.
+
+12. Buyer's Option to Upgrade
+The Licensee may upgrade this license to a higher tier (Exclusive) at any time by paying the difference between the License Fee paid and the price of the higher tier in effect at the time of upgrade. Upon upgrade, the terms of the higher tier replace the terms of this Agreement.
+
+13. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+
+14. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+
+15. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor: Owen Hucal, p/k/a prod.essential — prodessential@gmail.com — prodessential.com
+By paying the License Fee, the Licensee accepts every term of this Agreement.`
+    },
+
+    exclusive: {
+      title: 'Exclusive License Agreement',
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: [NEGOTIATED_FEE] USD (the "License Fee")
+Format Delivered: Untagged WAV + Untagged MP3 + Track Stems
+Tier: Exclusive
+
+This Exclusive License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below. This Agreement supersedes any prior non-exclusive license to the Beat held by the Licensee.
+
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee an exclusive, worldwide license to use the Beat in the preparation and commercial exploitation of new musical works incorporating the Beat (each, a "New Song"), subject to the terms of this Agreement. This license is exclusive: upon the Effective Date, the Licensor will remove the Beat from active sale and will not grant any new licenses to the Beat to any other party.
+The Beat is delivered as a high-quality untagged WAV file, a high-quality untagged MP3 file, and the full track stems (the individual instrument and audio elements that make up the Beat). Delivery is made by digital download immediately following payment.
+
+2. Removal from Store; Honor of Prior Licenses
+Within five (5) business days following the Effective Date, the Licensor will remove the Beat from prodessential.com and any other channel through which the Licensor offers the Beat for sale or license. The Licensor will not issue any new non-exclusive licenses to the Beat after the Effective Date.
+The Licensee acknowledges and accepts that the Beat may have been licensed on a non-exclusive basis to one or more third parties prior to the Effective Date. Any such prior non-exclusive licenses remain in effect according to their original terms, and the Licensee's exclusive rights under this Agreement are subject to the continued validity of those prior licenses. The Licensor will provide the Licensee, upon request, with a list of all prior non-exclusive licensees of the Beat known to the Licensor.
+
+3. Term
+This license is granted in perpetuity, subject to the termination provisions of this Agreement.
+
+4. Rights Granted
+Subject to the terms of this Agreement, the Licensee may:
+(a) Record original lyrics and/or original musical elements over the Beat to create unlimited New Songs;
+(b) Modify the arrangement, length, tempo, pitch, or any other element of the Beat in the course of creating any New Song;
+(c) Distribute any New Song in physical and digital formats in unlimited quantities;
+(d) Make any New Song available on audio streaming platforms for unlimited streams;
+(e) Upload an unlimited number of music videos synchronized with any New Song to YouTube or other video platforms, and monetize those videos through any advertising program;
+(f) Use any New Song for unlimited live performances, including for-profit performances, ticketed events, concerts, festivals, and nightclubs;
+(g) Broadcast any New Song on terrestrial radio, satellite radio (including SiriusXM), and internet radio stations in unlimited markets;
+(h) Synchronize any New Song with audiovisual works, including film, television, commercials, advertisements, video games, theatrical productions, and branded content;
+(i) Sublicense any of the rights granted under this Agreement, provided that the Licensee gives the Licensor written notice of any such sublicense within thirty (30) days.
+
+5. Restrictions
+Notwithstanding the broad rights granted in Section 4, the Licensee may NOT:
+(a) Distribute or make available the Beat in its original form, the stems in their delivered form, or any substantially original portion of the Beat in a manner intended for use by other producers or artists (for example, as part of a beat pack, sample pack, or loop kit);
+(b) Falsely claim authorship of the Beat itself (as distinct from the Licensee's New Songs); or
+(c) Resell or transfer the underlying exclusive rights to the Beat to any third party without the Licensor's prior written consent.
+
+6. Ownership and Master Rights
+The Licensor retains ownership of the copyright in the sound recording (master) of the original Beat as delivered. The Licensee owns the master rights in each New Song created by the Licensee that incorporates the Beat, including the right to register, distribute, and exploit each such master recording, subject to the Licensor's rights in the underlying composition as set forth in Section 7.
+For clarity: the Licensee owns the master of their New Song; the Licensor retains rights in the underlying composition that the Beat is built upon.
+
+7. Publishing Splits
+The parties agree that the underlying composition of any New Song created by the Licensee under this Agreement is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee. Each party is responsible for administering its own publisher's share.
+If the Licensee registers any New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+
+8. Mechanical License
+If any New Song is distributed in a format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay mechanical royalties to the Licensor at one hundred percent (100%) of the applicable statutory minimum rate for the Licensor's fifty percent (50%) writer share of the underlying composition.
+
+9. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of any New Song. The required credit format is: Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+
+10. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create any New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+
+11. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has fifteen (15) business days from receipt of such notice to fully cure the breach. If the Licensee fails to cure the breach within fifteen (15) business days, the Licensor may terminate this Agreement, in which case all rights granted to the Licensee revert to the Licensor.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement.
+
+12. Refunds and Non-Refundability
+The License Fee is non-refundable once the Beat has been delivered to the Licensee, except in the event the Licensor materially breaches Section 10 (warranties) and fails to cure the breach within thirty (30) days of written notice.
+
+13. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+
+14. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required. The parties may, but are not required to, additionally execute this Agreement by countersignature below.
+
+15. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor: Owen Hucal, p/k/a prod.essential — prodessential@gmail.com — prodessential.com`
+    }
+  };
+
+  function escHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderLicenseText(text) {
+    const lines = text.split('\n');
+    let html = '';
+    let inMetaBlock = true;
+    let metaBlockHtml = '';
+
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+
+      if (inMetaBlock) {
+        if (!line) {
+          if (metaBlockHtml) {
+            html += `<div class="lic-meta-block">${metaBlockHtml}</div>`;
+            metaBlockHtml = '';
+            inMetaBlock = false;
+          }
+          continue;
+        }
+        metaBlockHtml += `<p class="lic-meta">${escHtml(line)}</p>`;
+        continue;
+      }
+
+      if (!line) {
+        html += '<div class="lic-spacer"></div>';
+        continue;
+      }
+
+      if (/^\d+\. /.test(line)) {
+        html += `<h3 class="lic-section">${escHtml(line)}</h3>`;
+      } else if (/^\([a-z]\) /.test(line)) {
+        html += `<p class="lic-item">${escHtml(line)}</p>`;
+      } else {
+        html += `<p class="lic-para">${escHtml(line)}</p>`;
+      }
+    }
+
+    if (metaBlockHtml) {
+      html += `<div class="lic-meta-block">${metaBlockHtml}</div>`;
+    }
+
+    return html;
+  }
+
+  let _bodyOverflowBeforeLicense = '';
+
+  function openLicenseModal(key) {
+    const lic = LICENSE_TEXTS[key];
+    if (!lic) return;
+    document.getElementById('licenseModalTitle').textContent = lic.title;
+    document.getElementById('licenseModalBody').innerHTML = renderLicenseText(lic.body);
+    document.getElementById('licenseModal').scrollTop = 0;
+    _bodyOverflowBeforeLicense = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('licenseModalOverlay').classList.add('active');
+  }
+
+  function closeLicenseModal() {
+    document.getElementById('licenseModalOverlay').classList.remove('active');
+    document.body.style.overflow = _bodyOverflowBeforeLicense;
+  }
+
+  function handleLicenseOverlayClick(e) {
+    if (e.target === document.getElementById('licenseModalOverlay')) closeLicenseModal();
+  }
 
   // ─── NEWSLETTER ───────────────────────────────────────────────────────────
   let newsletterOpen = true;

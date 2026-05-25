@@ -1,6 +1,26 @@
 {
   "beats": [
     {
+      "id": "savior",
+      "title": "Savior",
+      "bpm": 140,
+      "key": "Em",
+      "tags": ["lucki", "glo", "brass", "upbeat", "melodic"],
+      "basePrice": 25,
+      "featured": true,
+      "dateAdded": "2026-05-19",
+      "imgGradient": "linear-gradient(135deg, #1a1000 0%, #2e1f00 100%)",
+      "imgFile": "images/savior.jpg",
+      "audioFile": "audio/savior.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BW4RqA%5D=1779664445810&cart_links%5B%5D=W4RqA&qty%5BW4RqA%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BW4RqA%5D=1779664447764&cart_links%5B%5D=W4RqA&qty%5BW4RqA%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BW4RqA%5D=1779664448731&cart_links%5B%5D=W4RqA&qty%5BW4RqA%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BW4RqA%5D=1779664450074&cart_links%5B%5D=W4RqA&qty%5BW4RqA%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
       "id": "passport",
       "title": "Passport",
       "bpm": 194,
@@ -85,7 +105,7 @@
       "title": "Farm",
       "bpm": 148,
       "key": "A#m",
-      "tags": ["melodic", "upbeat"],
+      "tags": ["melodic", "upbeat", "piano"],
       "basePrice": 25,
       "featured": false,
       "dateAdded": "2026-04-30",
@@ -127,7 +147,7 @@
       "key": "F#m",
       "tags": ["chill", "melodic"],
       "basePrice": 25,
-      "featured": true,
+      "featured": false,
       "dateAdded": "2026-04-29",
       "imgGradient": "linear-gradient(135deg, #1a1a1a 0%, #333 100%)",
       "imgFile": "images/solstice.jpg",
@@ -161,6 +181,46 @@
       }
     },
     {
+      "id": "movie",
+      "title": "Movie",
+      "bpm": 168,
+      "key": "A#m",
+      "tags": ["veeze", "piano", "detroit", "chill"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-11-06",
+      "imgGradient": "linear-gradient(135deg, #1a1a1a 0%, #333 100%)",
+      "imgFile": "images/movie.jpg",
+      "audioFile": "audio/movie.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BSyXYI%5D=1779678721291&cart_links%5B%5D=SyXYI&qty%5BSyXYI%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BSyXYI%5D=1779678722978&cart_links%5B%5D=SyXYI&qty%5BSyXYI%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BSyXYI%5D=1779678723912&cart_links%5B%5D=SyXYI&qty%5BSyXYI%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BSyXYI%5D=1779678724966&cart_links%5B%5D=SyXYI&qty%5BSyXYI%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "late",
+      "title": "Late",
+      "bpm": 158,
+      "key": "Cm",
+      "tags": ["chill", "detroit", "veeze", "piano"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-12-06",
+      "imgGradient": "linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)",
+      "imgFile": "images/late.jpg",
+      "audioFile": "audio/late.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BD5CHm%5D=1779526336497&cart_links%5B%5D=D5CHm&qty%5BD5CHm%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BD5CHm%5D=1779526338316&cart_links%5B%5D=D5CHm&qty%5BD5CHm%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BD5CHm%5D=1779526339280&cart_links%5B%5D=D5CHm&qty%5BD5CHm%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BD5CHm%5D=1779526340288&cart_links%5B%5D=D5CHm&qty%5BD5CHm%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
       "id": "all_day",
       "title": "All Day",
       "bpm": 148,
@@ -185,7 +245,7 @@
       "title": "Catch Up",
       "bpm": 172,
       "key": "Em",
-      "tags": ["chill","detroit","veeze","lucki"],
+      "tags": ["chill","detroit","veeze","lucki","epiano"],
       "basePrice": 25,
       "featured": false,
       "dateAdded": "2024-08-30",
@@ -205,7 +265,7 @@
       "title": "Forever Up",
       "bpm": 160,
       "key": "Bm",
-      "tags": ["chill","veeze","lucki"],
+      "tags": ["chill","veeze","lucki","epiano"],
       "basePrice": 25,
       "featured": false,
       "dateAdded": "2024-08-30",
@@ -217,6 +277,286 @@
         "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BLyzOY%5D=1779431416739&cart_links%5B%5D=LyzOY&qty%5BLyzOY%5D=1" },
         "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BLyzOY%5D=1779431429557&cart_links%5B%5D=LyzOY&qty%5BLyzOY%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BLyzOY%5D=1779431433654&cart_links%5B%5D=LyzOY&qty%5BLyzOY%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "order",
+      "title": "Order",
+      "bpm": 170,
+      "key": "Dm",
+      "tags": ["brass","detroit","veeze","lucki","piano"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-09-25",
+      "imgGradient": "linear-gradient(135deg, #1a0a00 0%, #3d1500 100%)",
+      "imgFile": "images/order.jpg",
+      "audioFile": "audio/orders.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bob3i5%5D=1779680292447&cart_links%5B%5D=ob3i5&qty%5Bob3i5%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bob3i5%5D=1779680295471&cart_links%5B%5D=ob3i5&qty%5Bob3i5%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bob3i5%5D=1779680296302&cart_links%5B%5D=ob3i5&qty%5Bob3i5%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bob3i5%5D=1779680297743&cart_links%5B%5D=ob3i5&qty%5Bob3i5%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "private_flights",
+      "title": "Private Flights",
+      "bpm": 164,
+      "key": "Gm",
+      "tags": ["lucki","chill","veeze","epiano"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-02-03",
+      "imgGradient": "linear-gradient(135deg, #0a0f1a 0%, #0f1d35 100%)",
+      "imgFile": "images/private_flights.jpg",
+      "audioFile": "audio/private_flights.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B97Wmp%5D=1779681428853&cart_links%5B%5D=97Wmp&qty%5B97Wmp%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B97Wmp%5D=1779681433135&cart_links%5B%5D=97Wmp&qty%5B97Wmp%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B97Wmp%5D=1779681467163&cart_links%5B%5D=97Wmp&qty%5B97Wmp%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B97Wmp%5D=1779681479378&cart_links%5B%5D=97Wmp&qty%5B97Wmp%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "run_it_up",
+      "title": "Run It Up",
+      "bpm": 155,
+      "key": "A#m",
+      "tags": ["veeze","lucki","chill","epiano"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-07-23",
+      "imgGradient": "linear-gradient(135deg, #0a1a1a 0%, #0f2a2a 100%)",
+      "imgFile": "images/run_it_up.jpg",
+      "audioFile": "audio/run it up.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BzbMiq%5D=1779682514799&cart_links%5B%5D=zbMiq&qty%5BzbMiq%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BzbMiq%5D=1779682516363&cart_links%5B%5D=zbMiq&qty%5BzbMiq%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BzbMiq%5D=1779682517395&cart_links%5B%5D=zbMiq&qty%5BzbMiq%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BzbMiq%5D=1779682533091&cart_links%5B%5D=zbMiq&qty%5BzbMiq%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "madness",
+      "title": "Madness",
+      "bpm": 170,
+      "key": "A#m",
+      "tags": ["veeze","dark","detroit"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-04-12",
+      "imgGradient": "linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 100%)",
+      "imgFile": "images/madness.jpg",
+      "audioFile": "audio/madness.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8uH71%5D=1779684129117&cart_links%5B%5D=8uH71&qty%5B8uH71%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8uH71%5D=1779684130469&cart_links%5B%5D=8uH71&qty%5B8uH71%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8uH71%5D=1779684131358&cart_links%5B%5D=8uH71&qty%5B8uH71%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8uH71%5D=1779684132358&cart_links%5B%5D=8uH71&qty%5B8uH71%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "automatic",
+      "title": "Automatic",
+      "bpm": 152,
+      "key": "D#m",
+      "tags": ["detroit","veeze","dark"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2024-09-29",
+      "imgGradient": "linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%)",
+      "imgFile": "images/automatic.jpg",
+      "audioFile": "audio/automatic.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BcoKCB%5D=1779684298401&cart_links%5B%5D=coKCB&qty%5BcoKCB%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BcoKCB%5D=1779684300918&cart_links%5B%5D=coKCB&qty%5BcoKCB%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BcoKCB%5D=1779684301920&cart_links%5B%5D=coKCB&qty%5BcoKCB%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BcoKCB%5D=1779684303341&cart_links%5B%5D=coKCB&qty%5BcoKCB%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "years",
+      "title": "Years",
+      "bpm": 170,
+      "key": "D#m",
+      "tags": ["lucki","veeze","upbeat","epiano","melodic"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2024-12-28",
+      "imgGradient": "linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%)",
+      "imgFile": "images/years.jpg",
+      "audioFile": "audio/years.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BFkOSa%5D=1779685698457&cart_links%5B%5D=FkOSa&qty%5BFkOSa%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BFkOSa%5D=1779685715884&cart_links%5B%5D=FkOSa&qty%5BFkOSa%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BFkOSa%5D=1779685717149&cart_links%5B%5D=FkOSa&qty%5BFkOSa%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BFkOSa%5D=1779685718322&cart_links%5B%5D=FkOSa&qty%5BFkOSa%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "outta_reach",
+      "title": "Outta Reach",
+      "bpm": 145,
+      "key": "Dm",
+      "tags": ["glo","lucki","veeze","upbeat","melodic","brass"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-10-25",
+      "imgGradient": "linear-gradient(135deg, #1a1200 0%, #2e2000 100%)",
+      "imgFile": "images/outta_reach.jpg",
+      "audioFile": "audio/outta_reach.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bs2FwJ%5D=1779686170654&cart_links%5B%5D=s2FwJ&qty%5Bs2FwJ%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bs2FwJ%5D=1779686172974&cart_links%5B%5D=s2FwJ&qty%5Bs2FwJ%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bs2FwJ%5D=1779686173748&cart_links%5B%5D=s2FwJ&qty%5Bs2FwJ%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bs2FwJ%5D=1779686174483&cart_links%5B%5D=s2FwJ&qty%5Bs2FwJ%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "raid",
+      "title": "Raid",
+      "bpm": 190,
+      "key": "C#m",
+      "tags": ["detroit","epiano","melodic","veeze"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-11-06",
+      "imgGradient": "linear-gradient(135deg, #0f1520 0%, #1a2535 100%)",
+      "imgFile": "images/raid.jpg",
+      "audioFile": "audio/raid.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BsyiI4%5D=1779688688467&cart_links%5B%5D=syiI4&qty%5BsyiI4%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BsyiI4%5D=1779688691293&cart_links%5B%5D=syiI4&qty%5BsyiI4%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BsyiI4%5D=1779688701233&cart_links%5B%5D=syiI4&qty%5BsyiI4%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BsyiI4%5D=1779688708077&cart_links%5B%5D=syiI4&qty%5BsyiI4%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "packs",
+      "title": "Packs",
+      "bpm": 185,
+      "key": "Cm",
+      "tags": ["detroit","piano","brass","veeze"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-11-02",
+      "imgGradient": "linear-gradient(135deg, #0a1a0a 0%, #0f2510 100%)",
+      "imgFile": "images/packs.jpg",
+      "audioFile": "audio/packs.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BX8Tot%5D=1779689613715&cart_links%5B%5D=X8Tot&qty%5BX8Tot%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BX8Tot%5D=1779689615001&cart_links%5B%5D=X8Tot&qty%5BX8Tot%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BX8Tot%5D=1779689616013&cart_links%5B%5D=X8Tot&qty%5BX8Tot%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BX8Tot%5D=1779689647731&cart_links%5B%5D=X8Tot&qty%5BX8Tot%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "lose_control",
+      "title": "Lose Control",
+      "bpm": 196,
+      "key": "Cm",
+      "tags": ["detroit","piano"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-11-05",
+      "imgGradient": "linear-gradient(135deg, #0a0f1a 0%, #0f1530 100%)",
+      "imgFile": "images/lose_control.jpg",
+      "audioFile": "audio/lose_control.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bi4fxC%5D=1779690517077&cart_links%5B%5D=i4fxC&qty%5Bi4fxC%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bi4fxC%5D=1779690518397&cart_links%5B%5D=i4fxC&qty%5Bi4fxC%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bi4fxC%5D=1779690519963&cart_links%5B%5D=i4fxC&qty%5Bi4fxC%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bi4fxC%5D=1779690520965&cart_links%5B%5D=i4fxC&qty%5Bi4fxC%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "never",
+      "title": "Never",
+      "bpm": 190,
+      "key": "C#m",
+      "tags": ["detroit","piano","dark"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-10-21",
+      "imgGradient": "linear-gradient(135deg, #0f0a0a 0%, #1a0f0f 100%)",
+      "imgFile": "images/never.jpg",
+      "audioFile": "audio/never.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BirV6H%5D=1779691122988&cart_links%5B%5D=irV6H&qty%5BirV6H%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BirV6H%5D=1779691137696&cart_links%5B%5D=irV6H&qty%5BirV6H%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BirV6H%5D=1779691144413&cart_links%5B%5D=irV6H&qty%5BirV6H%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BirV6H%5D=1779691153817&cart_links%5B%5D=irV6H&qty%5BirV6H%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "smoke_one",
+      "title": "Smoke One",
+      "bpm": 174,
+      "key": "Gm",
+      "tags": ["sample","veeze","lucki","vocals","detroit"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-10-01",
+      "imgGradient": "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)",
+      "imgFile": "images/smoke_one.jpg",
+      "audioFile": "audio/smoke_one.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Be5lOI%5D=1779691961079&cart_links%5B%5D=e5lOI&qty%5Be5lOI%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Be5lOI%5D=1779691963808&cart_links%5B%5D=e5lOI&qty%5Be5lOI%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Be5lOI%5D=1779691964543&cart_links%5B%5D=e5lOI&qty%5Be5lOI%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Be5lOI%5D=1779691965410&cart_links%5B%5D=e5lOI&qty%5Be5lOI%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "cashed_out",
+      "title": "Cashed Out",
+      "bpm": 170,
+      "key": "A#m",
+      "tags": ["sample","veeze","lucki","chill"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2024-08-14",
+      "imgGradient": "linear-gradient(135deg, #0f1a0a 0%, #1a2a0f 100%)",
+      "imgFile": "images/cashed-out.png",
+      "audioFile": "audio/cashed_out.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BZFwCO%5D=1779693902451&cart_links%5B%5D=ZFwCO&qty%5BZFwCO%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BZFwCO%5D=1779693904947&cart_links%5B%5D=ZFwCO&qty%5BZFwCO%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BZFwCO%5D=1779693905995&cart_links%5B%5D=ZFwCO&qty%5BZFwCO%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BZFwCO%5D=1779693907043&cart_links%5B%5D=ZFwCO&qty%5BZFwCO%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "break_the_bank",
+      "title": "Break The Bank",
+      "bpm": 170,
+      "key": "G#m",
+      "tags": ["sample","veeze","lucki","melodic","upbeat"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2024-08-19",
+      "imgGradient": "linear-gradient(135deg, #1a1500 0%, #2a2000 100%)",
+      "imgFile": "images/break_the_bank.jpg",
+      "audioFile": "audio/break_the_bank.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BQNkfr%5D=1779693980910&cart_links%5B%5D=QNkfr&qty%5BQNkfr%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BQNkfr%5D=1779693982204&cart_links%5B%5D=QNkfr&qty%5BQNkfr%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BQNkfr%5D=1779693982974&cart_links%5B%5D=QNkfr&qty%5BQNkfr%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BQNkfr%5D=1779693983720&cart_links%5B%5D=QNkfr&qty%5BQNkfr%5D=1" },
         "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
       }
     }

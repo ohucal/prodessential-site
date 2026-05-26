@@ -471,9 +471,20 @@ nav a:hover { color: var(--yellow); }
 .beat-price-wrap {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-shrink: 0;
   align-self: center;
+}
+
+.beat-featured-badge {
+  width: 22px;
+  height: 22px;
+  background: #f5c800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .beat-new-badge {
@@ -1439,7 +1450,15 @@ nav a:hover { color: var(--yellow); }
 .modal-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
+}
+
+.modal-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  min-height: 22px;
 }
 
 .modal-tag {

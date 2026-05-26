@@ -9,6 +9,11 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://payhip.com/payhip.js"></script>
+  <style>
+    .newsletter-status { margin-top: 10px; font-size: 0.8rem; letter-spacing: 0.05em; min-height: 1.2em; }
+    .newsletter-status--success { color: #a8c5a0; }
+    .newsletter-status--error { color: #c5a0a0; }
+  </style>
 </head>
 <body>
 
@@ -159,10 +164,11 @@
   <div class="newsletter-content" id="newsletterContent">
     <h2 class="newsletter-headline">Free Loops Weekly</h2>
     <p class="newsletter-desc">Join the list to get weekly free loops, exclusive kits and early access to new beats sent straight to your inbox.</p>
-    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-      <input type="email" placeholder="YOUR EMAIL ADDRESS" required class="newsletter-input">
-      <button type="submit" class="btn-primary" style="border: none;">SUBSCRIBE</button>
+    <form class="newsletter-form" id="kitForm" onsubmit="submitToKit(event)">
+      <input type="email" id="kitEmail" placeholder="YOUR EMAIL ADDRESS" required class="newsletter-input">
+      <button type="submit" id="kitSubmitBtn" class="btn-primary" style="border: none;">SUBSCRIBE</button>
     </form>
+    <p class="newsletter-status" id="kitStatus"></p>
   </div>
 </section>
 
@@ -305,6 +311,7 @@
         <h2 class="modal-title" id="modalTitle"></h2>
         <span class="modal-bpm-key" id="modalBpmKey"></span>
         <div class="modal-tags" id="modalTags"></div>
+        <div class="modal-badges" id="modalBadges"></div>
       </div>
     </div>
 
@@ -704,6 +711,14 @@
     // Tags
     const tagsEl = document.getElementById('modalTags');
     tagsEl.innerHTML = beat.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+
+    // Badges (NEW + featured star)
+    const badgesEl = document.getElementById('modalBadges');
+    const isNewBeat = beat.dateAdded && (Date.now() - new Date(beat.dateAdded).getTime()) / 86400000 <= 30;
+    let badgesHTML = '';
+    if (beat.featured) badgesHTML += `<div class="beat-featured-badge"><svg viewBox="0 0 24 24" width="15" height="15"><polygon points="12,2 15.4,7.3 21.5,8.9 17.5,13.8 17.9,20.1 12,17.8 6.1,20.1 6.5,13.8 2.5,8.9 8.6,7.3" fill="#111111"/></svg></div>`;
+    if (isNewBeat) badgesHTML += `<span class="beat-new-badge">NEW</span>`;
+    badgesEl.innerHTML = badgesHTML;
 
     // License buttons
     buildLicenseGrid(beat);
@@ -1161,6 +1176,7 @@
               </div>
             </div>
             <div class="beat-price-wrap">
+              ${item.featured ? `<div class="beat-featured-badge"><svg viewBox="0 0 24 24" width="15" height="15"><polygon points="12,2 15.4,7.3 21.5,8.9 17.5,13.8 17.9,20.1 12,17.8 6.1,20.1 6.5,13.8 2.5,8.9 8.6,7.3" fill="#111111"/></svg></div>` : ''}
               ${isNew ? '<span class="beat-new-badge">NEW</span>' : ''}
               <span class="beat-price">From $${item.basePrice}</span>
             </div>
@@ -1250,7 +1266,9 @@
     // Fallback: If no beats are marked featured, just grab the first two
     const displays = featuredBeats.length > 0 ? featuredBeats : beats.slice(0, 2);
 
-    el.innerHTML = displays.slice(0, 2).map(beat => `
+    el.innerHTML = displays.slice(0, 2).map(beat => {
+      const isNew = beat.dateAdded && (Date.now() - new Date(beat.dateAdded).getTime()) / 86400000 <= 30;
+      return `
       <div class="beat-card" data-id="${beat.id}" onclick='openModal(${JSON.stringify(beat)})'>
         <div class="beat-card-main">
           <div class="beat-cover${beat.imgFile ? '' : ' no-img'}" style="${beat.imgFile ? `background-image: url('${beat.imgFile}'); background-size: cover; background-position: center;` : `background: ${beat.imgGradient}`}">
@@ -1265,7 +1283,11 @@
               ${beat.tags.map(t => `<span class="beat-tag">${t}</span>`).join('')}
             </div>
           </div>
-          <span class="beat-price">From $${beat.basePrice}</span>
+          <div class="beat-price-wrap">
+            ${beat.featured ? `<div class="beat-featured-badge"><svg viewBox="0 0 24 24" width="15" height="15"><polygon points="12,2 15.4,7.3 21.5,8.9 17.5,13.8 17.9,20.1 12,17.8 6.1,20.1 6.5,13.8 2.5,8.9 8.6,7.3" fill="#111111"/></svg></div>` : ''}
+            ${isNew ? '<span class="beat-new-badge">NEW</span>' : ''}
+            <span class="beat-price">From $${beat.basePrice}</span>
+          </div>
         </div>
         <div class="card-inline-player">
           <div class="card-prog-bar">
@@ -1278,7 +1300,7 @@
           </div>
         </div>
       </div>
-    `).join('');
+    `; }).join('');
   }
 
   // ─── LOAD PRODUCTS + DEEP LINK ────────────────────────────────────────────
@@ -1837,6 +1859,41 @@ Licensor: Owen Hucal, p/k/a prod.essential — prodessential@gmail.com — prode
 
   function handleLicenseOverlayClick(e) {
     if (e.target === document.getElementById('licenseModalOverlay')) closeLicenseModal();
+  }
+
+  // ─── KIT EMAIL SIGNUP ─────────────────────────────────────────────────────
+  async function submitToKit(e) {
+    e.preventDefault();
+    const email = document.getElementById('kitEmail').value.trim();
+    const btn = document.getElementById('kitSubmitBtn');
+    const status = document.getElementById('kitStatus');
+
+    btn.disabled = true;
+    btn.textContent = 'SENDING...';
+    status.textContent = '';
+    status.className = 'newsletter-status';
+
+    try {
+      const res = await fetch('https://api.convertkit.com/v3/forms/9481440/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body: JSON.stringify({ api_key: 'wSj6F3pxg1LieFtcNJcHRQ', email })
+      });
+      const data = await res.json();
+      if (res.ok && data.subscription) {
+        status.textContent = 'You\'re in. Check your inbox.';
+        status.classList.add('newsletter-status--success');
+        document.getElementById('kitEmail').value = '';
+      } else {
+        throw new Error(data.message || 'Subscription failed');
+      }
+    } catch (err) {
+      status.textContent = 'Something went wrong. Try again.';
+      status.classList.add('newsletter-status--error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'SUBSCRIBE';
+    }
   }
 
   // ─── NEWSLETTER ───────────────────────────────────────────────────────────

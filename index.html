@@ -1,0 +1,3098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9XBRPVVXPP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9XBRPVVXPP');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Premium trap and rap beats, drum kits, one-shots, and Serum banks you won't find anywhere else. Built from scratch for artists and producers.">
+  <link rel="icon" type="image/png" sizes="144x144" href="/images/favicon.png">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+  <title>prod.essential</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://payhip.com/payhip.js"></script>
+  <style>
+    .newsletter-status { margin-top: 10px; font-size: 0.8rem; letter-spacing: 0.05em; min-height: 1.2em; }
+    .newsletter-status--success { color: #a8c5a0; }
+    .newsletter-status--error { color: #c5a0a0; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">prod.essential</a>
+  <nav>
+    <a href="#beats">Beats</a>
+    <a href="#kits">Kits</a>
+    <a href="#newsletter" onclick="if(typeof gtag==='function'){gtag('event','weekly_loops_nav_click');}">Weekly Loops</a>
+    <a href="#licensing">Licensing</a>
+    <a href="#contact">Contact</a>
+    <a href="#beats" class="nav-cta" onclick="showFreeBeats(); return false;">FREE STUFF</a>
+    <button class="nav-cart" id="navCartBtn" onclick="openCart()" aria-label="Open cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      <span class="nav-cart-count" id="navCartCount" hidden>0</span>
+    </button>
+  </nav>
+</header>
+
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-kicker">Based In Michigan</p>
+    <h1 class="hero-headline"><em>prod. essential</em></h1>
+    <p class="hero-desc">Browse beats, drum kits, one shot kits, loops and tons of free stuff.</p>
+    <div class="hero-actions">
+      <a href="#beats" class="btn-primary">Browse Beats</a>
+      <a href="#kits" class="btn-ghost">Shop Kits</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <p class="hero-right-label">Featured Beats</p>
+    <div id="heroFeatured"></div>
+  </div>
+</section>
+
+<div class="contact-wrapper" id="contact">
+  <div class="contact-header">
+    <h2 class="contact-title">Contacts</h2>
+    <p class="contact-email">Inquiries: <a href="mailto:prodessential@gmail.com">prodessential@gmail.com</a></p>
+  </div>
+  <section class="producer-contacts">
+    <a href="mailto:prodessential@gmail.com" class="social-link email-link">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      Email
+    </a>
+    <a href="https://www.youtube.com/@prod.essential" target="_blank" rel="noopener noreferrer" class="social-link yt-link">
+      <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+      YouTube
+    </a>
+    <a href="https://www.instagram.com/prod.essential" target="_blank" rel="noopener noreferrer" class="social-link ig-link">
+      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      Instagram
+    </a>
+    <a href="https://www.tiktok.com/@prod.essential" target="_blank" rel="noopener noreferrer" class="social-link tt-link">
+      <svg viewBox="0 0 24 24" class="tiktok-icon"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+      TikTok
+    </a>
+  </section>
+</div>
+
+<div class="lower-grid">
+  <section id="beats" class="grid-column left-col">
+    <div class="section-header">
+      <div class="section-label">
+        <span>Beat Store</span>
+        <hr>
+      </div>
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="beatSearch" class="search-input" placeholder="Search beats, tags, key, BPM" oninput="handleSearch('beat')" autocomplete="off">
+        <button class="search-clear" id="beatSearchClear" onclick="clearSearch('beat')" aria-label="Clear search" hidden>
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="tag-filters" id="beatFilters"></div>
+      <div class="filter-controls-row">
+        <div class="filter-mode-wrap">
+          <span class="mode-label">Match:</span>
+          <button id="modeAny" class="mode-toggle-btn active" onclick="setFilterMode('any')">Any Tag</button>
+          <button id="modeAll" class="mode-toggle-btn" onclick="setFilterMode('all')">All Tags</button>
+        </div>
+        <div class="sort-wrap">
+          <span class="mode-label">Sort:</span>
+          <div class="custom-select" id="customSort">
+            <button class="custom-select-btn" id="sortBtn" onclick="toggleSortDropdown(event)">
+              <span id="sortLabel">Date (Newest)</span>
+              <svg class="select-arrow" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="custom-select-list" id="sortList">
+              <li class="custom-select-item active" data-value="newest" onclick="selectSort(this)">Date (Newest)</li>
+              <li class="custom-select-item" data-value="oldest" onclick="selectSort(this)">Date (Oldest)</li>
+              <li class="custom-select-item" data-value="bpm_high" onclick="selectSort(this)">BPM: High to Low</li>
+              <li class="custom-select-item" data-value="bpm_low" onclick="selectSort(this)">BPM: Low to High</li>
+              <li class="custom-select-item" data-value="name_az" onclick="selectSort(this)">Name (A-Z)</li>
+              <li class="custom-select-item" data-value="name_za" onclick="selectSort(this)">Name (Z-A)</li>
+            </ul>
+          </div>
+        </div>
+        <button class="shuffle-btn" id="beatShuffleBtn" onclick="shuffleBeats()" aria-label="Shuffle beats" title="Shuffle beats randomly">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+          <span>Shuffle</span>
+        </button>
+      </div>
+      <div class="item-count" id="beatCount"></div>
+    </div>
+    <div class="scroll-list" id="beatList"></div>
+  </section>
+
+  <section id="kits" class="grid-column">
+    <div class="section-header">
+      <div class="section-label">
+        <span>Kits &amp; Packs</span>
+        <hr>
+      </div>
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="kitSearch" class="search-input" placeholder="Search kits &amp; packs" oninput="handleSearch('kit')" autocomplete="off">
+        <button class="search-clear" id="kitSearchClear" onclick="clearSearch('kit')" aria-label="Clear search" hidden>
+          <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="tag-filters" id="kitFilters"></div>
+      <div class="filter-controls-row kit-controls-row">
+        <div class="sort-wrap">
+          <span class="mode-label">Sort:</span>
+          <div class="custom-select" id="customKitSort">
+            <button class="custom-select-btn" id="kitSortBtn" onclick="toggleKitSortDropdown(event)">
+              <span id="kitSortLabel">Date (Newest)</span>
+              <svg class="select-arrow" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="custom-select-list" id="kitSortList">
+              <li class="custom-select-item active" data-value="newest" onclick="selectKitSort(this)">Date (Newest)</li>
+              <li class="custom-select-item" data-value="oldest" onclick="selectKitSort(this)">Date (Oldest)</li>
+              <li class="custom-select-item" data-value="price_low" onclick="selectKitSort(this)">Price (Low-High)</li>
+              <li class="custom-select-item" data-value="price_high" onclick="selectKitSort(this)">Price (High-Low)</li>
+              <li class="custom-select-item" data-value="name_az" onclick="selectKitSort(this)">Name (A-Z)</li>
+              <li class="custom-select-item" data-value="name_za" onclick="selectKitSort(this)">Name (Z-A)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="item-count" id="kitCount"></div>
+    </div>
+    <div class="scroll-list" id="kitList"></div>
+  </section>
+</div>
+
+<section class="newsletter" id="newsletter">
+  <button class="newsletter-close" onclick="toggleNewsletter()" aria-label="Collapse">
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <div class="newsletter-toggle" onclick="toggleNewsletter()" title="Collapse section">
+    <span class="newsletter-toggle-label">Free Loops Weekly</span>
+  </div>
+  <div class="newsletter-content" id="newsletterContent">
+    <h2 class="newsletter-headline">Free Loops Weekly</h2>
+    <p class="newsletter-desc">Join the list to get weekly free loops, exclusive kits and early access to new beats sent straight to your inbox.</p>
+    <form class="newsletter-form" id="kitForm" onsubmit="submitToKit(event)">
+      <input type="email" id="kitEmail" placeholder="YOUR EMAIL ADDRESS" required class="newsletter-input">
+      <button type="submit" id="kitSubmitBtn" class="btn-primary" style="border: none;">SUBSCRIBE</button>
+    </form>
+    <p class="newsletter-status" id="kitStatus"></p>
+  </div>
+</section>
+
+<section class="licensing" id="licensing">
+  <div class="licensing-header">
+    <h2 class="licensing-title">Licensing</h2>
+    <p class="licensing-sub">Every beat comes with a license. Pick the tier that fits your release.</p>
+  </div>
+  <div class="license-grid">
+    <div class="license-card">
+      <div class="license-top">
+        <span class="license-name">Basic</span>
+        <span class="license-price">$25</span>
+        <span class="license-format">MP3 (Tagged)</span>
+      </div>
+      <ul class="license-features">
+        <li>Tagged MP3 file</li>
+        <li>Up to 50,000 streams</li>
+        <li>Up to 2,000 copies</li>
+        <li>1 non-monetized video</li>
+        <li>Non-profit performances</li>
+        <li>Non-exclusive</li>
+      </ul>
+      <a href="#" class="license-btn" onclick="openLicenseModal('basic'); return false;">Read Full License</a>
+    </div>
+    <div class="license-card">
+      <div class="license-top">
+        <span class="license-name">Premium</span>
+        <span class="license-price">$40</span>
+        <span class="license-format">WAV + MP3 (Untagged)</span>
+      </div>
+      <ul class="license-features">
+        <li>Untagged WAV + MP3</li>
+        <li>Up to 100,000 streams</li>
+        <li>Up to 3,000 copies</li>
+        <li>1 monetized video</li>
+        <li>For-profit performances</li>
+        <li>Non-exclusive</li>
+      </ul>
+      <a href="#" class="license-btn" onclick="openLicenseModal('premium'); return false;">Read Full License</a>
+    </div>
+    <div class="license-card license-card--featured">
+      <div class="license-badge">Most Popular</div>
+      <div class="license-top">
+        <span class="license-name">Premium + Stems</span>
+        <span class="license-price">$90</span>
+        <span class="license-format">WAV + MP3 + Track Stems</span>
+      </div>
+      <ul class="license-features">
+        <li>Untagged WAV + MP3</li>
+        <li>Full track stems included</li>
+        <li>Up to 500,000 streams</li>
+        <li>Up to 10,000 copies</li>
+        <li>Unlimited music videos</li>
+        <li>For-profit performances</li>
+        <li>Non-exclusive</li>
+      </ul>
+      <a href="#" class="license-btn license-btn--featured" onclick="openLicenseModal('stems'); return false;">Read Full License</a>
+    </div>
+    <div class="license-card">
+      <div class="license-top">
+        <span class="license-name">Unlimited</span>
+        <span class="license-price">$250</span>
+        <span class="license-format">WAV + MP3 + Stems</span>
+      </div>
+      <ul class="license-features">
+        <li>Untagged WAV + MP3 + stems</li>
+        <li>Unlimited streams</li>
+        <li>Unlimited distribution</li>
+        <li>Unlimited music videos</li>
+        <li>For-profit + radio</li>
+        <li>Non-exclusive</li>
+      </ul>
+      <a href="#" class="license-btn" onclick="openLicenseModal('unlimited'); return false;">Read Full License</a>
+    </div>
+    <div class="license-card license-card--exclusive">
+      <div class="license-top">
+        <span class="license-name">Exclusive</span>
+        <span class="license-price">Negotiable</span>
+        <span class="license-format">All Files Included</span>
+      </div>
+      <ul class="license-features">
+        <li>WAV + MP3 + stems</li>
+        <li>Sole usage rights</li>
+        <li>Beat removed from store</li>
+        <li>Unlimited everything</li>
+        <li>Full commercial rights</li>
+        <li>Contact to discuss</li>
+      </ul>
+      <a href="mailto:prodessential@gmail.com" class="license-btn">Get In Touch</a>
+    </div>
+  </div>
+  <p class="license-free-note">Select beats include a free tagged download for non-profit use. Look for the FREE option on the beat. Credit required.</p>
+</section>
+
+<!-- ─── BEAT MODAL ──────────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <button class="modal-nav-btn modal-nav-prev" onclick="navigateBeat(-1)" aria-label="Previous beat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="modal-nav-btn modal-nav-next" onclick="navigateBeat(1)" aria-label="Next beat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Top: art left, title/meta right -->
+    <div class="modal-top-row">
+      <div class="modal-art-col">
+        <div class="modal-cover-art" id="modalCoverArt">
+          <button class="modal-play-btn" id="modalPlayBtn" onclick="toggleAudio()" aria-label="Play/Pause">
+            <svg class="play-icon" id="playIcon" viewBox="0 0 24 24" fill="none">
+              <polygon points="5,3 19,12 5,21" fill="currentColor"/>
+            </svg>
+            <svg class="pause-icon" id="pauseIcon" viewBox="0 0 24 24" fill="none" style="display:none">
+              <rect x="5" y="3" width="4" height="18" fill="currentColor"/>
+              <rect x="15" y="3" width="4" height="18" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-progress-wrap">
+          <div class="modal-progress-bar" id="progressBar">
+            <div class="modal-progress-fill" id="progressFill"></div>
+            <div class="modal-progress-thumb" id="progressThumb"></div>
+          </div>
+          <div class="modal-time-row">
+            <span class="modal-time" id="timeElapsed">0:00</span>
+            <span class="modal-time" id="timeDuration">0:00</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-header-col">
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <span class="modal-bpm-key" id="modalBpmKey"></span>
+        <div class="modal-tags" id="modalTags"></div>
+        <div class="modal-free-tag-row" id="modalFreeTagRow"></div>
+      </div>
+    </div>
+
+    <!-- License + buy -->
+    <div class="modal-info">
+      <div class="modal-license-wrap">
+        <label class="modal-license-label">Select License</label>
+        <div class="modal-license-grid" id="modalLicenseGrid"></div>
+        <div class="modal-license-details" id="modalLicenseDetails"></div>
+
+        <!-- FREE download mode (swaps in when the FREE tab is selected) -->
+        <div class="modal-free-panel" id="modalFreePanel" hidden>
+          <p class="modal-free-summary">Free tagged demo for non-profit use. Drop your email and it unlocks instantly.</p>
+          <ul class="modal-license-bullets modal-free-bullets">
+            <li>Non-profit / demo use only</li>
+            <li>Keep the tag + credit &ldquo;Prod. essential&rdquo;</li>
+            <li>No distribution, monetization, or stores</li>
+            <li>Buy a license to release commercially</li>
+          </ul>
+          <form class="modal-free-form" id="modalFreeForm" onsubmit="submitFreeDownload(event)">
+            <input type="email" class="modal-free-input" id="freeEmail" placeholder="YOUR EMAIL ADDRESS" required autocomplete="email" oninput="validateFreeForm()">
+            <label class="modal-free-agree">
+              <input type="checkbox" id="freeAgree" onchange="validateFreeForm()">
+              <span>I agree to the <a href="#" onclick="event.preventDefault(); event.stopPropagation(); openLicenseModal('free');">Free License terms</a></span>
+            </label>
+            <button type="submit" class="modal-free-btn" id="freeDownloadBtn" disabled>Download Free</button>
+            <p class="modal-free-status" id="freeStatus" aria-live="polite"></p>
+          </form>
+          <div class="modal-free-success" id="modalFreeSuccess" hidden>
+            <p class="modal-free-success-msg">Download started. Check your email for a backup link.</p>
+            <a href="#" class="modal-free-upsell" id="freeUpsell" onclick="goToPremiumFromFree(); return false;">Want it untagged for release? Get the Premium license &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price left, actions right -->
+      <div class="modal-buy-row" id="modalBuyRow">
+        <div class="modal-price-wrap">
+          <span class="modal-price-label">Price</span>
+          <span class="modal-price-value" id="modalPrice"></span>
+        </div>
+        <div class="modal-buy-actions" id="modalBuyActions">
+          <button class="modal-add-btn" id="modalAddBtn" type="button">Add to Cart</button>
+          <button class="modal-buy-btn--secondary" id="modalBuyBtn" type="button">Buy Now</button>
+        </div>
+      </div>
+      <div class="modal-add-confirm" id="modalAddConfirm" aria-live="polite"></div>
+      <button class="modal-view-cart-btn" id="modalViewCartBtn" onclick="viewCartFromBeatModal()" hidden>View Cart →</button>
+
+      <button class="modal-share-btn" id="modalShareBtn" onclick="copyShareLink()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        <span id="shareBtnLabel">Copy Link</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── KIT MODAL ───────────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="kitModalOverlay" onclick="handleKitOverlayClick(event)">
+  <div class="modal modal--kit" id="kitModal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeKitModal()" aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <button class="modal-nav-btn modal-nav-prev" onclick="navigateKit(-1)" aria-label="Previous kit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="modal-nav-btn modal-nav-next" onclick="navigateKit(1)" aria-label="Next kit">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <div class="modal-top-row">
+      <div class="modal-art-col modal-art-col--kit">
+        <div class="modal-cover-art modal-cover-art--kit" id="kitModalCoverArt"></div>
+      </div>
+      <div class="modal-header-col">
+        <span class="modal-kit-type" id="kitModalType"></span>
+        <h2 class="modal-title" id="kitModalTitle"></h2>
+        <p class="modal-kit-author" id="kitModalAuthor" hidden></p>
+        <p class="modal-kit-desc" id="kitModalDesc"></p>
+      </div>
+    </div>
+
+    <div class="modal-info">
+      <div class="modal-buy-row" id="kitModalBuyRow">
+        <div class="modal-price-wrap">
+          <span class="modal-price-label">Price</span>
+          <span class="modal-price-value" id="kitModalPrice"></span>
+        </div>
+        <div class="modal-buy-actions" id="kitModalBuyActions">
+          <button class="modal-add-btn" id="kitModalAddBtn" type="button">Add to Cart</button>
+          <button class="modal-buy-btn--secondary" id="kitModalBuyBtn" type="button">Buy Now</button>
+        </div>
+      </div>
+      <div class="modal-add-confirm" id="kitModalAddConfirm" aria-live="polite"></div>
+      <button class="modal-view-cart-btn" id="kitModalViewCartBtn" onclick="viewCartFromKitModal()" hidden>View Cart →</button>
+      <button class="modal-share-btn" id="kitModalShareBtn" onclick="copyKitShareLink()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        <span id="kitShareBtnLabel">Copy Link</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── LICENSE MODAL ──────────────────────────────────────────────────── -->
+<div class="license-modal-overlay" id="licenseModalOverlay" onclick="handleLicenseOverlayClick(event)">
+  <div class="license-modal" id="licenseModal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeLicenseModal()" aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <h2 class="license-modal-title" id="licenseModalTitle"></h2>
+    <div id="licenseModalBody"></div>
+  </div>
+</div>
+
+<!-- ─── CART DRAWER ─────────────────────────────────────────────────────── -->
+<div class="cart-overlay" id="cartOverlay" onclick="handleCartOverlayClick(event)">
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+    <div class="cart-header">
+      <span class="cart-header-title">Your Cart</span>
+      <button class="cart-close" onclick="closeCart()" aria-label="Close cart">
+        <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-subtotal-row">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-subtotal-value" id="cartSubtotal">$0</span>
+      </div>
+      <button class="cart-checkout-btn" id="cartCheckoutBtn" onclick="checkout()">Checkout</button>
+      <button class="cart-clear-btn" onclick="cartClear()">Clear cart</button>
+    </div>
+  </aside>
+</div>
+
+<!-- ─── PERSISTENT PLAYBACK BAR ─────────────────────────────────────────── -->
+<div class="player-bar" id="playerBar" role="region" aria-label="Now playing">
+  <!-- Left: now-playing track -->
+  <div class="player-track" id="playerTrack" onclick="openCurrentInModal()">
+    <div class="player-art" id="playerArt"></div>
+    <div class="player-track-info">
+      <span class="player-track-title" id="playerTitle">Nothing playing</span>
+      <span class="player-track-meta" id="playerMeta">Pick a beat to start</span>
+    </div>
+  </div>
+
+  <!-- Center: transport + seek -->
+  <div class="player-center">
+    <div class="player-controls">
+      <button class="player-btn player-btn--mini" id="playerShuffleBtn" onclick="playerToggleShuffle()" aria-label="Shuffle" title="Shuffle playback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+      </button>
+      <button class="player-btn" onclick="playerNavigate(-1)" aria-label="Previous beat" title="Previous">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><polygon points="19 20 9 12 19 4"/><rect x="4" y="4" width="2.4" height="16" rx="1"/></svg>
+      </button>
+      <button class="player-btn player-btn--play" id="playerPlayBtn" onclick="playerTogglePlay()" aria-label="Play">
+        <svg class="player-play-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><polygon points="6,4 20,12 6,20"/></svg>
+        <svg class="player-pause-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="display:none"><rect x="5" y="3" width="4.5" height="18" rx="1"/><rect x="14.5" y="3" width="4.5" height="18" rx="1"/></svg>
+      </button>
+      <button class="player-btn" onclick="playerNavigate(1)" aria-label="Next beat" title="Next">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><polygon points="5 4 15 12 5 20"/><rect x="17.6" y="4" width="2.4" height="16" rx="1"/></svg>
+      </button>
+      <button class="player-btn player-btn--mini" id="playerRepeatBtn" onclick="playerToggleRepeat()" aria-label="Repeat" title="Repeat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        <span class="player-repeat-one" id="playerRepeatOne">1</span>
+      </button>
+    </div>
+    <div class="player-seek-row">
+      <span class="player-time" id="playerElapsed">0:00</span>
+      <div class="player-seek" id="playerSeek">
+        <div class="player-seek-fill" id="playerSeekFill"></div>
+        <div class="player-seek-thumb" id="playerSeekThumb"></div>
+      </div>
+      <span class="player-time" id="playerDuration">0:00</span>
+    </div>
+  </div>
+
+  <!-- Right: volume + close -->
+  <div class="player-right">
+    <button class="player-btn player-btn--mini" id="playerVolBtn" onclick="playerToggleMute()" aria-label="Mute">
+      <svg class="player-vol-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      <svg class="player-mute-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
+    </button>
+    <div class="player-vol" id="playerVol">
+      <div class="player-vol-fill" id="playerVolFill"></div>
+      <div class="player-vol-thumb" id="playerVolThumb"></div>
+    </div>
+    <button class="player-btn player-btn--mini player-btn--close" onclick="playerClose()" aria-label="Close player" title="Close player">
+      <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<audio id="audioPlayer" preload="none"></audio>
+
+<script>
+  // ─── AUDIO ENGINE ─────────────────────────────────────────────────────────
+  const audio = document.getElementById('audioPlayer');
+
+  // Track what's currently loaded/playing
+  let activeCardId = null;   // beat id playing in the card inline player
+  let modalIsOpen  = false;  // whether the beat modal is showing
+
+  function formatTime(s) {
+    if (!s || isNaN(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return m + ':' + String(sec).padStart(2, '0');
+  }
+
+  // ── Update ALL currently-visible progress UIs ──────────────────────────────
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    const elapsed = formatTime(audio.currentTime);
+
+    // Modal progress (always update if modal open)
+    const mFill  = document.getElementById('progressFill');
+    const mThumb = document.getElementById('progressThumb');
+    const mElap  = document.getElementById('timeElapsed');
+    if (mFill)  mFill.style.width  = pct + '%';
+    if (mThumb) mThumb.style.left  = pct + '%';
+    if (mElap)  mElap.textContent  = elapsed;
+
+    // Card inline progress — update all instances (featured + store)
+    if (activeCardId) {
+      document.querySelectorAll(`.beat-card[data-id="${activeCardId}"]`).forEach(card => {
+        const fill  = card.querySelector('.card-prog-fill');
+        const thumb = card.querySelector('.card-prog-thumb');
+        const elap  = card.querySelector('.card-time-elapsed');
+        if (fill)  fill.style.width = pct + '%';
+        if (thumb) thumb.style.left = pct + '%';
+        if (elap)  elap.textContent = elapsed;
+      });
+    }
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    const dur = formatTime(audio.duration);
+    const mDur = document.getElementById('timeDuration');
+    if (mDur) mDur.textContent = dur;
+
+    if (activeCardId) {
+      document.querySelectorAll(`.beat-card[data-id="${activeCardId}"]`).forEach(card => {
+        const durEl = card.querySelector('.card-time-dur');
+        if (durEl) durEl.textContent = dur;
+      });
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    setModalPlayState(false);
+    setCardPlayState(activeCardId, false);
+    const mFill  = document.getElementById('progressFill');
+    const mThumb = document.getElementById('progressThumb');
+    const mElap  = document.getElementById('timeElapsed');
+    if (mFill)  mFill.style.width  = '0%';
+    if (mThumb) mThumb.style.left  = '0%';
+    if (mElap)  mElap.textContent  = '0:00';
+    if (activeCardId) resetCardProgress(activeCardId);
+  });
+
+  // ── Modal play/pause icons ─────────────────────────────────────────────────
+  function setModalPlayState(playing) {
+    const pi = document.getElementById('playIcon');
+    const pa = document.getElementById('pauseIcon');
+    if (pi) pi.style.display = playing ? 'none' : 'block';
+    if (pa) pa.style.display = playing ? 'block' : 'none';
+  }
+
+  // ── Card play/pause icon — updates all instances (featured + store) ────────
+  function setCardPlayState(beatId, playing) {
+    if (!beatId) return;
+    document.querySelectorAll(`.beat-card[data-id="${beatId}"]`).forEach(card => {
+      const playBtn = card.querySelector('.card-play-btn');
+      if (!playBtn) return;
+      playBtn.innerHTML = playing
+        ? `<svg viewBox="0 0 24 24" fill="none" width="14" height="14"><rect x="5" y="3" width="4" height="18" fill="currentColor"/><rect x="15" y="3" width="4" height="18" fill="currentColor"/></svg>`
+        : `<svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>`;
+    });
+  }
+
+  function resetCardProgress(beatId) {
+    if (!beatId) return;
+    document.querySelectorAll(`.beat-card[data-id="${beatId}"]`).forEach(card => {
+      const fill  = card.querySelector('.card-prog-fill');
+      const thumb = card.querySelector('.card-prog-thumb');
+      const elap  = card.querySelector('.card-time-elapsed');
+      if (fill)  fill.style.width = '0%';
+      if (thumb) thumb.style.left = '0%';
+      if (elap)  elap.textContent = '0:00';
+    });
+  }
+
+  // ── Hide inline controls on all matching cards ────────────────────────────
+  function hideCardControls(beatId) {
+    if (!beatId) return;
+    document.querySelectorAll(`.beat-card[data-id="${beatId}"]`).forEach(card => {
+      const ctrl = card.querySelector('.card-inline-player');
+      if (ctrl) ctrl.classList.remove('visible');
+    });
+  }
+
+  // ── Show inline controls on all matching cards ────────────────────────────
+  function showCardControls(beatId) {
+    document.querySelectorAll(`.beat-card[data-id="${beatId}"]`).forEach(card => {
+      const ctrl = card.querySelector('.card-inline-player');
+      if (ctrl) {
+        ctrl.classList.add('visible');
+        requestAnimationFrame(() => {
+          ctrl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      }
+    });
+  }
+
+  // ── Called when the small play button on a card thumbnail is clicked ───────
+  function cardPlayClick(e, beat) {
+    e.stopPropagation(); // don't open modal
+
+    const isSame = activeCardId === beat.id;
+
+    if (isSame) {
+      // Toggle play/pause for same beat
+      if (audio.paused) {
+        audio.play();
+        if (typeof gtag === 'function') {
+          gtag('event', 'beat_preview_play', { beat_id: beat.id, beat_title: beat.title });
+        }
+        setCardPlayState(beat.id, true);
+        if (modalIsOpen) setModalPlayState(true);
+      } else {
+        audio.pause();
+        setCardPlayState(beat.id, false);
+        if (modalIsOpen) setModalPlayState(false);
+      }
+      updateNowPlaying(beat);
+      return;
+    }
+
+    // Different beat — stop and hide previous
+    if (activeCardId) {
+      audio.pause();
+      setCardPlayState(activeCardId, false);
+      hideCardControls(activeCardId);
+      resetCardProgress(activeCardId);
+    }
+
+    // Load new beat
+    activeCardId = beat.id;
+    if (beat.audioFile) {
+      audio.src = beat.audioFile;
+      audio.load();
+      audio.play().catch(() => {});
+      if (typeof gtag === 'function') {
+        gtag('event', 'beat_preview_play', { beat_id: beat.id, beat_title: beat.title });
+      }
+    }
+    showCardControls(beat.id);
+    setCardPlayState(beat.id, true);
+    updateNowPlaying(beat);
+  }
+
+  // ── Card inline progress bar scrubbing ────────────────────────────────────
+  let cardDragging = false;
+  let cardDragBar  = null;
+
+  document.addEventListener('mousedown', e => {
+    const bar = e.target.closest('.card-prog-bar');
+    if (!bar) return;
+    e.preventDefault();
+    e.stopPropagation();
+    cardDragging = true;
+    cardDragBar  = bar;
+    scrubCardBar(bar, e.clientX);
+  });
+
+  document.addEventListener('touchstart', e => {
+    const bar = e.target.closest('.card-prog-bar');
+    if (!bar) return;
+    cardDragging = true;
+    cardDragBar  = bar;
+    scrubCardBar(bar, e.touches[0].clientX);
+  }, { passive: true });
+
+  document.addEventListener('mousemove', e => {
+    if (!cardDragging || !cardDragBar) return;
+    scrubCardBar(cardDragBar, e.clientX);
+  });
+
+  document.addEventListener('touchmove', e => {
+    if (!cardDragging || !cardDragBar) return;
+    scrubCardBar(cardDragBar, e.touches[0].clientX);
+  }, { passive: true });
+
+  document.addEventListener('mouseup',  () => { cardDragging = false; cardDragBar = null; });
+  document.addEventListener('touchend', () => { cardDragging = false; cardDragBar = null; });
+
+  // Prevent clicks anywhere inside the inline player from opening the modal
+  document.addEventListener('click', e => {
+    if (e.target.closest('.card-inline-player')) e.stopPropagation();
+  }, true);
+
+  function scrubCardBar(bar, clientX) {
+    if (!audio.duration) return;
+    const rect = bar.getBoundingClientRect();
+    const pct  = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    audio.currentTime = pct * audio.duration;
+  }
+
+  // ── Modal toggleAudio (play/pause button inside modal) ────────────────────
+  function toggleAudio() {
+    if (audio.paused) {
+      audio.play();
+      setModalPlayState(true);
+      if (activeCardId) setCardPlayState(activeCardId, true);
+    } else {
+      audio.pause();
+      setModalPlayState(false);
+      if (activeCardId) setCardPlayState(activeCardId, false);
+    }
+  }
+
+  // ─── MODAL PROGRESS BAR DRAG-TO-SEEK ──────────────────────────────────────
+  (function setupProgressScrub() {
+    let dragging = false;
+
+    function getPct(clientX) {
+      const bar = document.getElementById('progressBar');
+      const rect = bar.getBoundingClientRect();
+      return Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    }
+
+    function applyPct(pct) {
+      if (!audio.duration) return;
+      audio.currentTime = pct * audio.duration;
+    }
+
+    document.getElementById('progressBar').addEventListener('mousedown', e => {
+      dragging = true;
+      applyPct(getPct(e.clientX));
+      e.preventDefault();
+    });
+
+    document.getElementById('progressBar').addEventListener('touchstart', e => {
+      dragging = true;
+      applyPct(getPct(e.touches[0].clientX));
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      applyPct(getPct(e.clientX));
+    });
+
+    document.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      applyPct(getPct(e.touches[0].clientX));
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('mouseup',  () => { dragging = false; });
+    document.addEventListener('touchend', () => { dragging = false; });
+  })();
+
+  function stopAudio() {
+    audio.pause();
+    audio.currentTime = 0;
+    setModalPlayState(false);
+    const mFill  = document.getElementById('progressFill');
+    const mThumb = document.getElementById('progressThumb');
+    const mElap  = document.getElementById('timeElapsed');
+    const mDur   = document.getElementById('timeDuration');
+    if (mFill)  mFill.style.width  = '0%';
+    if (mThumb) mThumb.style.left  = '0%';
+    if (mElap)  mElap.textContent  = '0:00';
+    if (mDur)   mDur.textContent   = '0:00';
+  }
+
+  // ─── PERSISTENT PLAYER BAR ─────────────────────────────────────────────────
+  const playerBar = document.getElementById('playerBar');
+  let playerRepeatMode  = 0;       // 0 = off, 1 = repeat-all, 2 = repeat-one
+  let playerShuffleMode = false;   // bar-level shuffle (next picks at random)
+  let lastVolume = 1;              // remembered level for un-mute
+  const VOLUME_KEY = 'prodessential_volume_v1';
+
+  // Restore saved volume on load
+  (function initVolume() {
+    let v = parseFloat(localStorage.getItem(VOLUME_KEY));
+    if (isNaN(v)) v = 1;
+    audio.volume = Math.max(0, Math.min(1, v));
+    lastVolume = audio.volume > 0 ? audio.volume : 1;
+    updateVolumeUI();
+  })();
+
+  function getActiveBeat() {
+    if (!activeCardId) return null;
+    return beatsData.find(b => String(b.id) === String(activeCardId)) || null;
+  }
+
+  // Ordered ids we navigate through: what's visible in the store (respecting
+  // filters + sort) first, then everything else by date — mirrors navigateBeat.
+  function getPlaybackOrder() {
+    const filteredIds = [...document.querySelectorAll('#beatList .beat-card')].map(el => el.dataset.id);
+    const filteredSet = new Set(filteredIds);
+    const overflow = [...beatsData]
+      .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+      .map(b => String(b.id))
+      .filter(id => !filteredSet.has(id));
+    return [...filteredIds, ...overflow];
+  }
+
+  function showPlayerBar() {
+    playerBar.classList.add('visible');
+    document.body.classList.add('has-player');
+  }
+
+  function updateNowPlaying(beat) {
+    if (!beat) return;
+    const art = document.getElementById('playerArt');
+    if (beat.imgFile) {
+      art.style.backgroundImage = `url('${beat.imgFile}')`;
+      art.style.backgroundSize = 'cover';
+      art.style.backgroundPosition = 'center';
+    } else {
+      art.style.backgroundImage = 'none';
+      art.style.background = beat.imgGradient || 'var(--surface-2)';
+    }
+    document.getElementById('playerTitle').textContent = beat.title || '';
+    document.getElementById('playerMeta').innerHTML =
+      `${beat.bpm} BPM &nbsp;&middot;&nbsp; <span class="player-key">${beat.key || ''}</span>`;
+    showPlayerBar();
+  }
+
+  // Load + play a beat driven from the bar (prev/next/shuffle/auto-advance).
+  function playBeatFromBar(beat) {
+    if (!beat) return;
+    if (activeCardId && String(activeCardId) !== String(beat.id)) {
+      setCardPlayState(activeCardId, false);
+      hideCardControls(activeCardId);
+      resetCardProgress(activeCardId);
+    }
+    activeCardId = beat.id;
+    if (beat.audioFile) {
+      audio.src = beat.audioFile;
+      audio.load();
+      audio.play().catch(() => {});
+      if (typeof gtag === 'function') {
+        gtag('event', 'beat_preview_play', { beat_id: beat.id, beat_title: beat.title });
+      }
+    }
+    showCardControls(beat.id);
+    setCardPlayState(beat.id, true);
+    updateNowPlaying(beat);
+    if (modalIsOpen && currentBeat && String(currentBeat.id) === String(beat.id)) {
+      setModalPlayState(true);
+    }
+  }
+
+  function playerTogglePlay() {
+    if (!activeCardId) {
+      // Nothing loaded — start with the first beat in the current store view
+      const order = getPlaybackOrder();
+      const first = order.length ? beatsData.find(b => String(b.id) === order[0]) : null;
+      if (first) playBeatFromBar(first);
+      return;
+    }
+    if (audio.paused) audio.play().catch(() => {});
+    else audio.pause();
+  }
+
+  function playerNavigate(dir) {
+    const order = getPlaybackOrder();
+    if (!order.length) return;
+    if (playerShuffleMode && dir === 1) return playerRandomNext();
+    let idx = activeCardId ? order.indexOf(String(activeCardId)) : -1;
+    if (idx === -1) idx = 0;
+    const nextId = order[(idx + dir + order.length) % order.length];
+    const beat = beatsData.find(b => String(b.id) === nextId);
+    if (beat) playBeatFromBar(beat);
+  }
+
+  function playerRandomNext() {
+    const order = getPlaybackOrder();
+    if (!order.length) return;
+    let pool = order.filter(id => id !== String(activeCardId));
+    if (!pool.length) pool = order;
+    const id = pool[Math.floor(Math.random() * pool.length)];
+    const beat = beatsData.find(b => String(b.id) === id);
+    if (beat) playBeatFromBar(beat);
+  }
+
+  function playerToggleShuffle() {
+    playerShuffleMode = !playerShuffleMode;
+    document.getElementById('playerShuffleBtn').classList.toggle('active', playerShuffleMode);
+  }
+
+  function playerToggleRepeat() {
+    playerRepeatMode = (playerRepeatMode + 1) % 3;
+    document.getElementById('playerRepeatBtn').classList.toggle('active', playerRepeatMode > 0);
+    document.getElementById('playerRepeatOne').style.display = playerRepeatMode === 2 ? 'flex' : 'none';
+  }
+
+  function openCurrentInModal() {
+    const beat = getActiveBeat();
+    if (beat) openModal(beat);
+  }
+
+  function playerClose() {
+    audio.pause();
+    audio.currentTime = 0;
+    if (activeCardId) {
+      setCardPlayState(activeCardId, false);
+      hideCardControls(activeCardId);
+      resetCardProgress(activeCardId);
+    }
+    activeCardId = null;
+    playerBar.classList.remove('visible');
+    document.body.classList.remove('has-player');
+  }
+
+  // ── Play / pause icon sync (covers every play & pause path) ────────────────
+  function setBarPlayState(playing) {
+    const playIcon  = document.querySelector('#playerPlayBtn .player-play-icon');
+    const pauseIcon = document.querySelector('#playerPlayBtn .player-pause-icon');
+    if (playIcon)  playIcon.style.display  = playing ? 'none' : 'block';
+    if (pauseIcon) pauseIcon.style.display = playing ? 'block' : 'none';
+    document.getElementById('playerPlayBtn').setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    playerBar.classList.toggle('playing', playing);
+  }
+
+  audio.addEventListener('play',  () => setBarPlayState(true));
+  audio.addEventListener('pause', () => setBarPlayState(false));
+
+  // ── Bar progress (rides the existing timeupdate / loadedmetadata events) ───
+  function updatePlayerProgress() {
+    const fill  = document.getElementById('playerSeekFill');
+    const thumb = document.getElementById('playerSeekThumb');
+    const elap  = document.getElementById('playerElapsed');
+    const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    if (fill)  fill.style.width = pct + '%';
+    if (thumb) thumb.style.left = pct + '%';
+    if (elap)  elap.textContent = formatTime(audio.currentTime);
+  }
+  audio.addEventListener('timeupdate', updatePlayerProgress);
+  audio.addEventListener('loadedmetadata', () => {
+    document.getElementById('playerDuration').textContent = formatTime(audio.duration);
+  });
+
+  // ── Auto-advance / repeat when a track finishes ────────────────────────────
+  audio.addEventListener('ended', () => {
+    if (playerRepeatMode === 2) {          // repeat one
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+      return;
+    }
+    if (playerShuffleMode) { playerRandomNext(); return; }
+
+    const order = getPlaybackOrder();
+    const idx = activeCardId ? order.indexOf(String(activeCardId)) : -1;
+    const atEnd = idx === order.length - 1;
+    if (idx !== -1 && (!atEnd || playerRepeatMode === 1)) {
+      playerNavigate(1);                    // continue through the list
+      return;
+    }
+    // End of list with repeat off — reset the bar to the start
+    updatePlayerProgress();
+  });
+
+  // ── Seek bar drag-to-scrub ─────────────────────────────────────────────────
+  (function setupPlayerSeek() {
+    const seek = document.getElementById('playerSeek');
+    let dragging = false;
+    function apply(clientX) {
+      if (!audio.duration) return;
+      const rect = seek.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      audio.currentTime = pct * audio.duration;
+      updatePlayerProgress();
+    }
+    seek.addEventListener('mousedown',  e => { dragging = true; apply(e.clientX); e.preventDefault(); });
+    seek.addEventListener('touchstart', e => { dragging = true; apply(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('mousemove', e => { if (dragging) apply(e.clientX); });
+    document.addEventListener('touchmove', e => { if (dragging) apply(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('mouseup',  () => { dragging = false; });
+    document.addEventListener('touchend', () => { dragging = false; });
+  })();
+
+  // ── Volume slider ──────────────────────────────────────────────────────────
+  (function setupVolume() {
+    const vol = document.getElementById('playerVol');
+    let dragging = false;
+    function apply(clientX) {
+      const rect = vol.getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      audio.volume = pct;
+      audio.muted = pct === 0;
+      if (pct > 0) lastVolume = pct;
+      localStorage.setItem(VOLUME_KEY, String(pct));
+      updateVolumeUI();
+    }
+    vol.addEventListener('mousedown',  e => { dragging = true; apply(e.clientX); e.preventDefault(); });
+    vol.addEventListener('touchstart', e => { dragging = true; apply(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('mousemove', e => { if (dragging) apply(e.clientX); });
+    document.addEventListener('touchmove', e => { if (dragging) apply(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('mouseup',  () => { dragging = false; });
+    document.addEventListener('touchend', () => { dragging = false; });
+  })();
+
+  function playerToggleMute() {
+    if (audio.muted || audio.volume === 0) {
+      audio.muted = false;
+      audio.volume = lastVolume > 0 ? lastVolume : 1;
+    } else {
+      lastVolume = audio.volume;
+      audio.muted = true;
+    }
+    localStorage.setItem(VOLUME_KEY, String(audio.muted ? 0 : audio.volume));
+    updateVolumeUI();
+  }
+
+  function updateVolumeUI() {
+    const level = audio.muted ? 0 : audio.volume;
+    const fill  = document.getElementById('playerVolFill');
+    const thumb = document.getElementById('playerVolThumb');
+    if (fill)  fill.style.width = (level * 100) + '%';
+    if (thumb) thumb.style.left = (level * 100) + '%';
+    const muted = level === 0;
+    const volIcon  = document.querySelector('#playerVolBtn .player-vol-icon');
+    const muteIcon = document.querySelector('#playerVolBtn .player-mute-icon');
+    if (volIcon)  volIcon.style.display  = muted ? 'none' : 'block';
+    if (muteIcon) muteIcon.style.display = muted ? 'block' : 'none';
+  }
+
+  // Keyboard: space toggles play/pause when not typing in a field
+  document.addEventListener('keydown', e => {
+    if (e.code !== 'Space') return;
+    const t = e.target;
+    const typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+    const anyModalOpen = document.querySelector('.modal-overlay.active, .cart-overlay.active, .license-modal-overlay.active');
+    if (typing || anyModalOpen || !playerBar.classList.contains('visible')) return;
+    e.preventDefault();
+    playerTogglePlay();
+  });
+
+  // ─── MODAL ────────────────────────────────────────────────────────────────
+  let currentBeat = null;
+  let currentLicense = 'basic';
+  let currentKitItem = null;
+
+  function openModal(beat) {
+    const isContinuing = activeCardId === beat.id && !audio.paused;
+    const savedTime    = (activeCardId === beat.id) ? audio.currentTime : 0;
+
+    currentBeat = beat;
+    currentLicense = 'basic';
+    modalIsOpen = true;
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'view_item', { items: [{ item_id: beat.id, item_name: beat.title }] });
+    }
+
+    // Cover art
+    const art = document.getElementById('modalCoverArt');
+    if (beat.imgFile) {
+      art.style.backgroundImage = `url(${beat.imgFile})`;
+      art.style.backgroundSize = 'cover';
+      art.style.backgroundPosition = 'center';
+    } else {
+      art.style.background = beat.imgGradient;
+    }
+
+    // Info
+    document.getElementById('modalTitle').textContent = beat.title;
+    document.getElementById('modalBpmKey').innerHTML = `${beat.bpm} BPM  /  <span class="beat-key">${beat.key}</span>`;
+
+    // Tags (featured star + NEW lead the row, styled yellow, before the regular genre tags)
+    const tagsEl = document.getElementById('modalTags');
+    const isNewBeat = beat.dateAdded && (Date.now() - new Date(beat.dateAdded).getTime()) / 86400000 <= 30;
+    let tagsHTML = '';
+    if (beat.featured) tagsHTML += `<span class="modal-tag modal-tag--featured"><svg viewBox="0 0 24 24" width="11" height="11"><polygon points="12,2 15.4,7.3 21.5,8.9 17.5,13.8 17.9,20.1 12,17.8 6.1,20.1 6.5,13.8 2.5,8.9 8.6,7.3" fill="#111111"/></svg>Featured</span>`;
+    if (isNewBeat) tagsHTML += `<span class="modal-tag modal-tag--new">NEW</span>`;
+    tagsHTML += beat.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+    tagsEl.innerHTML = tagsHTML;
+
+    // FREE DOWNLOAD banner — own line below the regular tags, when eligible
+    const freeTagEl = document.getElementById('modalFreeTagRow');
+    freeTagEl.innerHTML = freeEligible(beat)
+      ? `<span class="modal-tag modal-tag--free" onclick="selectFreeOption()">FREE DOWNLOAD AVAILABLE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></span>`
+      : '';
+
+    // License buttons (BASIC default; FREE tab added when eligible)
+    buildLicenseGrid(beat);
+    resetFreePanel();
+    exitFreeMode();
+
+    // Audio — if same beat is already loaded, continue from current position
+    if (activeCardId === beat.id) {
+      // Hide the inline card player (modal takes over display)
+      hideCardControls(beat.id);
+      // Sync modal progress bar to current time
+      if (audio.duration) {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        const mFill  = document.getElementById('progressFill');
+        const mThumb = document.getElementById('progressThumb');
+        const mElap  = document.getElementById('timeElapsed');
+        const mDur   = document.getElementById('timeDuration');
+        if (mFill)  mFill.style.width  = pct + '%';
+        if (mThumb) mThumb.style.left  = pct + '%';
+        if (mElap)  mElap.textContent  = formatTime(audio.currentTime);
+        if (mDur)   mDur.textContent   = formatTime(audio.duration);
+      }
+      setModalPlayState(!audio.paused);
+    } else {
+      // Different beat — stop previous card audio
+      if (activeCardId) {
+        audio.pause();
+        setCardPlayState(activeCardId, false);
+        hideCardControls(activeCardId);
+        resetCardProgress(activeCardId);
+      }
+      activeCardId = beat.id;
+      if (beat.audioFile) {
+        audio.src = beat.audioFile;
+        audio.load();
+      } else {
+        audio.src = '';
+      }
+      setModalPlayState(false);
+      // Reset modal progress
+      const mFill  = document.getElementById('progressFill');
+      const mThumb = document.getElementById('progressThumb');
+      const mElap  = document.getElementById('timeElapsed');
+      const mDur   = document.getElementById('timeDuration');
+      if (mFill)  mFill.style.width  = '0%';
+      if (mThumb) mThumb.style.left  = '0%';
+      if (mElap)  mElap.textContent  = '0:00';
+      if (mDur)   mDur.textContent   = '0:00';
+    }
+
+    // Surface the beat in the persistent player bar
+    updateNowPlaying(beat);
+    setBarPlayState(!audio.paused);
+
+    // URL
+    history.pushState({ beatId: beat.id }, '', `?beat=${beat.id}`);
+
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  const LICENSE_DETAILS = {
+    basic: {
+      format: 'MP3 (Tagged)',
+      bullets: ['Tagged MP3 file', 'Up to 50,000 streams', 'Up to 2,000 copies', '1 non-monetized video', 'Non-profit performances', 'Non-exclusive']
+    },
+    premium: {
+      format: 'WAV + MP3 (Untagged)',
+      bullets: ['Untagged WAV + MP3', 'Up to 100,000 streams', 'Up to 3,000 copies', '1 monetized video', 'For-profit performances', 'Non-exclusive']
+    },
+    stems: {
+      format: 'WAV + MP3 + Track Stems',
+      bullets: ['Untagged WAV + MP3', 'Full track stems included', 'Up to 500,000 streams', 'Up to 10,000 copies', 'Unlimited music videos', 'For-profit performances', 'Non-exclusive']
+    },
+    unlimited: {
+      format: 'WAV + MP3 + Stems',
+      bullets: ['Untagged WAV + MP3 + stems', 'Unlimited streams', 'Unlimited distribution', 'Unlimited music videos', 'For-profit + radio', 'Non-exclusive']
+    },
+    exclusive: {
+      format: 'All Files + Sole Rights',
+      bullets: ['WAV + MP3 + stems', 'Sole usage rights', 'Beat removed from store', 'Unlimited everything', 'Full commercial rights', 'Contact to discuss']
+    }
+  };
+
+  function buildLicenseGrid(beat) {
+    const grid = document.getElementById('modalLicenseGrid');
+    const licenseKeys = ['basic', 'premium', 'stems', 'unlimited', 'exclusive'];
+    // FREE is the leftmost tab when eligible — a distinct ACTION, never auto-selected.
+    let html = '';
+    if (freeEligible(beat)) {
+      html += `<button
+        class="modal-license-btn modal-license-btn--free${currentLicense === 'free' ? ' active' : ''}"
+        data-license="free"
+        onclick="selectFreeOption()"
+      >Free</button>`;
+    }
+    html += licenseKeys.map(key => {
+      const lic = beat.licenses[key];
+      if (!lic) return '';
+      return `<button
+        class="modal-license-btn${key === currentLicense ? ' active' : ''}"
+        data-license="${key}"
+        onclick="selectLicense('${key}')"
+      >${lic.label}</button>`;
+    }).join('');
+    grid.innerHTML = html;
+    updateBuyBtn();
+  }
+
+  function selectLicense(key) {
+    currentLicense = key;
+    exitFreeMode();
+    document.querySelectorAll('.modal-license-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.license === key);
+    });
+    updateBuyBtn();
+    if (typeof gtag === 'function' && currentBeat) {
+      const lic = currentBeat.licenses[key];
+      gtag('event', 'select_item', { beat_id: currentBeat.id, tier: lic ? lic.label : key });
+    }
+  }
+
+  // ── FREE download mode ────────────────────────────────────────────────────
+  // Kit "Free Beat Download" form (data-uid bee6598205) — separate list from the Loops List signup.
+  const KIT_FREE_DOWNLOAD_ENDPOINT = 'https://app.kit.com/forms/9627350/subscriptions';
+  // Virtual tag (not stored on beats) — shown first, filterable, drives "FREE STUFF".
+  const FREE_TAG = 'FREE DOWNLOAD';
+
+  function freeEligible(beat) {
+    // Free file defaults to the (tagged) preview; freeFile is an optional override.
+    return !!(beat && beat.freeDownload && (beat.freeFile || beat.audioFile));
+  }
+
+  function freeFileFor(beat) {
+    return beat.freeFile || beat.audioFile;
+  }
+
+  // A beat's tags with FREE DOWNLOAD prepended when eligible.
+  function beatTagsWithFree(beat) {
+    return freeEligible(beat) ? [FREE_TAG, ...beat.tags] : beat.tags;
+  }
+
+  function beatTagSpan(t) {
+    return t === FREE_TAG
+      ? `<span class="beat-tag beat-tag--free">${t}</span>`
+      : `<span class="beat-tag">${t}</span>`;
+  }
+
+  // "FREE STUFF" nav → filter the beat store to free beats and scroll to it.
+  function showFreeBeats() {
+    selectedBeatTags = [FREE_TAG];
+    renderFilters('beatFilters', beatTagList, selectedBeatTags, 'beat');
+    renderList('beatList', beatsData, selectedBeatTags, 'beat');
+    const beatsSection = document.getElementById('beats');
+    if (beatsSection) beatsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function selectFreeOption() {
+    currentLicense = 'free';
+    document.querySelectorAll('.modal-license-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.license === 'free');
+    });
+    enterFreeMode();
+    if (typeof gtag === 'function' && currentBeat) {
+      gtag('event', 'select_item', { beat_id: currentBeat.id, tier: 'Free' });
+    }
+  }
+
+  // Swap the panel out of price/cart mode and into free-download mode.
+  function enterFreeMode() {
+    const panel = document.getElementById('modalFreePanel');
+    const details = document.getElementById('modalLicenseDetails');
+    const buyRow = document.getElementById('modalBuyRow');
+    const confirm = document.getElementById('modalAddConfirm');
+    if (details) details.hidden = true;
+    if (buyRow) buyRow.hidden = true;
+    if (confirm) { confirm.textContent = ''; confirm.classList.remove('visible'); }
+    if (panel) panel.hidden = false;
+  }
+
+  function exitFreeMode() {
+    const panel = document.getElementById('modalFreePanel');
+    const details = document.getElementById('modalLicenseDetails');
+    const buyRow = document.getElementById('modalBuyRow');
+    if (panel) panel.hidden = true;
+    if (details) details.hidden = false;
+    if (buyRow) buyRow.hidden = false;
+  }
+
+  function resetFreePanel() {
+    const form = document.getElementById('modalFreeForm');
+    const success = document.getElementById('modalFreeSuccess');
+    const email = document.getElementById('freeEmail');
+    const agree = document.getElementById('freeAgree');
+    const status = document.getElementById('freeStatus');
+    const btn = document.getElementById('freeDownloadBtn');
+    if (form) form.hidden = false;
+    if (success) success.hidden = true;
+    if (email) email.value = '';
+    if (agree) agree.checked = false;
+    if (status) { status.textContent = ''; status.className = 'modal-free-status'; }
+    if (btn) { btn.disabled = true; btn.textContent = 'Download Free'; }
+  }
+
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  // Button enables only when email is valid AND the terms box is checked.
+  function validateFreeForm() {
+    const email = (document.getElementById('freeEmail').value || '').trim();
+    const agree = document.getElementById('freeAgree').checked;
+    const btn = document.getElementById('freeDownloadBtn');
+    if (btn) btn.disabled = !(isValidEmail(email) && agree);
+  }
+
+  function triggerFreeDownload(beat) {
+    const src = freeFileFor(beat);
+    if (!src) return;
+    const a = document.createElement('a');
+    a.href = src;
+    a.download = `[@prod.essential] - ${beat.bpm} - ${beat.key} - ${beat.title} [FREE FOR NON-PROFIT].mp3`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  function showFreeSuccess() {
+    const form = document.getElementById('modalFreeForm');
+    const success = document.getElementById('modalFreeSuccess');
+    if (form) form.hidden = true;
+    if (success) success.hidden = false;
+  }
+
+  // Email gate → Kit (native form endpoint) → instant download on success.
+  async function submitFreeDownload(e) {
+    e.preventDefault();
+    if (!currentBeat || !freeEligible(currentBeat)) return;
+    const email = (document.getElementById('freeEmail').value || '').trim();
+    const agree = document.getElementById('freeAgree').checked;
+    if (!isValidEmail(email) || !agree) return;
+
+    const btn = document.getElementById('freeDownloadBtn');
+    const status = document.getElementById('freeStatus');
+    const prevText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.textContent = '';
+    status.className = 'modal-free-status';
+
+    try {
+      const fd = new FormData();
+      fd.append('email_address', email);
+      const res = await fetch(KIT_FREE_DOWNLOAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      });
+      if (!res.ok) throw new Error('Subscribe failed');
+      // Success — unlock the file immediately and show the success state.
+      triggerFreeDownload(currentBeat);
+      showFreeSuccess();
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { beat_id: currentBeat.id, beat_title: currentBeat.title });
+      }
+    } catch (err) {
+      // Network/endpoint failure — keep the email so the user can retry.
+      status.textContent = 'Something went wrong — try again.';
+      status.classList.add('modal-free-status--error');
+      btn.textContent = prevText;
+      btn.disabled = false;
+    }
+  }
+
+  // Post-download upsell → jump to the Premium tab for this beat (Basic is tagged too).
+  function goToPremiumFromFree() {
+    selectLicense('premium');
+    const buyRow = document.getElementById('modalBuyRow');
+    if (buyRow) buyRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function setLicenseDetails() {
+    const details = LICENSE_DETAILS[currentLicense];
+    const detailsEl = document.getElementById('modalLicenseDetails');
+    if (details && detailsEl) {
+      detailsEl.innerHTML = `
+        <span class="modal-license-format">${details.format}</span>
+        <ul class="modal-license-bullets">
+          ${details.bullets.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+        <a href="#" class="modal-read-license" onclick="openLicenseModal('${currentLicense}'); return false;">Read Full License &rarr;</a>
+      `;
+    }
+  }
+
+  // Drives the two modal buttons (Add to Cart + Buy Now) for the selected tier.
+  function updateBuyBtn() {
+    if (!currentBeat) return;
+    const lic = currentBeat.licenses[currentLicense];
+    const priceEl = document.getElementById('modalPrice');
+    const actions = document.getElementById('modalBuyActions');
+    const addBtn  = document.getElementById('modalAddBtn');
+    const buyBtn  = document.getElementById('modalBuyBtn');
+    const confirm = document.getElementById('modalAddConfirm');
+
+    // Clear any prior "Added" confirmation when the tier/beat changes
+    if (confirm) { confirm.textContent = ''; confirm.classList.remove('visible'); }
+    const viewCartBtn = document.getElementById('modalViewCartBtn');
+    if (viewCartBtn) viewCartBtn.hidden = true;
+
+    priceEl.textContent = (lic.price === null) ? 'Negotiable' : '$' + lic.price;
+
+    // Reset both buttons to a clean default state
+    actions.classList.remove('modal-buy-actions--single');
+    addBtn.hidden = false; buyBtn.hidden = false;
+    addBtn.disabled = false; buyBtn.disabled = false;
+    addBtn.classList.remove('modal-btn--disabled');
+    buyBtn.classList.remove('modal-btn--disabled');
+
+    const state = lic._state;
+
+    if (state === 'contact') {
+      // Exclusive — collapse to a single "Get In Touch" contact action (yellow)
+      actions.classList.add('modal-buy-actions--single');
+      buyBtn.hidden = true;
+      addBtn.textContent = 'Get In Touch';
+      addBtn.onclick = function() { window.location.href = CONTACT_EMAIL; };
+      setLicenseDetails();
+      return;
+    }
+
+    if (state === 'unavailable' || state === 'misconfigured') {
+      // Tier not set up — both buttons disabled
+      addBtn.textContent = 'Coming Soon';
+      addBtn.disabled = true; addBtn.classList.add('modal-btn--disabled'); addBtn.onclick = null;
+      buyBtn.textContent = 'Unavailable';
+      buyBtn.disabled = true; buyBtn.classList.add('modal-btn--disabled'); buyBtn.onclick = null;
+      setLicenseDetails();
+      return;
+    }
+
+    // addable / novariant — both buttons active
+    const inCart = cart.find(it => it.beatId === currentBeat.id && it.tierKey === currentLicense);
+    addBtn.textContent = inCart ? 'In Cart ✓' : 'Add to Cart';
+    addBtn.onclick = addCurrentTierToCart;
+    buyBtn.textContent = 'Buy Now';
+    buyBtn.onclick = buyNowCurrentTier;
+    setLicenseDetails();
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    modalIsOpen = false;
+
+    // If audio is still playing, restore the inline card controls
+    if (activeCardId && !audio.paused) {
+      showCardControls(activeCardId);
+      setCardPlayState(activeCardId, true);
+    } else if (activeCardId) {
+      // Was paused — stop fully and clean up
+      stopAudio();
+      hideCardControls(activeCardId);
+      resetCardProgress(activeCardId);
+      activeCardId = null;
+    }
+
+    currentBeat = null;
+    history.pushState({}, '', window.location.pathname);
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  function copyShareLink() {
+    if (!currentBeat) return;
+    const url = `${location.origin}${location.pathname}?beat=${currentBeat.id}`;
+    navigator.clipboard.writeText(url).then(() => {
+      const label = document.getElementById('shareBtnLabel');
+      label.textContent = 'Copied!';
+      setTimeout(() => label.textContent = 'Copy Link', 2000);
+    });
+  }
+
+  // ─── KIT MODAL ────────────────────────────────────────────────────────────
+  function openKitModal(kit) {
+    currentKitItem = kit;
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'view_item', { items: [{ item_id: kit.id, item_name: kit.title }] });
+    }
+    const art = document.getElementById('kitModalCoverArt');
+    if (kit.imgFile) {
+      art.style.backgroundImage = `url(${kit.imgFile})`;
+      art.style.backgroundSize = 'cover';
+      art.style.backgroundPosition = 'center';
+    } else {
+      art.style.background = kit.imgGradient;
+    }
+    document.getElementById('kitModalTitle').textContent = kit.title;
+    document.getElementById('kitModalType').textContent = kit.type;
+    const kitAuthorEl = document.getElementById('kitModalAuthor');
+    if (kitAuthorEl) {
+      if (kit.author) { kitAuthorEl.textContent = kit.author; kitAuthorEl.hidden = false; }
+      else { kitAuthorEl.textContent = ''; kitAuthorEl.hidden = true; }
+    }
+    const kitDescEl = document.getElementById('kitModalDesc');
+    if (kit.descriptionHtml) {
+      kitDescEl.innerHTML = kit.descriptionHtml;
+    } else {
+      kitDescEl.textContent = kit.description || '';
+    }
+    document.getElementById('kitModalPrice').textContent = '$' + kit.price;
+    updateKitBuyBtns(kit);
+    history.pushState({ kitId: kit.id }, '', `?kit=${kit.id}`);
+    document.getElementById('kitModalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function navigateKit(dir) {
+    if (!currentKitItem) return;
+
+    // Kits currently visible in the store (respects active type filter + sort)
+    const filteredIds = [...document.querySelectorAll('#kitList .beat-card')].map(el => el.dataset.id);
+    const filteredSet = new Set(filteredIds);
+
+    // Remaining kits not in the filtered view, sorted by date (newest first)
+    const overflow = [...kitsData]
+      .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+      .map(k => String(k.id))
+      .filter(id => !filteredSet.has(id));
+
+    // Navigate filtered kits first, then spill into the rest by date
+    const list = [...filteredIds, ...overflow];
+
+    const idx = list.indexOf(String(currentKitItem.id));
+    if (idx === -1) return;
+
+    const nextIdx = (idx + dir + list.length) % list.length;
+    const kit = kitsData.find(k => String(k.id) === list[nextIdx]);
+    if (kit) openKitModal(kit);
+  }
+
+  function closeKitModal() {
+    document.getElementById('kitModalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    currentKitItem = null;
+    history.pushState({}, '', window.location.pathname);
+  }
+
+  function handleKitOverlayClick(e) {
+    if (e.target === document.getElementById('kitModalOverlay')) closeKitModal();
+  }
+
+  function copyKitShareLink() {
+    if (!currentKitItem) return;
+    const url = `${location.origin}${location.pathname}?kit=${currentKitItem.id}`;
+    navigator.clipboard.writeText(url).then(() => {
+      const label = document.getElementById('kitShareBtnLabel');
+      label.textContent = 'Copied!';
+      setTimeout(() => label.textContent = 'Copy Link', 2000);
+    });
+  }
+
+  // Keyboard close
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('cartOverlay').classList.contains('active')) {
+        closeCart();
+      } else if (document.getElementById('licenseModalOverlay').classList.contains('active')) {
+        closeLicenseModal();
+      } else {
+        closeModal();
+        closeKitModal();
+      }
+    }
+  });
+
+  function navigateBeat(dir) {
+    if (!currentBeat) return;
+
+    // Beats currently visible in the store (respects active filters + sort)
+    const filteredIds = [...document.querySelectorAll('#beatList .beat-card')].map(el => el.dataset.id);
+    const filteredSet = new Set(filteredIds);
+
+    // Remaining beats not in the filtered view, sorted by date (newest first)
+    const overflow = [...beatsData]
+      .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+      .map(b => String(b.id))
+      .filter(id => !filteredSet.has(id));
+
+    // Navigate filtered beats first, then spill into the rest by date
+    const list = [...filteredIds, ...overflow];
+
+    const idx = list.indexOf(String(currentBeat.id));
+    if (idx === -1) return;
+
+    const nextIdx = (idx + dir + list.length) % list.length;
+    const beat = beatsData.find(b => String(b.id) === list[nextIdx]);
+    if (beat) openModal(beat);
+  }
+
+  // ─── CUSTOM SORT DROPDOWN ─────────────────────────────────────────────────
+  let currentSort = 'newest';
+  let currentKitSort = 'newest';
+  let beatShuffleOrder = [];   // randomized list of beat ids when sort === 'shuffle'
+
+  // Fisher–Yates shuffle of the beat store. Each click produces a fresh order.
+  function shuffleBeats() {
+    const ids = beatsData.map(b => String(b.id));
+    for (let i = ids.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [ids[i], ids[j]] = [ids[j], ids[i]];
+    }
+    beatShuffleOrder = ids;
+    currentSort = 'shuffle';
+
+    // Reflect state in the sort dropdown label + active item
+    document.getElementById('sortLabel').textContent = 'Shuffled';
+    document.querySelectorAll('#sortList .custom-select-item').forEach(i => i.classList.remove('active'));
+    document.getElementById('customSort').classList.remove('open');
+
+    const btn = document.getElementById('beatShuffleBtn');
+    btn.classList.add('active');
+    btn.classList.remove('spin');
+    void btn.offsetWidth;       // restart the spin animation
+    btn.classList.add('spin');
+
+    renderList('beatList', beatsData, selectedBeatTags, 'beat');
+  }
+
+  function toggleSortDropdown(e) {
+    e.stopPropagation();
+    const wrap = document.getElementById('customSort');
+    wrap.classList.toggle('open');
+    document.getElementById('customKitSort').classList.remove('open');
+  }
+
+  function toggleKitSortDropdown(e) {
+    e.stopPropagation();
+    const wrap = document.getElementById('customKitSort');
+    wrap.classList.toggle('open');
+    document.getElementById('customSort').classList.remove('open');
+  }
+
+  function selectSort(el) {
+    currentSort = el.dataset.value;
+    document.getElementById('sortLabel').textContent = el.textContent;
+    document.querySelectorAll('#sortList .custom-select-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('customSort').classList.remove('open');
+    document.getElementById('beatShuffleBtn').classList.remove('active'); // leaving shuffle mode
+    renderList('beatList', beatsData, selectedBeatTags, 'beat');
+  }
+
+  function selectKitSort(el) {
+    currentKitSort = el.dataset.value;
+    document.getElementById('kitSortLabel').textContent = el.textContent;
+    document.querySelectorAll('#kitSortList .custom-select-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('customKitSort').classList.remove('open');
+    renderList('kitList', kitsData, selectedKitTags, 'kit');
+  }
+
+  document.addEventListener('click', () => {
+    document.getElementById('customSort').classList.remove('open');
+    document.getElementById('customKitSort').classList.remove('open');
+  });
+
+  // ─── DATA ─────────────────────────────────────────────────────────────────
+  let beatsData = [];
+  let kitsData = [];
+
+  // ─── STATE ────────────────────────────────────────────────────────────────
+  let beatTagList = ['All'];
+  let kitTagList = ['All'];
+  let selectedBeatTags = ['All'];
+  let selectedKitTags = ['All'];
+  let beatFilterMode = 'any';
+  let beatSearchQuery = '';
+  let kitSearchQuery = '';
+
+  // ─── SEARCH LOGIC ──────────────────────────────────────────────────────────
+  // Search narrows the same result set as the tag filters (search AND filters),
+  // then the active sort is applied on top.
+  function handleSearch(type) {
+    if (type === 'beat') {
+      beatSearchQuery = document.getElementById('beatSearch').value;
+      document.getElementById('beatSearchClear').hidden = beatSearchQuery.trim() === '';
+      renderList('beatList', beatsData, selectedBeatTags, 'beat');
+    } else {
+      kitSearchQuery = document.getElementById('kitSearch').value;
+      document.getElementById('kitSearchClear').hidden = kitSearchQuery.trim() === '';
+      renderList('kitList', kitsData, selectedKitTags, 'kit');
+    }
+  }
+
+  function clearSearch(type) {
+    if (type === 'beat') {
+      beatSearchQuery = '';
+      const input = document.getElementById('beatSearch');
+      input.value = '';
+      document.getElementById('beatSearchClear').hidden = true;
+      input.focus();
+      renderList('beatList', beatsData, selectedBeatTags, 'beat');
+    } else {
+      kitSearchQuery = '';
+      const input = document.getElementById('kitSearch');
+      input.value = '';
+      document.getElementById('kitSearchClear').hidden = true;
+      input.focus();
+      renderList('kitList', kitsData, selectedKitTags, 'kit');
+    }
+  }
+
+  // Match a single item against a free-text query (case-insensitive).
+  function matchesSearch(item, query, type) {
+    const q = query.trim().toLowerCase();
+    if (!q) return true;
+    if (type === 'beat') {
+      return item.title.toLowerCase().includes(q)
+        || (item.tags || []).some(t => t.toLowerCase().includes(q))
+        || String(item.bpm).includes(q)
+        || (item.key || '').toLowerCase().includes(q);
+    }
+    return item.title.toLowerCase().includes(q)
+      || (item.type || '').toLowerCase().includes(q);
+  }
+
+  // ─── FILTER LOGIC ──────────────────────────────────────────────────────────
+  function setFilterMode(mode) {
+    beatFilterMode = mode;
+    document.getElementById('modeAny').classList.toggle('active', mode === 'any');
+    document.getElementById('modeAll').classList.toggle('active', mode === 'all');
+    renderList('beatList', beatsData, selectedBeatTags, 'beat');
+  }
+
+  function handleTagClick(tag, type) {
+    if (type === 'beat') {
+      if (tag === 'All') {
+        selectedBeatTags = ['All'];
+      } else {
+        selectedBeatTags = selectedBeatTags.filter(t => t !== 'All');
+        if (selectedBeatTags.includes(tag)) {
+          selectedBeatTags = selectedBeatTags.filter(t => t !== tag);
+          if (selectedBeatTags.length === 0) selectedBeatTags = ['All'];
+        } else {
+          selectedBeatTags.push(tag);
+          if (selectedBeatTags.length > 5) selectedBeatTags.shift();
+        }
+      }
+      renderFilters('beatFilters', beatTagList, selectedBeatTags, 'beat');
+      renderList('beatList', beatsData, selectedBeatTags, 'beat');
+    } else {
+      selectedKitTags = [tag];
+      renderFilters('kitFilters', kitTagList, selectedKitTags, 'kit');
+      renderList('kitList', kitsData, selectedKitTags, 'kit');
+    }
+  }
+
+  function renderFilters(containerId, tagList, activeTags, type) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    tagList.forEach(tag => {
+      const btn = document.createElement('button');
+      btn.className = 'tag-filter-btn'
+        + (tag === FREE_TAG ? ' tag-filter-btn--free' : '')
+        + (activeTags.includes(tag) ? ' active' : '');
+      btn.textContent = tag;
+      btn.onclick = () => handleTagClick(tag, type);
+      container.appendChild(btn);
+    });
+  }
+
+  function renderList(containerId, data, activeTags, type) {
+    const container = document.getElementById(containerId);
+    const countEl = document.getElementById(type + 'Count');
+    let filtered;
+    if (activeTags.includes('All')) {
+      filtered = [...data];
+    } else {
+      if (type === 'beat') {
+        filtered = data.filter(item => {
+          const itemTags = beatTagsWithFree(item);
+          if (beatFilterMode === 'any') return activeTags.some(t => itemTags.includes(t));
+          else return activeTags.every(t => itemTags.includes(t));
+        });
+      } else {
+        filtered = data.filter(item => activeTags.includes(item.type));
+      }
+    }
+
+    // Narrow by the active search query (combines with tag filters)
+    const searchQuery = type === 'beat' ? beatSearchQuery : kitSearchQuery;
+    if (searchQuery.trim()) {
+      filtered = filtered.filter(item => matchesSearch(item, searchQuery, type));
+    }
+
+    if (type === 'beat') {
+      if (currentSort === 'shuffle') {
+        // Order by the current random shuffle order; any beat missing from the
+        // order map (e.g. just added) falls to the end.
+        filtered.sort((a, b) => {
+          const ia = beatShuffleOrder.indexOf(String(a.id));
+          const ib = beatShuffleOrder.indexOf(String(b.id));
+          return (ia === -1 ? Infinity : ia) - (ib === -1 ? Infinity : ib);
+        });
+      } else {
+        filtered.sort((a, b) => {
+          switch (currentSort) {
+            case 'oldest': return new Date(a.dateAdded) - new Date(b.dateAdded);
+            case 'bpm_high': return b.bpm - a.bpm;
+            case 'bpm_low': return a.bpm - b.bpm;
+            case 'name_az': return a.title.localeCompare(b.title);
+            case 'name_za': return b.title.localeCompare(a.title);
+            default: return new Date(b.dateAdded) - new Date(a.dateAdded);
+          }
+        });
+      }
+    } else {
+      filtered.sort((a, b) => {
+        switch (currentKitSort) {
+          case 'oldest': return new Date(a.dateAdded) - new Date(b.dateAdded);
+          case 'price_low': return a.price - b.price;
+          case 'price_high': return b.price - a.price;
+          case 'name_az': return a.title.localeCompare(b.title);
+          case 'name_za': return b.title.localeCompare(a.title);
+          default: return new Date(b.dateAdded) - new Date(a.dateAdded);
+        }
+      });
+    }
+
+    countEl.textContent = `${filtered.length} item${filtered.length !== 1 ? 's' : ''}`;
+
+    if (filtered.length === 0) {
+      const q = (type === 'beat' ? beatSearchQuery : kitSearchQuery).trim();
+      const msg = q ? `No results for "${q.replace(/</g, '&lt;')}"` : 'No items match criteria';
+      container.innerHTML = `<div class="no-results">${msg}</div>`;
+      // Stop playback if the active beat is gone from store AND not in featured
+      if (type === 'beat' && activeCardId) {
+        const inFeatured = !!document.querySelector(`#heroFeatured .beat-card[data-id="${activeCardId}"]`);
+        if (!inFeatured) {
+          audio.pause();
+          audio.currentTime = 0;
+          setModalPlayState(false);
+          activeCardId = null;
+        }
+      }
+      return;
+    }
+
+    if (type === 'beat') {
+      container.innerHTML = filtered.map(item => {
+        const isNew = item.dateAdded && (Date.now() - new Date(item.dateAdded).getTime()) / 86400000 <= 30;
+        return `
+        <div class="beat-card${isInCart(item.id) ? ' in-cart' : ''}" data-id="${item.id}" onclick='openModal(${JSON.stringify(item)})'>
+          <div class="beat-card-main">
+            <div class="beat-cover${item.imgFile ? '' : ' no-img'}" style="${item.imgFile ? `background-image: url('${item.imgFile}'); background-size: cover; background-position: center;` : `background: ${item.imgGradient}`}">
+              <button class="card-play-btn" onclick='cardPlayClick(event, ${JSON.stringify(item)})' aria-label="Play preview">
+                <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+              </button>
+            </div>
+            <div class="beat-info">
+              <span class="beat-title-row">
+                <span class="beat-title">${item.title}</span>
+                <span class="cart-dot"></span>
+              </span>
+              <span class="beat-bpm-key">${item.bpm} BPM &middot; <span class="beat-key">${item.key}</span></span>
+              <div class="beat-tags">
+                ${isNew ? '<span class="beat-tag beat-tag--new">NEW</span>' : ''}${item.tags.map(beatTagSpan).join('')}
+              </div>
+            </div>
+            <div class="beat-price-wrap">
+              ${item.featured ? `<div class="beat-featured-badge"><svg viewBox="0 0 24 24" width="15" height="15"><polygon points="12,2 15.4,7.3 21.5,8.9 17.5,13.8 17.9,20.1 12,17.8 6.1,20.1 6.5,13.8 2.5,8.9 8.6,7.3" fill="#e8c832"/></svg></div>` : ''}
+              ${freeEligible(item) ? `
+                <div class="beat-price-free">
+                  <span class="beat-price-free-main">FREE DOWNLOAD<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></span>
+                  <span class="beat-price-free-sub">or from $${item.basePrice}</span>
+                </div>
+              ` : `<span class="beat-price">From $${item.basePrice}</span>`}
+            </div>
+          </div>
+          <div class="card-inline-player">
+            <div class="card-prog-bar">
+              <div class="card-prog-fill"></div>
+              <div class="card-prog-thumb"></div>
+            </div>
+            <div class="card-time-row">
+              <span class="card-time card-time-elapsed">0:00</span>
+              <span class="card-time card-time-dur">0:00</span>
+            </div>
+          </div>
+        </div>
+      `;
+      }).join('');
+
+      // After re-rendering, sync the active beat's state with the fresh DOM
+      if (activeCardId) {
+        const isInStore  = filtered.some(item => item.id === activeCardId);
+        const inFeatured = !!document.querySelector(`#heroFeatured .beat-card[data-id="${activeCardId}"]`);
+
+        if (!isInStore && !inFeatured) {
+          // Beat is no longer visible anywhere — stop playback
+          audio.pause();
+          audio.currentTime = 0;
+          setModalPlayState(false);
+          activeCardId = null;
+        } else if (isInStore) {
+          // Beat is (back) in the store list — restore its inline player on the fresh card
+          const storeCard = container.querySelector(`.beat-card[data-id="${activeCardId}"]`);
+          if (storeCard) {
+            const ctrl = storeCard.querySelector('.card-inline-player');
+            if (ctrl) {
+              ctrl.classList.add('visible');
+              if (audio.duration) {
+                const pct   = (audio.currentTime / audio.duration) * 100;
+                const fill  = ctrl.querySelector('.card-prog-fill');
+                const thumb = ctrl.querySelector('.card-prog-thumb');
+                const elap  = ctrl.querySelector('.card-time-elapsed');
+                const durEl = ctrl.querySelector('.card-time-dur');
+                if (fill)  fill.style.width = pct + '%';
+                if (thumb) thumb.style.left = pct + '%';
+                if (elap)  elap.textContent = formatTime(audio.currentTime);
+                if (durEl) durEl.textContent = formatTime(audio.duration);
+              }
+            }
+            const playBtn = storeCard.querySelector('.card-play-btn');
+            if (playBtn) {
+              playBtn.innerHTML = audio.paused
+                ? `<svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>`
+                : `<svg viewBox="0 0 24 24" fill="none" width="14" height="14"><rect x="5" y="3" width="4" height="18" fill="currentColor"/><rect x="15" y="3" width="4" height="18" fill="currentColor"/></svg>`;
+            }
+          }
+          // If only in featured, do nothing — featured section already shows it correctly
+        }
+      }
+    } else {
+      container.innerHTML = filtered.map(item => {
+        const isNew = item.dateAdded && (Date.now() - new Date(item.dateAdded).getTime()) / 86400000 <= 30;
+        return `
+        <div class="beat-card kit-card${isInCart(item.id) ? ' in-cart' : ''}" data-id="${item.id}" onclick='openKitModal(${JSON.stringify(item)})'>
+          ${item.checkoutUrl === '#' ? '<span class="kit-coming-soon-badge">Coming Soon</span>' : ''}
+          <div class="beat-card-main">
+            <div class="beat-cover${item.imgFile ? '' : ' no-img'}" style="${item.imgFile ? `background-image: url('${item.imgFile}'); background-size: cover; background-position: center;` : `background: ${item.imgGradient}`}"></div>
+            <div class="beat-info">
+              <span class="beat-title-row">
+                <span class="beat-title">${item.title}</span>
+                <span class="cart-dot"></span>
+                ${isNew ? '<span class="beat-new-badge">NEW</span>' : ''}
+              </span>
+              <span class="beat-bpm-key">${item.type}</span>
+            </div>
+            <div class="beat-price-wrap">
+              <span class="beat-price">$${item.price}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      }).join('');
+    }
+  }
+
+  function renderHeroFeatured(beats) {
+    const el = document.getElementById('heroFeatured');
+    
+    // Filter out only the beats that have "featured: true"
+    const featuredBeats = beats.filter(beat => beat.featured === true);
+    
+    // Fallback: If no beats are marked featured, just grab the first two
+    const displays = featuredBeats.length > 0 ? featuredBeats : beats.slice(0, 2);
+
+    el.innerHTML = displays.map(beat => {
+      const isNew = beat.dateAdded && (Date.now() - new Date(beat.dateAdded).getTime()) / 86400000 <= 30;
+      return `
+      <div class="beat-card${isInCart(beat.id) ? ' in-cart' : ''}" data-id="${beat.id}" onclick='openModal(${JSON.stringify(beat)})'>
+        <div class="beat-card-main">
+          <div class="beat-cover${beat.imgFile ? '' : ' no-img'}" style="${beat.imgFile ? `background-image: url('${beat.imgFile}'); background-size: cover; background-position: center;` : `background: ${beat.imgGradient}`}">
+            <button class="card-play-btn" onclick='cardPlayClick(event, ${JSON.stringify(beat)})' aria-label="Play preview">
+              <svg viewBox="0 0 24 24" fill="none" width="14" height="14"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <div class="beat-info">
+            <span class="beat-title-row">
+              <span class="beat-title">${beat.title}</span>
+              <span class="cart-dot"></span>
+            </span>
+            <span class="beat-bpm-key">${beat.bpm} BPM &nbsp;&middot;&nbsp; <span class="beat-key">${beat.key}</span></span>
+            <div class="beat-tags">
+              ${isNew ? '<span class="beat-tag beat-tag--new">NEW</span>' : ''}${beat.tags.map(beatTagSpan).join('')}
+            </div>
+          </div>
+          <div class="beat-price-wrap">
+            ${beat.featured ? `<div class="beat-featured-badge"><svg viewBox="0 0 24 24" width="15" height="15"><polygon points="12,2 15.4,7.3 21.5,8.9 17.5,13.8 17.9,20.1 12,17.8 6.1,20.1 6.5,13.8 2.5,8.9 8.6,7.3" fill="#e8c832"/></svg></div>` : ''}
+            ${freeEligible(beat) ? `
+              <div class="beat-price-free">
+                <span class="beat-price-free-main">FREE DOWNLOAD<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></span>
+                <span class="beat-price-free-sub">or from $${beat.basePrice}</span>
+              </div>
+            ` : `<span class="beat-price">From $${beat.basePrice}</span>`}
+          </div>
+        </div>
+        <div class="card-inline-player">
+          <div class="card-prog-bar">
+            <div class="card-prog-fill"></div>
+            <div class="card-prog-thumb"></div>
+          </div>
+          <div class="card-time-row">
+            <span class="card-time card-time-elapsed">0:00</span>
+            <span class="card-time card-time-dur">0:00</span>
+          </div>
+        </div>
+      </div>
+    `; }).join('');
+  }
+
+  // ─── CART + CHECKOUT ──────────────────────────────────────────────────────
+  // Single source of truth for the checkout host. Swap this to a custom
+  // subdomain later and BOTH express ("Buy Now") and multi-item cart checkout
+  // follow automatically — nothing else needs to change.
+  const CHECKOUT_DOMAIN = 'https://payhip.com';
+  const CONTACT_EMAIL   = 'mailto:prodessential@gmail.com';
+  const CART_KEY        = 'prodessential_cart_v1';
+  const TIER_ORDER      = ['basic', 'premium', 'stems', 'unlimited'];
+
+  // Derived per-tier state:
+  //  'addable'      key + variant     → fully cart-addable
+  //  'novariant'    key only          → addable; checkout omits variant_combination
+  //  'unavailable'  checkoutUrl "#"   → not set up, not addable
+  //  'misconfigured' non-Payhip URL   → broken, not addable
+  //  'contact'      exclusive/mailto  → inquiry tier, never cart-addable
+
+  // Pull {key, variantId} out of a Payhip /buy checkout URL. Handles encoded
+  // (%5B%5D) and literal ([]) brackets, cart_links[]=KEY, link=KEY, and
+  // variant_combination[KEY]=VARIANT — regardless of param order.
+  function parsePayhipCheckout(url) {
+    if (!url) return { key: null, variantId: null };
+    const s = decodeURIComponent(url);
+    let key = null, variantId = null;
+    let m = s.match(/cart_links\[\]=([^&]+)/);
+    if (m) key = m[1];
+    if (!key) { m = s.match(/[?&]link=([^&]+)/); if (m) key = m[1]; }
+    m = s.match(/variant_combination\[([^\]]+)\]=([^&]+)/);
+    if (m) { if (!key) key = m[1]; variantId = m[2]; }
+    return { key: key || null, variantId: variantId || null };
+  }
+
+  // Derive _payhipKey / _variantId / _state for any product-like object that
+  // carries a checkoutUrl (and maybe an explicit payhipKey). Used for both
+  // beat license tiers and kits.
+  function deriveCheckout(obj, isExclusive) {
+    const url = (obj.checkoutUrl || '').trim();
+    if (isExclusive || obj.price === null || url.startsWith('mailto:')) {
+      obj._state = 'contact'; obj._payhipKey = null; obj._variantId = null; return;
+    }
+    if (url === '#' || url === '') {
+      obj._state = 'unavailable'; obj._payhipKey = null; obj._variantId = null; return;
+    }
+    if (!/payhip\.com/i.test(url)) {
+      obj._state = 'misconfigured'; obj._payhipKey = null; obj._variantId = null; return;
+    }
+    // Old short link: payhip.com/b/KEY (explicit payhipKey field, no variant)
+    const shortMatch = url.match(/payhip\.com\/b\/([A-Za-z0-9]+)/);
+    if (obj.payhipKey || shortMatch) {
+      obj._payhipKey = obj.payhipKey || shortMatch[1];
+      obj._variantId = null;
+      obj._state = 'novariant';
+      return;
+    }
+    const parsed = parsePayhipCheckout(url);
+    if (parsed.key && parsed.variantId) {
+      obj._payhipKey = parsed.key; obj._variantId = parsed.variantId; obj._state = 'addable';
+    } else if (parsed.key) {
+      obj._payhipKey = parsed.key; obj._variantId = null; obj._state = 'novariant';
+    } else {
+      obj._payhipKey = null; obj._variantId = null; obj._state = 'misconfigured';
+    }
+  }
+
+  // Enrich beatsData + kitsData in place, then surface data quirks to console.
+  function normalizeProducts() {
+    const noVariant = [];     // addable but missing variant ID — backfill list
+    const misconfigured = []; // non-Payhip / broken checkout URLs
+    const swapped = [];       // unlimited "#" while exclusive has a real URL
+
+    beatsData.forEach(beat => {
+      Object.keys(beat.licenses || {}).forEach(tierKey => {
+        const lic = beat.licenses[tierKey];
+        deriveCheckout(lic, tierKey === 'exclusive');
+        if (lic._state === 'novariant') noVariant.push(`${beat.title} / ${lic.label}`);
+        if (lic._state === 'misconfigured') misconfigured.push(`${beat.title} / ${lic.label} -> ${lic.checkoutUrl}`);
+      });
+      const unl = beat.licenses && beat.licenses.unlimited;
+      const exc = beat.licenses && beat.licenses.exclusive;
+      if (unl && exc && (unl.checkoutUrl || '').trim() === '#' && /payhip\.com\/buy/i.test(exc.checkoutUrl || '')) {
+        swapped.push(beat.title);
+      }
+    });
+
+    kitsData.forEach(kit => deriveCheckout(kit, false));
+
+    if (noVariant.length) console.warn('[cart] Tiers missing a variant ID — checkout omits variant_combination, so Payhip defaults to the first (basic) variant. Backfill variant IDs for:', noVariant);
+    if (misconfigured.length) console.warn('[cart] Tiers with a non-Payhip / broken checkout URL — NOT cart-addable:', misconfigured);
+    if (swapped.length) console.warn('[cart] Beats where "unlimited" is "#" but "exclusive" carries a real Payhip URL (looks swapped). Exclusive is still treated as the contact tier — verify these:', swapped);
+  }
+
+  // ── Cart state (localStorage-backed) ──────────────────────────────────────
+  let cart = [];
+
+  function loadCart() {
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+    catch (e) { cart = []; }
+    if (!Array.isArray(cart)) cart = [];
+  }
+  function saveCart() {
+    try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) {}
+  }
+  function cartGet() { return cart; }
+  function cartCount() { return cart.length; }
+  function cartSubtotal() { return cart.reduce((sum, it) => sum + (Number(it.price) || 0), 0); }
+  function isInCart(id) {
+    return cart.some(it => String(it.beatId) === String(id));
+  }
+  function syncCartIndicators() {
+    document.querySelectorAll('.beat-card[data-id]').forEach(card => {
+      card.classList.toggle('in-cart', isInCart(card.dataset.id));
+    });
+  }
+
+  // One line per product (keyed by beatId). Adding any tier of a beat already
+  // in the cart REPLACES it — so changing Basic -> Premium just works.
+  // Returns 'added' or 'updated'.
+  function cartAdd(item) {
+    const idx = cart.findIndex(it => it.beatId === item.beatId);
+    let result = 'added';
+    if (idx !== -1) {
+      result = (cart[idx].tierKey !== item.tierKey) ? 'updated' : 'added';
+      cart.splice(idx, 1);
+    }
+    cart.push(item);
+    if (typeof gtag === 'function') {
+      gtag('event', 'add_to_cart', {
+        items: [{ item_id: item.beatId, item_name: item.beatTitle, price: item.price, item_variant: item.tierLabel }]
+      });
+    }
+    saveCart();
+    renderCartBadge();
+    syncCartIndicators();
+    if (document.getElementById('cartOverlay').classList.contains('active')) renderCartDrawer();
+    return result;
+  }
+  function cartRemove(beatId) {
+    const removedItem = cart.find(it => String(it.beatId) === String(beatId));
+    cart = cart.filter(it => String(it.beatId) !== String(beatId));
+    if (typeof gtag === 'function' && removedItem) {
+      gtag('event', 'remove_from_cart', {
+        items: [{ item_id: removedItem.beatId, item_name: removedItem.beatTitle }]
+      });
+    }
+    saveCart();
+    renderCartBadge();
+    syncCartIndicators();
+    renderCartDrawer();
+  }
+  function cartClear() {
+    cart = [];
+    saveCart();
+    renderCartBadge();
+    syncCartIndicators();
+    renderCartDrawer();
+  }
+  // Inline drawer selector — switch the tier of a beat already in the cart.
+  function cartSetTier(beatId, tierKey) {
+    const beat = beatsData.find(b => String(b.id) === String(beatId));
+    if (!beat) return;
+    const lic = beat.licenses[tierKey];
+    if (!lic || (lic._state !== 'addable' && lic._state !== 'novariant')) return;
+    const idx = cart.findIndex(it => String(it.beatId) === String(beatId));
+    if (idx === -1) return;
+    cart[idx] = beatCartItem(beat, tierKey, lic);
+    saveCart();
+    renderCartBadge();
+    renderCartDrawer();
+  }
+
+  function beatCartItem(beat, tierKey, lic) {
+    return {
+      beatId: beat.id, beatTitle: beat.title,
+      tierKey: tierKey, tierLabel: lic.label,
+      payhipKey: lic._payhipKey, variantId: lic._variantId,
+      price: lic.price, type: 'beat',
+      imgFile: beat.imgFile, imgGradient: beat.imgGradient
+    };
+  }
+  function kitCartItem(kit) {
+    return {
+      beatId: kit.id, beatTitle: kit.title,
+      tierKey: 'kit', tierLabel: kit.type || 'Kit',
+      payhipKey: kit._payhipKey, variantId: kit._variantId,
+      price: kit.price, type: 'kit',
+      imgFile: kit.imgFile, imgGradient: kit.imgGradient
+    };
+  }
+
+  // ── Checkout URL builder ──────────────────────────────────────────────────
+  // Build ONE combined Payhip cart URL. Each item contributes cart_links[]=KEY,
+  // qty[KEY]=1, and (only when present) variant_combination[KEY]=VARIANT.
+  function buildCheckoutUrl(items) {
+    const parts = [];
+    items.forEach(it => {
+      if (!it.payhipKey) return;
+      const k = encodeURIComponent(it.payhipKey);
+      parts.push('cart_links%5B%5D=' + k);
+      if (it.variantId) parts.push('variant_combination%5B' + k + '%5D=' + encodeURIComponent(it.variantId));
+      parts.push('qty%5B' + k + '%5D=1');
+    });
+    return CHECKOUT_DOMAIN + '/buy?' + parts.join('&');
+  }
+  function checkout() {
+    const items = cart.filter(it => it.payhipKey);
+    if (items.length === 0) return;
+    if (typeof gtag === 'function') {
+      gtag('event', 'begin_checkout', {
+        items: items.map(i => ({ item_id: i.beatId, item_name: i.beatTitle, price: i.price, item_variant: i.tierLabel }))
+      });
+    }
+    window.location.href = buildCheckoutUrl(items);
+  }
+  // Express single-tier checkout (Buy Now) — also honors CHECKOUT_DOMAIN.
+  function buyNowItem(item) {
+    if (!item || !item.payhipKey) return;
+    if (typeof gtag === 'function') {
+      gtag('event', 'begin_checkout', {
+        items: [{ item_id: item.beatId, item_name: item.beatTitle, price: item.price, item_variant: item.tierLabel }]
+      });
+    }
+    window.location.href = buildCheckoutUrl([item]);
+  }
+
+  // ── Cart UI ───────────────────────────────────────────────────────────────
+  function fmtPrice(n) { return '$' + (Number(n) || 0); }
+  function escAttr(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+
+  function renderCartBadge() {
+    const badge = document.getElementById('navCartCount');
+    if (!badge) return;
+    const count = cartCount();
+    badge.textContent = count;
+    badge.hidden = count === 0;
+  }
+
+  function renderCartDrawer() {
+    const body   = document.getElementById('cartBody');
+    const footer = document.getElementById('cartFooter');
+    const subEl  = document.getElementById('cartSubtotal');
+    if (!body) return;
+
+    if (cart.length === 0) {
+      body.innerHTML = `<div class="cart-empty">
+        <p class="cart-empty-title">Your cart is empty</p>
+        <p class="cart-empty-sub">Add a beat or kit to get started.</p>
+      </div>`;
+      if (footer) footer.classList.add('cart-footer--hidden');
+      return;
+    }
+    if (footer) footer.classList.remove('cart-footer--hidden');
+
+    body.innerHTML = cart.map(it => {
+      let tierControl;
+      const beat = (it.type === 'beat') ? beatsData.find(b => String(b.id) === String(it.beatId)) : null;
+      const opts = (beat ? TIER_ORDER : [])
+        .filter(tk => beat.licenses[tk] && (beat.licenses[tk]._state === 'addable' || beat.licenses[tk]._state === 'novariant'))
+        .map(tk => {
+          const lic = beat.licenses[tk];
+          return `<option value="${tk}"${tk === it.tierKey ? ' selected' : ''}>${escAttr(lic.label)} — $${lic.price}</option>`;
+        }).join('');
+      if (opts) {
+        tierControl = `<select class="cart-item-tier" onchange="cartSetTier('${it.beatId}', this.value)" aria-label="Change tier for ${escAttr(it.beatTitle)}">${opts}</select>`;
+      } else {
+        tierControl = `<span class="cart-item-tier-static">${escAttr(it.tierLabel)}</span>`;
+      }
+      const coverStyle = it.imgFile
+        ? `background-image: url('${it.imgFile}'); background-size: cover; background-position: center;`
+        : `background: ${it.imgGradient || 'linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%)'};`;
+      return `<div class="cart-item" data-id="${escAttr(it.beatId)}">
+        <div class="cart-item-cover" style="${coverStyle}"></div>
+        <div class="cart-item-info">
+          <span class="cart-item-title">${escAttr(it.beatTitle)}</span>
+          ${tierControl}
+        </div>
+        <div class="cart-item-right">
+          <span class="cart-item-price">${fmtPrice(it.price)}</span>
+          <button class="cart-item-remove" onclick="cartRemove('${it.beatId}')" aria-label="Remove ${escAttr(it.beatTitle)}">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>`;
+    }).join('');
+
+    if (subEl) subEl.textContent = fmtPrice(cartSubtotal());
+  }
+
+  function openCart() {
+    renderCartDrawer();
+    document.getElementById('cartOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('active');
+    const modalsOpen = modalIsOpen
+      || document.getElementById('kitModalOverlay').classList.contains('active')
+      || document.getElementById('licenseModalOverlay').classList.contains('active');
+    if (!modalsOpen) document.body.style.overflow = '';
+  }
+  function handleCartOverlayClick(e) {
+    if (e.target === document.getElementById('cartOverlay')) closeCart();
+  }
+
+  // ── Modal "Add to Cart" / "Buy Now" actions (beat) ────────────────────────
+  function addCurrentTierToCart() {
+    if (!currentBeat) return;
+    const lic = currentBeat.licenses[currentLicense];
+    if (!lic || (lic._state !== 'addable' && lic._state !== 'novariant')) return;
+    const result = cartAdd(beatCartItem(currentBeat, currentLicense, lic));
+    const confirm = document.getElementById('modalAddConfirm');
+    if (confirm) {
+      confirm.textContent = (result === 'updated') ? 'Cart updated ✓' : 'Added to cart ✓';
+      confirm.classList.add('visible');
+    }
+    const viewCartBtn = document.getElementById('modalViewCartBtn');
+    if (viewCartBtn) viewCartBtn.hidden = false;
+    const addBtn = document.getElementById('modalAddBtn');
+    if (addBtn) addBtn.textContent = 'In Cart ✓';
+  }
+  function buyNowCurrentTier() {
+    if (!currentBeat) return;
+    const lic = currentBeat.licenses[currentLicense];
+    if (!lic || (lic._state !== 'addable' && lic._state !== 'novariant')) return;
+    buyNowItem(beatCartItem(currentBeat, currentLicense, lic));
+  }
+
+  // ── Modal "Add to Cart" / "Buy Now" actions (kit) ─────────────────────────
+  function updateKitBuyBtns(kit) {
+    const actions = document.getElementById('kitModalBuyActions');
+    const addBtn  = document.getElementById('kitModalAddBtn');
+    const buyBtn  = document.getElementById('kitModalBuyBtn');
+    const confirm = document.getElementById('kitModalAddConfirm');
+    if (confirm) { confirm.textContent = ''; confirm.classList.remove('visible'); }
+    const kitViewCartBtn = document.getElementById('kitModalViewCartBtn');
+    if (kitViewCartBtn) kitViewCartBtn.hidden = true;
+
+    actions.classList.remove('modal-buy-actions--single');
+    addBtn.hidden = false; buyBtn.hidden = false;
+    addBtn.disabled = false; buyBtn.disabled = false;
+    addBtn.classList.remove('modal-btn--disabled');
+    buyBtn.classList.remove('modal-btn--disabled');
+
+    if (kit._state === 'addable' || kit._state === 'novariant') {
+      const inCart = cart.find(it => String(it.beatId) === String(kit.id));
+      addBtn.textContent = inCart ? 'In Cart ✓' : 'Add to Cart';
+      addBtn.onclick = addKitToCart;
+      buyBtn.textContent = 'Buy Now';
+      buyBtn.onclick = buyNowKit;
+    } else {
+      addBtn.textContent = 'Coming Soon';
+      addBtn.disabled = true; addBtn.classList.add('modal-btn--disabled'); addBtn.onclick = null;
+      buyBtn.textContent = 'Unavailable';
+      buyBtn.disabled = true; buyBtn.classList.add('modal-btn--disabled'); buyBtn.onclick = null;
+    }
+  }
+  function addKitToCart() {
+    if (!currentKitItem) return;
+    if (currentKitItem._state !== 'addable' && currentKitItem._state !== 'novariant') return;
+    const result = cartAdd(kitCartItem(currentKitItem));
+    const confirm = document.getElementById('kitModalAddConfirm');
+    if (confirm) {
+      confirm.textContent = (result === 'updated') ? 'Cart updated ✓' : 'Added to cart ✓';
+      confirm.classList.add('visible');
+    }
+    const viewCartBtn = document.getElementById('kitModalViewCartBtn');
+    if (viewCartBtn) viewCartBtn.hidden = false;
+    const addBtn = document.getElementById('kitModalAddBtn');
+    if (addBtn) addBtn.textContent = 'In Cart ✓';
+  }
+  function buyNowKit() {
+    if (!currentKitItem) return;
+    if (currentKitItem._state !== 'addable' && currentKitItem._state !== 'novariant') return;
+    buyNowItem(kitCartItem(currentKitItem));
+  }
+  function viewCartFromBeatModal() {
+    closeModal();
+    openCart();
+  }
+  function viewCartFromKitModal() {
+    closeKitModal();
+    openCart();
+  }
+
+  // Restore persisted cart immediately (badge reflects it before products load)
+  loadCart();
+  renderCartBadge();
+
+  // ─── LOAD PRODUCTS + DEEP LINK ────────────────────────────────────────────
+  fetch('products.json')
+    .then(r => r.json())
+    .then(data => {
+      beatsData = data.beats || [];
+      kitsData = data.kits || [];
+
+      // Derive payhipKey / variantId / state per tier + kit (and warn on quirks)
+      normalizeProducts();
+
+      // Build tag lists from actual data
+      const allBeatTags = new Set();
+      beatsData.forEach(b => b.tags.forEach(t => allBeatTags.add(t)));
+      const freeChip = beatsData.some(freeEligible) ? [FREE_TAG] : [];
+      beatTagList = ['All', ...freeChip, ...Array.from(allBeatTags).sort()];
+
+      const allKitTypes = new Set();
+      kitsData.forEach(k => allKitTypes.add(k.type));
+      kitTagList = ['All', ...Array.from(allKitTypes).sort()];
+
+      renderHeroFeatured(beatsData);
+      renderFilters('beatFilters', beatTagList, selectedBeatTags, 'beat');
+      renderList('beatList', beatsData, selectedBeatTags, 'beat');
+      renderFilters('kitFilters', kitTagList, selectedKitTags, 'kit');
+      renderList('kitList', kitsData, selectedKitTags, 'kit');
+
+      // Deep link
+      const params = new URLSearchParams(window.location.search);
+      const beatParam = params.get('beat');
+      const kitParam = params.get('kit');
+      if (beatParam) {
+        const beat = beatsData.find(b => b.id === beatParam);
+        if (beat) openModal(beat);
+      } else if (kitParam) {
+        const kit = kitsData.find(k => k.id === kitParam);
+        if (kit) openKitModal(kit);
+      }
+    })
+    .catch(() => {
+      // Fallback if products.json not found yet
+      console.warn('products.json not found. Using inline fallback data.');
+    });
+
+  // ─── LICENSE MODAL ────────────────────────────────────────────────────────
+  const LICENSE_TEXTS = {
+    basic: {
+      title: `Basic Non-Exclusive MP3 License Agreement`,
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $25.00 USD (the "License Fee")
+Format Delivered: Tagged MP3
+Tier: Basic
+
+This Basic Non-Exclusive MP3 License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below.
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable license to use the Beat to create one (1) new musical work that combines the Beat with the Licensee's original lyrics and/or original musical elements (the "New Song"), subject to every restriction in this Agreement.
+The Beat is delivered as a high-quality MP3 file containing an embedded vocal producer tag (the "Producer Tag"). Delivery is made by digital download immediately following payment.
+2. Term
+This license is granted for a term of ten (10) years from the Effective Date. After the term expires, all rights granted under this Agreement revert to the Licensor unless renewed in writing.
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, or distribute the Beat to any number of other licensees on the same or different terms. The Licensee acknowledges that other artists may license and release songs using the same Beat.
+4. Producer Tag
+The Beat delivered under this tier is the tagged version. If the Producer Tag is present in the file delivered to the Licensee, the Licensee must keep the Producer Tag fully audible and unaltered in every release, distribution, performance, broadcast, and synchronization of the New Song. The Licensee may not remove, edit out, mute, cover, mask, replace, distort, drown out, or otherwise obscure the Producer Tag.
+If a Producer Tag is not present in the delivered file, this section does not apply and no tag-related obligations are imposed on the Licensee under this Agreement.
+To release the New Song without the Producer Tag, the Licensee must upgrade to the Premium tier or higher. Any release of the New Song with the Producer Tag removed, obscured, or altered while operating under this tier is a material breach of this Agreement.
+5. Permitted Uses
+Subject to the restrictions in Section 6 (Prohibited Uses) and Section 7 (Ownership), the Licensee may:
+Record original lyrics and/or original musical elements over the Beat to create the New Song;
+Modify the arrangement, length, tempo, or pitch of the Beat in the course of creating the New Song;
+Distribute the New Song in physical and digital formats (digital downloads, CD, vinyl) up to a cumulative total of two thousand (2,000) units across all formats combined;
+Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) up to a cumulative total of fifty thousand (50,000) audio streams across all platforms combined;
+Upload one (1) music video synchronized with the New Song to YouTube or other video platforms, on a non-monetized basis only (no advertising revenue, no YouTube Partner Program monetization, no sponsorships embedded in the video);
+Use the New Song for non-profit live performances and non-profit promotional purposes;
+Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the caps in this Section and to the restrictions in the Prohibited Uses section; and
+Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+6. Prohibited Uses
+The Licensee may NOT:
+Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
+Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+Synchronize the Beat or the New Song with any audiovisual work other than the one (1) permitted non-monetized music video, including but not limited to film, television, commercials, video games, theatrical productions, or branded content;
+Register, claim, or monetize the Beat or the New Song through any content-identification, digital-fingerprinting, monetization-claim, or rights-administration service (including but not limited to YouTube Content ID, AdRev, or Identifyy), or instruct any distributor to enroll the New Song in any such service. For clarity, using a digital distributor solely to deliver the New Song to streaming and download platforms as permitted in the Permitted Uses section is allowed; enrolling the Beat or the New Song in any Content ID or monetization-claim system is not;
+Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
+Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
+Falsely claim authorship, ownership, or production credit for the Beat;
+Upload the Beat to any peer-to-peer network, file-sharing service, sample library, or platform that enables third parties to obtain the Beat.
+7. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee.
+The Licensee owns the original lyrics and any original musical elements solely created by the Licensee and added to the New Song, but does not own the Beat, the master recording of the New Song, or any portion of the New Song derived from the Beat.
+The New Song is a derivative work of the Beat under United States copyright law. No joint authorship of the Beat is created by this Agreement.
+8. Publishing Splits
+The parties agree that the underlying composition of the New Song is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: One hundred percent (100%) to the Licensor.
+If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+9. Mechanical License
+If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
+10. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of the New Song. The required credit format is:
+Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+11. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+12. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has five (5) business days from receipt of such notice to fully cure the breach.
+If the Licensee fails to cure the breach within five (5) business days, the Licensor may terminate this license immediately, in which case the Licensee must immediately remove the New Song from all distribution channels, streaming platforms, video platforms, and physical retail.
+The Licensee acknowledges that any unauthorized commercial exploitation of the Beat, any removal or alteration of the Producer Tag in violation of the Producer Tag section, any enrollment of the Beat or the New Song in a content-identification or monetization-claim service in violation of the Prohibited Uses section, or distribution of the Beat in its original form in violation of the Prohibited Uses section causes irreparable harm to the Licensor that cannot be adequately compensated by monetary damages alone. In such cases, the Licensor is entitled to seek injunctive relief in addition to any monetary remedies available at law.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial exploitation of the Beat or the New Song.
+13. Refunds
+The Beat is a digital product delivered instantly upon payment. Because delivery is immediate and the Beat cannot be returned, the License Fee is non-refundable once the download has been made available to the Licensee, except where a refund is required by applicable law.
+Initiating a chargeback or payment dispute after the Beat has been delivered, without first contacting the Licensor at prodessential@gmail.com to attempt to resolve the issue, is a breach of this Agreement and authorizes the Licensor to revoke this license and pursue the remedies set out in the Breach and Remedies section.
+14. Buyer's Option to Upgrade
+The Licensee may upgrade this license to a higher tier (Premium, Premium + Stems, Unlimited, or Exclusive) at any time by paying the difference between the License Fee paid and the price of the higher tier in effect at the time of upgrade. Upon upgrade, the terms of the higher tier replace the terms of this Agreement.
+15. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+16. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+17. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor
+Owen Hucal, p/k/a prod.essential
+prodessential@gmail.com
+prodessential.com
+Acceptance
+By paying the License Fee, the Licensee accepts every term of this Agreement.`
+    },
+
+    premium: {
+      title: `Premium Non-Exclusive WAV + MP3 License Agreement`,
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $40.00 USD (the "License Fee")
+Format Delivered: Untagged WAV + Untagged MP3
+Tier: Premium
+
+This Premium Non-Exclusive License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below.
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable license to use the Beat to create one (1) new musical work that combines the Beat with the Licensee's original lyrics and/or original musical elements (the "New Song"), subject to every restriction in this Agreement.
+The Beat is delivered as a high-quality untagged WAV file and a high-quality untagged MP3 file, each without any embedded producer tag. Delivery is made by digital download immediately following payment.
+2. Term
+This license is granted for a term of ten (10) years from the Effective Date. After the term expires, all rights granted under this Agreement revert to the Licensor unless renewed in writing.
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, or distribute the Beat to any number of other licensees on the same or different terms. The Licensee acknowledges that other artists may license and release songs using the same Beat.
+4. Permitted Uses
+Subject to the restrictions in Section 5 (Prohibited Uses) and Section 6 (Ownership), the Licensee may:
+Record original lyrics and/or original musical elements over the Beat to create the New Song;
+Modify the arrangement, length, tempo, or pitch of the Beat in the course of creating the New Song;
+Distribute the New Song in physical and digital formats (digital downloads, CD, vinyl) up to a cumulative total of three thousand (3,000) units across all formats combined;
+Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) up to a cumulative total of one hundred thousand (100,000) audio streams across all platforms combined;
+Upload one (1) music video synchronized with the New Song to YouTube or other video platforms, and the Licensee may monetize that one music video through the YouTube Partner Program or equivalent advertising programs;
+Use the New Song for live performances, including for-profit live performances and ticketed events;
+Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the caps in this Section and to the restrictions in the Prohibited Uses section; and
+Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+5. Prohibited Uses
+The Licensee may NOT:
+Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
+Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+Synchronize the Beat or the New Song with any audiovisual work other than the one (1) permitted music video, including but not limited to film, television, commercials, video games, theatrical productions, or branded content (a separate sync license must be negotiated with the Licensor for any such use);
+Register, claim, or monetize the Beat or the New Song through any content-identification, digital-fingerprinting, monetization-claim, or rights-administration service (including but not limited to YouTube Content ID, AdRev, or Identifyy), or instruct any distributor to enroll the New Song in any such service. For clarity, using a digital distributor solely to deliver the New Song to streaming and download platforms as permitted in the Permitted Uses section is allowed; enrolling the Beat or the New Song in any Content ID or monetization-claim system is not;
+Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
+Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
+Falsely claim authorship, ownership, or production credit for the Beat;
+Upload the Beat to any peer-to-peer network, file-sharing service, sample library, or platform that enables third parties to obtain the Beat.
+6. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee.
+The Licensee owns the original lyrics and any original musical elements solely created by the Licensee and added to the New Song, but does not own the Beat, the master recording of the New Song, or any portion of the New Song derived from the Beat.
+The New Song is a derivative work of the Beat under United States copyright law. No joint authorship of the Beat is created by this Agreement.
+7. Publishing Splits
+The parties agree that the underlying composition of the New Song is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: One hundred percent (100%) to the Licensor.
+If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+8. Mechanical License
+If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
+9. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of the New Song. The required credit format is:
+Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+10. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+11. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has five (5) business days from receipt of such notice to fully cure the breach.
+If the Licensee fails to cure the breach within five (5) business days, the Licensor may terminate this license immediately, in which case the Licensee must immediately remove the New Song from all distribution channels, streaming platforms, video platforms, and physical retail.
+The Licensee acknowledges that any unauthorized commercial exploitation of the Beat, any enrollment of the Beat or the New Song in a content-identification or monetization-claim service in violation of the Prohibited Uses section, or distribution of the Beat in its original form causes irreparable harm to the Licensor that cannot be adequately compensated by monetary damages alone. In such cases, the Licensor is entitled to seek injunctive relief in addition to any monetary remedies available at law.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial exploitation of the Beat or the New Song.
+12. Refunds
+The Beat is a digital product delivered instantly upon payment. Because delivery is immediate and the Beat cannot be returned, the License Fee is non-refundable once the download has been made available to the Licensee, except where a refund is required by applicable law.
+Initiating a chargeback or payment dispute after the Beat has been delivered, without first contacting the Licensor at prodessential@gmail.com to attempt to resolve the issue, is a breach of this Agreement and authorizes the Licensor to revoke this license and pursue the remedies set out in the Breach and Remedies section.
+13. Buyer's Option to Upgrade
+The Licensee may upgrade this license to a higher tier (Premium + Stems, Unlimited, or Exclusive) at any time by paying the difference between the License Fee paid and the price of the higher tier in effect at the time of upgrade. Upon upgrade, the terms of the higher tier replace the terms of this Agreement.
+14. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+15. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+16. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor
+Owen Hucal, p/k/a prod.essential
+prodessential@gmail.com
+prodessential.com
+Acceptance
+By paying the License Fee, the Licensee accepts every term of this Agreement.`
+    },
+
+    stems: {
+      title: `Premium + Stems Non-Exclusive License Agreement`,
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $90.00 USD (the "License Fee")
+Format Delivered: Untagged WAV + Untagged MP3 + Track Stems
+Tier: Premium + Stems
+
+This Premium + Stems Non-Exclusive License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below.
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable license to use the Beat to create one (1) new musical work that combines the Beat with the Licensee's original lyrics and/or original musical elements (the "New Song"), subject to every restriction in this Agreement.
+The Beat is delivered as a high-quality untagged WAV file, a high-quality untagged MP3 file, and the full track stems (the individual instrument and audio elements that make up the Beat), each without any embedded producer tag. Delivery is made by digital download immediately following payment.
+2. Term
+This license is granted for a term of ten (10) years from the Effective Date. After the term expires, all rights granted under this Agreement revert to the Licensor unless renewed in writing.
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, or distribute the Beat to any number of other licensees on the same or different terms. The Licensee acknowledges that other artists may license and release songs using the same Beat.
+4. Permitted Uses
+Subject to the restrictions in Section 5 (Prohibited Uses) and Section 6 (Ownership), the Licensee may:
+Record original lyrics and/or original musical elements over the Beat to create the New Song;
+Modify the arrangement, length, tempo, or pitch of the Beat in the course of creating the New Song;
+Distribute the New Song in physical and digital formats (digital downloads, CD, vinyl) up to a cumulative total of ten thousand (10,000) units across all formats combined;
+Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) up to a cumulative total of five hundred thousand (500,000) audio streams across all platforms combined;
+Upload an unlimited number of music videos synchronized with the New Song to YouTube or other video platforms, and the Licensee may monetize those music videos through the YouTube Partner Program or equivalent advertising programs;
+Use the New Song for live performances, including for-profit live performances and ticketed events;
+Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the caps in this Section and to the restrictions in the Prohibited Uses section; and
+Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+5. Prohibited Uses
+The Licensee may NOT:
+Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
+Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+Distribute, resell, give away, or otherwise make available the track stems, or any individual stem, in their delivered form, and the Licensee may not extract, repackage, or use any individual stem as a standalone sample, loop, or sound for any work other than the New Song;
+Synchronize the Beat or the New Song with any audiovisual work other than the music videos permitted in the Permitted Uses section, including but not limited to film, television, commercials, video games, theatrical productions, or branded content (a separate sync license must be negotiated with the Licensor for any such use);
+Register, claim, or monetize the Beat or the New Song through any content-identification, digital-fingerprinting, monetization-claim, or rights-administration service (including but not limited to YouTube Content ID, AdRev, or Identifyy), or instruct any distributor to enroll the New Song in any such service. For clarity, using a digital distributor solely to deliver the New Song to streaming and download platforms as permitted in the Permitted Uses section is allowed; enrolling the Beat or the New Song in any Content ID or monetization-claim system is not;
+Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
+Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
+Falsely claim authorship, ownership, or production credit for the Beat;
+Upload the Beat to any peer-to-peer network, file-sharing service, sample library, or platform that enables third parties to obtain the Beat.
+6. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee.
+The Licensee owns the original lyrics and any original musical elements solely created by the Licensee and added to the New Song, but does not own the Beat, the master recording of the New Song, or any portion of the New Song derived from the Beat.
+The New Song is a derivative work of the Beat under United States copyright law. No joint authorship of the Beat is created by this Agreement.
+7. Publishing Splits
+The parties agree that the underlying composition of the New Song is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: One hundred percent (100%) to the Licensor.
+If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+8. Mechanical License
+If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
+9. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of the New Song. The required credit format is:
+Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+10. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+11. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has five (5) business days from receipt of such notice to fully cure the breach.
+If the Licensee fails to cure the breach within five (5) business days, the Licensor may terminate this license immediately, in which case the Licensee must immediately remove the New Song from all distribution channels, streaming platforms, video platforms, and physical retail.
+The Licensee acknowledges that any unauthorized commercial exploitation of the Beat, any enrollment of the Beat or the New Song in a content-identification or monetization-claim service in violation of the Prohibited Uses section, or distribution of the Beat in its original form causes irreparable harm to the Licensor that cannot be adequately compensated by monetary damages alone. In such cases, the Licensor is entitled to seek injunctive relief in addition to any monetary remedies available at law.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial exploitation of the Beat or the New Song.
+12. Refunds
+The Beat is a digital product delivered instantly upon payment. Because delivery is immediate and the Beat cannot be returned, the License Fee is non-refundable once the download has been made available to the Licensee, except where a refund is required by applicable law.
+Initiating a chargeback or payment dispute after the Beat has been delivered, without first contacting the Licensor at prodessential@gmail.com to attempt to resolve the issue, is a breach of this Agreement and authorizes the Licensor to revoke this license and pursue the remedies set out in the Breach and Remedies section.
+13. Buyer's Option to Upgrade
+The Licensee may upgrade this license to a higher tier (Unlimited or Exclusive) at any time by paying the difference between the License Fee paid and the price of the higher tier in effect at the time of upgrade. Upon upgrade, the terms of the higher tier replace the terms of this Agreement.
+14. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+15. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+16. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor
+Owen Hucal, p/k/a prod.essential
+prodessential@gmail.com
+prodessential.com
+Acceptance
+By paying the License Fee, the Licensee accepts every term of this Agreement.`
+    },
+
+    unlimited: {
+      title: `Unlimited Non-Exclusive License Agreement`,
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $250.00 USD (the "License Fee")
+Format Delivered: Untagged WAV + Untagged MP3 + Track Stems
+Tier: Unlimited
+
+This Unlimited Non-Exclusive License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below.
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable license to use the Beat to create one (1) new musical work that combines the Beat with the Licensee's original lyrics and/or original musical elements (the "New Song"), subject to every restriction in this Agreement.
+The Beat is delivered as a high-quality untagged WAV file, a high-quality untagged MP3 file, and the full track stems (the individual instrument and audio elements that make up the Beat), each without any embedded producer tag. Delivery is made by digital download immediately following payment.
+2. Term
+This license is granted in perpetuity. The rights granted under this Agreement do not expire by passage of time and are subject only to the termination provisions of this Agreement.
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, or distribute the Beat to any number of other licensees on the same or different terms. The Licensee acknowledges that other artists may license and release songs using the same Beat.
+4. Permitted Uses
+Subject to the restrictions in Section 5 (Prohibited Uses) and Section 6 (Ownership), the Licensee may:
+Record original lyrics and/or original musical elements over the Beat to create the New Song;
+Modify the arrangement, length, tempo, or pitch of the Beat in the course of creating the New Song;
+Distribute the New Song in physical and digital formats (digital downloads, CD, vinyl) in unlimited quantities;
+Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) for unlimited streams, and broadcast the New Song on terrestrial radio, satellite radio (including SiriusXM), and internet radio stations in unlimited markets;
+Upload an unlimited number of music videos synchronized with the New Song to YouTube or other video platforms, and the Licensee may monetize those music videos through the YouTube Partner Program or equivalent advertising programs;
+Use the New Song for unlimited live performances, including for-profit live performances, ticketed events, concerts, festivals, and nightclubs;
+Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the caps in this Section and to the restrictions in the Prohibited Uses section; and
+Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+5. Prohibited Uses
+The Licensee may NOT:
+Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
+Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+Distribute, resell, give away, or otherwise make available the track stems, or any individual stem, in their delivered form, and the Licensee may not extract, repackage, or use any individual stem as a standalone sample, loop, or sound for any work other than the New Song;
+Synchronize the Beat or the New Song in any film, television show, commercial, advertisement, video game, theatrical production, or branded content campaign without first obtaining a separate written synchronization license from the Licensor;
+Register, claim, or monetize the Beat or the New Song through any content-identification, digital-fingerprinting, monetization-claim, or rights-administration service (including but not limited to YouTube Content ID, AdRev, or Identifyy), or instruct any distributor to enroll the New Song in any such service. For clarity, using a digital distributor solely to deliver the New Song to streaming and download platforms as permitted in the Permitted Uses section is allowed; enrolling the Beat or the New Song in any Content ID or monetization-claim system is not;
+Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
+Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
+Falsely claim authorship, ownership, or production credit for the Beat;
+Upload the Beat to any peer-to-peer network, file-sharing service, sample library, or platform that enables third parties to obtain the Beat.
+6. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee.
+The Licensee owns the original lyrics and any original musical elements solely created by the Licensee and added to the New Song, but does not own the Beat, the master recording of the New Song, or any portion of the New Song derived from the Beat.
+The New Song is a derivative work of the Beat under United States copyright law. No joint authorship of the Beat is created by this Agreement.
+7. Publishing Splits
+The parties agree that the underlying composition of the New Song is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: One hundred percent (100%) to the Licensor.
+If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+8. Mechanical License
+If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
+9. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of the New Song. The required credit format is:
+Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+10. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+11. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has five (5) business days from receipt of such notice to fully cure the breach.
+If the Licensee fails to cure the breach within five (5) business days, the Licensor may terminate this license immediately, in which case the Licensee must immediately remove the New Song from all distribution channels, streaming platforms, video platforms, and physical retail.
+The Licensee acknowledges that any unauthorized commercial exploitation of the Beat, any enrollment of the Beat or the New Song in a content-identification or monetization-claim service in violation of the Prohibited Uses section, or distribution of the Beat in its original form causes irreparable harm to the Licensor that cannot be adequately compensated by monetary damages alone. In such cases, the Licensor is entitled to seek injunctive relief in addition to any monetary remedies available at law.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial exploitation of the Beat or the New Song.
+12. Refunds
+The Beat is a digital product delivered instantly upon payment. Because delivery is immediate and the Beat cannot be returned, the License Fee is non-refundable once the download has been made available to the Licensee, except where a refund is required by applicable law.
+Initiating a chargeback or payment dispute after the Beat has been delivered, without first contacting the Licensor at prodessential@gmail.com to attempt to resolve the issue, is a breach of this Agreement and authorizes the Licensor to revoke this license and pursue the remedies set out in the Breach and Remedies section.
+13. Buyer's Option to Upgrade
+The Licensee may upgrade this license to a higher tier (Exclusive) at any time by paying the difference between the License Fee paid and the price of the higher tier in effect at the time of upgrade. Upon upgrade, the terms of the higher tier replace the terms of this Agreement.
+14. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+15. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+16. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Licensor
+Owen Hucal, p/k/a prod.essential
+prodessential@gmail.com
+prodessential.com
+Acceptance
+By paying the License Fee, the Licensee accepts every term of this Agreement.`
+    },
+
+    exclusive: {
+      title: `Exclusive License Agreement`,
+      body: `Effective Date: [DATE]
+Order ID: [ORDER_ID]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: [BUYER_NAME], email [BUYER_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: [NEGOTIATED_FEE] USD (the "License Fee")
+Format Delivered: Untagged WAV + Untagged MP3 + Track Stems
+Tier: Exclusive
+
+This Exclusive License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By paying the License Fee, you accept and agree to be bound by every term below. This Agreement supersedes any prior non-exclusive license to the Beat held by the Licensee.
+1. What You Get
+Upon receipt of the License Fee, the Licensor grants to the Licensee an exclusive, worldwide license to use the Beat in the preparation and commercial exploitation of new musical works incorporating the Beat (each, a "New Song"), subject to the terms of this Agreement. This license is exclusive: upon the Effective Date, the Licensor will remove the Beat from active sale and will not grant any new licenses to the Beat to any other party.
+The Beat is delivered as a high-quality untagged WAV file, a high-quality untagged MP3 file, and the full track stems (the individual instrument and audio elements that make up the Beat). Delivery is made by digital download immediately following payment.
+2. Removal from Store; Honor of Prior Licenses
+Within five (5) business days following the Effective Date, the Licensor will remove the Beat from prodessential.com and any other channel through which the Licensor offers the Beat for sale or license. The Licensor will not issue any new non-exclusive licenses to the Beat after the Effective Date.
+The Licensee acknowledges and accepts that the Beat may have been licensed on a non-exclusive basis to one or more third parties prior to the Effective Date. Any such prior non-exclusive licenses remain in effect according to their original terms, and the Licensee's exclusive rights under this Agreement are subject to the continued validity of those prior licenses. The Licensor will provide the Licensee, upon request, with a list of all prior non-exclusive licensees of the Beat known to the Licensor.
+3. Term
+This license is granted in perpetuity, subject to the termination provisions of this Agreement.
+4. Rights Granted
+Subject to the terms of this Agreement, the Licensee may:
+Record original lyrics and/or original musical elements over the Beat to create unlimited New Songs;
+Modify the arrangement, length, tempo, pitch, or any other element of the Beat in the course of creating any New Song;
+Distribute any New Song in physical and digital formats in unlimited quantities;
+Make any New Song available on audio streaming platforms for unlimited streams, including through any third-party digital distributor or aggregator of the Licensee's choice;
+Upload an unlimited number of music videos synchronized with any New Song to YouTube or other video platforms, and monetize those videos through any advertising program;
+Use any New Song for unlimited live performances, including for-profit performances, ticketed events, concerts, festivals, and nightclubs;
+Broadcast any New Song on terrestrial radio, satellite radio (including SiriusXM), and internet radio stations in unlimited markets;
+Synchronize any New Song with audiovisual works, including film, television, commercials, advertisements, video games, theatrical productions, and branded content;
+Sublicense any of the rights granted under this Agreement, provided that the Licensee gives the Licensor written notice of any such sublicense within thirty (30) days.
+5. Restrictions
+Notwithstanding the broad rights granted in the Rights Granted section, the Licensee may NOT:
+Distribute or make available the Beat in its original form, the stems in their delivered form, or any substantially original portion of the Beat in a manner intended for use by other producers or artists (for example, as part of a beat pack, sample pack, or loop kit);
+Falsely claim authorship of the Beat itself (as distinct from the Licensee's New Songs); or
+Resell or transfer the underlying exclusive rights to the Beat to any third party without the Licensor's prior written consent.
+6. Ownership and Master Rights
+The Licensor retains ownership of the copyright in the sound recording (master) of the original Beat as delivered. The Licensee owns the master rights in each New Song created by the Licensee that incorporates the Beat, including the right to register, distribute, and exploit each such master recording, subject to the Licensor's rights in the underlying composition as set forth in the Publishing Splits section.
+For clarity: the Licensee owns the master of their New Song; the Licensor retains rights in the underlying composition that the Beat is built upon. This Agreement grants an exclusive license and does not transfer ownership of the copyright in the Beat itself to the Licensee.
+7. Publishing Splits
+The parties agree that the underlying composition of any New Song created by the Licensee under this Agreement is owned and administered as follows:
+Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
+Publisher's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee. Each party is responsible for administering its own publisher's share.
+If the Licensee registers any New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+8. Mechanical License
+If any New Song is distributed in a format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
+9. Producer Credit
+The Licensee must credit the Licensor as a producer on every release, distribution, and public posting of any New Song. The required credit format is:
+Prod. essential
+This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
+10. Indemnification and Warranties
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
+The Licensee warrants that any original lyrics or original musical elements added to the Beat to create any New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
+11. Breach and Remedies
+If the Licensee breaches any term of this Agreement, the Licensor will provide the Licensee with written notice identifying the breach. The Licensee has fifteen (15) business days from receipt of such notice to fully cure the breach. If the Licensee fails to cure the breach within fifteen (15) business days, the Licensor may terminate this Agreement, in which case all rights granted to the Licensee revert to the Licensor.
+The Licensee will be liable for all damages, costs, attorneys' fees, and expenses incurred by the Licensor in enforcing this Agreement.
+12. Refunds and Non-Refundability
+The License Fee is non-refundable once the Beat has been delivered to the Licensee, except in the event the Licensor materially breaches the Indemnification and Warranties section and fails to cure the breach within thirty (30) days of written notice, or except where a refund is required by applicable law. Initiating a chargeback or payment dispute after the Beat has been delivered, without first contacting the Licensor at prodessential@gmail.com to attempt to resolve the issue, is a breach of this Agreement.
+13. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+14. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by paying the License Fee. The Licensee's payment, combined with the Licensee's receipt of the Beat, constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required. The parties may, but are not required to, additionally execute this Agreement by countersignature below.
+15. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the Beat. Any modification must be in writing and signed (electronically or otherwise) by both parties. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect.
+
+Optional Countersignature Block
+Both parties may countersign this Agreement below. Countersignature is not required for the Agreement to be binding (per the Electronic Acceptance section), but is provided for the Licensee's records.
+Licensor: _______________________________________ Date: __________________
+Owen Hucal, p/k/a prod.essential
+Licensee: _______________________________________ Date: __________________
+[BUYER_NAME]`
+    },
+
+    free: {
+      title: `Free / Demo License Agreement`,
+      body: `Effective Date: [DATE]
+Licensor: Owen Hucal, professionally known as "prod.essential" ("Licensor", "Producer", "we", "us")
+Licensee: the individual identified by the email address provided at download, [LICENSEE_EMAIL] ("Licensee", "you")
+Beat: [BEAT_TITLE] (the "Beat")
+License Fee: $0.00 USD (no charge)
+Format Delivered: MP3 (demo copy)
+Tier: Free / Demo
+
+This Free / Demo License Agreement (the "Agreement") is entered into between the Licensor and the Licensee as of the Effective Date. By checking the acceptance box and downloading the Beat, you accept and agree to be bound by every term below. This is a free, non-commercial, evaluation-only license. It does not permit any commercial use of the Beat. To release, monetize, distribute, or otherwise commercially exploit any song made with the Beat, you must first purchase a paid license (Basic or higher) at prodessential.com.
+1. What You Get
+Upon downloading the Beat under this Agreement, the Licensor grants to the Licensee a limited, worldwide, non-exclusive, non-transferable, revocable license to use the Beat solely for non-commercial, personal, and evaluation purposes, subject to every restriction in this Agreement. You may use the Beat to create one (1) new musical work that combines the Beat with your own original lyrics and/or original musical elements (the "Demo Song"), for the purpose of testing the Beat and creating non-commercial demos only.
+The Beat is delivered as a demo MP3 file. Delivery is made by digital download.
+2. Term and Revocation
+This license is granted on a non-commercial basis only and continues until either (a) the Licensee obtains a paid license to the Beat, at which point the terms of that paid license replace this Agreement, or (b) the Licensor revokes this license. Because no fee is paid, the Licensor may revoke this license at any time, for any reason, by removing the free download or by written notice to the Licensee. Upon revocation, the Licensee must stop using the Beat and delete all copies in the Licensee's possession.
+3. Non-Exclusivity
+This license is non-exclusive. The Licensor retains full ownership of the Beat and may continue to license, sell, distribute, or give away the Beat to any number of other people on the same or different terms. The Licensee acknowledges that many other people may download and use the same Beat.
+4. Producer Tag
+The Beat may be delivered with an embedded vocal producer tag (the "Producer Tag"). If a Producer Tag is present in the file delivered to the Licensee, the Licensee must keep the Producer Tag fully audible and unaltered in every use of the Demo Song, and may not remove, edit out, mute, cover, mask, replace, distort, drown out, or otherwise obscure the Producer Tag. If a Producer Tag is not present in the delivered file, this section imposes no tag-related obligation, but every other restriction in this Agreement still applies in full.
+5. Permitted Uses (Non-Commercial Only)
+Subject to the restrictions in Section 6 (Prohibited Uses), the Licensee may:
+Record original lyrics and/or original musical elements over the Beat to create one (1) Demo Song;
+Use the Demo Song for private listening, songwriting practice, and personal evaluation of the Beat;
+Post the Demo Song or short clips of the Beat on social media (for example, non-monetized TikTok, Instagram, or YouTube posts and freestyles) on a strictly non-monetized basis, with the Producer Tag intact where present and with credit as required by the Producer Credit section;
+Share the Demo Song privately for non-commercial feedback.
+6. Prohibited Uses
+The Licensee may NOT:
+Sell, lease, sublicense, transfer, assign, or commercially distribute the Beat, the Demo Song, or any rights under this Agreement;
+Release, upload, or make available the Demo Song for sale or for monetized streaming on any platform (including Spotify, Apple Music, Tidal, Amazon Music, YouTube Music, or any equivalent service);
+Monetize any video, post, or audiovisual work containing the Beat or the Demo Song through advertising, sponsorship, the YouTube Partner Program, or any equivalent revenue-generating program;
+Register the Beat or the Demo Song with any distributor, aggregator, record label, or rights administration service (including but not limited to DistroKid, TuneCore, CD Baby, UnitedMasters, YouTube Content ID, AdRev, Identifyy, or any equivalent service);
+Use the Beat or the Demo Song in any for-profit performance, paid show, ticketed event, commercial, film, television show, video game, or other commercial or synchronization context;
+Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
+Resell, redistribute, re-upload, or give away the Beat file to any other person, or upload it to any peer-to-peer network, file-sharing service, or sample library;
+Use the Beat as a sample in any work other than the one (1) permitted Demo Song;
+Falsely claim authorship, ownership, or production credit for the Beat, or hold the Beat out as the Licensee's own production.
+To do any of the things prohibited above, the Licensee must first purchase a paid license (Basic, Premium, Premium + Stems, Unlimited, or Exclusive) at prodessential.com. Any commercial use of the Beat without a valid paid license is a breach of this Agreement and an infringement of the Licensor's copyright.
+7. Ownership
+The Licensor is and remains the sole owner of all rights, title, and interest in the Beat, including all copyrights in the sound recording (master) and the underlying musical composition. Nothing in this Agreement transfers any ownership of the Beat to the Licensee. The Licensee owns only the original lyrics or original musical elements the Licensee solely creates and adds to the Demo Song, and does not own the Beat or any portion of the Demo Song derived from the Beat. No joint authorship of the Beat is created by this Agreement.
+8. Producer Credit
+On any permitted non-commercial posting of the Demo Song, the Licensee must credit the Licensor as producer in the following form:
+Prod. essential
+The credit must appear in the post caption, title, or description.
+9. Warranties and Indemnification
+The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose. The Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from any original lyrics or original elements the Licensee adds to the Beat, or from any use of the Beat in breach of this Agreement.
+10. Breach, Infringement, and Remedies
+Because this is a free, non-commercial license, any commercial use of the Beat or the Demo Song, any removal or alteration of the Producer Tag in violation of the Producer Tag section, any registration of the Beat or the Demo Song with a distributor or content identification service in violation of the Prohibited Uses section, or any redistribution of the Beat in violation of the Prohibited Uses section is both a material breach of this Agreement and an infringement of the Licensor's copyright.
+In any such case, this license terminates automatically and immediately, and the Licensor may, without further notice, pursue any and all remedies available at law or in equity. These include issuing takedown notices and copyright claims (such as DMCA takedown notices and YouTube Content ID claims), requiring removal of the infringing material from all platforms, and seeking monetary and injunctive relief. The Licensee will be liable for all damages, costs, and attorneys' fees incurred by the Licensor in enforcing this Agreement, including any monies received by the Licensee from unauthorized commercial use of the Beat or the Demo Song.
+11. Governing Law and Venue
+This Agreement is governed by the laws of the State of Michigan, United States, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to this Agreement will be brought exclusively in the state or federal courts located in Wayne County, Michigan, and both parties consent to the personal jurisdiction of those courts.
+12. Electronic Acceptance
+The Licensee accepts and agrees to this Agreement by checking the acceptance box and downloading the Beat. That action constitutes a binding electronic signature and acceptance of every term of this Agreement, with the same legal effect as a handwritten signature. No physical signature is required.
+13. Entire Agreement
+This Agreement is the complete and exclusive understanding between the Licensor and the Licensee regarding the free download of the Beat. Any modification must be in writing. If any provision of this Agreement is held unenforceable, the remaining provisions remain in full force and effect. If the Licensee later purchases a paid license to the Beat, the terms of that paid license replace this Agreement.
+
+Licensor
+Owen Hucal, p/k/a prod.essential
+prodessential@gmail.com
+prodessential.com
+Acceptance
+By checking the acceptance box and downloading the Beat, the Licensee accepts every term of this Agreement.`
+    }
+  };
+
+  function escHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderLicenseText(text) {
+    const lines = text.split('\n');
+    let html = '';
+    let inMetaBlock = true;
+    let metaBlockHtml = '';
+
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+
+      if (inMetaBlock) {
+        if (!line) {
+          if (metaBlockHtml) {
+            html += `<div class="lic-meta-block">${metaBlockHtml}</div>`;
+            metaBlockHtml = '';
+            inMetaBlock = false;
+          }
+          continue;
+        }
+        metaBlockHtml += `<p class="lic-meta">${escHtml(line)}</p>`;
+        continue;
+      }
+
+      if (!line) {
+        html += '<div class="lic-spacer"></div>';
+        continue;
+      }
+
+      if (/^\d+\. /.test(line)) {
+        html += `<h3 class="lic-section">${escHtml(line)}</h3>`;
+      } else if (/^\([a-z]\) /.test(line)) {
+        html += `<p class="lic-item">${escHtml(line)}</p>`;
+      } else {
+        html += `<p class="lic-para">${escHtml(line)}</p>`;
+      }
+    }
+
+    if (metaBlockHtml) {
+      html += `<div class="lic-meta-block">${metaBlockHtml}</div>`;
+    }
+
+    return html;
+  }
+
+  let _bodyOverflowBeforeLicense = '';
+
+  function openLicenseModal(key) {
+    const lic = LICENSE_TEXTS[key];
+    if (!lic) return;
+    document.getElementById('licenseModalTitle').textContent = lic.title;
+    document.getElementById('licenseModalBody').innerHTML = renderLicenseText(lic.body);
+    document.getElementById('licenseModal').scrollTop = 0;
+    _bodyOverflowBeforeLicense = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('licenseModalOverlay').classList.add('active');
+  }
+
+  function closeLicenseModal() {
+    document.getElementById('licenseModalOverlay').classList.remove('active');
+    document.body.style.overflow = _bodyOverflowBeforeLicense;
+  }
+
+  function handleLicenseOverlayClick(e) {
+    if (e.target === document.getElementById('licenseModalOverlay')) closeLicenseModal();
+  }
+
+  // ─── KIT EMAIL SIGNUP ─────────────────────────────────────────────────────
+  // Kit "Loops List" form (data-uid d67b6e2682) — separate list from the free-download gate.
+  const KIT_LOOPS_ENDPOINT = 'https://app.kit.com/forms/9481440/subscriptions';
+
+  async function submitToKit(e) {
+    e.preventDefault();
+    const email = document.getElementById('kitEmail').value.trim();
+    const btn = document.getElementById('kitSubmitBtn');
+    const status = document.getElementById('kitStatus');
+
+    btn.disabled = true;
+    btn.textContent = 'SENDING...';
+    status.textContent = '';
+    status.className = 'newsletter-status';
+
+    try {
+      // Native Kit form endpoint (CORS-friendly, same as the embed). The old
+      // api.convertkit.com/v3 call failed in-browser (no CORS headers).
+      const fd = new FormData();
+      fd.append('email_address', email);
+      const res = await fetch(KIT_LOOPS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      });
+      if (!res.ok) throw new Error('Subscription failed');
+      status.textContent = 'You\'re in. Check your inbox.';
+      status.classList.add('newsletter-status--success');
+      document.getElementById('kitEmail').value = '';
+    } catch (err) {
+      status.textContent = 'Something went wrong. Try again.';
+      status.classList.add('newsletter-status--error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'SUBSCRIBE';
+    }
+  }
+
+  // ─── NEWSLETTER ───────────────────────────────────────────────────────────
+  let newsletterOpen = true;
+
+  function toggleNewsletter() {
+    newsletterOpen = !newsletterOpen;
+    const section = document.getElementById('newsletter');
+    const btn = document.querySelector('.newsletter-close');
+    const label = document.querySelector('.newsletter-toggle-label');
+    if (newsletterOpen) {
+      section.classList.remove('newsletter--collapsed');
+      btn.style.opacity = '1';
+      label.style.opacity = '0';
+    } else {
+      section.classList.add('newsletter--collapsed');
+      btn.style.opacity = '0';
+      label.style.opacity = '1';
+    }
+  }
+</script>
+
+</body>
+</html>

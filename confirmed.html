@@ -11,6 +11,7 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
   <meta name="description" content="You're confirmed. Weekly loops, drum kits, and new drops from prod.essential are on the way to your inbox.">
   <link rel="icon" type="image/png" sizes="144x144" href="/images/favicon.png">
   <link rel="apple-touch-icon" href="/images/favicon.png">
@@ -133,6 +134,10 @@
       .confirmed-shell { padding: 40px 16px 72px; }
       .confirmed-panel { padding: 48px 32px 56px; }
       .confirmed-hero, .confirmed-section { padding-bottom: 44px; margin-bottom: 44px; }
+      /* Keep the last section flush (the rule above otherwise re-adds spacing to
+         it on mobile), then keep a tight, even gap down to the footer divider. */
+      .confirmed-section--last { padding-bottom: 0; margin-bottom: 0; }
+      .confirmed-footer-wrap { margin-top: 36px; padding-top: 32px; }
     }
 
     @media (max-width: 600px) {

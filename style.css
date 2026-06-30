@@ -126,6 +126,11 @@
   --border-dark: #2a2a2a;
   --surface: #1c1c1c;
   --surface-2: #242424;
+  --player-bar-h: 86px;   /* visible height of the persistent player bar */
+  /* Total space the bar reserves, including the iOS/Android home-indicator
+     "safe area" at the very bottom. env() is 0 on devices/browsers without one,
+     so this equals --player-bar-h on desktop. */
+  --player-bar-total: calc(var(--player-bar-h) + env(safe-area-inset-bottom, 0px));
 }
 
 body {
@@ -203,7 +208,10 @@ body {
 
 /* HEADER */
 header {
-  background: var(--near-black);
+  background: rgba(17, 17, 17, 0.72);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   padding: 0 40px;
   display: flex;
   align-items: center;
@@ -793,7 +801,8 @@ nav a:hover { color: var(--yellow); }
 .filter-controls-row {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 12px 20px;
   margin-top: 4px;
   margin-bottom: 16px;
 }
@@ -802,6 +811,13 @@ nav a:hover { color: var(--yellow); }
   display: flex;
   align-items: center;
   gap: 8px;
+}
+.filter-mode-wrap[hidden] { display: none; }   /* override display:flex when hidden */
+
+.match-seg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .mode-label {
@@ -1366,15 +1382,24 @@ nav a:hover { color: var(--yellow); }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 16px;
+  /* No vertical padding: when the card is short it still floats centered, but
+     when it hits its max-height (e.g. the page is zoomed in) it fills the full
+     available height — no dead gaps above it or below it against the bar. */
+  padding: 0 16px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, bottom 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .modal-overlay.active { opacity: 1; pointer-events: all; }
 
+/* When the persistent player bar is visible, shrink the overlay's box to the
+   area above it — the modal centers within that area and never sits behind
+   the bar. body.has-player is toggled by showPlayerBar()/playerClose(). */
+body.has-player .modal-overlay { bottom: var(--player-bar-total); }
+
 /* ─── MODAL PANEL ─────────────────────────────────────────────────────────── */
 .modal {
+  --modal-max-h: 100vh;
   background: var(--surface);
   border: 0.5px solid #333;
   width: 100%;
@@ -1382,15 +1407,19 @@ nav a:hover { color: var(--yellow); }
   position: relative;
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - 48px);
+  max-height: var(--modal-max-h);
   overflow-y: auto;
   transform: translateY(12px);
-  transition: transform 0.22s ease;
+  transition: transform 0.22s ease, max-height 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
   scrollbar-width: thin;
   scrollbar-color: #333 transparent;
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 .modal-overlay.active .modal { transform: translateY(0); }
+
+/* Same shrink, applied to the panel itself so tall modals can't overflow
+   past the (now-shorter) overlay box and behind the player bar. */
+body.has-player .modal-overlay .modal { max-height: calc(var(--modal-max-h) - var(--player-bar-total)); }
 .modal::-webkit-scrollbar { width: 3px; }
 .modal::-webkit-scrollbar-thumb { background: #333; }
 
@@ -1422,10 +1451,10 @@ nav a:hover { color: var(--yellow); }
 
 .modal-art-col {
   flex-shrink: 0;
-  width: auto; 
+  width: auto;
   display: flex;
   flex-direction: column;
-  padding-left: 32px; 
+  padding: 0 0 28px 32px;
 }
 
 .modal-cover-art {
@@ -1457,72 +1486,6 @@ nav a:hover { color: var(--yellow); }
 .modal-play-btn:hover { background: rgba(0,0,0,0.48); transform: scale(1.06); }
 .modal-play-btn svg { width: 20px; height: 20px; }
 .play-icon { margin-left: 3px; }
-
-/* ─── PROGRESS BAR ────────────────────────────────────────────────────────── */
-.modal-progress-wrap {
-  padding: 12px 0 14px;
-  background: transparent;
-  border-top: 0.5px solid #2a2a2a;
-  width: 220px;
-}
-
-.modal-progress-bar {
-  width: 100%;
-  height: 18px; /* expanded hit area */
-  background: transparent;
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-}
-
-/* The visible track line */
-.modal-progress-bar::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 2px;
-  background: #333;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.modal-progress-fill {
-  height: 2px;
-  background: var(--yellow);
-  width: 0%;
-  transition: width 0.1s linear;
-  pointer-events: none;
-  align-self: center;
-}
-
-.modal-progress-thumb {
-  width: 12px;
-  height: 12px;
-  background: var(--off-white);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  transition: left 0.1s linear;
-  cursor: grab;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-}
-
-.modal-progress-thumb:active { cursor: grabbing; }
-
-.modal-time-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
-.modal-time {
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  color: var(--mid-gray);
-  font-family: 'DM Mono', monospace;
-}
 
 /* ─── CARD PLAY BUTTON (on thumbnail) ───────────────────────────────────── */
 .card-play-btn {
@@ -2128,7 +2091,7 @@ nav a:hover { color: var(--yellow); }
 @media (max-width: 600px) {
   .modal { max-width: 100%; border-left: none; border-right: none; border-bottom: none; }
   .modal-overlay { padding: 0; align-items: flex-end; }
-  .modal { max-height: 88vh; }
+  .modal { --modal-max-h: 88vh; }
 
   /* Sticky close button — stays visible as the user scrolls the modal */
   .modal-close {
@@ -2146,12 +2109,11 @@ nav a:hover { color: var(--yellow); }
   /* Nav arrows are unusable in a bottom-sheet on mobile */
   .modal-nav-btn { display: none; }
 
-  /* Beat modal mobile — art + progress side by side */
+  /* Beat/kit modal mobile — cover art centered above the title */
   .modal-top-row { flex-direction: column; }
-  .modal-art-col { width: 100%; flex-direction: row; align-items: stretch; border-bottom: 0.5px solid #2a2a2a; }
+  .modal-art-col { width: 100%; flex-direction: row; justify-content: center; align-items: center; padding: 18px 0; border-bottom: 0.5px solid #2a2a2a; }
   .modal-cover-art { width: 130px; height: 130px; flex-shrink: 0; }
   .modal-cover-art--kit { width: 130px; height: 130px; }
-  .modal-progress-wrap { flex: 1; border-top: none; border-left: 0.5px solid #2a2a2a; display: flex; flex-direction: column; justify-content: center; padding: 10px 12px; width: auto; }
   .modal-header-col { padding: 14px 16px; justify-content: flex-start; }
   .modal-title { font-size: 20px; }
   .modal-info { padding: 16px 16px 20px; }
@@ -2206,7 +2168,7 @@ nav a:hover { color: var(--yellow); }
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 0.28s ease;
+  transition: transform 0.28s ease, height 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .cart-overlay.active .cart-drawer { transform: translateX(0); }
 
@@ -2270,7 +2232,27 @@ nav a:hover { color: var(--yellow); }
   flex-shrink: 0;
   border: 0.5px solid var(--border-dark);
   background-color: var(--surface);
+  position: relative;
+  overflow: hidden;
 }
+.cart-item-cover--playable { cursor: pointer; }
+
+.cart-item-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--off-white);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.cart-item-cover--playable:hover .cart-item-play,
+.cart-item-play.playing { opacity: 1; }
 .cart-item-info { display: flex; flex-direction: column; gap: 9px; min-width: 0; flex: 1; }
 .cart-item-title {
   font-family: 'DM Serif Display', serif;
@@ -2693,22 +2675,41 @@ nav a:hover { color: var(--yellow); }
   border-color: var(--yellow);
 }
 .shuffle-btn svg { display: block; }
-.shuffle-btn.spin svg { animation: shuffle-spin 0.5s ease; }
+.shuffle-btn.spin .shuffle-icon { animation: shuffle-spin 0.5s ease; }
 @keyframes shuffle-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
+/* The X that appears on an active Shuffle button to turn it back off */
+.shuffle-clear {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1px;
+  margin-right: -3px;
+  padding: 2px;
+  border-radius: 50%;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s;
+}
+.shuffle-btn.active .shuffle-clear { display: inline-flex; }
+.shuffle-clear:hover { opacity: 1; background: rgba(0, 0, 0, 0.14); }
+
 /* ─── PERSISTENT PLAYER BAR ──────────────────────────────────────────────── */
 .player-bar {
   position: fixed;
   left: 0; right: 0; bottom: 0;
-  z-index: 400;
-  display: grid;
-  grid-template-columns: minmax(170px, 1fr) minmax(300px, 1.7fr) minmax(170px, 1fr);
+  z-index: 520;   /* above .modal-overlay (500) so it's never painted over, even mid-transition */
+  /* Total height includes the safe-area inset; the matching bottom padding
+     keeps the controls clear of the iPhone home indicator. */
+  height: var(--player-bar-total);
+  display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 10px 24px;
+  gap: 20px;
+  padding: 10px 24px calc(10px + env(safe-area-inset-bottom, 0px));
   background: rgba(20, 20, 20, 0.92);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -2733,11 +2734,13 @@ nav a:hover { color: var(--yellow); }
 }
 .player-bar.playing::before { opacity: 0.55; }
 
-/* Left — now playing */
+/* Left — now playing (far-left, fixed width so the seek bar starts consistently) */
 .player-track {
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 210px;
+  flex-shrink: 0;
   min-width: 0;
   cursor: pointer;
 }
@@ -2769,15 +2772,13 @@ nav a:hover { color: var(--yellow); }
 }
 .player-key { color: var(--purple-bright); }
 
-/* Center — transport + seek */
-.player-center {
+/* Transport controls — sit just right of the artwork */
+.player-controls {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 7px;
-  min-width: 0;
+  gap: 16px;
+  flex-shrink: 0;
 }
-.player-controls { display: flex; align-items: center; gap: 16px; }
 
 .player-btn {
   background: none;
@@ -2836,9 +2837,9 @@ nav a:hover { color: var(--yellow); }
 .player-seek-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 100%;
-  max-width: 540px;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 .player-time {
   font-family: 'DM Mono', monospace;
@@ -2896,6 +2897,7 @@ nav a:hover { color: var(--yellow); }
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
+  flex-shrink: 0;
 }
 .player-vol {
   position: relative;
@@ -2942,22 +2944,30 @@ nav a:hover { color: var(--yellow); }
 .player-btn--close:hover { color: var(--off-white); }
 
 /* Keep page content clear of the fixed bar */
-body.has-player { padding-bottom: 86px; }
+body.has-player { padding-bottom: var(--player-bar-total); }
 
-/* Tablet / mobile — stack controls + seek under the track info */
+/* Pull the cart drawer up so its checkout footer clears the player bar */
+body.has-player .cart-drawer { height: calc(100% - var(--player-bar-total)); }
+
+/* Tablet / mobile — track + close on top, controls + seek beneath */
 @media (max-width: 760px) {
-  body.has-player { padding-bottom: 122px; }
+  :root { --player-bar-h: 120px; }
   .player-bar {
-    grid-template-columns: 1fr auto;
-    gap: 6px 12px;
-    padding: 8px 14px 10px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "track    track  right"
+      "controls seek   seek";
+    align-items: center;
+    gap: 10px 12px;
+    padding: 8px 14px calc(12px + env(safe-area-inset-bottom, 0px));
   }
-  .player-track  { grid-area: 1 / 1 / 2 / 2; }
-  .player-right  { grid-area: 1 / 2 / 2 / 3; }
-  .player-center { grid-area: 2 / 1 / 3 / 3; }
+  .player-track    { grid-area: track;    width: auto; min-width: 0; }
+  .player-right    { grid-area: right; }
+  .player-controls { grid-area: controls; }
+  .player-seek-row { grid-area: seek; }
   .player-vol { display: none; }
   #playerVolBtn { display: none; }
-  .player-seek-row { max-width: none; }
 }
 @media (max-width: 420px) {
   .player-controls { gap: 12px; }

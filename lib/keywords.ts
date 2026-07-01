@@ -86,22 +86,27 @@ export function beatKeywords(beat: Beat): string[] {
   if (free) out.add('free type beat');
   out.add('trap type beat');
   out.add('rap beat');
+  // Underground long-tails (hot buyer keywords).
+  out.add('underground type beat');
+  out.add('underground trap beat');
+  out.add('underground rap beat');
+  [...g.moods, ...g.subgenres].forEach((t) => out.add(`underground ${t.toLowerCase()} type beat`));
+  if (free) out.add('free underground type beat');
   out.add('prod.essential');
   return Array.from(out);
 }
 
 // SEO <title>: primary keyword leftmost, beat name quoted, year, brand.
 export function beatTitle(beat: Beat): string {
-  return `${beatDescriptor(beat)} Type Beat — "${beat.title}" | ${SITE_YEAR} prod.essential`;
+  return `${beatDescriptor(beat)} Underground Type Beat "${beat.title}" | ${SITE_YEAR} prod.essential`;
 }
 
 // Natural-reading meta description (NOT keyword-stuffed).
 export function beatDescription(beat: Beat): string {
   const g = group(beat.tags);
-  const vibe = [...g.moods, ...g.subgenres].join(', ');
   const artist = g.artists.length ? ` in the style of ${g.artists.join(' & ')}` : '';
   const free = freeEligible(beat) ? ' Free download available for non-profit use.' : '';
-  return `${beat.title} is a ${beat.bpm} BPM ${beat.key}${vibe ? ' ' + vibe : ''} type beat by prod.essential${artist}. Stream the preview and license instantly from $${beat.basePrice}.${free}`;
+  return `${beat.title} is a ${beat.bpm} BPM ${beat.key} underground type beat by prod.essential${artist}. Stream the preview and license instantly from $${beat.basePrice}.${free}`;
 }
 
 // Clean, visitor-facing genre label for the on-page kicker — moods + subgenres
@@ -114,10 +119,7 @@ export function beatVisibleGenre(beat: Beat): string {
 
 // One natural sentence for the visible page body — descriptive, not keyword-y.
 export function beatBodyCopy(beat: Beat): string {
-  const g = group(beat.tags);
-  const descriptors = [...g.moods, ...g.instruments].map((s) => s.toLowerCase());
-  const feel = descriptors.length ? `, ${descriptors.join(', ')} in feel` : '';
-  return `${beat.title} is a ${beat.bpm} BPM beat in the key of ${beat.key}${feel}. Preview it below and pick the license that fits your release — every tier includes instant delivery.`;
+  return `${beat.title} is a ${beat.bpm} BPM underground beat in the key of ${beat.key}. Preview it below and pick the license that fits your release. Every tier includes instant delivery.`;
 }
 
 // ── Kits ─────────────────────────────────────────────────────────────────────
@@ -138,10 +140,10 @@ export function kitKeywords(kit: Kit): string[] {
 }
 
 export function kitTitle(kit: Kit): string {
-  return `${kit.title} — ${kit.type} | ${SITE_YEAR} prod.essential`;
+  return `${kit.title} | ${kit.type} | ${SITE_YEAR} prod.essential`;
 }
 
 export function kitDescription(kit: Kit): string {
   const base = kit.description || `${kit.title}, a ${kit.type} from prod.essential.`;
-  return `${base} Instant download — $${kit.price}.`;
+  return `${base} Instant download for $${kit.price}.`;
 }

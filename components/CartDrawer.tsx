@@ -69,7 +69,7 @@ export default function CartDrawer() {
                     {tierOpts.length > 0 && beat ? (
                       <select className="cart-item-tier" value={it.tierKey} aria-label={`Change tier for ${it.beatTitle}`}
                         onChange={(e) => { const tk = e.target.value as LicenseTier; setTier(beatCartItem(beat, tk, beat.licenses[tk])); }}>
-                        {tierOpts.map((tk) => <option key={tk} value={tk}>{beat.licenses[tk].label} — ${beat.licenses[tk].price}</option>)}
+                        {tierOpts.map((tk) => <option key={tk} value={tk}>{beat.licenses[tk].label} (${beat.licenses[tk].price})</option>)}
                       </select>
                     ) : (
                       <span className="cart-item-tier-static">{it.tierLabel}</span>

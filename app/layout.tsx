@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://prodessential.com'),
-  title: 'prod.essential — Trap & Rap Beats, Drum Kits & Serum Banks',
+  title: 'prod.essential | Underground Trap & Rap Beats, Drum Kits & Serum Banks',
   description:
     "Premium trap and rap beats, drum kits, one-shots, and Serum banks you won't find anywhere else. Built from scratch for artists and producers.",
   alternates: { canonical: '/' },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'prod.essential',
-    title: 'prod.essential — Trap & Rap Beats, Drum Kits & Serum Banks',
+    title: 'prod.essential | Underground Trap & Rap Beats, Drum Kits & Serum Banks',
     description:
       "Premium trap and rap beats, drum kits, one-shots, and Serum banks you won't find anywhere else. Built from scratch for artists and producers.",
     url: '/',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'prod.essential — Trap & Rap Beats, Drum Kits & Serum Banks',
+    title: 'prod.essential | Underground Trap & Rap Beats, Drum Kits & Serum Banks',
     description:
       "Premium trap and rap beats, drum kits, one-shots, and Serum banks you won't find anywhere else. Built from scratch for artists and producers.",
     images: ['/images/cashed-out-multikit.png'],

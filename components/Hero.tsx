@@ -1,8 +1,8 @@
 // Hero (server component). Featured beats are rendered statically from the data
-// at build time (good for SEO); interactive preview playback is layered on later.
-import Link from 'next/link';
+// at build time (good for SEO); the cards are client islands (BeatCard) that
+// add cover-image preview playback and link to each beat page.
 import { beats } from '@/lib/products';
-import { coverStyle } from '@/lib/assets';
+import BeatCard from './BeatCard';
 
 export default function Hero() {
   const featured = beats.filter((b) => b.featured);
@@ -24,15 +24,7 @@ export default function Hero() {
         <p className="hero-right-label">Featured Beats</p>
         <div id="heroFeatured">
           {list.map((beat) => (
-            <Link key={beat.id} href={`/beats/${beat.id}/`} className="beat-card" data-id={beat.id}>
-              <div className="beat-card-main">
-                <div className="beat-cover" style={coverStyle(beat.imgFile, beat.imgGradient)}></div>
-                <div className="beat-info">
-                  <div className="beat-title">{beat.title}</div>
-                  <div className="beat-bpm-key">{beat.bpm} BPM · {beat.key}</div>
-                </div>
-              </div>
-            </Link>
+            <BeatCard key={beat.id} beat={beat} variant="compact" />
           ))}
         </div>
       </div>

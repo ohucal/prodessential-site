@@ -4,7 +4,7 @@
 import AudioEngine from './AudioEngine';
 import PlayerBar from './PlayerBar';
 import CartDrawer from './CartDrawer';
-import BeatModal from './BeatModal';
+import GlassModal from './GlassModal';
 import KitModal from './KitModal';
 import LicenseModal from './LicenseModal';
 import DeepLink from './DeepLink';
@@ -12,7 +12,7 @@ import DeepLink from './DeepLink';
 export default function AppChrome() {
   return (
     <>
-      <BeatModal />
+      <GlassModal />
       <KitModal />
       <LicenseModal />
       <CartDrawer />

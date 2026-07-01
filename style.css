@@ -95,18 +95,30 @@
 /* Mobile adjustments */
 @media (max-width: 600px) {
   .contact-wrapper {
-    padding: 24px 24px; /* Reduced for mobile */
+    padding: 24px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
   }
   .producer-contacts {
-    gap: 10px;
+    width: 100%;
+    gap: 8px;
   }
   .social-link {
-    flex: 1 1 40%; 
-    padding: 10px 5px;
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+    padding: 10px 8px;
+    justify-content: center;
   }
+  /* Reorder: Instagram, Email (row 1), YouTube, TikTok (row 2) */
+  .ig-link { order: 1; }
+  .email-link { order: 2; }
+  .yt-link { order: 3; }
+  .tt-link { order: 4; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scrollbar-gutter: stable; }
 
 :root {
   --warm-gray: #f5f4f0;
@@ -254,6 +266,7 @@ nav a:hover { color: var(--yellow); }
   color: var(--near-black) !important;
   padding: 8px 16px;
   font-size: 11px !important;
+  white-space: nowrap;
   letter-spacing: 0.18em !important;
 }
 
@@ -405,6 +418,8 @@ nav a:hover { color: var(--yellow); }
   align-items: stretch;
   cursor: pointer;
   transition: background 0.15s;
+  text-decoration: none;
+  color: inherit;
 }
 
 .beat-card:hover { background: var(--surface-2); }
@@ -1105,7 +1120,7 @@ nav a:hover { color: var(--yellow); }
 /* MOBILE */
 @media (max-width: 768px) {
   header { padding: 0 20px; }
-  nav a:not(.nav-cta) { display: none; }
+  header nav a:not(.nav-cta) { display: none; }
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 56px 24px 40px; border-right: none; border-bottom: 0.5px solid var(--border-dark); }
   .hero-headline { font-size: 38px; }
@@ -1784,16 +1799,18 @@ body.has-player .modal-overlay .modal { max-height: calc(var(--modal-max-h) - va
 
 .modal-license-grid {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .modal-license-btn {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 7px 18px;
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
   border: 1px solid #333;
   background: var(--surface-2);
   color: var(--mid-gray);
@@ -2999,29 +3016,186 @@ body.has-player .cart-drawer { height: calc(100% - var(--player-bar-total)); }
 .product-tags { margin: 18px 0 24px; }
 
 .product-section-title {
-  font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--off-white);
+  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.5rem; color: var(--off-white);
   margin: 0 0 18px;
 }
 .product-licenses, .product-related { margin-top: 56px; }
-.product-tier-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.product-tier {
-  display: grid; grid-template-columns: 1fr 1.4fr auto; align-items: center; gap: 12px;
-  padding: 14px 16px; background: var(--surface); border: 1px solid var(--border-dark);
-  border-radius: 8px;
-}
-.product-tier-name { font-weight: 500; color: var(--off-white); }
-.product-tier-format { font-size: 0.82rem; color: var(--light-gray); font-family: 'DM Mono', monospace; }
-.product-tier-price { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--yellow); text-align: right; }
 
 .product-related-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 920px;
 }
 .product-related-grid .beat-card { cursor: pointer; }
 
+@media (max-width: 760px) {
+  .product-related-grid { grid-template-columns: repeat(2, 1fr); max-width: none; }
+}
+
 @media (max-width: 600px) {
   .product-cover { width: 240px; }
-  .product-tier { grid-template-columns: 1fr auto; }
-  .product-tier-format { display: none; }
+}
+
+/* ─── Beat detail (shared: standalone page + glass overlay) ────────────────── */
+.beat-detail-top { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+.beat-detail-art {
+  position: relative; width: 260px; max-width: 80vw; aspect-ratio: 1 / 1; flex-shrink: 0;
+  background-size: cover; background-position: center; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.45); border: 1px solid var(--border-dark);
+}
+.beat-detail-play {
+  position: absolute; inset: 0; margin: auto; width: 64px; height: 64px;
+  display: flex; align-items: center; justify-content: center;
+  border: none; border-radius: 50%; cursor: pointer; color: var(--off-white);
+  background: rgba(17,17,17,0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  transition: background 0.15s, transform 0.15s;
+}
+.beat-detail-play:hover { background: var(--yellow); color: var(--near-black); transform: scale(1.06); }
+.beat-detail-head { flex: 1 1 320px; min-width: 0; }
+.beat-detail-kicker {
+  font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--yellow); margin: 0 0 8px;
+}
+.beat-detail-title {
+  font-family: 'DM Serif Display', serif; font-size: 2.4rem; line-height: 1.05;
+  color: var(--off-white); margin: 0 0 10px;
+}
+.beat-detail-title em { font-style: italic; }
+.beat-detail-meta {
+  font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 0.06em;
+  color: var(--light-gray); margin: 0 0 16px;
+}
+.beat-detail-tags { margin: 0 0 16px; }
+.beat-detail-copy { color: var(--light-gray); font-size: 0.95rem; line-height: 1.6; max-width: 560px; margin: 0; }
+.beat-detail-free {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow);
+  margin: 0 0 16px; background: none; border: none; padding: 0; cursor: pointer;
+  transition: opacity 0.12s;
+}
+.beat-detail-free:hover { opacity: 0.75; }
+.beat-detail-license { margin-top: 40px; }
+
+/* Two-column purchase layout: license tiers picker on the left, the selected
+   tier's details + price/buy panel on the right. Fills the width cleanly
+   without stretching any single control. */
+.beat-purchase {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+.beat-purchase-picker {
+  display: flex;
+  flex-direction: column;
+  padding-right: 16px;
+}
+.beat-purchase-picker .modal-license-grid {
+  flex: 1;
+  justify-content: space-between;
+}
+.beat-purchase-picker .modal-license-btn {
+  flex: none;
+  display: flex;
+  align-items: center;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.beat-purchase-detail {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-left: 1px solid #333;
+}
+.beat-purchase-detail .modal-license-details {
+  flex: 1;
+  border-bottom: 1px solid #333;
+}
+.beat-purchase-detail .modal-free-panel { margin-top: 0; }
+.beat-purchase-detail .modal-buy-row { margin-top: 0; }
+
+@media (max-width: 760px) {
+  .beat-purchase { grid-template-columns: 1fr; gap: 16px; max-width: none; }
+  .modal-license-grid { flex-direction: row; flex-wrap: wrap; }
+  .modal-license-btn { width: auto; text-align: center; }
+}
+
+/* ─── Glass overlay (the beat "modal" that is also a real page) ────────────── */
+.glass-overlay {
+  position: fixed; inset: 0; z-index: 500; display: flex; justify-content: center;
+  background: rgba(0,0,0,0.18); animation: glassFade 0.3s ease-out;
+}
+@keyframes glassFade { from { opacity: 0; } to { opacity: 1; } }
+.glass-rail {
+  flex: 1 1 0; align-self: stretch; min-width: 0; cursor: zoom-out;
+  background: rgba(17,17,17,0.28);
+  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+}
+.glass-panel {
+  position: relative; width: min(940px, 100%); align-self: stretch;
+  display: flex; flex-direction: column; overflow: hidden; background: var(--near-black);
+  border-left: 1px solid rgba(255,255,255,0.06); border-right: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 0 80px rgba(0,0,0,0.7); animation: glassRise 0.28s cubic-bezier(0.22,0.61,0.36,1);
+}
+@keyframes glassRise { from { transform: translateY(14px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.glass-overlay .modal-nav-btn { opacity: 1; pointer-events: auto; }
+
+/* ─── Beat page nav arrows (standalone /beats/[id] page) ──────────────────── */
+/* position: fixed; left is set via JS (getBoundingClientRect) so the arrows
+   sit exactly 16px outside the article's content edges — pixel-perfect symmetric
+   regardless of scrollbar width or viewport size. */
+.beat-page-nav {
+  position: fixed; top: 50vh; transform: translateY(-50%);
+  width: 36px; height: 80px; background: rgba(17,17,17,0.7); border: 1px solid #333;
+  color: var(--mid-gray); cursor: pointer; display: flex; align-items: center;
+  justify-content: center; transition: background 0.15s, color 0.15s;
+  padding: 0; border-radius: 4px; z-index: 10;
+}
+.beat-page-nav:hover { background: rgba(255,255,255,0.08); color: var(--off-white); }
+@media (max-width: 760px) { .beat-page-nav { display: none; } }
+
+/* ─── License "Most Popular" inline tag ───────────────────────────────────── */
+/* Premium button gets a purple outline when not selected */
+.modal-license-btn--premium {
+  border-width: 2px; border-color: var(--purple-line);
+  color: var(--purple-bright);
+}
+.modal-license-btn--premium:hover {
+  border-color: var(--purple-bright);
+}
+.modal-license-btn--premium.active {
+  border-width: 2px; border-color: var(--yellow);
+}
+.modal-license-popular {
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--purple-bright); flex-shrink: 0; margin-left: 8px;
+}
+.modal-license-btn.active .modal-license-popular { color: rgba(0,0,0,0.6); }
+
+/* Mobile: keep license buttons stacked vertically in the purchase picker;
+   hide "Most Popular" since it overflows the narrower button width. */
+@media (max-width: 760px) {
+  .beat-purchase-picker .modal-license-grid { flex-direction: column !important; }
+  .beat-purchase-picker .modal-license-btn { width: 100% !important; justify-content: flex-start; min-height: 44px; padding: 10px 12px; font-size: 11px; }
+  .modal-license-popular { display: none; }
+}
+.glass-panel-scroll {
+  overflow-y: auto; height: 100%;
+  padding: 64px 40px calc(var(--player-bar-total, 96px) + 48px);
+}
+.glass-close {
+  position: absolute; top: 16px; right: 16px; z-index: 2;
+  width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+  border: none; border-radius: 50%; cursor: pointer; color: var(--off-white);
+  background: rgba(255,255,255,0.06); transition: background 0.15s;
+}
+.glass-close svg { width: 14px; height: 14px; }
+.glass-close:hover { background: rgba(255,255,255,0.16); }
+
+@media (max-width: 760px) {
+  .glass-rail { display: none; }
+  .glass-panel { width: 100%; }
+  .glass-panel-scroll { padding: 56px 18px calc(var(--player-bar-total, 96px) + 40px); }
+  .beat-detail-title { font-size: 1.9rem; }
 }
 
 /* ─── Confirmed (newsletter) page ─────────────────────────────────────────── */

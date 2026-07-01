@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import ConfirmedTracker from '@/components/ConfirmedTracker';
 
 export const metadata: Metadata = {
-  title: "you're in. — prod.essential",
+  title: "you're in. | prod.essential",
   description:
     "You're confirmed. Weekly loops, drum kits, and new drops from prod.essential are on the way to your inbox.",
   robots: { index: false, follow: false },
@@ -58,7 +58,7 @@ export default function ConfirmedPage() {
           </section>
 
           <div className="confirmed-footer-wrap">
-            <p className="confirmed-footer">— prod.essential</p>
+            <p className="confirmed-footer">prod.essential</p>
           </div>
         </main>
       </div>

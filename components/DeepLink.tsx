@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { useUI } from '@/stores/useUI';
 import { getBeat, getKit } from '@/lib/products';
 
-// Backward-compatible ?beat=/?kit= deep links on the home page, plus URL sync
-// when a modal opens/closes there. Per-product pages (/beats/<id>) own their URL.
+// Backward-compatible ?beat=/?kit= deep links on the home page. The beat overlay
+// owns its own /beats/<id>/ URL (see GlassModal); this only handles the kit modal
+// URL sync and the legacy query-string entry points.
 export default function DeepLink() {
-  const activeBeatId = useUI((s) => s.activeBeatId);
   const activeKitId = useUI((s) => s.activeKitId);
 
-  // Initial deep link + back/forward.
+  // Legacy ?beat= / ?kit= links + kit back/forward on the home page.
   useEffect(() => {
     const apply = () => {
       if (window.location.pathname !== '/') return;
@@ -18,21 +18,19 @@ export default function DeepLink() {
       const k = p.get('kit');
       if (b && getBeat(b)) useUI.getState().openBeat(b);
       else if (k && getKit(k)) useUI.getState().openKit(k);
-      else { useUI.getState().closeBeat(); useUI.getState().closeKit(); }
+      else useUI.getState().closeKit();
     };
     apply();
     window.addEventListener('popstate', apply);
     return () => window.removeEventListener('popstate', apply);
   }, []);
 
-  // Reflect modal state in the URL (home page only).
+  // Reflect kit modal state in the URL (home page only).
   useEffect(() => {
     if (window.location.pathname !== '/') return;
-    const base = window.location.pathname;
-    if (activeBeatId) window.history.replaceState({ beatId: activeBeatId }, '', `?beat=${activeBeatId}`);
-    else if (activeKitId) window.history.replaceState({ kitId: activeKitId }, '', `?kit=${activeKitId}`);
-    else window.history.replaceState({}, '', base);
-  }, [activeBeatId, activeKitId]);
+    if (activeKitId) window.history.replaceState({ kitId: activeKitId }, '', `?kit=${activeKitId}`);
+    else if (!window.location.search.includes('beat=')) window.history.replaceState({}, '', window.location.pathname);
+  }, [activeKitId]);
 
   return null;
 }

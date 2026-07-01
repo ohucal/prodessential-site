@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { usePlayer } from '@/stores/usePlayer';
 import { useUI } from '@/stores/useUI';
+import { ensureAudioAnalyser } from '@/lib/audioAnalyser';
 
 // Owns the single <audio> element and wires its events into the player store.
 export default function AudioEngine() {
@@ -12,6 +13,7 @@ export default function AudioEngine() {
     const el = ref.current;
     if (!el) return;
     register(el);
+    ensureAudioAnalyser(el);
     const s = usePlayer.getState();
     const onTime = () => s._onTime();
     const onLoaded = () => s._onLoaded();

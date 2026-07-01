@@ -3,6 +3,8 @@
 // URL synced to /beats/<id>/ via history so it reads as a real page. Static-export
 // friendly (no server interception): direct loads / refresh hit the static page.
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { beats, getBeat } from '@/lib/products';
 import { useUI } from '@/stores/useUI';
 import BeatDetail from './BeatDetail';
@@ -11,6 +13,8 @@ export default function GlassModal() {
   const activeBeatId = useUI((s) => s.activeBeatId);
   const closeBeat = useUI((s) => s.closeBeat);
   const openBeat = useUI((s) => s.openBeat);
+  const router = useRouter();
+  const pathname = usePathname();
   const pushed = useRef(false);
   const beat = activeBeatId ? getBeat(activeBeatId) : undefined;
 
@@ -52,16 +56,27 @@ export default function GlassModal() {
     else closeBeat();
   }
 
+  // Close overlay and return home without a full reload (keeps playback alive).
+  function goHome(e: React.MouseEvent) {
+    e.preventDefault();
+    pushed.current = false;
+    closeBeat();
+    if (pathname === '/') window.history.replaceState({}, '', '/');
+    else router.push('/');
+  }
+
   if (!beat) return null;
 
   return (
     <div className="glass-overlay" onMouseDown={(e) => { if (e.target === e.currentTarget) dismiss(); }}>
       <div className="glass-rail glass-rail--left" onMouseDown={(e) => { if (e.target === e.currentTarget) dismiss(); }} />
       <div className="glass-panel" role="dialog" aria-modal="true" aria-label={`${beat.title} details`}>
-        <a href="/" className="glass-logo">prod.essential</a>
-        <button className="glass-close" onClick={dismiss} aria-label="Close">
-          <svg viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
-        </button>
+        <div className="glass-header">
+          <Link href="/" className="glass-logo" onClick={goHome}>prod.essential</Link>
+          <button className="glass-close" onClick={dismiss} aria-label="Close">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+          </button>
+        </div>
         {prevBeat && (
           <button className="modal-nav-btn modal-nav-prev" onClick={() => openBeat(prevBeat.id)} aria-label="Previous beat">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><polyline points="15 18 9 12 15 6" /></svg>

@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { kits, kitTypeList } from '@/lib/products';
 import KitCard from './KitCard';
 
@@ -17,12 +17,19 @@ export default function KitStore({ mounted }: { mounted: boolean }) {
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<KitSort>('newest');
   const [sortOpen, setSortOpen] = useState(false);
+  const sortRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const close = () => setSortOpen(false);
-    document.addEventListener('click', close);
-    return () => document.removeEventListener('click', close);
-  }, []);
+    if (!sortOpen) return;
+    const close = (e: MouseEvent) => {
+      if (!sortRef.current?.contains(e.target as Node)) setSortOpen(false);
+    };
+    const id = window.setTimeout(() => document.addEventListener('click', close), 0);
+    return () => {
+      window.clearTimeout(id);
+      document.removeEventListener('click', close);
+    };
+  }, [sortOpen]);
 
   const filtered = useMemo(() => {
     let list = selected === 'All' ? [...kits] : kits.filter((k) => k.type === selected);
@@ -44,7 +51,7 @@ export default function KitStore({ mounted }: { mounted: boolean }) {
   return (
     <section id="kits" className="grid-column">
       <div className="section-header">
-        <div className="section-label"><span>Kits &amp; Packs</span><hr /></div>
+        <div className="section-label"><span>Kits &amp; Packs</span><div className="section-rule"><hr /></div></div>
         <div className="search-wrap">
           <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input type="text" className="search-input" placeholder="Search kits &amp; packs" autoComplete="off" value={query} onChange={(e) => setQuery(e.target.value)} />
@@ -57,11 +64,11 @@ export default function KitStore({ mounted }: { mounted: boolean }) {
             <button key={tag} className={`tag-filter-btn${selected === tag ? ' active' : ''}`} onClick={() => setSelected(tag)}>{tag}</button>
           ))}
         </div>
-        <div className="filter-controls-row kit-controls-row">
+        <div className="filter-controls-row">
           <div className="sort-wrap">
             <span className="mode-label">Sort:</span>
-            <div className={`custom-select${sortOpen ? ' open' : ''}`} id="customKitSort">
-              <button className="custom-select-btn" onClick={(e) => { e.stopPropagation(); setSortOpen((o) => !o); }}>
+            <div className={`custom-select${sortOpen ? ' open' : ''}`} id="customKitSort" ref={sortRef}>
+              <button type="button" className="custom-select-btn" onClick={() => setSortOpen((o) => !o)}>
                 <span>{SORT_LABELS[sort]}</span>
                 <svg className="select-arrow" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </button>
@@ -72,6 +79,7 @@ export default function KitStore({ mounted }: { mounted: boolean }) {
               </ul>
             </div>
           </div>
+          <div className="filter-controls-spacer shuffle-btn shuffle-btn--placeholder" aria-hidden="true">Shuffle</div>
         </div>
         <div className="item-count">{filtered.length} item{filtered.length !== 1 ? 's' : ''}</div>
       </div>

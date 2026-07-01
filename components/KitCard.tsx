@@ -20,16 +20,18 @@ export default function KitCard({ kit, mounted }: { kit: Kit; mounted: boolean }
       data-id={kit.id}
       onClick={() => openKit(kit.id)}
     >
-      {comingSoon && <span className="kit-coming-soon-badge">Coming Soon</span>}
       <div className="beat-card-main">
         <div className={`beat-cover${kit.imgFile ? '' : ' no-img'}`} style={coverStyle(kit.imgFile, kit.imgGradient)}></div>
         <div className="beat-info">
           <span className="beat-title-row">
             <span className="beat-title">{kit.title}</span>
             <span className="cart-dot"></span>
-            {isNew && <span className="beat-new-badge">NEW</span>}
           </span>
           <span className="beat-bpm-key">{kit.type}</span>
+          <div className="beat-tags">
+            {comingSoon && <span className="beat-tag kit-tag--soon">Coming Soon</span>}
+            {isNew && <span className="beat-tag beat-tag--new">NEW</span>}
+          </div>
         </div>
         <div className="beat-price-wrap">
           <span className="beat-price">${kit.price}</span>

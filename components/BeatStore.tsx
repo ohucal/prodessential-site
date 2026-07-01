@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { beats, beatTagList, beatTagsWithFree, FREE_TAG } from '@/lib/products';
 import { usePlayer } from '@/stores/usePlayer';
 import BeatCard from './BeatCard';
+import WaveRule from './WaveRule';
 
 type Sort = 'newest' | 'oldest' | 'bpm_high' | 'bpm_low' | 'name_az' | 'name_za' | 'shuffle';
 
@@ -30,6 +31,7 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
   const [sortOpen, setSortOpen] = useState(false);
   const [shuffleOrder, setShuffleOrder] = useState<string[]>([]);
   const prevSortRef = useRef<Sort>('newest');
+  const sortRef = useRef<HTMLDivElement>(null);
   const setFilteredIds = usePlayer((s) => s.setFilteredIds);
 
   // "FREE STUFF" nav → show free beats.
@@ -42,12 +44,18 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
     return () => window.removeEventListener('pe:freebeats', handler);
   }, []);
 
-  // Close sort dropdown on outside click.
+  // Close sort dropdown on outside click (only while open).
   useEffect(() => {
-    const close = () => setSortOpen(false);
-    document.addEventListener('click', close);
-    return () => document.removeEventListener('click', close);
-  }, []);
+    if (!sortOpen) return;
+    const close = (e: MouseEvent) => {
+      if (!sortRef.current?.contains(e.target as Node)) setSortOpen(false);
+    };
+    const id = window.setTimeout(() => document.addEventListener('click', close), 0);
+    return () => {
+      window.clearTimeout(id);
+      document.removeEventListener('click', close);
+    };
+  }, [sortOpen]);
 
   const filtered = useMemo(() => {
     let list = selected.includes('All')
@@ -124,7 +132,7 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
   return (
     <section id="beats" className="grid-column left-col">
       <div className="section-header">
-        <div className="section-label"><span>Beat Store</span><hr /></div>
+        <div className="section-label"><span>Beat Store</span><WaveRule /></div>
         <div className="search-wrap">
           <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input type="text" className="search-input" placeholder="Search beats, tags, key, BPM" autoComplete="off" value={query} onChange={(e) => setQuery(e.target.value)} />
@@ -154,8 +162,8 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
           </div>
           <div className="sort-wrap">
             <span className="mode-label">Sort:</span>
-            <div className={`custom-select${sortOpen ? ' open' : ''}`} id="customSort">
-              <button className="custom-select-btn" onClick={(e) => { e.stopPropagation(); setSortOpen((o) => !o); }}>
+            <div className={`custom-select${sortOpen ? ' open' : ''}`} id="customSort" ref={sortRef}>
+              <button type="button" className="custom-select-btn" onClick={() => setSortOpen((o) => !o)}>
                 <span>{sortLabel}</span>
                 <svg className="select-arrow" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </button>

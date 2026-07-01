@@ -293,10 +293,6 @@ nav a:hover { color: var(--yellow); }
   height: 16px;
 }
 
-.kit-controls-row {
-  margin-bottom: 16px;
-}
-
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -501,6 +497,12 @@ nav a:hover { color: var(--yellow); }
   flex-wrap: wrap;
   gap: 4px;
   margin-top: 1px;
+  min-height: 21px;
+}
+
+/* Store list cards share one row height whether or not tags are present. */
+.scroll-list .beat-card:not(.kit-card) .beat-card-main {
+  min-height: 80px;
 }
 
 .beat-tag {
@@ -572,11 +574,26 @@ nav a:hover { color: var(--yellow); }
   line-height: 1;
 }
 
-/* KIT CARD — larger variant */
-.kit-card {
-  position: relative;
+/* KIT CARD — same row layout as beat cards; only tag accent differs */
+.kit-tag--soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--light-gray);
+  background: transparent;
+  border-color: #444;
+}
+.kit-tag--soon::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--yellow);
+  flex-shrink: 0;
+  transform: translateY(-1px);
 }
 
+/* Kit cards — larger rows (beats stay compact in the same-height scroll panel). */
 .kit-card .beat-card-main {
   padding: 12px 16px 12px 12px;
   gap: 14px;
@@ -587,7 +604,6 @@ nav a:hover { color: var(--yellow); }
 .kit-card .beat-cover {
   width: 88px;
   height: 88px;
-  flex-shrink: 0;
 }
 
 .kit-card .beat-info {
@@ -601,6 +617,13 @@ nav a:hover { color: var(--yellow); }
   line-height: 1.3;
 }
 
+.kit-card .beat-price-wrap {
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+}
+
 .beat-title-row {
   display: flex;
   align-items: center;
@@ -610,14 +633,6 @@ nav a:hover { color: var(--yellow); }
 
 .beat-title-row .beat-title {
   min-width: 0;
-}
-
-.kit-card .beat-title-row {
-  gap: 8px;
-}
-
-.kit-card .beat-title-row .beat-new-badge {
-  flex-shrink: 0;
 }
 
 .cart-dot {
@@ -635,34 +650,6 @@ nav a:hover { color: var(--yellow); }
 .beat-card.in-cart .cart-dot {
   opacity: 1;
   transform: scale(1);
-}
-
-.kit-card .beat-price-wrap {
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 4px;
-}
-
-.kit-coming-soon-badge {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--light-gray);
-  line-height: 1;
-  margin-top: 1px;
-}
-.kit-coming-soon-badge::before {
-  content: "";
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--yellow);
 }
 
 .beat-price {
@@ -697,7 +684,10 @@ nav a:hover { color: var(--yellow); }
 }
 
 .section-header {
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-rows: auto auto 80px minmax(28px, auto) auto;
+  margin-bottom: 8px;
+  overflow: visible;
 }
 
 .section-label {
@@ -708,14 +698,38 @@ nav a:hover { color: var(--yellow); }
   display: flex;
   align-items: center;
   gap: 20px;
+  min-height: 28px;
 }
 
 .section-label span {
   font-family: 'DM Serif Display', serif;
   font-size: 24px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
-.section-label hr { flex: 1; border: none; border-top: 0.5px solid var(--border-dark); }
+.section-label hr { flex: 1; border: none; border-top: 0.5px solid var(--border-dark); margin: 0; }
+
+/* Match wave-rule height so both column headers align. */
+.section-label .section-rule {
+  flex: 1;
+  min-width: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.section-label .section-rule hr {
+  width: 100%;
+}
+
+/* Section rule that becomes a live waveform during playback (BeatStore). */
+.section-label .wave-rule {
+  flex: 1;
+  height: 28px;
+  min-width: 0;
+  display: block;
+}
 
 /* TAG FILTER BAR */
 .search-wrap {
@@ -784,8 +798,15 @@ nav a:hover { color: var(--yellow); }
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
+  height: 80px;
+  align-content: flex-start;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
 }
+.tag-filters::-webkit-scrollbar { width: 3px; }
+.tag-filters::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 
 .tag-filter-btn {
   font-family: 'DM Mono', monospace;
@@ -817,10 +838,22 @@ nav a:hover { color: var(--yellow); }
 .filter-controls-row {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px 20px;
-  margin-top: 4px;
-  margin-bottom: 16px;
+  margin-top: 0;
+  margin-bottom: 6px;
+  width: 100%;
+  min-height: 28px;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+/* Invisible twin of the beat-store shuffle button — keeps sort rows aligned. */
+.shuffle-btn--placeholder {
+  margin-left: auto;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .filter-mode-wrap {
@@ -882,6 +915,10 @@ nav a:hover { color: var(--yellow); }
   user-select: none;
 }
 
+.custom-select.open {
+  z-index: 60;
+}
+
 .custom-select-btn {
   font-family: 'DM Mono', monospace;
   font-size: 9px;
@@ -926,7 +963,7 @@ nav a:hover { color: var(--yellow); }
   background: var(--surface);
   border: 1px solid #444;
   list-style: none;
-  z-index: 50;
+  z-index: 60;
   display: none;
   box-shadow: 4px 4px 0px #000;
 }
@@ -984,7 +1021,7 @@ nav a:hover { color: var(--yellow); }
   font-weight: 500;
   letter-spacing: 0.12em;
   color: var(--mid-gray);
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   text-transform: uppercase;
 }
 
@@ -1530,7 +1567,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   flex-direction: column;
   gap: 4px;
   padding: 0 16px 10px;
-  border-top: 0.5px solid rgba(255,255,255,0.08);
 }
 
 .card-inline-player.visible {
@@ -2383,7 +2419,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   min-width: 0;
   height: 80px;
   padding: 0 14px;
-  border: none;
+  border: 1px solid transparent;
   cursor: pointer;
   font-family: 'DM Mono', monospace;
   font-size: 13px;
@@ -2401,11 +2437,13 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .modal-buy-btn--secondary {
   background: transparent;
   color: var(--off-white);
-  border: 1px solid var(--off-white);
+  /* Same gray hairline as the price box container */
+  border: 1px solid #333;
 }
 .modal-buy-btn--secondary:hover:not(:disabled) {
   background: var(--off-white);
   color: var(--near-black);
+  border-color: var(--off-white);
 }
 .modal-add-btn:disabled,
 .modal-buy-btn--secondary:disabled,
@@ -3153,6 +3191,10 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 }
 @keyframes glassRise { from { transform: translateY(14px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 .glass-overlay .modal-nav-btn { opacity: 1; pointer-events: auto; }
+/* Inset the arrows from the panel edges so the right one clears the
+   scroll area's scrollbar (and the left matches for symmetry). */
+.glass-overlay .modal-nav-prev { left: 10px; }
+.glass-overlay .modal-nav-next { right: 10px; }
 
 /* ─── Beat page nav arrows (standalone /beats/[id] page) ──────────────────── */
 /* position: fixed; left is set via JS (getBoundingClientRect) so the arrows
@@ -3196,9 +3238,28 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .glass-panel-scroll {
   overflow-y: auto; height: 100%;
   padding: 64px 40px calc(var(--player-bar-total, 96px) + 48px);
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+  /* Promote to a compositor layer so inner scrolling stays smooth under the
+     blurred header (otherwise every frame repaints the whole panel). */
+  transform: translateZ(0);
+  overscroll-behavior: contain;
+}
+.glass-panel-scroll::-webkit-scrollbar { width: 3px; }
+.glass-panel-scroll::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+/* Glass-blur header bar, matching the site's main sticky header: content
+   scrolling underneath gets blurred behind it. */
+.glass-header {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(17, 17, 17, 0.72);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 .glass-close {
-  position: absolute; top: 16px; right: 40px; z-index: 2;
   width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
   border: none; border-radius: 50%; cursor: pointer; color: var(--off-white);
   background: rgba(255,255,255,0.06); transition: background 0.15s;
@@ -3206,7 +3267,6 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .glass-close svg { width: 14px; height: 14px; }
 .glass-close:hover { background: rgba(255,255,255,0.16); }
 .glass-logo {
-  position: absolute; top: 16px; left: 40px; z-index: 2;
   font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px;
   color: var(--off-white); letter-spacing: -0.01em; text-decoration: none;
 }
@@ -3217,8 +3277,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   .glass-panel-scroll { padding: 56px 18px calc(var(--player-bar-total, 96px) + 40px); }
   .beat-detail-title { font-size: 1.9rem; }
   .beat-detail-art { width: 82%; max-width: 82%; margin: 0; }
-  .glass-logo { left: 18px; }
-  .glass-close { right: 18px; }
+  .glass-header { padding: 0 18px; }
 }
 
 /* ─── Confirmed (newsletter) page ─────────────────────────────────────────── */

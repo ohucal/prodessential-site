@@ -2974,3 +2974,52 @@ body.has-player .cart-drawer { height: calc(100% - var(--player-bar-total)); }
   .player-btn--play { width: 34px; height: 34px; }
   .player-art { width: 40px; height: 40px; }
 }
+
+/* ─── Per-product SEO pages (/beats/[id], /kits/[id]) ─────────────────────── */
+.product-main { max-width: 1100px; margin: 0 auto; padding: 24px 24px 64px; }
+.product-breadcrumb {
+  font-size: 0.78rem; letter-spacing: 0.04em; color: var(--light-gray);
+  margin: 8px 0 24px;
+}
+.product-breadcrumb a { color: var(--light-gray); text-decoration: none; }
+.product-breadcrumb a:hover { color: var(--off-white); }
+.product-breadcrumb span { color: var(--off-white); }
+
+.product-hero { align-items: center; }
+.product-hero .hero-right { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.product-cover {
+  width: 300px; max-width: 80vw; aspect-ratio: 1 / 1; border-radius: 12px;
+  background-size: cover; background-position: center;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.45); border: 1px solid var(--border-dark);
+}
+.product-meta {
+  font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 0.06em;
+  color: var(--light-gray); margin: 0;
+}
+.product-tags { margin: 18px 0 24px; }
+
+.product-section-title {
+  font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--off-white);
+  margin: 0 0 18px;
+}
+.product-licenses, .product-related { margin-top: 56px; }
+.product-tier-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.product-tier {
+  display: grid; grid-template-columns: 1fr 1.4fr auto; align-items: center; gap: 12px;
+  padding: 14px 16px; background: var(--surface); border: 1px solid var(--border-dark);
+  border-radius: 8px;
+}
+.product-tier-name { font-weight: 500; color: var(--off-white); }
+.product-tier-format { font-size: 0.82rem; color: var(--light-gray); font-family: 'DM Mono', monospace; }
+.product-tier-price { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--yellow); text-align: right; }
+
+.product-related-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px;
+}
+.product-related-grid .beat-card { cursor: pointer; }
+
+@media (max-width: 600px) {
+  .product-cover { width: 240px; }
+  .product-tier { grid-template-columns: 1fr auto; }
+  .product-tier-format { display: none; }
+}

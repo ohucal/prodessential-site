@@ -67,9 +67,12 @@ Insert the block below **immediately after that sentence**, as a new paragraph.
 > 1358011863. When registering the New Song with any PRO, distributor, or rights
 > administrator, the Licensee must list the Licensor as a co-writer using this information.
 
-**Writer-IPI follow-up:** once the writer IPI is issued, do a single find-and-replace across
-all five files: replace `[WRITER_IPI]` with the real number. That is the only remaining step
-after this ships.
+**Writer-IPI follow-up:** once the writer IPI is issued, find-and-replace `[WRITER_IPI]` with
+the real number in SEVEN places: the five paid `.docx` files in `public/licenses/` (these also
+carry an inline `(REMINDER: INSERT ASCAP WRITER IPI ONCE RECEIVED)` tag — delete that tag at
+the same time), plus `lib/licenseTexts.ts` (the on-site license modal text, five occurrences,
+no reminder tag). Then re-export the PDFs and re-attach in Payhip. That is the only remaining
+step after this ships.
 
 ---
 
@@ -171,10 +174,13 @@ These are manual, outside the code edits, but required for the changes to actual
 
 ## Quick checklist for Claude Code
 
-- [ ] A1: insert registration block in 5 docs (Basic, Premium, Premium+Stems, Unlimited, Exclusive)
-- [ ] A2: add cap-exceeded sentence in 3 docs (Basic, Premium, Premium+Stems)
-- [ ] A3: add sync parenthetical in Basic
-- [ ] B1: verify free-download checkbox still present
-- [ ] B2: sync on-site license text if any exists
+- [x] A1: insert registration block in 5 docs (Basic, Premium, Premium+Stems, Unlimited, Exclusive)
+- [x] A2: add cap-exceeded sentence in 3 docs (Basic, Premium, Premium+Stems)
+- [x] A3: add sync parenthetical in Basic
+- [x] B1: verify free-download checkbox still present (BeatPurchase.tsx `agree` state gates the download)
+- [x] B2: sync on-site license text (`lib/licenseTexts.ts` now matches the docx text verbatim)
+- [x] Reviewer fix 1: Publisher's Share changed to 50/50 in all non-exclusive paid tiers (docx + site)
+- [x] Reviewer fix 2: "Except as expressly stated below" warranty qualifier added to all 5 paid tiers (docx + site)
+- [x] Cleanup: removed stray "subject to the caps in this Section" from Unlimited (it has no caps)
 - [ ] C: re-export PDFs, re-attach in Payhip, replace hosted free license
-- [ ] Later: replace `[WRITER_IPI]` when issued
+- [ ] Later: replace `[WRITER_IPI]` when issued (7 places — see §A1 follow-up)

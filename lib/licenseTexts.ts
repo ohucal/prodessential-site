@@ -36,11 +36,12 @@ Upload one (1) music video synchronized with the New Song to YouTube or other vi
 Use the New Song for non-profit live performances and non-profit promotional purposes;
 Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the caps in this Section and to the restrictions in the Prohibited Uses section; and
 Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+If the Licensee exceeds any of the distribution or streaming caps set forth in this Section, the Licensee must immediately upgrade to a higher tier license or remove the New Song from all distribution channels, streaming platforms, and video platforms.
 6. Prohibited Uses
 The Licensee may NOT:
 Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
 Distribute or make available the Beat in its original or substantially original form (as delivered) in any manner, including but not limited to as part of a beat pack, sample pack, loop kit, or in any form intended for use by other producers or artists;
-Synchronize the Beat or the New Song with any audiovisual work other than the one (1) permitted non-monetized music video, including but not limited to film, television, commercials, video games, theatrical productions, or branded content;
+Synchronize the Beat or the New Song with any audiovisual work other than the one (1) permitted non-monetized music video, including but not limited to film, television, commercials, video games, theatrical productions, or branded content (a separate sync license must be negotiated with the Licensor for any such use);
 Register, claim, or monetize the Beat or the New Song through any content-identification, digital-fingerprinting, monetization-claim, or rights-administration service (including but not limited to YouTube Content ID, AdRev, or Identifyy), or instruct any distributor to enroll the New Song in any such service. For clarity, using a digital distributor solely to deliver the New Song to streaming and download platforms as permitted in the Permitted Uses section is allowed; enrolling the Beat or the New Song in any Content ID or monetization-claim system is not;
 Register copyright in the Beat or the New Song's underlying composition with the U.S. Copyright Office or any equivalent foreign body, except in coordination with and with the written consent of the Licensor;
 Use the Beat as a sample in any work other than the New Song, or sublicense any such sample use;
@@ -53,8 +54,9 @@ The New Song is a derivative work of the Beat under United States copyright law.
 8. Publishing Splits
 The parties agree that the underlying composition of the New Song is owned and administered as follows:
 Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
-Publisher's Share: One hundred percent (100%) to the Licensor.
+Publisher's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee. Each party is responsible for administering its own publisher's share.
 If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+Licensor Registration Information. For the purpose of registering the Licensor's share of the underlying composition with any PRO, distributor, or rights administrator, the Licensor's information is: Legal Name: Owen Hucal, professionally known as prod.essential; Performing Rights Organization: ASCAP; Writer IPI/CAE Number: [WRITER_IPI]; Publishing Company: prod.essential Publishing; Publisher IPI/CAE Number: 1358011863. When registering the New Song with any PRO, distributor, or rights administrator, the Licensee must list the Licensor as a co-writer using this information.
 9. Mechanical License
 If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
 10. Producer Credit
@@ -62,7 +64,7 @@ The Licensee must credit the Licensor as a producer on every release, distributi
 Prod. essential
 This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
 11. Indemnification and Warranties
-The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+Except as expressly stated below, the Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
 The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
 The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
 12. Breach and Remedies
@@ -119,6 +121,7 @@ Upload one (1) music video synchronized with the New Song to YouTube or other vi
 Use the New Song for live performances, including for-profit live performances and ticketed events;
 Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the caps in this Section and to the restrictions in the Prohibited Uses section; and
 Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+If the Licensee exceeds any of the distribution or streaming caps set forth in this Section, the Licensee must immediately upgrade to a higher tier license or remove the New Song from all distribution channels, streaming platforms, and video platforms.
 5. Prohibited Uses
 The Licensee may NOT:
 Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
@@ -136,8 +139,9 @@ The New Song is a derivative work of the Beat under United States copyright law.
 7. Publishing Splits
 The parties agree that the underlying composition of the New Song is owned and administered as follows:
 Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
-Publisher's Share: One hundred percent (100%) to the Licensor.
+Publisher's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee. Each party is responsible for administering its own publisher's share.
 If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+Licensor Registration Information. For the purpose of registering the Licensor's share of the underlying composition with any PRO, distributor, or rights administrator, the Licensor's information is: Legal Name: Owen Hucal, professionally known as prod.essential; Performing Rights Organization: ASCAP; Writer IPI/CAE Number: [WRITER_IPI]; Publishing Company: prod.essential Publishing; Publisher IPI/CAE Number: 1358011863. When registering the New Song with any PRO, distributor, or rights administrator, the Licensee must list the Licensor as a co-writer using this information.
 8. Mechanical License
 If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
 9. Producer Credit
@@ -145,7 +149,7 @@ The Licensee must credit the Licensor as a producer on every release, distributi
 Prod. essential
 This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
 10. Indemnification and Warranties
-The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+Except as expressly stated below, the Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
 The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
 The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
 11. Breach and Remedies
@@ -202,6 +206,7 @@ Upload an unlimited number of music videos synchronized with the New Song to You
 Use the New Song for live performances, including for-profit live performances and ticketed events;
 Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the caps in this Section and to the restrictions in the Prohibited Uses section; and
 Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
+If the Licensee exceeds any of the distribution or streaming caps set forth in this Section, the Licensee must immediately upgrade to a higher tier license or remove the New Song from all distribution channels, streaming platforms, and video platforms.
 5. Prohibited Uses
 The Licensee may NOT:
 Sell, lease, sublicense, transfer, or assign the Beat, the New Song, or any rights under this Agreement to any third party;
@@ -220,8 +225,9 @@ The New Song is a derivative work of the Beat under United States copyright law.
 7. Publishing Splits
 The parties agree that the underlying composition of the New Song is owned and administered as follows:
 Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
-Publisher's Share: One hundred percent (100%) to the Licensor.
+Publisher's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee. Each party is responsible for administering its own publisher's share.
 If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+Licensor Registration Information. For the purpose of registering the Licensor's share of the underlying composition with any PRO, distributor, or rights administrator, the Licensor's information is: Legal Name: Owen Hucal, professionally known as prod.essential; Performing Rights Organization: ASCAP; Writer IPI/CAE Number: [WRITER_IPI]; Publishing Company: prod.essential Publishing; Publisher IPI/CAE Number: 1358011863. When registering the New Song with any PRO, distributor, or rights administrator, the Licensee must list the Licensor as a co-writer using this information.
 8. Mechanical License
 If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
 9. Producer Credit
@@ -229,7 +235,7 @@ The Licensee must credit the Licensor as a producer on every release, distributi
 Prod. essential
 This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
 10. Indemnification and Warranties
-The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+Except as expressly stated below, the Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
 The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
 The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
 11. Breach and Remedies
@@ -284,7 +290,7 @@ Distribute the New Song in physical and digital formats (digital downloads, CD, 
 Make the New Song available on audio streaming platforms (including Spotify, Apple Music, Tidal, Amazon Music, and equivalent services) for unlimited streams, and broadcast the New Song on terrestrial radio, satellite radio (including SiriusXM), and internet radio stations in unlimited markets;
 Upload an unlimited number of music videos synchronized with the New Song to YouTube or other video platforms, and the Licensee may monetize those music videos through the YouTube Partner Program or equivalent advertising programs;
 Use the New Song for unlimited live performances, including for-profit live performances, ticketed events, concerts, festivals, and nightclubs;
-Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the caps in this Section and to the restrictions in the Prohibited Uses section; and
+Use a third-party digital distributor or aggregator (for example, DistroKid, TuneCore, or CD Baby) solely as the delivery mechanism to make the New Song available on the streaming and download platforms permitted above, subject to the restrictions in the Prohibited Uses section; and
 Distribute the New Song free of charge for promotional purposes (including inclusion on free mixtapes or promotional EPs).
 5. Prohibited Uses
 The Licensee may NOT:
@@ -304,8 +310,9 @@ The New Song is a derivative work of the Beat under United States copyright law.
 7. Publishing Splits
 The parties agree that the underlying composition of the New Song is owned and administered as follows:
 Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
-Publisher's Share: One hundred percent (100%) to the Licensor.
+Publisher's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee. Each party is responsible for administering its own publisher's share.
 If the Licensee registers the New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+Licensor Registration Information. For the purpose of registering the Licensor's share of the underlying composition with any PRO, distributor, or rights administrator, the Licensor's information is: Legal Name: Owen Hucal, professionally known as prod.essential; Performing Rights Organization: ASCAP; Writer IPI/CAE Number: [WRITER_IPI]; Publishing Company: prod.essential Publishing; Publisher IPI/CAE Number: 1358011863. When registering the New Song with any PRO, distributor, or rights administrator, the Licensee must list the Licensor as a co-writer using this information.
 8. Mechanical License
 If the New Song is distributed in any format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
 9. Producer Credit
@@ -313,7 +320,7 @@ The Licensee must credit the Licensor as a producer on every release, distributi
 Prod. essential
 This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
 10. Indemnification and Warranties
-The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+Except as expressly stated below, the Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
 The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
 The Licensee warrants that any original lyrics or original musical elements added to the Beat to create the New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
 11. Breach and Remedies
@@ -385,6 +392,7 @@ The parties agree that the underlying composition of any New Song created by the
 Writer's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee.
 Publisher's Share: Fifty percent (50%) to the Licensor; fifty percent (50%) to the Licensee. Each party is responsible for administering its own publisher's share.
 If the Licensee registers any New Song with a Performing Rights Organization (PRO) such as ASCAP, BMI, SESAC, or any foreign equivalent, the Licensee must simultaneously register the Licensor's writer share and publisher share as set forth above, and must identify the Licensor as a co-writer of the underlying composition.
+Licensor Registration Information. For the purpose of registering the Licensor's share of the underlying composition with any PRO, distributor, or rights administrator, the Licensor's information is: Legal Name: Owen Hucal, professionally known as prod.essential; Performing Rights Organization: ASCAP; Writer IPI/CAE Number: [WRITER_IPI]; Publishing Company: prod.essential Publishing; Publisher IPI/CAE Number: 1358011863. When registering the New Song with any PRO, distributor, or rights administrator, the Licensee must list the Licensor as a co-writer using this information.
 8. Mechanical License
 If any New Song is distributed in a format that triggers mechanical royalty obligations under United States or foreign law, the Licensee will pay the Licensor mechanical royalties equal to fifty percent (50%) of the total mechanical royalties payable for the underlying composition, calculated at the full applicable statutory rate with no reduced or "controlled composition" rate applied to the Licensor's share. This reflects the Licensor's fifty percent (50%) ownership of the underlying composition as a co-writer.
 9. Producer Credit
@@ -392,7 +400,7 @@ The Licensee must credit the Licensor as a producer on every release, distributi
 Prod. essential
 This credit must appear in the song title or subtitle, in the streaming platform metadata, in the YouTube video title or description, and in any liner notes, cover art, or written materials accompanying the New Song. Failure to credit the Licensor in the required form is a material breach of this Agreement.
 10. Indemnification and Warranties
-The Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
+Except as expressly stated below, the Beat is delivered "as is" without warranties of any kind, express or implied, including warranties of fitness for a particular purpose.
 The Licensor warrants that the Licensor has the full right and authority to grant the rights set forth in this Agreement, that the Beat does not contain any uncleared third-party samples (unless expressly disclosed to the Licensee in writing prior to the date of this Agreement), and that the grant of this license does not infringe any third-party rights.
 The Licensee warrants that any original lyrics or original musical elements added to the Beat to create any New Song do not infringe any third-party rights, and the Licensee will indemnify, defend, and hold the Licensor harmless from any claims, damages, or expenses (including reasonable attorneys' fees) arising from such added elements.
 11. Breach and Remedies

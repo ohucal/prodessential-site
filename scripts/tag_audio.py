@@ -9,6 +9,9 @@ from mutagen.id3 import ID3, ID3NoHeaderError, TIT2, TIT3, TPE1, TPUB, COMM
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PRODUCTS_JSON = os.path.join(ROOT, "products.json")
+# Assets live under public/ since the Next.js port (products.json paths are
+# stored root-relative, e.g. "audio/x.mp3", and served from public/).
+ASSETS_ROOT = os.path.join(ROOT, "public")
 
 ARTIST = "prod.essential"
 SUBTITLE = "prodessential.com — Free Beats & More"
@@ -47,7 +50,7 @@ def main():
     preview_count = 0
 
     for beat in data["beats"]:
-        audio_path = os.path.join(ROOT, beat["audioFile"])
+        audio_path = os.path.join(ASSETS_ROOT, beat["audioFile"])
         if not os.path.isfile(audio_path):
             print(f"  SKIP (missing file): {beat['audioFile']}")
             continue

@@ -389,7 +389,8 @@ nav a:hover { color: var(--yellow); }
 #heroFeatured {
   display: flex;
   flex-direction: column;
-  max-height: 184px;        /* ~2 cards tall; scroll to reveal the rest */
+  gap: 2px;                 /* match the beat store's card gap */
+  max-height: 320px;        /* ~2 full store cards tall; scroll to reveal the rest */
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--border-dark) transparent;
@@ -1409,8 +1410,8 @@ nav a:hover { color: var(--yellow); }
 
 /* When the persistent player bar is visible, shrink the overlay's box to the
    area above it — the modal centers within that area and never sits behind
-   the bar. body.has-player is toggled by showPlayerBar()/playerClose(). */
-body.has-player .modal-overlay { bottom: var(--player-bar-total); }
+   the bar. Uses :has() to detect the visible bar without JS class toggling. */
+body:has(#playerBar.visible) .modal-overlay { bottom: var(--player-bar-total); }
 
 /* ─── MODAL PANEL ─────────────────────────────────────────────────────────── */
 .modal {
@@ -1434,7 +1435,7 @@ body.has-player .modal-overlay { bottom: var(--player-bar-total); }
 
 /* Same shrink, applied to the panel itself so tall modals can't overflow
    past the (now-shorter) overlay box and behind the player bar. */
-body.has-player .modal-overlay .modal { max-height: calc(var(--modal-max-h) - var(--player-bar-total)); }
+body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--modal-max-h) - var(--player-bar-total)); }
 .modal::-webkit-scrollbar { width: 3px; }
 .modal::-webkit-scrollbar-thumb { background: #333; }
 
@@ -2961,28 +2962,28 @@ body.has-player .modal-overlay .modal { max-height: calc(var(--modal-max-h) - va
 .player-btn--close:hover { color: var(--off-white); }
 
 /* Keep page content clear of the fixed bar */
-body.has-player { padding-bottom: var(--player-bar-total); }
+body:has(#playerBar.visible) { padding-bottom: var(--player-bar-total); }
 
 /* Pull the cart drawer up so its checkout footer clears the player bar */
-body.has-player .cart-drawer { height: calc(100% - var(--player-bar-total)); }
+body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar-total)); }
 
-/* Tablet / mobile — track + close on top, controls + seek beneath */
+/* Tablet / mobile — seek + close on top, track + controls beneath */
 @media (max-width: 760px) {
   :root { --player-bar-h: 120px; }
   .player-bar {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     grid-template-areas:
-      "track    track  right"
-      "controls seek   seek";
+      "seek     seek"
+      "track    controls";
     align-items: center;
     gap: 10px 12px;
     padding: 8px 14px calc(12px + env(safe-area-inset-bottom, 0px));
   }
   .player-track    { grid-area: track;    width: auto; min-width: 0; }
-  .player-right    { grid-area: right; }
+  .player-right    { position: absolute; top: 8px; right: 14px; gap: 4px; }
   .player-controls { grid-area: controls; }
-  .player-seek-row { grid-area: seek; }
+  .player-seek-row { grid-area: seek; width: 100%; min-width: 0; padding-right: 64px; }
   .player-vol { display: none; }
   #playerVolBtn { display: none; }
 }
@@ -3025,6 +3026,19 @@ body.has-player .cart-drawer { height: calc(100% - var(--player-bar-total)); }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 920px;
 }
 .product-related-grid .beat-card { cursor: pointer; }
+.product-related-browse {
+  display: block;
+  color: var(--light-gray);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 20px;
+  text-align: center;
+  max-width: 920px;
+}
+.product-related-browse:hover { color: var(--off-white); }
 
 @media (max-width: 760px) {
   .product-related-grid { grid-template-columns: repeat(2, 1fr); max-width: none; }
@@ -3091,14 +3105,15 @@ body.has-player .cart-drawer { height: calc(100% - var(--player-bar-total)); }
 }
 .beat-purchase-picker .modal-license-grid {
   flex: 1;
-  justify-content: space-between;
+  gap: 14px;
 }
 .beat-purchase-picker .modal-license-btn {
-  flex: none;
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .beat-purchase-detail {
   display: flex;
@@ -3183,19 +3198,27 @@ body.has-player .cart-drawer { height: calc(100% - var(--player-bar-total)); }
   padding: 64px 40px calc(var(--player-bar-total, 96px) + 48px);
 }
 .glass-close {
-  position: absolute; top: 16px; right: 16px; z-index: 2;
+  position: absolute; top: 16px; right: 40px; z-index: 2;
   width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
   border: none; border-radius: 50%; cursor: pointer; color: var(--off-white);
   background: rgba(255,255,255,0.06); transition: background 0.15s;
 }
 .glass-close svg { width: 14px; height: 14px; }
 .glass-close:hover { background: rgba(255,255,255,0.16); }
+.glass-logo {
+  position: absolute; top: 16px; left: 40px; z-index: 2;
+  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px;
+  color: var(--off-white); letter-spacing: -0.01em; text-decoration: none;
+}
 
 @media (max-width: 760px) {
   .glass-rail { display: none; }
   .glass-panel { width: 100%; }
   .glass-panel-scroll { padding: 56px 18px calc(var(--player-bar-total, 96px) + 40px); }
   .beat-detail-title { font-size: 1.9rem; }
+  .beat-detail-art { width: 82%; max-width: 82%; margin: 0; }
+  .glass-logo { left: 18px; }
+  .glass-close { right: 18px; }
 }
 
 /* ─── Confirmed (newsletter) page ─────────────────────────────────────────── */

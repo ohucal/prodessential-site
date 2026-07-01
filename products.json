@@ -1,6 +1,46 @@
 {
   "beats": [
     {
+      "id": "option",
+      "title": "Option",
+      "bpm": 152,
+      "key": "Em",
+      "tags": ["melodic", "upbeat"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2026-07-01",
+      "imgGradient": "linear-gradient(135deg, #0d1a0a 0%, #1a3020 100%)",
+      "imgFile": "images/option.jpg",
+      "audioFile": "audio/option.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bc8K7q%5D=1782926247294&cart_links%5B%5D=c8K7q&qty%5Bc8K7q%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bc8K7q%5D=1782926250476&cart_links%5B%5D=c8K7q&qty%5Bc8K7q%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bc8K7q%5D=1782926252682&cart_links%5B%5D=c8K7q&qty%5Bc8K7q%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5Bc8K7q%5D=1782926255234&cart_links%5B%5D=c8K7q&qty%5Bc8K7q%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "glass",
+      "title": "Glass",
+      "bpm": 140,
+      "key": "Gm",
+      "tags": ["melodic"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-04-29",
+      "imgGradient": "linear-gradient(135deg, #0a0f1a 0%, #1a2540 100%)",
+      "imgFile": "images/glass.jpg",
+      "audioFile": "audio/glass.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B3Bi7y%5D=1782895351765&cart_links%5B%5D=3Bi7y&qty%5B3Bi7y%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B3Bi7y%5D=1782895354459&cart_links%5B%5D=3Bi7y&qty%5B3Bi7y%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B3Bi7y%5D=1782895356935&cart_links%5B%5D=3Bi7y&qty%5B3Bi7y%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B3Bi7y%5D=1782895367251&cart_links%5B%5D=3Bi7y&qty%5B3Bi7y%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
       "id": "stories",
       "title": "Stories",
       "bpm": 147,

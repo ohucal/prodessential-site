@@ -2,7 +2,7 @@
 // at build time (good for SEO); the cards are client islands (BeatCard) that
 // add cover-image preview playback and link to each beat page.
 import { beats } from '@/lib/products';
-import BeatCard from './BeatCard';
+import FeaturedBeats from './FeaturedBeats';
 
 export default function Hero() {
   const featured = beats.filter((b) => b.featured);
@@ -22,11 +22,7 @@ export default function Hero() {
 
       <div className="hero-right">
         <p className="hero-right-label">Featured Beats</p>
-        <div id="heroFeatured">
-          {list.map((beat) => (
-            <BeatCard key={beat.id} beat={beat} variant="compact" />
-          ))}
-        </div>
+        <FeaturedBeats beats={list} />
       </div>
     </section>
   );

@@ -58,6 +58,7 @@ export default function GlassModal() {
     <div className="glass-overlay" onMouseDown={(e) => { if (e.target === e.currentTarget) dismiss(); }}>
       <div className="glass-rail glass-rail--left" onMouseDown={(e) => { if (e.target === e.currentTarget) dismiss(); }} />
       <div className="glass-panel" role="dialog" aria-modal="true" aria-label={`${beat.title} details`}>
+        <a href="/" className="glass-logo">prod.essential</a>
         <button className="glass-close" onClick={dismiss} aria-label="Close">
           <svg viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
         </button>

@@ -108,12 +108,13 @@ export default function BeatDetail({ beat, isModal, onNavigate }: { beat: Beat; 
 
       {related.length > 0 && (
         <section className="product-related">
-          <h2 className="product-section-title">More from prod.essential</h2>
+          <h2 className="product-section-title">More of my beats</h2>
           <div className="product-related-grid">
             {related.map((b) => (
               <BeatCard key={b.id} beat={b} variant="compact" />
             ))}
           </div>
+          <a href="/#beats" className="product-related-browse">Browse all beats</a>
         </section>
       )}
     </article>

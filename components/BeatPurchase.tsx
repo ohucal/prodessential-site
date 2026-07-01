@@ -144,7 +144,7 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
               </form>
             ) : (
               <div className="modal-free-success">
-                <p className="modal-free-success-msg">Download started. Check your email for a backup link.</p>
+                <p className="modal-free-success-msg">Download started.</p>
                 <a href="#" className="modal-free-upsell" onClick={(e) => { e.preventDefault(); selectLicense('premium'); buyRowRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }}>Want it untagged for release? Get the Premium license →</a>
               </div>
             )}

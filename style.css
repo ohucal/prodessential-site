@@ -2974,3 +2974,82 @@ body.has-player .cart-drawer { height: calc(100% - var(--player-bar-total)); }
   .player-btn--play { width: 34px; height: 34px; }
   .player-art { width: 40px; height: 40px; }
 }
+
+/* ─── Per-product SEO pages (/beats/[id], /kits/[id]) ─────────────────────── */
+.product-main { max-width: 1100px; margin: 0 auto; padding: 24px 24px 64px; }
+.product-breadcrumb {
+  font-size: 0.78rem; letter-spacing: 0.04em; color: var(--light-gray);
+  margin: 8px 0 24px;
+}
+.product-breadcrumb a { color: var(--light-gray); text-decoration: none; }
+.product-breadcrumb a:hover { color: var(--off-white); }
+.product-breadcrumb span { color: var(--off-white); }
+
+.product-hero { align-items: center; }
+.product-hero .hero-right { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.product-cover {
+  width: 300px; max-width: 80vw; aspect-ratio: 1 / 1; border-radius: 12px;
+  background-size: cover; background-position: center;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.45); border: 1px solid var(--border-dark);
+}
+.product-meta {
+  font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 0.06em;
+  color: var(--light-gray); margin: 0;
+}
+.product-tags { margin: 18px 0 24px; }
+
+.product-section-title {
+  font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--off-white);
+  margin: 0 0 18px;
+}
+.product-licenses, .product-related { margin-top: 56px; }
+.product-tier-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.product-tier {
+  display: grid; grid-template-columns: 1fr 1.4fr auto; align-items: center; gap: 12px;
+  padding: 14px 16px; background: var(--surface); border: 1px solid var(--border-dark);
+  border-radius: 8px;
+}
+.product-tier-name { font-weight: 500; color: var(--off-white); }
+.product-tier-format { font-size: 0.82rem; color: var(--light-gray); font-family: 'DM Mono', monospace; }
+.product-tier-price { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--yellow); text-align: right; }
+
+.product-related-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px;
+}
+.product-related-grid .beat-card { cursor: pointer; }
+
+@media (max-width: 600px) {
+  .product-cover { width: 240px; }
+  .product-tier { grid-template-columns: 1fr auto; }
+  .product-tier-format { display: none; }
+}
+
+/* ─── Confirmed (newsletter) page ─────────────────────────────────────────── */
+.confirmed-shell { background: var(--near-black); padding: 64px 32px 96px; min-height: calc(100vh - 60px); }
+.confirmed-panel { max-width: 760px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border-dark); padding: 72px 80px 80px; }
+.confirmed-hero { border-bottom: 0.5px solid var(--border-dark); padding-bottom: 56px; margin-bottom: 56px; }
+.confirmed-badge { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+.confirmed-badge svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--yellow); }
+.confirmed-kicker { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--light-gray); }
+.confirmed-panel .hero-headline { margin-bottom: 22px; }
+.confirmed-subhead { font-size: 13px; line-height: 1.9; color: var(--gray); max-width: 460px; }
+.confirmed-section { border-bottom: 0.5px solid var(--border-dark); padding-bottom: 56px; margin-bottom: 56px; }
+.confirmed-section--last { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.confirmed-section-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 28px; color: var(--yellow); margin-bottom: 18px; }
+.confirmed-section-copy { font-size: 12px; line-height: 1.85; color: var(--gray); max-width: 440px; margin-bottom: 32px; }
+.confirmed-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.confirmed-panel .producer-contacts { justify-content: flex-start; }
+.confirmed-footer-wrap { border-top: 0.5px solid var(--border-dark); margin-top: 56px; padding-top: 36px; }
+.confirmed-footer { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 18px; color: var(--off-white); }
+@media (max-width: 768px) {
+  .confirmed-shell { padding: 40px 16px 72px; }
+  .confirmed-panel { padding: 48px 32px 56px; }
+  .confirmed-hero, .confirmed-section { padding-bottom: 44px; margin-bottom: 44px; }
+  .confirmed-section--last { padding-bottom: 0; margin-bottom: 0; }
+  .confirmed-footer-wrap { margin-top: 36px; padding-top: 32px; }
+}
+@media (max-width: 600px) {
+  .confirmed-panel .hero-headline { font-size: 40px; }
+  .confirmed-section-title { font-size: 23px; }
+  .confirmed-panel .producer-contacts { justify-content: center; }
+}

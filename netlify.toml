@@ -1,0 +1,7 @@
+# Next.js static export → publish the generated out/ folder as a static site.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "20"

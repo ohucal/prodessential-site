@@ -21,7 +21,7 @@ function relatedBeats(id: string, tags: string[]): Beat[] {
     .map((s) => s.b);
 }
 
-export default function BeatDetail({ beat, isModal, onNavigate }: { beat: Beat; isModal?: boolean; onNavigate?: (id: string) => void }) {
+export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: { beat: Beat; isModal?: boolean; onNavigate?: (id: string) => void; onBrowseAll?: () => void }) {
   const router = useRouter();
   const toggleBeat = usePlayer((s) => s.toggleBeat);
   const isPlayingThis = usePlayer((s) => s.isPlaying && s.activeBeatId === beat.id);
@@ -39,6 +39,15 @@ export default function BeatDetail({ beat, isModal, onNavigate }: { beat: Beat; 
   function navigate(id: string) {
     if (onNavigate) onNavigate(id);
     else router.push(`/beats/${id}/`);
+  }
+
+  // Return to the beat store without a full reload so any playing beat keeps
+  // going. In the overlay, onBrowseAll closes it and restores the home URL;
+  // on the standalone page, a client-side push preserves the persistent player.
+  function browseAll(e: React.MouseEvent) {
+    e.preventDefault();
+    if (onBrowseAll) onBrowseAll();
+    else router.push('/#beats');
   }
 
   // Measure the article's viewport-relative position to place fixed arrows exactly
@@ -114,7 +123,7 @@ export default function BeatDetail({ beat, isModal, onNavigate }: { beat: Beat; 
               <BeatCard key={b.id} beat={b} variant="compact" />
             ))}
           </div>
-          <a href="/#beats" className="product-related-browse">Browse all beats</a>
+          <a href="/#beats" className="product-related-browse" onClick={browseAll}>Browse all beats</a>
         </section>
       )}
     </article>

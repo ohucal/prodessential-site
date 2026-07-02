@@ -65,6 +65,19 @@ export default function GlassModal() {
     else router.push('/');
   }
 
+  // Same as goHome but lands on the beat store section — used by "Browse all
+  // beats" so a playing beat keeps going instead of being cut off by a reload.
+  function goBrowse() {
+    pushed.current = false;
+    closeBeat();
+    if (pathname === '/') {
+      window.history.replaceState({}, '', '/#beats');
+      requestAnimationFrame(() => document.getElementById('beats')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    } else {
+      router.push('/#beats');
+    }
+  }
+
   if (!beat) return null;
 
   return (
@@ -88,7 +101,7 @@ export default function GlassModal() {
           </button>
         )}
         <div className="glass-panel-scroll">
-          <BeatDetail beat={beat} isModal />
+          <BeatDetail beat={beat} isModal onBrowseAll={goBrowse} />
         </div>
       </div>
       <div className="glass-rail glass-rail--right" onMouseDown={(e) => { if (e.target === e.currentTarget) dismiss(); }} />

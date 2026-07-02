@@ -8,8 +8,8 @@ Effort: S (<30m) · M (~1–2h) · L (half day+).
 ## Inbox (unsorted — capture now, triage later)
 Raw dump zone. Drop anything here the moment you notice it — a bug, a half-formed idea, "the X looks off" — without stopping to prioritize. Later (or when asked), items get rewritten as concrete tasks and moved into the prioritized sections below, or deleted if they turn out not to matter. No format rules; a one-liner is fine.
 
+- CLAUDE.md and PROMPTS.md reference a `/add-beat` skill, but `.claude/skills/` only has `seo-check` and `conversion-review` — either write the skill (checklist + JSON template) or fix the docs to stop pointing at it.
 - Dead-CSS sweep: style.css still carries orphaned classes from the old center modal (`.modal-play-btn`, `.modal-bpm-key`, `.modal-tags`, `.modal-free-tag-row`, `.modal-tag*`, `.modal-title`, `.modal-info`…) — audit usages and prune.
-- `public/images/bottles.jpg` is untracked and no product references it — add the beat that goes with it or delete the file.
 - Kit slugs were renamed 2026-07-02 (`melodic-textures`→`cashed-out-multi-kit-vol-1`, `vintage-keys`→`essential-one-shots-vol-1`, `solar-flare-serum2-bank`→`vertigo-serum2-bank-vol-1`, `essentials-essentials-vol-1`→`complete-kit-vol-1`, `sub-zero-serum-bank`→`sub-zero-serum-bank-vol-1`). If any old `/kits/<id>/` or `?kit=` links were shared externally, add Netlify `_redirects` entries.
 - "Essential One Shots Vol. 1" description says "sampled from vintage keyboards" — confirm that matches the actual pack contents (couldn't verify from the repo).
 

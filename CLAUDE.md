@@ -34,5 +34,31 @@ Live in `public/` (served at site root). Beat audio → `public/audio/<name>.mp3
 ## Adding a beat
 Use the `/add-beat` skill — it has the full checklist and JSON template.
 
+## Model routing & AI workflow (spend the right model on the right job)
+Pick the model by job, not habit — this is the main cost control:
+- **Opus** — deep reasoning: architecture, audits, writing/refining specs & skills, gnarly bugs. Use it to produce **reusable artifacts** (specs, skills, plans) that make cheaper models smart, not for routine edits.
+- **Fable / fast models** — execution and broad sweeps: run a spec across many files, mechanical fixes, repetitive edits. Fastest way to burn through a well-defined backlog.
+- **Sonnet** — everyday workhorse once a spec/plan exists.
+
+Working rules that cut credit use without cutting quality:
+- **Point at a spec, don't re-explain.** Recurring/multi-step work lives in `SPECS/` — reference it instead of re-describing context each session.
+- **Report first, fix second, verify each.** Ask for a findings report before edits; it prevents rework and back-and-forth.
+- **Constrain scope + define done.** State what NOT to touch and the finish criteria up front.
+- Ready-to-paste prompts live in `PROMPTS.md`. Prioritized backlog in `ROADMAP.md`.
+
+## Keep ROADMAP.md current
+`ROADMAP.md` is the living backlog — maintain it as you work, without being asked:
+- When you finish something that was on it, check it off (or move it to `## Done` with the date).
+- When you notice a bug, gap, or idea that's out of scope for the current task, add a one-liner to the `## Inbox` section instead of derailing. Triage Inbox items into the prioritized sections when asked.
+- Don't let it go stale: if an item is clearly obsolete or already handled, remove it.
+
+## Skills
+- `/add-beat` — add a beat (checklist + JSON template).
+- `/seo-check` — audit/fix SEO quality across products.
+- `/conversion-review` — CRO review of the buy flow.
+
 ## Other docs
+- `SPECS/` — executable specs (start with `SPECS/AUDIT.md`). `SPECS/README.md` explains the pattern.
+- `ROADMAP.md` — prioritized backlog (SEO, conversion, perf, features). Pull tasks from here.
+- `PROMPTS.md` — copy-paste prompt library for common jobs.
 - `PROD_ESSENTIAL_PLAYBOOK.md` — business/growth strategy (not technical). Only read if the task is about marketing/pricing/roadmap.

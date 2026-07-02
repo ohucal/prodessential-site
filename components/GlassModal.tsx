@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { beats, getBeat } from '@/lib/products';
 import { useUI } from '@/stores/useUI';
+import { useFocusTrap } from '@/lib/useFocusTrap';
 import BeatDetail from './BeatDetail';
 
 export default function GlassModal() {
@@ -17,6 +18,7 @@ export default function GlassModal() {
   const pathname = usePathname();
   const pushed = useRef(false);
   const beat = activeBeatId ? getBeat(activeBeatId) : undefined;
+  const panelRef = useFocusTrap<HTMLDivElement>(!!beat);
 
   const currentIndex = beat ? beats.findIndex((b) => b.id === beat.id) : -1;
   const prevBeat = currentIndex >= 0 ? beats[(currentIndex - 1 + beats.length) % beats.length] : null;
@@ -83,7 +85,7 @@ export default function GlassModal() {
   return (
     <div className="glass-overlay" onMouseDown={(e) => { if (e.target === e.currentTarget) dismiss(); }}>
       <div className="glass-rail glass-rail--left" onMouseDown={(e) => { if (e.target === e.currentTarget) dismiss(); }} />
-      <div className="glass-panel" role="dialog" aria-modal="true" aria-label={`${beat.title} details`}>
+      <div className="glass-panel" role="dialog" aria-modal="true" aria-label={`${beat.title} details`} ref={panelRef} tabIndex={-1}>
         <div className="glass-header">
           <Link href="/" className="glass-logo" onClick={goHome}>prod.essential</Link>
           <button className="glass-close" onClick={dismiss} aria-label="Close">

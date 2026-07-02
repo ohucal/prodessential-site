@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { getKit, kits } from '@/lib/products';
 import { useUI } from '@/stores/useUI';
+import { useFocusTrap } from '@/lib/useFocusTrap';
 import KitDetail from './KitDetail';
 
 export default function KitModal() {
@@ -16,6 +17,7 @@ export default function KitModal() {
   const router = useRouter();
   const pathname = usePathname();
   const kit = activeKitId ? getKit(activeKitId) : undefined;
+  const panelRef = useFocusTrap<HTMLDivElement>(!!kit);
 
   const currentIndex = kit ? kits.findIndex((k) => k.id === kit.id) : -1;
   const prevKit = currentIndex >= 0 ? kits[(currentIndex - 1 + kits.length) % kits.length] : null;
@@ -53,7 +55,7 @@ export default function KitModal() {
   return (
     <div className="glass-overlay" onMouseDown={(e) => { if (e.target === e.currentTarget) closeKit(); }}>
       <div className="glass-rail glass-rail--left" onMouseDown={(e) => { if (e.target === e.currentTarget) closeKit(); }} />
-      <div className="glass-panel" role="dialog" aria-modal="true" aria-label={`${kit.title} details`}>
+      <div className="glass-panel" role="dialog" aria-modal="true" aria-label={`${kit.title} details`} ref={panelRef} tabIndex={-1}>
         <div className="glass-header">
           <Link href="/" className="glass-logo" onClick={goHome}>prod.essential</Link>
           <button className="glass-close" onClick={closeKit} aria-label="Close">

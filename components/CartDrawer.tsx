@@ -7,9 +7,11 @@ import { fmtPrice } from '@/lib/format';
 import { useUI } from '@/stores/useUI';
 import { useCart, beatCartItem } from '@/stores/useCart';
 import { usePlayer } from '@/stores/usePlayer';
+import { useFocusTrap } from '@/lib/useFocusTrap';
 
 export default function CartDrawer() {
   const cartOpen = useUI((s) => s.cartOpen);
+  const drawerRef = useFocusTrap<HTMLElement>(cartOpen);
   const closeCart = useUI((s) => s.closeCart);
   const items = useCart((s) => s.items);
   const remove = useCart((s) => s.remove);
@@ -32,7 +34,7 @@ export default function CartDrawer() {
 
   return (
     <div className={`cart-overlay${cartOpen ? ' active' : ''}`} onClick={(e) => { if (e.target === e.currentTarget) closeCart(); }}>
-      <aside className="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+      <aside className="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart" ref={drawerRef} tabIndex={-1}>
         <div className="cart-header">
           <span className="cart-header-title">Your Cart</span>
           <button className="cart-close" onClick={closeCart} aria-label="Close cart">

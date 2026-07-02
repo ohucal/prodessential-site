@@ -152,72 +152,6 @@ body {
   min-height: 100vh;
 }
 
-/* PROMO BAR */
-.promo-bar {
-  background: linear-gradient(90deg, #1a1226 0%, #2d1f4a 50%, #1a1226 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 56px 14px 16px;
-  position: relative;
-  border-bottom: 1px solid var(--yellow);
-  box-shadow: 0 4px 12px rgba(232, 200, 50, 0.05);
-  cursor: pointer; /* Let users know they can click it */
-  transition: filter 0.2s ease; /* Smooth hover transition */
-}
-
-.promo-bar:hover {
-  filter: brightness(1.15); /* Slight brightness bump to indicate interactability */
-}
-
-.promo-bar-text {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  font-style: normal; 
-  letter-spacing: 0.15em;
-  color: var(--off-white);
-  line-height: 1.4;
-  text-align: center;
-}
-
-.promo-highlight {
-  color: var(--yellow);
-  font-weight: 500;
-}
-
-.promo-bar-close {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--off-white);
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.5;
-  transition: opacity 0.15s;
-}
-
-.promo-bar-close:hover { opacity: 1; }
-
-.promo-bar-close svg {
-  width: 11px;
-  height: 11px;
-}
-
-@media (max-width: 768px) {
-  .promo-bar {
-    padding: 12px 44px 12px 16px;
-  }
-  .promo-bar-text {
-    font-size: 9px;
-  }
-}
-
 /* HEADER */
 header {
   background: rgba(17, 17, 17, 0.72);
@@ -441,28 +375,6 @@ nav a:hover { color: var(--yellow); }
   background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
 }
 
-.beat-cover .play-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.5);
-  opacity: 0;
-  transition: opacity 0.15s;
-}
-
-.beat-card:hover .play-overlay { opacity: 1; }
-
-.play-triangle {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 5px 0 5px 9px;
-  border-color: transparent transparent transparent var(--off-white);
-  margin-left: 2px;
-}
-
 .beat-info {
   flex: 1;
   min-width: 0;
@@ -559,19 +471,6 @@ nav a:hover { color: var(--yellow); }
 .beat-price-free-sub {
   font-size: 10px;
   color: var(--dark-gray);
-}
-
-.beat-new-badge {
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  background: rgba(232, 200, 50, 0.1);
-  border: 0.5px solid rgba(232, 200, 50, 0.42);
-  padding: 3px 7px;
-  border-radius: 2px;
-  line-height: 1;
 }
 
 /* KIT CARD — same row layout as beat cards; only tag accent differs */
@@ -1506,24 +1405,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .modal-close:hover { color: var(--off-white); }
 .modal-close svg { width: 14px; height: 14px; }
 
-/* ─── PLAY BUTTON ─────────────────────────────────────────────────────────── */
-.modal-play-btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.28);
-  border: 1.5px solid rgba(255,255,255,0.65);
-  color: var(--off-white);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, transform 0.12s;
-}
-.modal-play-btn:hover { background: rgba(0,0,0,0.48); transform: scale(1.06); }
-.modal-play-btn svg { width: 20px; height: 20px; }
-.play-icon { margin-left: 3px; }
-
 /* ─── CARD PLAY BUTTON (on thumbnail) ───────────────────────────────────── */
 .card-play-btn {
   position: absolute;
@@ -1615,67 +1496,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   color: var(--mid-gray);
 }
 
-
-.modal-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 28px;
-  font-style: italic;
-  color: var(--off-white);
-  line-height: 1.15;
-  margin: 0;
-}
-
-.modal-bpm-key {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  font-family: 'DM Mono', monospace;
-}
-
-.modal-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.modal-free-tag-row {
-  display: flex;
-  margin-top: 8px;
-}
-
-.modal-free-tag-row:empty {
-  margin-top: 0;
-}
-
-.modal-tag {
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--purple-bright);
-  background: var(--purple-tint);
-  border: 0.5px solid var(--purple-line);
-  border-radius: 2px;
-  padding: 4px 9px;
-  line-height: 1.4;
-  font-family: 'DM Mono', monospace;
-}
-
-.modal-tag--new {
-  color: var(--yellow);
-  background: rgba(232, 200, 50, 0.1);
-  border-color: rgba(232, 200, 50, 0.42);
-}
-
-.modal-tag--featured {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  color: #1b1726;
-  background: var(--yellow);
-  border-color: var(--yellow);
-}
 
 .modal-kit-desc {
   font-size: 12px;
@@ -1773,29 +1593,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: inline-block;
 }
 
-/* ─── MODAL INFO (licenses + buy) ─────────────────────────────────────────── */
-.modal-info {
-  padding: 28px 32px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
 /* ─── LICENSE SELECTOR ────────────────────────────────────────────────────── */
-.modal-license-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.modal-license-label {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  font-family: 'DM Mono', monospace;
-}
-
 .modal-license-grid {
   display: flex;
   flex-direction: column;
@@ -1926,31 +1724,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   font-size: 32px;
   color: var(--off-white);
   line-height: 1;
-}
-
-.modal-buy-btn {
-  background: var(--yellow);
-  color: var(--near-black);
-  font-family: 'DM Mono', monospace;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 0 60px;
-  height: 80px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.modal-buy-btn:hover {
-  background: #f0d040;
-  color: var(--near-black);
 }
 
 /* ─── SHARE BUTTON ────────────────────────────────────────────────────────── */
@@ -2125,10 +1898,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   /* Nav arrows are unusable in a bottom-sheet on mobile */
   .modal-nav-btn { display: none; }
 
-  .modal-title { font-size: 20px; }
-  .modal-info { padding: 16px 16px 20px; }
   .modal-price-value { font-size: 26px; }
-  .modal-buy-btn { padding: 0 28px; height: 56px; font-size: 11px; }
   .modal-license-btn { padding: 6px 0; font-size: 10px; }
 }
 
@@ -2458,33 +2228,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 /* FREE DOWNLOAD tag — solid lavender + download glyph: reads as an action,
    clearly set apart from the tinted genre tags without shouting like yellow. */
-.beat-tag--free {
-  color: #1b1726;
-  background: var(--purple);
-  border-color: var(--purple);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-}
-.beat-tag--free::before {
-  content: "\2193";
-  margin-right: 4px;
-  font-weight: 700;
-}
-
-/* Modal's FREE DOWNLOAD banner — own line below the regular tags, icon to the right */
-.modal-tag--free {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--yellow);
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-}
-
 /* FREE filter chip — lavender, distinct from the gray→yellow filter buttons */
 .tag-filter-btn--free {
   color: var(--purple);
@@ -2676,12 +2419,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   border-color: var(--yellow);
 }
 .shuffle-btn svg { display: block; }
-.shuffle-btn.spin .shuffle-icon { animation: shuffle-spin 0.5s ease; }
-@keyframes shuffle-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
 /* The X that appears on an active Shuffle button to turn it back off */
 .shuffle-clear {
   display: none;
@@ -2817,8 +2554,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 .player-btn--play:hover { background: #fff; color: #000; transform: scale(1.07); }
 .player-btn--play:active { transform: scale(0.96); }
-.player-play-icon { margin-left: 2px; }
-
 .player-repeat-one {
   position: absolute;
   top: -3px; right: -3px;
@@ -2992,24 +2727,11 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .product-breadcrumb a:hover { color: var(--off-white); }
 .product-breadcrumb span { color: var(--off-white); }
 
-.product-hero { align-items: center; }
-.product-hero .hero-right { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.product-cover {
-  width: 300px; max-width: 80vw; aspect-ratio: 1 / 1; border-radius: 12px;
-  background-size: cover; background-position: center;
-  box-shadow: 0 18px 48px rgba(0,0,0,0.45); border: 1px solid var(--border-dark);
-}
-.product-meta {
-  font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 0.06em;
-  color: var(--light-gray); margin: 0;
-}
-.product-tags { margin: 18px 0 24px; }
-
 .product-section-title {
   font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.5rem; color: var(--off-white);
   margin: 0 0 18px;
 }
-.product-licenses, .product-related { margin-top: 56px; }
+.product-related { margin-top: 56px; }
 
 /* minmax(0,1fr) lets columns shrink below content min-width (long nowrap kit
    titles otherwise force the grid wider than the viewport on mobile). */
@@ -3037,9 +2759,6 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   .product-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
 }
 
-@media (max-width: 600px) {
-  .product-cover { width: 240px; }
-}
 
 /* ─── Beat detail (shared: standalone page + glass overlay) ────────────────── */
 .beat-detail-top { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }

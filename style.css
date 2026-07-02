@@ -1964,6 +1964,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   color: var(--off-white);
 }
 .cart-close {
+  position: relative;
   background: none;
   border: none;
   color: var(--mid-gray);
@@ -1973,6 +1974,14 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 .cart-close:hover { color: var(--off-white); }
 .cart-close svg { width: 14px; height: 14px; }
+/* Invisible hit-area extension: visual box stays 22px, tap target grows to
+   ~42px. Isolated in the cart header (no tight neighbors), so a generous
+   inset is safe. */
+.cart-close::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+}
 
 .cart-body {
   flex: 1;
@@ -2519,6 +2528,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 .player-btn {
+  position: relative;
   background: none;
   border: none;
   cursor: pointer;
@@ -2531,8 +2541,16 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 .player-btn:hover { color: var(--off-white); }
 .player-btn:active { transform: scale(0.9); }
+/* Invisible hit-area extension, not a visual resize. -6px is calibrated to
+   the tightest gap between player buttons (12px at <=420px) so extended
+   zones meet edge-to-edge instead of overlapping into a neighbor's tap. */
+.player-btn::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
 
-.player-btn--mini { color: var(--gray); position: relative; }
+.player-btn--mini { color: var(--gray); }
 .player-btn--mini:hover { color: var(--off-white); }
 .player-btn--mini.active { color: var(--yellow); }
 .player-btn--mini.active::after {
@@ -2552,6 +2570,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   color: var(--near-black);
   padding: 0;
 }
+.player-btn--play::before { inset: -3px; }
 .player-btn--play:hover { background: #fff; color: #000; transform: scale(1.07); }
 .player-btn--play:active { transform: scale(0.96); }
 .player-repeat-one {

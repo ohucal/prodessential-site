@@ -141,7 +141,7 @@
         "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BmWMi7%5D=1779516944139&cart_links%5B%5D=mWMi7&qty%5BmWMi7%5D=1" },
         "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BmWMi7%5D=1779516961514&cart_links%5B%5D=mWMi7&qty%5BmWMi7%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BmWMi7%5D=1779516962867&cart_links%5B%5D=mWMi7&qty%5BmWMi7%5D=1" },
-        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BmWMi7%5D=1779516962867&cart_links%5B%5D=mWMi7&qty%5BmWMi7%5D=1" }
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
       }
     },
     {
@@ -204,7 +204,7 @@
         "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BeGUAz%5D=1779517652968&cart_links%5B%5D=eGUAz&qty%5BeGUAz%5D=1" },
         "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BeGUAz%5D=1779517653893&cart_links%5B%5D=eGUAz&qty%5BeGUAz%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BeGUAz%5D=1779517655130&cart_links%5B%5D=eGUAz&qty%5BeGUAz%5D=1" },
-        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BeGUAz%5D=1779517655130&cart_links%5B%5D=eGUAz&qty%5BeGUAz%5D=1" }
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
       }
     },
     {
@@ -245,7 +245,7 @@
         "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8j3Zh%5D=1779514306435&cart_links%5B%5D=8j3Zh&qty%5B8j3Zh%5D=1" },
         "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8j3Zh%5D=1779514307366&cart_links%5B%5D=8j3Zh&qty%5B8j3Zh%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8j3Zh%5D=1779514308398&cart_links%5B%5D=8j3Zh&qty%5B8j3Zh%5D=1" },
-        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5B8j3Zh%5D=1779514308398&qty%5B8j3Zh%5D=1&cart_links%5B%5D=8j3Zh" }
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
       }
     },
     {
@@ -266,7 +266,7 @@
         "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BfDH5T%5D=1779515397512&cart_links%5B%5D=fDH5T&qty%5BfDH5T%5D=1" },
         "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BfDH5T%5D=1779515398529&cart_links%5B%5D=fDH5T&qty%5BfDH5T%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BfDH5T%5D=1779515399307&cart_links%5B%5D=fDH5T&qty%5BfDH5T%5D=1" },
-        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BfDH5T%5D=1779515399307&cart_links%5B%5D=fDH5T&qty%5BfDH5T%5D=1" }
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
       }
     },
     {

@@ -3180,6 +3180,25 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 }
 .modal-license-btn.active .modal-license-popular { color: rgba(0,0,0,0.6); }
 
+/* Right side of a tier button: optional "Most Popular" pill + the tier price,
+   so the whole $25 -> $250 ladder is visible before any click. */
+.modal-license-meta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: 8px; }
+.modal-license-price { color: var(--gray); }
+.modal-license-btn:hover .modal-license-price { color: var(--off-white); }
+.modal-license-btn.active .modal-license-price { color: rgba(0, 0, 0, 0.75); }
+
+/* One-line trust strip under the buy row. */
+.modal-trust-row {
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gray); margin: 10px 0 0; text-align: center;
+}
+
+/* "Get Notified" is an <a> wearing the secondary-button style. */
+.modal-notify-link {
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; text-transform: uppercase;
+}
+
 /* Mobile: keep license buttons stacked vertically in the purchase picker;
    hide "Most Popular" since it overflows the narrower button width. */
 @media (max-width: 760px) {

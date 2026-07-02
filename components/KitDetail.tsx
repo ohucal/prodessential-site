@@ -128,11 +128,14 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
             ) : (
               <>
                 <button className="modal-add-btn modal-btn--disabled" type="button" disabled>Coming Soon</button>
-                <button className="modal-buy-btn--secondary modal-btn--disabled" type="button" disabled>Unavailable</button>
+                <a className="modal-buy-btn--secondary modal-notify-link" href="/#newsletter">Get Notified →</a>
               </>
             )}
           </div>
         </div>
+        {addable && (
+          <p className="modal-trust-row">Instant delivery&nbsp;&nbsp;·&nbsp;&nbsp;Secure Payhip checkout</p>
+        )}
         {addConfirm && <div className="modal-add-confirm visible" aria-live="polite">{addConfirm}</div>}
         {showViewCart && <button className="modal-view-cart-btn" onClick={openCart}>View Cart →</button>}
         <button className="modal-share-btn kit-detail-share" onClick={copyShare}>

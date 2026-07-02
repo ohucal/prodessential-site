@@ -109,7 +109,10 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
               onClick={() => selectLicense(key)}
             >
               {beat.licenses[key].label}
-              {key === 'premium' && <span className="modal-license-popular">Most Popular</span>}
+              <span className="modal-license-meta">
+                {key === 'premium' && <span className="modal-license-popular">Most Popular</span>}
+                <span className="modal-license-price">{beat.licenses[key].price === null ? 'Contact' : `$${beat.licenses[key].price}`}</span>
+              </span>
             </button>
           ))}
         </div>
@@ -174,6 +177,9 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
               )}
             </div>
           </div>
+        )}
+        {!freeMode && (state === 'addable' || state === 'novariant') && (
+          <p className="modal-trust-row">Instant delivery&nbsp;&nbsp;·&nbsp;&nbsp;Secure Payhip checkout&nbsp;&nbsp;·&nbsp;&nbsp;Written license included</p>
         )}
         {addConfirm && <div className="modal-add-confirm visible" aria-live="polite">{addConfirm}</div>}
         {showViewCart && <button className="modal-view-cart-btn" onClick={openCart}>View Cart →</button>}

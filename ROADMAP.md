@@ -33,8 +33,9 @@ Raw dump zone. Drop anything here the moment you notice it — a bug, a half-for
 ## Analytics (you can't optimize what you don't measure)
 - [x] GA4 funnel events are wired: `beat_preview_play`, `view_item`, `select_item`, `add_to_cart`/`remove_from_cart`, `begin_checkout`, `generate_lead`, `sign_up`/`sign_up_confirmed`. (2026-07-01)
 - [x] Ecommerce events use GA4 shape (`items` + `value` + `currency`) via `trackEcommerce()` in `lib/analytics.ts`, so monetization/funnel reports populate. (2026-07-01)
-- [ ] **P1 · S (user action, no code)** Enable **Payhip → Google Analytics integration** so the real `purchase` conversion is captured. Payhip dashboard → Settings → Integrations → Google Analytics → enter GA ID `G-9XBRPVVXPP` (from `lib/analytics.ts`). Checkout is off-site, so `begin_checkout` is the deepest signal we control in-code; `purchase` must come from Payhip. Verify with a test order in GA4 DebugView.
-- [ ] **P2 · S** In GA4, mark `begin_checkout`, `generate_lead`, `sign_up_confirmed`, and (once live) `purchase` as **key events/conversions** so they show in conversion reports.
+- [x] Payhip → Advanced Settings → Google Analytics accepts GA4 `G-` IDs; entered `G-9XBRPVVXPP` (from `lib/analytics.ts`) and saved. Payhip will fire `purchase` with real order value on its own checkout — the deepest revenue signal, which nothing in this codebase can produce since checkout is off-site. (2026-07-02)
+- [ ] **P1 · S (user action)** Do a real or test purchase and confirm `purchase` appears in **GA4 → Admin → DebugView** with the expected value.
+- [ ] **P2 · S** In GA4, mark `begin_checkout`, `generate_lead`, `sign_up_confirmed`, and `purchase` as **key events/conversions** so they show in conversion reports.
 - [ ] **P2 · S** Consider a privacy-light analytics option (Plausible/Umami) for cleaner funnel views if GA4 is noisy.
 
 ## Performance / tech health

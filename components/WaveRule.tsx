@@ -54,8 +54,11 @@ export default function WaveRule() {
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = rect.width;
-      h = rect.height;
+      // Clamp to a sane max so a layout glitch can never push the backing store
+      // past the browser's canvas size limit (setTransform would throw).
+      w = Math.min(rect.width, 4096);
+      h = Math.min(rect.height, 512);
+      if (w < 1 || h < 1) return;
       canvas.width = Math.max(1, Math.floor(w * dpr));
       canvas.height = Math.max(1, Math.floor(h * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

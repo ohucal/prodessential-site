@@ -723,9 +723,14 @@ nav a:hover { color: var(--yellow); }
   width: 100%;
 }
 
-/* Section rule that becomes a live waveform during playback (BeatStore). */
+/* Section rule that becomes a live waveform during playback (BeatStore).
+   `flex: 1 1 0` (definite 0 basis) + `width: 0` keep the canvas's intrinsic
+   attribute width out of layout — otherwise the JS-set canvas.width feeds back
+   into the flex row, growing it every ResizeObserver tick until the canvas
+   exceeds the browser's max size and throws. */
 .section-label .wave-rule {
-  flex: 1;
+  flex: 1 1 0;
+  width: 0;
   height: 28px;
   min-width: 0;
   display: block;
@@ -3012,16 +3017,18 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-areas:
-      "seek     seek"
+      "seek     right"
       "track    controls";
     align-items: center;
     gap: 10px 12px;
     padding: 8px 14px calc(12px + env(safe-area-inset-bottom, 0px));
   }
   .player-track    { grid-area: track;    width: auto; min-width: 0; }
-  .player-right    { position: absolute; top: 8px; right: 14px; gap: 4px; }
+  /* In the grid (not absolute) so the row's align-items:center lines the
+     mute/close buttons up with the seek bar + timestamps beside them. */
+  .player-right    { grid-area: right; justify-self: end; gap: 4px; }
   .player-controls { grid-area: controls; }
-  .player-seek-row { grid-area: seek; width: 100%; min-width: 0; padding-right: 64px; }
+  .player-seek-row { grid-area: seek; width: 100%; min-width: 0; }
   .player-vol { display: none; }
   #playerVolBtn { display: none; }
 }

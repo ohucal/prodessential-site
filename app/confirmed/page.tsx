@@ -27,10 +27,10 @@ export default function ConfirmedPage() {
 
           <section className="confirmed-section">
             <h2 className="confirmed-section-title">while you&apos;re here</h2>
-            <p className="confirmed-section-copy">check out my beats, kits and bundles all in one place.</p>
+            <p className="confirmed-section-copy">check out my beats, kits and packs all in one place.</p>
             <div className="confirmed-actions">
               <a href="/#beats" className="btn-primary">Browse Beats</a>
-              <a href="/#kits" className="btn-ghost">Shop Kits &amp; Bundles</a>
+              <a href="/#kits" className="btn-ghost">Shop Kits &amp; Packs</a>
             </div>
           </section>
 

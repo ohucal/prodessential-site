@@ -728,7 +728,7 @@
   ],
   "kits": [
     {
-      "id": "essentials-essentials-vol-1",
+      "id": "complete-kit-vol-1",
       "title": "@prod.essential Complete Kit Vol. 1",
       "type": "Drum kits",
       "price": 25,
@@ -739,9 +739,9 @@
       "description": "Core 808s, snares, hi-hats and perc. Built for trap and underground rap."
     },
     {
-      "id": "melodic-textures",
-      "title": "Cashed Out Multi Kit Vol 1",
-      "type": "Drum kits",
+      "id": "cashed-out-multi-kit-vol-1",
+      "title": "Cashed Out Multi Kit Vol. 1",
+      "type": "Multi kits",
       "price": 15,
       "dateAdded": "2026-06-29",
       "imgGradient": "linear-gradient(135deg, #444 0%, #222 100%)",
@@ -750,7 +750,7 @@
       "description": "Multi Kit Coming Soon... Follow me on ig @prod.essential for updates."
     },
     {
-      "id": "vintage-keys",
+      "id": "essential-one-shots-vol-1",
       "title": "Essential One Shots Vol. 1",
       "type": "One shot kits",
       "price": 10,
@@ -761,10 +761,10 @@
       "description": "One-shots sampled from vintage keyboards. Ready to chop and flip."
     },
     {
-      "id": "solar-flare-serum2-bank",
+      "id": "vertigo-serum2-bank-vol-1",
       "title": "Vertigo Serum 2 Bank - Vol. 1",
       "author": "prod.essential",
-      "type": "Serum Banks",
+      "type": "Serum banks",
       "price": 15,
       "dateAdded": "2026-06-30",
       "imgGradient": "linear-gradient(135deg, #666 0%, #444 100%)",
@@ -774,10 +774,10 @@
       "descriptionHtml": "<div class=\"kit-desc-hero\"><div class=\"kit-desc-stat\"><span class=\"kit-stat-num\">128</span><span class=\"kit-stat-label\">Serum 2 Presets</span></div><div class=\"kit-desc-stat\"><span class=\"kit-stat-num\">128</span><span class=\"kit-stat-label\">WAV One-Shots</span></div><div class=\"kit-desc-stat\"><span class=\"kit-stat-num\">20</span><span class=\"kit-stat-label\">MIDI Files</span></div></div><div class=\"kit-desc-total\">276 files total</div><div class=\"kit-desc-features\"><div class=\"kit-desc-feature\"><span class=\"kit-feat-dot\"></span><span>Every preset in this bank was built from scratch.</span></div><div class=\"kit-desc-feature\"><span class=\"kit-feat-dot\"></span><span>Each preset bounced to WAV. Use them without owning Serum.</span></div><div class=\"kit-desc-feature\"><span class=\"kit-feat-dot\"></span><span>20 MIDI files included to get sessions moving faster.</span></div></div><div class=\"kit-desc-compat\">Compatible with Serum 2 &middot; Works in any DAW</div>"
     },
     {
-      "id": "sub-zero-serum-bank",
+      "id": "sub-zero-serum-bank-vol-1",
       "title": "Sub-Zero Serum Bank - Vol. 1",
       "author": "prod.essential",
-      "type": "Serum Banks",
+      "type": "Serum banks",
       "price": 15,
       "dateAdded": "2026-06-28",
       "imgGradient": "linear-gradient(135deg, #2a4a66 0%, #16323e 100%)",

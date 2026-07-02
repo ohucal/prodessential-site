@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import type { Kit } from '@/lib/products';
 import { coverStyle } from '@/lib/assets';
 import { useUI } from '@/stores/useUI';
@@ -17,11 +18,20 @@ export default function KitCard({ kit, mounted = false, variant = 'store' }: { k
   const comingSoon = kit.checkoutUrl === '#';
   const compact = variant === 'compact';
 
+  // The card is an <a> (Link) so modifier/middle clicks open the real static
+  // page; a plain left-click opens the kit overlay instead — same as BeatCard.
+  const openOverlay = (e: React.MouseEvent) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    openKit(kit.id);
+  };
+
   return (
-    <div
+    <Link
+      href={`/kits/${kit.id}/`}
       className={`beat-card${compact ? ' beat-card--compact' : ' kit-card'}${mounted && inCart && !compact ? ' in-cart' : ''}`}
       data-id={kit.id}
-      onClick={() => openKit(kit.id)}
+      onClick={openOverlay}
     >
       <div className="beat-card-main">
         <div className={`beat-cover${kit.imgFile ? '' : ' no-img'}`} style={coverStyle(kit.imgFile, kit.imgGradient)}></div>
@@ -44,6 +54,6 @@ export default function KitCard({ kit, mounted = false, variant = 'store' }: { k
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 }

@@ -3003,7 +3003,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 100%;
 }
 /* Kit related grid always has exactly 4 items — 2x2 reads better than 3+1. */
-.product-related-grid--kits { grid-template-columns: repeat(2, 1fr); max-width: 620px; }
+.product-related-grid--kits { grid-template-columns: repeat(2, 1fr); }
 .product-related-grid .beat-card { cursor: pointer; }
 .product-related-browse {
   display: block;

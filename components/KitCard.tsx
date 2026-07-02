@@ -14,7 +14,9 @@ type Variant = 'store' | 'compact';
 export default function KitCard({ kit, mounted = false, variant = 'store' }: { kit: Kit; mounted?: boolean; variant?: Variant }) {
   const openKit = useUI((s) => s.openKit);
   const inCart = useCart((s) => s.items.some((it) => String(it.beatId) === String(kit.id)));
-  const isNew = isNewKit(kit.dateAdded);
+  // Gated on mounted — see BeatCard.tsx for why (static export build-time vs
+  // hydration-time clock mismatch at the 30-day boundary).
+  const isNew = mounted && isNewKit(kit.dateAdded);
   const comingSoon = kit.checkoutUrl === '#';
   const compact = variant === 'compact';
 

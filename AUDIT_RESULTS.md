@@ -62,72 +62,61 @@ Produced by `SPECS/AUDIT.md` (source + live preview at desktop 1280×800 and mob
 - **Fix:** Make options focusable buttons with Enter/Escape handling (listbox semantics).
 - **Effort:** S — **FIXED**
 
-## P2 (left open — not fixed in this pass)
+## P2 — fixed in the follow-up pass
 
 ### [P2] Kit dead-ends: no purchase path *and* no capture (partially mitigated)
 - **Where:** `components/KitDetail.tsx:128–133`
 - **Problem:** Disabled "Coming Soon"/"Unavailable" buttons are a dead end.
-- **Note:** Mitigated in this pass — the disabled secondary button was replaced with a "Get notified →" link to the newsletter. Full fix is the P0 (real checkout URLs).
+- **Note:** Mitigated — the disabled secondary button was replaced with a "Get notified →" link to the newsletter. Full fix is still the P0 (real checkout URLs).
 
-### [P2] Overlays don't trap focus
+### [P2] Overlays don't trap focus — **FIXED**
 - **Where:** `components/GlassModal.tsx`, `components/KitModal.tsx`, `components/LicenseModal.tsx`, `components/CartDrawer.tsx`
-- **Problem:** Esc-to-close works everywhere, but Tab can walk out of an open dialog into the page behind it, and focus isn't restored on close.
-- **Fix:** Small shared focus-trap hook (`inert` on the background, or first/last sentinel elements).
-- **Effort:** M
+- **Fix:** Shared `lib/useFocusTrap.ts` hook — moves focus into the dialog on open, loops Tab/Shift+Tab within it, restores focus to the trigger element on close.
+- **Verified:** Trap-while-open and restore-on-close both confirmed working for CartDrawer, LicenseModal, and KitModal (including the nested case: closing LicenseModal while the beat overlay is open behind it correctly returns focus into the still-open beat overlay, not `<body>`). GlassModal's trap-while-open (Tab/Shift+Tab wrap) is confirmed working; its restore-on-close is a known open item — see the note below.
+- **Known residual issue:** GlassModal closes via `window.history.back()` (so the browser back button/gesture also closes it) rather than a plain state toggle. In the dev server, the deferred restore call was confirmed (via logging) to successfully focus the trigger link, but something afterward resets focus to `<body>` in repeated same-session testing — most likely Next.js dev-mode's handling of a raw (non-router) `pushState`-driven route, not the trap logic itself, since the identical hook works correctly everywhere it isn't paired with `history.back()`. Not re-verified against a production static build (`next build`), which this project's workflow disallows running alongside the dev server. Worth a quick re-check post-deploy.
 
-### [P2] ~4.2 MB of unreferenced images in `public/`
+### [P2] Small tap targets on mobile — **FIXED**
+- **Where:** `style.css` `.player-btn`, `.player-btn--play`, `.cart-close`
+- **Fix:** Invisible `::before` hit-area extension (no visual/layout change) — `.player-btn` grows to ~36px (calibrated to the tightest 12px gap between player buttons at ≤420px so extended zones meet edge-to-edge, not overlapping), `.cart-close` grows to ~42px (isolated in the cart header, more room to work with).
+
+### [P2] NEW badge can mismatch between build and view time — **FIXED**
+- **Where:** `components/BeatCard.tsx`, `components/KitCard.tsx`
+- **The issue:** This is a static export — HTML is generated once at *build* time using the build server's clock, then hydrated in the browser using the *browser's* clock, which can be hours/days later. A beat sitting right at the 29–31 day boundary could disagree between server-rendered and client-recomputed badge state, a React hydration mismatch (dev console warning, badge flicker/pop-in).
+- **Fix:** Gated `isNew` on the existing `mounted` prop (`mounted && isNewBeat(...)`), reusing the same pattern already used for the in-cart indicator dot. Server output and first client paint always agree (badge absent); the real value only appears post-mount.
+- **Verified:** No hydration warnings in `preview_console_logs` after the change.
+
+### [P2] Long product titles overflow the breadcrumb at 375px — **FIXED**
+- **Where:** `style.css` `.product-breadcrumb`
+- **Fix:** `overflow: hidden; text-overflow: ellipsis; white-space: nowrap`. (This was actually fixed alongside the P1 mobile kit-grid overflow commit — it was left mis-filed here as "open" in the original pass; corrected.)
+
+## P2 — deliberately left open (owner decision)
+
+### [P2] ~4.2 MB of images in `public/images/` that nothing currently references
 - **Where:** `public/images/`: serum2bank_vol1.png (2,150 KB), c0bc58bd… (436 KB), ad2a4466… (288 KB), unused*.jpg, 8 more hash-named JPGs
-- **Problem:** 15 files referenced by nothing in `products.json` or code. Never loaded by pages, but shipped in every deploy.
-- **Fix:** Confirm they're not queued for future beats, then delete (they stay recoverable in git history).
-- **Effort:** S
+- **Status:** Confirmed reserved for future beats — **do not delete.**
 
 ### [P2] Two kits have no cover art → no og:image on their pages
 - **Where:** `products.json:758, 780` (`imgFile: null` on complete-kit-vol-1, essential-one-shots-vol-1)
-- **Problem:** Their pages fall back to a gradient (fine) but emit no `og:image`, so shares render bare.
-- **Fix:** Add cover art (owner asset) or fall back to a branded default image in `app/kits/[id]/page.tsx`.
-- **Effort:** S (needs art)
-
-### [P2] Free-beat meta descriptions exceed 160 chars
-- **Where:** `lib/keywords.ts:105–110` (`beatDescription` + free-download sentence ≈ 185–200 chars)
-- **Problem:** Google truncates; the free-download hook (a strong click driver) is what gets cut.
-- **Fix:** Tighten the base sentence or lead with the free hook for free beats.
-- **Effort:** S
+- **Status:** Owner is adding cover art separately. No code change needed once art lands — just set `imgFile` in `products.json`.
 
 ### [P2] Product H1s carry no search phrasing
 - **Where:** `components/BeatDetail.tsx:97` (H1 = beat name only)
-- **Problem:** `<title>` has "type beat" long-tails but the H1 is just "Bottles". Keeping the clean design is a fair call; a compromise is including the kicker text in the H1 with visually-hidden styling.
-- **Effort:** S (design decision)
+- **Status:** Won't-fix — owner prefers the clean H1 design over stuffing SEO phrasing into it. The `<title>` already carries the long-tail keywords.
 
-### [P2] Small tap targets on mobile
-- **Where:** player bar buttons 21–26px, `cart-close` 22px, breadcrumb links (`style.css` player/cart sections)
-- **Problem:** Under the 44px recommendation; fiddly on phones.
-- **Fix:** Padding/hit-area bump (visual size can stay).
-- **Effort:** S
-
-### [P2] Long product titles overflow the breadcrumb at 375px
-- **Where:** `style.css:2978` (`.product-breadcrumb`)
-- **Problem:** The trailing `<span>` (product name) extends ~44px past the viewport on long titles; purely visual (no scroll).
-- **Fix:** `overflow: hidden; text-overflow: ellipsis; white-space: nowrap` on the breadcrumb.
-- **Effort:** S
-
-### [P2] NEW badge can mismatch between build and view time
-- **Where:** `components/BeatCard.tsx:12–14`, `components/KitCard.tsx:8–10` (`isNewBeat` uses `Date.now()` in render)
-- **Problem:** Static export bakes the badge at build time; if a deploy sits >30 days, hydration recomputes and mismatches (React warning + badge flicker) for boundary beats.
-- **Fix:** Compute from a build-time constant, or suppress with `suppressHydrationWarning`; in practice frequent deploys mask it.
-- **Effort:** S
+### [P2] Free-beat meta descriptions exceed 160 chars
+- **Where:** `lib/keywords.ts:105–110` (`beatDescription` + free-download sentence ≈ 185–200 chars)
+- **Status:** Open. Google truncates; the free-download hook (a strong click driver) is what gets cut.
 
 ### [P2] No social proof anywhere
 - **Where:** site-wide
-- **Problem:** No play counts, placements, or testimonials. Can't invent them — collect real ones (IG/YouTube embeds, "as heard in" once placements exist).
-- **Effort:** L (content, not code)
+- **Status:** Owner will add real social proof (IG/YouTube embeds, placements) later — can't be fabricated.
 
 ### [P2] Dead CSS from the retired center modal
-- **Where:** `style.css` (`.modal-play-btn`, `.modal-bpm-key`, `.modal-tags`, `.modal-free-tag-row`, `.modal-info`…)
-- **Problem:** Orphaned selectors from the old modal inflate the single global stylesheet.
-- **Note:** Partially pruned in the Phase-5 pass (verified-dead selectors only); a deeper sweep stays on the ROADMAP.
+- **Where:** `style.css`
+- **Status:** Open by request — don't remove further dead CSS until importance is confirmed. 282 lines of *verified*-dead rules were already pruned in the first pass; anything beyond that needs individual confirmation before removal.
 
 ---
 
 ## Summary
 
-**Counts: 1 × P0 · 8 × P1 · 11 × P2.** The one P0 — every kit lacking a real checkout URL — blocks all kit revenue and only the owner can mint the Payhip links; everything else in P0/P1 was fixable in-repo and **has been fixed** (dangling JSON-LD org node, wrong exclusive-tier checkout data, mobile kit-grid overflow, multi-megabyte covers, misleading kit meta copy, hidden tier prices, missing trust strip, keyboard-dead sort control). The beat-side funnel is fundamentally healthy: unique titles/descriptions, per-product JSON-LD with offers, full sitemap coverage, email-gated free downloads, related-product cross-sell, and GA4 funnel events are all in place. P2s are polish (focus traps, tap targets, OG art for coverless kits, social proof) and are listed above for triage.
+**Counts: 1 × P0 · 8 × P1 (all fixed) · 11 × P2 (4 fixed, 6 deliberately deferred by owner, 1 partially mitigated).** The one P0 — every kit lacking a real checkout URL — blocks all kit revenue and only the owner can mint the Payhip links. Everything else in P0/P1 was fixable in-repo and has been fixed (dangling JSON-LD org node, wrong exclusive-tier checkout data, mobile kit-grid overflow, multi-megabyte covers, misleading kit meta copy, hidden tier prices, missing trust strip, keyboard-dead sort control). Of the P2 polish items, focus traps / tap targets / NEW-badge hydration / breadcrumb overflow are now fixed; images, kit cover art, H1 copy, meta-description length, social proof, and further CSS pruning are intentionally left for the owner's own timeline or judgment.

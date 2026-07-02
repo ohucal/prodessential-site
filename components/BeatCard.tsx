@@ -29,7 +29,14 @@ export default function BeatCard({ beat, mounted = false, variant = 'store' }: {
 
   const pct = duration ? (currentTime / duration) * 100 : 0;
   const free = freeEligible(beat);
-  const isNew = isNewBeat(beat.dateAdded);
+  // Gated on mounted (same pattern as the in-cart dot below): this is a
+  // static export, so isNewBeat() computed at build time (server HTML) can
+  // disagree with the same computation re-run at hydration time in the
+  // browser for a beat sitting right at the 30-day boundary, causing a
+  // React hydration mismatch. Deferring to post-mount keeps server and
+  // first-paint client output identical (both "not new"), then reveals the
+  // real value once it's safe to differ from the static HTML.
+  const isNew = mounted && isNewBeat(beat.dateAdded);
   const compact = variant === 'compact';
 
   const scrub = (clientX: number) => {

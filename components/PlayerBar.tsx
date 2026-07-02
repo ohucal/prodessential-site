@@ -39,11 +39,7 @@ export default function PlayerBar() {
   const volAt = (x: number) => { const r = volRef.current?.getBoundingClientRect(); if (r) setVolumePct((x - r.left) / r.width); };
 
   return (
-    <div className={`player-bar${visible ? ' visible' : ''}${isPlaying ? ' playing' : ''}`} id="playerBar" role="region" aria-label="Now playing"
-      onMouseMove={(e) => { if (seekDrag.current) seekAt(e.clientX); if (volDrag.current) volAt(e.clientX); }}
-      onMouseUp={() => { seekDrag.current = false; volDrag.current = false; }}
-      onMouseLeave={() => { seekDrag.current = false; volDrag.current = false; }}
-    >
+    <div className={`player-bar${visible ? ' visible' : ''}${isPlaying ? ' playing' : ''}`} id="playerBar" role="region" aria-label="Now playing">
       <div className="player-track" onClick={() => { if (activeBeatId) openBeat(activeBeatId); }}>
         <div className="player-art" style={beat ? coverStyle(beat.imgFile, beat.imgGradient) : undefined}></div>
         <div className="player-track-info">
@@ -75,7 +71,14 @@ export default function PlayerBar() {
 
       <div className="player-seek-row">
         <span className="player-time">{formatTime(currentTime)}</span>
-        <div className="player-seek" ref={seekRef} onMouseDown={(e) => { seekDrag.current = true; seekAt(e.clientX); e.preventDefault(); }} onClick={(e) => seekAt(e.clientX)}>
+        <div
+          className="player-seek"
+          ref={seekRef}
+          onPointerDown={(e) => { seekDrag.current = true; e.currentTarget.setPointerCapture(e.pointerId); seekAt(e.clientX); e.preventDefault(); }}
+          onPointerMove={(e) => { if (seekDrag.current) seekAt(e.clientX); }}
+          onPointerUp={() => { seekDrag.current = false; }}
+          onPointerCancel={() => { seekDrag.current = false; }}
+        >
           <div className="player-seek-fill" style={{ width: pct + '%' }}></div>
           <div className="player-seek-thumb" style={{ left: pct + '%' }}></div>
         </div>
@@ -88,7 +91,14 @@ export default function PlayerBar() {
             ? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="17" height="17"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none" /><line x1="22" y1="9" x2="16" y2="15" /><line x1="16" y1="9" x2="22" y2="15" /></svg>
             : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="17" height="17"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" /></svg>}
         </button>
-        <div className="player-vol" ref={volRef} onMouseDown={(e) => { volDrag.current = true; volAt(e.clientX); e.preventDefault(); }} onClick={(e) => volAt(e.clientX)}>
+        <div
+          className="player-vol"
+          ref={volRef}
+          onPointerDown={(e) => { volDrag.current = true; e.currentTarget.setPointerCapture(e.pointerId); volAt(e.clientX); e.preventDefault(); }}
+          onPointerMove={(e) => { if (volDrag.current) volAt(e.clientX); }}
+          onPointerUp={() => { volDrag.current = false; }}
+          onPointerCancel={() => { volDrag.current = false; }}
+        >
           <div className="player-vol-fill" style={{ width: volLevel + '%' }}></div>
           <div className="player-vol-thumb" style={{ left: volLevel + '%' }}></div>
         </div>

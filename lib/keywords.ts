@@ -145,5 +145,6 @@ export function kitTitle(kit: Kit): string {
 
 export function kitDescription(kit: Kit): string {
   const base = kit.description || `${kit.title}, a ${kit.type} from prod.essential.`;
-  return `${base} Instant download for $${kit.price}.`;
+  const cta = kit.checkoutUrl === '#' ? `Coming soon for $${kit.price}.` : `Instant download for $${kit.price}.`;
+  return `${base} ${cta}`;
 }

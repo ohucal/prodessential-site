@@ -6,6 +6,24 @@ import { beatKeywords, kitKeywords } from './keywords';
 const SITE = 'https://prodessential.com';
 const ORG_ID = `${SITE}/#org`;
 
+// The Organization node that every byArtist/brand/seller `@id` reference
+// resolves to. Embedded in each page's graph so every page validates standalone.
+export function orgJsonLd() {
+  return {
+    '@type': 'Organization',
+    '@id': ORG_ID,
+    name: 'prod.essential',
+    url: SITE,
+    logo: `${SITE}/images/favicon.png`,
+    email: 'prodessential@gmail.com',
+    sameAs: [
+      'https://www.youtube.com/@prod.essential',
+      'https://www.instagram.com/prod.essential',
+      'https://www.tiktok.com/@prod.essential',
+    ],
+  };
+}
+
 function abs(path: string | null | undefined): string | undefined {
   if (!path) return undefined;
   if (/^https?:\/\//.test(path)) return path;
@@ -54,6 +72,7 @@ export function beatJsonLd(beat: Beat) {
           seller: { '@id': ORG_ID },
         },
       },
+      orgJsonLd(),
     ],
   };
 }
@@ -64,22 +83,27 @@ export function kitJsonLd(kit: Kit) {
   const available = kit.checkoutUrl !== '#';
   return {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    '@id': `${url}#product`,
-    name: kit.title,
-    sku: kit.id,
-    ...(image ? { image } : {}),
-    description: kit.description || `${kit.title}, a ${kit.type} from prod.essential.`,
-    category: kit.type,
-    keywords: kitKeywords(kit).join(', '),
-    brand: { '@id': ORG_ID },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      price: String(kit.price),
-      availability: available ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
-      url,
-      seller: { '@id': ORG_ID },
-    },
+    '@graph': [
+      {
+        '@type': 'Product',
+        '@id': `${url}#product`,
+        name: kit.title,
+        sku: kit.id,
+        ...(image ? { image } : {}),
+        description: kit.description || `${kit.title}, a ${kit.type} from prod.essential.`,
+        category: kit.type,
+        keywords: kitKeywords(kit).join(', '),
+        brand: { '@id': ORG_ID },
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'USD',
+          price: String(kit.price),
+          availability: available ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
+          url,
+          seller: { '@id': ORG_ID },
+        },
+      },
+      orgJsonLd(),
+    ],
   };
 }

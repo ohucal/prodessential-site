@@ -1579,6 +1579,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: flex;
   align-items: center;
   cursor: pointer;
+  touch-action: none;
 }
 
 /* The track line */
@@ -2913,6 +2914,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: flex;
   align-items: center;
   cursor: pointer;
+  touch-action: none;
 }
 .player-seek::before {
   content: '';
@@ -2961,6 +2963,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: flex;
   align-items: center;
   cursor: pointer;
+  touch-action: none;
 }
 .player-vol::before {
   content: '';

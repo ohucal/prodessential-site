@@ -25,6 +25,7 @@ export default function BeatCard({ beat, mounted = false, variant = 'store' }: {
   const openBeat = useUI((s) => s.openBeat);
   const inCart = useCart((s) => s.items.some((it) => String(it.beatId) === String(beat.id)));
   const barRef = useRef<HTMLDivElement>(null);
+  const dragging = useRef(false);
 
   const pct = duration ? (currentTime / duration) * 100 : 0;
   const free = freeEligible(beat);
@@ -36,6 +37,26 @@ export default function BeatCard({ beat, mounted = false, variant = 'store' }: {
     if (!bar) return;
     const rect = bar.getBoundingClientRect();
     seekPct((clientX - rect.left) / rect.width);
+  };
+
+  const startScrub = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dragging.current = true;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    scrub(e.clientX);
+  };
+  const moveScrub = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragging.current) return;
+    e.preventDefault();
+    e.stopPropagation();
+    scrub(e.clientX);
+  };
+  const endScrub = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragging.current) return;
+    dragging.current = false;
+    e.preventDefault();
+    e.stopPropagation();
   };
 
   // The card is an <a> (Link) so clicking navigates to the beat page. Inner
@@ -117,8 +138,11 @@ export default function BeatCard({ beat, mounted = false, variant = 'store' }: {
           <div
             className="card-prog-bar"
             ref={barRef}
-            onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); scrub(e.clientX); }}
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); scrub(e.clientX); }}
+            onPointerDown={startScrub}
+            onPointerMove={moveScrub}
+            onPointerUp={endScrub}
+            onPointerCancel={endScrub}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
           >
             <div className="card-prog-fill" style={{ width: pct + '%' }}></div>
             <div className="card-prog-thumb" style={{ left: pct + '%' }}></div>

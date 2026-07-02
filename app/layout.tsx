@@ -23,14 +23,14 @@ export const metadata: Metadata = {
     description:
       "Premium trap and rap beats, drum kits, one-shots, and Serum banks you won't find anywhere else. Built from scratch for artists and producers.",
     url: '/',
-    images: ['/images/cashed-out-multikit.png'],
+    images: ['/images/cashed-out-multikit.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'prod.essential | Underground Trap & Rap Beats, Drum Kits & Serum Banks',
     description:
       "Premium trap and rap beats, drum kits, one-shots, and Serum banks you won't find anywhere else. Built from scratch for artists and producers.",
-    images: ['/images/cashed-out-multikit.png'],
+    images: ['/images/cashed-out-multikit.jpg'],
   },
 };
 

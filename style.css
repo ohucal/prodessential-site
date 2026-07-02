@@ -2978,6 +2978,8 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .product-breadcrumb {
   font-size: 0.78rem; letter-spacing: 0.04em; color: var(--light-gray);
   margin: 8px 0 24px;
+  /* Long product titles must truncate, not push the page wider on mobile. */
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .product-breadcrumb a { color: var(--light-gray); text-decoration: none; }
 .product-breadcrumb a:hover { color: var(--off-white); }
@@ -3002,11 +3004,13 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 }
 .product-licenses, .product-related { margin-top: 56px; }
 
+/* minmax(0,1fr) lets columns shrink below content min-width (long nowrap kit
+   titles otherwise force the grid wider than the viewport on mobile). */
 .product-related-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 100%;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 100%;
 }
 /* Kit related grid always has exactly 4 items — 2x2 reads better than 3+1. */
-.product-related-grid--kits { grid-template-columns: repeat(2, 1fr); }
+.product-related-grid--kits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .product-related-grid .beat-card { cursor: pointer; }
 .product-related-browse {
   display: block;
@@ -3023,7 +3027,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .product-related-browse:hover { color: var(--off-white); }
 
 @media (max-width: 760px) {
-  .product-related-grid { grid-template-columns: repeat(2, 1fr); max-width: none; }
+  .product-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; }
 }
 
 @media (max-width: 600px) {

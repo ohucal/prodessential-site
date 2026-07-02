@@ -51,13 +51,23 @@ export default function WaveRule() {
     let dpr = 1;
     let data: Uint8Array<ArrayBuffer> | null = null;
 
+    // Hard ceiling on the backing bitmap. Guards against a bad/transient
+    // layout read (e.g. mid hot-reload, before flex sizing applies) locking
+    // in a runaway canvas size that makes setTransform throw.
+    const MAX_CANVAS_DIM = 4096;
+
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       w = rect.width;
       h = rect.height;
-      canvas.width = Math.max(1, Math.floor(w * dpr));
-      canvas.height = Math.max(1, Math.floor(h * dpr));
+      const pixelW = Math.min(MAX_CANVAS_DIM, Math.max(1, Math.floor(w * dpr)));
+      const pixelH = Math.min(MAX_CANVAS_DIM, Math.max(1, Math.floor(h * dpr)));
+      // Only touch the attributes when the size actually changed — setting
+      // canvas.width/height (even to the same value) clears the bitmap and
+      // can re-trigger the ResizeObserver.
+      if (canvas.width !== pixelW) canvas.width = pixelW;
+      if (canvas.height !== pixelH) canvas.height = pixelH;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 

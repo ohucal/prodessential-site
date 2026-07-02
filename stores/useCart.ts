@@ -36,9 +36,6 @@ interface CartState {
   remove: (beatId: string) => void;
   clear: () => void;
   setTier: (item: CartItem) => void;
-  isInCart: (id: string) => boolean;
-  count: () => number;
-  subtotal: () => number;
   checkout: () => void;
   buyNow: (item: CartItem) => void;
 }
@@ -79,10 +76,6 @@ export const useCart = create<CartState>()(
         items[idx] = item;
         set({ items });
       },
-
-      isInCart: (id) => get().items.some((it) => String(it.beatId) === String(id)),
-      count: () => get().items.length,
-      subtotal: () => get().items.reduce((sum, it) => sum + (Number(it.price) || 0), 0),
 
       checkout: () => {
         const items = get().items.filter((it) => it.payhipKey);

@@ -6,7 +6,7 @@ import { persist } from 'zustand/middleware';
 import type { CartItem } from '@/lib/checkout';
 import { buildCheckoutUrl } from '@/lib/checkout';
 import type { Beat, Kit, License, LicenseTier } from '@/lib/products';
-import { track } from '@/lib/analytics';
+import { track, trackEcommerce } from '@/lib/analytics';
 
 const CART_KEY = 'prodessential_cart_v1';
 
@@ -57,9 +57,7 @@ export const useCart = create<CartState>()(
           items.splice(idx, 1);
         }
         items.push(item);
-        track('add_to_cart', {
-          items: [{ item_id: item.beatId, item_name: item.beatTitle, price: item.price, item_variant: item.tierLabel }],
-        });
+        trackEcommerce('add_to_cart', [{ item_id: item.beatId, item_name: item.beatTitle, price: item.price, item_variant: item.tierLabel }]);
         set({ items });
         return result;
       },
@@ -89,17 +87,13 @@ export const useCart = create<CartState>()(
       checkout: () => {
         const items = get().items.filter((it) => it.payhipKey);
         if (items.length === 0) return;
-        track('begin_checkout', {
-          items: items.map((i) => ({ item_id: i.beatId, item_name: i.beatTitle, price: i.price, item_variant: i.tierLabel })),
-        });
+        trackEcommerce('begin_checkout', items.map((i) => ({ item_id: i.beatId, item_name: i.beatTitle, price: i.price, item_variant: i.tierLabel })));
         window.location.href = buildCheckoutUrl(items);
       },
 
       buyNow: (item) => {
         if (!item || !item.payhipKey) return;
-        track('begin_checkout', {
-          items: [{ item_id: item.beatId, item_name: item.beatTitle, price: item.price, item_variant: item.tierLabel }],
-        });
+        trackEcommerce('begin_checkout', [{ item_id: item.beatId, item_name: item.beatTitle, price: item.price, item_variant: item.tierLabel }]);
         window.location.href = buildCheckoutUrl([item]);
       },
     }),

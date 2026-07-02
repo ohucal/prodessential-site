@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { getKit, kits } from '@/lib/products';
 import { coverStyle } from '@/lib/assets';
-import { track } from '@/lib/analytics';
+import { trackEcommerce } from '@/lib/analytics';
 import { useUI } from '@/stores/useUI';
 import { useCart, kitCartItem } from '@/stores/useCart';
 
@@ -23,7 +23,7 @@ export default function KitModal() {
   useEffect(() => {
     if (!kit) return;
     setAddConfirm(''); setShowViewCart(false); setShareLabel('Copy Link');
-    track('view_item', { items: [{ item_id: kit.id, item_name: kit.title }] });
+    trackEcommerce('view_item', [{ item_id: kit.id, item_name: kit.title, item_variant: kit.type || 'Kit', price: kit.price ?? null }]);
     document.body.style.overflow = 'hidden';
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeKit(); };
     document.addEventListener('keydown', onKey);

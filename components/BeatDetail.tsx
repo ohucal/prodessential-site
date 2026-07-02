@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { beats, freeEligible, type Beat } from '@/lib/products';
 import { coverStyle } from '@/lib/assets';
-import { track } from '@/lib/analytics';
+import { trackEcommerce } from '@/lib/analytics';
 import { beatVisibleGenre, beatBodyCopy } from '@/lib/keywords';
 import { usePlayer } from '@/stores/usePlayer';
 import BeatCard from './BeatCard';
@@ -58,8 +58,8 @@ export default function BeatDetail({ beat, isModal, onNavigate }: { beat: Beat; 
   }, [isModal]);
 
   useEffect(() => {
-    track('view_item', { items: [{ item_id: beat.id, item_name: beat.title }] });
-  }, [beat.id, beat.title]);
+    trackEcommerce('view_item', [{ item_id: beat.id, item_name: beat.title, price: beat.basePrice ?? null }]);
+  }, [beat.id, beat.title, beat.basePrice]);
 
   return (
     <article ref={articleRef} className="beat-detail">

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { freeEligible, freeFileFor, type Beat, type LicenseTier } from '@/lib/products';
 import { LICENSE_DETAILS, LICENSE_KEYS, CONTACT_EMAIL } from '@/lib/licenses';
 import { assetUrl } from '@/lib/assets';
-import { track } from '@/lib/analytics';
+import { track, trackEcommerce } from '@/lib/analytics';
 import { useUI } from '@/stores/useUI';
 import { useCart, beatCartItem } from '@/stores/useCart';
 
@@ -52,11 +52,12 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
 
   function selectLicense(key: LicenseTier) {
     setLicense(key); setFreeMode(false); setAddConfirm(''); setShowViewCart(false);
-    track('select_item', { beat_id: beat.id, tier: beat.licenses[key]?.label || key });
+    const l = beat.licenses[key];
+    trackEcommerce('select_item', [{ item_id: beat.id, item_name: beat.title, item_variant: l?.label || key, price: l?.price ?? null }], { item_list_name: 'Beat Licenses' });
   }
   function selectFree() {
     setLicense('free'); setFreeMode(true);
-    track('select_item', { beat_id: beat.id, tier: 'Free' });
+    trackEcommerce('select_item', [{ item_id: beat.id, item_name: beat.title, item_variant: 'Free', price: 0 }], { item_list_name: 'Beat Licenses' });
   }
 
   function addToCart() {

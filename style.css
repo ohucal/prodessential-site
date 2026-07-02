@@ -993,6 +993,13 @@ nav a:hover { color: var(--yellow); }
   background: var(--surface-2);
 }
 
+/* Options are keyboard-focusable (Tab + Enter/Space); show where focus is. */
+.custom-select-item:focus-visible {
+  outline: 1px solid var(--yellow);
+  outline-offset: -1px;
+  background: var(--surface-2);
+}
+
 .custom-select-item.active {
   color: var(--near-black);
   background: var(--yellow);

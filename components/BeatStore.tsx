@@ -162,14 +162,27 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
           </div>
           <div className="sort-wrap">
             <span className="mode-label">Sort:</span>
-            <div className={`custom-select${sortOpen ? ' open' : ''}`} id="customSort" ref={sortRef}>
-              <button type="button" className="custom-select-btn" onClick={() => setSortOpen((o) => !o)}>
+            <div
+              className={`custom-select${sortOpen ? ' open' : ''}`}
+              id="customSort"
+              ref={sortRef}
+              onKeyDown={(e) => { if (e.key === 'Escape' && sortOpen) { setSortOpen(false); sortRef.current?.querySelector('button')?.focus(); } }}
+            >
+              <button type="button" className="custom-select-btn" aria-haspopup="listbox" aria-expanded={sortOpen} onClick={() => setSortOpen((o) => !o)}>
                 <span>{sortLabel}</span>
                 <svg className="select-arrow" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </button>
-              <ul className="custom-select-list">
+              <ul className="custom-select-list" role="listbox" aria-label="Sort beats">
                 {(Object.keys(SORT_LABELS) as (keyof typeof SORT_LABELS)[]).map((k) => (
-                  <li key={k} className={`custom-select-item${sort === k ? ' active' : ''}`} onClick={() => { setSort(k); setSortOpen(false); }}>{SORT_LABELS[k]}</li>
+                  <li
+                    key={k}
+                    role="option"
+                    aria-selected={sort === k}
+                    tabIndex={sortOpen ? 0 : -1}
+                    className={`custom-select-item${sort === k ? ' active' : ''}`}
+                    onClick={() => { setSort(k); setSortOpen(false); }}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSort(k); setSortOpen(false); } }}
+                  >{SORT_LABELS[k]}</li>
                 ))}
               </ul>
             </div>

@@ -1501,34 +1501,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .modal-close:hover { color: var(--off-white); }
 .modal-close svg { width: 14px; height: 14px; }
 
-/* ─── TOP ROW: art left, info right ──────────────────────────────────────── */
-.modal-top-row {
-  display: flex;
-  align-items: stretch;
-  border-bottom: 0.5px solid #2a2a2a;
-  padding-top: 28px;
-}
-
-.modal-art-col {
-  flex-shrink: 0;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 28px 32px;
-}
-
-.modal-cover-art {
-  width: 220px;
-  height: 220px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1a1a1a;
-  flex-shrink: 0;
-}
-.modal-cover-art--kit { width: 300px; height: 300px; }
-
 /* ─── PLAY BUTTON ─────────────────────────────────────────────────────────── */
 .modal-play-btn {
   width: 60px;
@@ -1638,17 +1610,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 
-/* ─── HEADER COL (right of art) ───────────────────────────────────────────── */
-.modal-header-col {
-  flex: 1;
-  padding: 0 52px 28px 28px; 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 12px;
-  min-width: 0;
-}
-
 .modal-title {
   font-family: 'DM Serif Display', serif;
   font-size: 28px;
@@ -1664,18 +1625,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   text-transform: uppercase;
   color: var(--mid-gray);
   font-family: 'DM Mono', monospace;
-}
-
-.modal-kit-type {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--purple);
-  font-family: 'DM Mono', monospace;
-  border: 0.5px solid var(--purple);
-  padding: 4px 10px;
-  display: inline-block;
-  align-self: flex-start;
 }
 
 .modal-tags {
@@ -2170,19 +2119,11 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   /* Nav arrows are unusable in a bottom-sheet on mobile */
   .modal-nav-btn { display: none; }
 
-  /* Beat/kit modal mobile — cover art centered above the title */
-  .modal-top-row { flex-direction: column; }
-  .modal-art-col { width: 100%; flex-direction: row; justify-content: center; align-items: center; padding: 18px 0; border-bottom: 0.5px solid #2a2a2a; }
-  .modal-cover-art { width: 130px; height: 130px; flex-shrink: 0; }
-  .modal-cover-art--kit { width: 130px; height: 130px; }
-  .modal-header-col { padding: 14px 16px; justify-content: flex-start; }
   .modal-title { font-size: 20px; }
   .modal-info { padding: 16px 16px 20px; }
   .modal-price-value { font-size: 26px; }
   .modal-buy-btn { padding: 0 28px; height: 56px; font-size: 11px; }
   .modal-license-btn { padding: 6px 0; font-size: 10px; }
-
-  .modal-cover-art--kit { width: 160px; height: 160px; }
 }
 
 /* ─── CART BADGE ──────────────────────────────────────────────────────────── */
@@ -2507,8 +2448,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .modal-license-details[hidden],
 .modal-free-panel[hidden],
 .modal-free-form[hidden],
-.modal-free-success[hidden],
-.modal-kit-author[hidden] { display: none !important; }
+.modal-free-success[hidden] { display: none !important; }
 
 /* FREE DOWNLOAD tag — solid lavender + download glyph: reads as an action,
    clearly set apart from the tinted genre tags without shouting like yellow. */
@@ -2696,14 +2636,6 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   line-height: 1.6;
   color: var(--mid-gray);
   text-align: center;
-}
-
-/* Author / creator line in the kit modal */
-.modal-kit-author {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--mid-gray);
 }
 
 /* Free tab adds a 6th license button — let the row wrap on narrow screens */
@@ -3135,6 +3067,10 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 }
 .beat-detail-free:hover { opacity: 0.75; }
 .beat-detail-license { margin-top: 40px; }
+
+/* Kit detail (shares the beat-detail layout; kit-specific bits only) */
+.kit-detail-desc { margin: 0; max-width: 560px; }
+.kit-detail-share { margin-top: 14px; align-self: flex-start; width: fit-content; }
 
 /* Two-column purchase layout: license tiers picker on the left, the selected
    tier's details + price/buy panel on the right. Fills the width cleanly

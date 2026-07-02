@@ -8,15 +8,18 @@ function isNewKit(dateAdded?: string): boolean {
   return !!dateAdded && (Date.now() - new Date(dateAdded).getTime()) / 86400000 <= 30;
 }
 
-export default function KitCard({ kit, mounted }: { kit: Kit; mounted: boolean }) {
+type Variant = 'store' | 'compact';
+
+export default function KitCard({ kit, mounted = false, variant = 'store' }: { kit: Kit; mounted?: boolean; variant?: Variant }) {
   const openKit = useUI((s) => s.openKit);
   const inCart = useCart((s) => s.items.some((it) => String(it.beatId) === String(kit.id)));
   const isNew = isNewKit(kit.dateAdded);
   const comingSoon = kit.checkoutUrl === '#';
+  const compact = variant === 'compact';
 
   return (
     <div
-      className={`beat-card kit-card${mounted && inCart ? ' in-cart' : ''}`}
+      className={`beat-card${compact ? ' beat-card--compact' : ' kit-card'}${mounted && inCart && !compact ? ' in-cart' : ''}`}
       data-id={kit.id}
       onClick={() => openKit(kit.id)}
     >
@@ -25,17 +28,21 @@ export default function KitCard({ kit, mounted }: { kit: Kit; mounted: boolean }
         <div className="beat-info">
           <span className="beat-title-row">
             <span className="beat-title">{kit.title}</span>
-            <span className="cart-dot"></span>
+            {!compact && <span className="cart-dot"></span>}
           </span>
           <span className="beat-bpm-key">{kit.type}</span>
-          <div className="beat-tags">
-            {comingSoon && <span className="beat-tag kit-tag--soon">Coming Soon</span>}
-            {isNew && <span className="beat-tag beat-tag--new">NEW</span>}
+          {!compact && (
+            <div className="beat-tags">
+              {comingSoon && <span className="beat-tag kit-tag--soon">Coming Soon</span>}
+              {isNew && <span className="beat-tag beat-tag--new">NEW</span>}
+            </div>
+          )}
+        </div>
+        {!compact && (
+          <div className="beat-price-wrap">
+            <span className="beat-price">${kit.price}</span>
           </div>
-        </div>
-        <div className="beat-price-wrap">
-          <span className="beat-price">${kit.price}</span>
-        </div>
+        )}
       </div>
     </div>
   );

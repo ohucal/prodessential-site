@@ -51,6 +51,6 @@ Raw dump zone. Drop anything here the moment you notice it — a bug, a half-for
 - [ ] **P2 · S** Keep `PROMPTS.md` updated with prompts that worked well.
 
 ## Done
-- Rounded beat/kit thumbnails (6px/8px) to match the 12px detail-cover radius. (2026-07-02)
+- Tried rounding list-card thumbnails to match the 12px detail-cover radius; reverted per feedback — small list thumbnails (beat cards, featured, kits & packs) stay square. Rounded corners are reserved for the player bar art and the big expanded-view/full-page cover art. (2026-07-02)
 - Kit overlay + /kits/[id] pages rebuilt on shared KitDetail, matching the beat surfaces (glass shell, buy row, related grid, client-side browse-all that keeps playback alive). (2026-07-02)
 - Kit slugs/types made accurate in products.json; kit cards are now real links (middle-click opens the static page); "Kits & Bundles" anchor corrected to "Kits & Packs". (2026-07-02)

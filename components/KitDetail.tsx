@@ -15,7 +15,7 @@ function relatedKits(id: string, type: string): Kit[] {
     .filter((k) => k.id !== id)
     .map((k) => ({ k, score: k.type === type ? 1 : 0 }))
     .sort((a, z) => z.score - a.score || +new Date(z.k.dateAdded) - +new Date(a.k.dateAdded))
-    .slice(0, 6)
+    .slice(0, 4)
     .map((s) => s.k);
 }
 
@@ -143,8 +143,8 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
 
       {related.length > 0 && (
         <section className="product-related">
-          <h2 className="product-section-title">More kits &amp; packs</h2>
-          <div className="product-related-grid">
+          <h2 className="product-section-title">More of my kits &amp; packs</h2>
+          <div className="product-related-grid product-related-grid--kits">
             {related.map((k) => (
               <KitCard key={k.id} kit={k} variant="compact" />
             ))}

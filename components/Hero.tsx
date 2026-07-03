@@ -21,7 +21,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-right">
-        <p className="hero-right-label">Featured Beats</p>
+        <div className="section-label section-label--hero"><span>Featured Beats</span><hr /></div>
         <FeaturedBeats beats={list} />
       </div>
     </section>

@@ -126,6 +126,18 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
 
       <section className="beat-detail-license">
         <h2 className="product-section-title">Get &ldquo;{kit.title}&rdquo;</h2>
+        {addable && (
+          <ul className="purchase-trust">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+              Instant delivery
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+              Secure Payhip checkout
+            </li>
+          </ul>
+        )}
         <div className="modal-buy-row">
           <div className="modal-buy-main">
             <div className="modal-price-wrap">
@@ -146,9 +158,6 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
               )}
             </div>
           </div>
-          {addable && (
-            <p className="modal-trust-strip">Instant delivery&nbsp;&nbsp;·&nbsp;&nbsp;Secure Payhip checkout</p>
-          )}
         </div>
         {addConfirm && <div className="modal-add-confirm visible" aria-live="polite">{addConfirm}</div>}
         {showViewCart && <button className="modal-view-cart-btn" onClick={openCart}>View Cart →</button>}

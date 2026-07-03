@@ -121,8 +121,11 @@
 html { scrollbar-gutter: stable; }
 
 :root {
+  /* Type system — display: Archivo (used expanded/black, see TYPE SYSTEM below),
+     titles: Hanken Grotesk (beat/kit/track names), mono: DM Mono (utility/body). */
   --font-mono: 'DM Mono', monospace;
-  --font-display: 'DM Serif Display', serif;
+  --font-display: 'Archivo', sans-serif;
+  --font-title: 'Hanken Grotesk', sans-serif;
   --warm-gray: #f5f4f0;
   --near-black: #111111;
   --off-white: #f7f7f5;
@@ -154,6 +157,19 @@ body {
   min-height: 100vh;
 }
 
+/* ─── TYPE SYSTEM ─────────────────────────────────────────────────────────────
+   Every element set in the display face gets the expanded-black treatment here,
+   in one place, so the weight/width/tracking stays consistent site-wide.
+   (The logo and product titles are tuned separately in their own rules.) */
+:is(.contact-title, .hero-headline, .section-label span,
+  .newsletter-headline, .licensing-title, .license-name, .license-price,
+  .modal-price-value, .cart-header-title, .cart-subtotal-value,
+  .product-section-title, .confirmed-section-title, .confirmed-footer) {
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
 /* HEADER */
 header {
   background: rgba(17, 17, 17, 0.72);
@@ -173,9 +189,10 @@ header {
 .logo {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 20px;
+  font-size: 19px;
+  font-weight: 800;
   color: var(--off-white);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-decoration: none;
 }
 
@@ -253,8 +270,8 @@ nav a:hover { color: var(--yellow); }
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: 52px;
-  line-height: 1.05;
+  font-size: 46px;
+  line-height: 1.02;
   color: var(--off-white);
   margin-bottom: 24px;
 }
@@ -321,7 +338,8 @@ nav a:hover { color: var(--yellow); }
 #heroFeatured {
   display: flex;
   flex-direction: column;
-  gap: 2px;                 /* match the beat store's card gap */
+  counter-reset: featured-track;
+  border-top: 0.5px solid var(--border-dark);
   max-height: 320px;        /* ~2 full store cards tall; scroll to reveal the rest */
   overflow-y: auto;
   scrollbar-width: thin;
@@ -335,13 +353,35 @@ nav a:hover { color: var(--yellow); }
   border-radius: 3px;
 }
 
-.hero-right-label {
-  font-family: var(--font-display);
-  font-size: 16px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--off-white);
-  margin-bottom: 8px;
+/* Featured beats header reuses .section-label (same format as Beat Store /
+   Kits & Packs), scaled down for the hero column. */
+.section-label--hero {
+  margin-bottom: 10px;
+  min-height: 22px;
+}
+.section-label--hero span { font-size: 16px; }
+
+/* HERO FEATURED — tracklist treatment: numbered rows with hairline separators
+   instead of floating gray boxes. */
+#heroFeatured .beat-card {
+  counter-increment: featured-track;
+  background: transparent;
+  border-bottom: 0.5px solid var(--border-dark);
+}
+#heroFeatured .beat-card:hover { background: var(--surface); }
+#heroFeatured .beat-card-main::before {
+  content: counter(featured-track, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--mid-gray);
+  flex-shrink: 0;
+  width: 20px;
+  transition: color 0.15s;
+}
+#heroFeatured .beat-card:hover .beat-card-main::before,
+#heroFeatured .beat-card:has(.card-inline-player.visible) .beat-card-main::before {
+  color: var(--yellow);
 }
 
 /* BEAT CARD */
@@ -387,7 +427,9 @@ nav a:hover { color: var(--yellow); }
 }
 
 .beat-title {
-  font-family: var(--font-display);
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: -0.005em;
   font-size: 15px;
   color: var(--off-white);
   white-space: nowrap;
@@ -1075,7 +1117,7 @@ nav a:hover { color: var(--yellow); }
   header nav a:not(.nav-cta) { display: none; }
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 56px 24px 40px; border-right: none; border-bottom: 0.5px solid var(--border-dark); }
-  .hero-headline { font-size: 38px; }
+  .hero-headline { font-size: 34px; }
   .hero-right { padding: 40px 24px 56px; }
   .lower-grid { flex-direction: column; }
   .left-col { border-right: none; border-bottom: 0.5px solid var(--border-dark); }
@@ -1250,13 +1292,12 @@ nav a:hover { color: var(--yellow); }
   border-bottom: none;
 }
 
+/* Same ✓ marker as the beat-page license box, for one consistent language. */
 .license-features li::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  background: #444;
+  content: '✓';
+  color: var(--gray);
+  font-size: 10px;
   flex-shrink: 0;
-  border-radius: 50%;
 }
 
 .license-card--featured .license-features li {
@@ -1264,7 +1305,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .license-card--featured .license-features li::before {
-  background: var(--yellow);
+  color: var(--yellow);
 }
 
 .license-card--exclusive .license-features li::before {
@@ -1447,7 +1488,12 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: flex;
   align-items: center;
   cursor: pointer;
+  /* Touch scrubbing: the browser must not claim the gesture for scrolling,
+     text selection, or the parent <a>'s long-press behaviors. */
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 /* The track line */
@@ -1640,19 +1686,23 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .modal-license-details {
   background: #1a1a1a;
   border: 0.5px solid #333;
-  padding: 14px 18px 14px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
+/* Deliverable header ("MP3 (TAGGED)", "WAV + MP3 + STEMS", …) — reads as the
+   box's title, separated from the feature list by a hairline. */
 .modal-license-format {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--off-white);
   font-weight: 500;
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid #2c2c2c;
 }
 
 .modal-license-bullets {
@@ -1661,27 +1711,26 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
 }
 
 .modal-license-bullets li {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  color: var(--mid-gray);
-  line-height: 1.5;
-  padding-left: 14px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--light-gray);
+  line-height: 1.55;
+  padding-left: 18px;
   position: relative;
 }
 .modal-license-bullets li::before {
-  content: '';
+  content: '✓';
   position: absolute;
   left: 0;
-  top: 7px;
-  width: 4px;
-  height: 4px;
-  background: var(--mid-gray);
-  border-radius: 50%;
+  top: 0;
+  color: var(--yellow);
+  font-size: 10px;
+  line-height: 1.7;
 }
 
 .modal-read-license {
@@ -1703,7 +1752,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   border-bottom-color: var(--off-white);
 }
 
-/* ─── BUY ROW: price left, buttons right, trust strip as the box footer ───── */
+/* ─── BUY ROW: price left, buttons right ──────────────────────────────────── */
 .modal-buy-row {
   display: flex;
   flex-direction: column;
@@ -2056,7 +2105,9 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .cart-item-play.playing { opacity: 1; }
 .cart-item-info { display: flex; flex-direction: column; gap: 9px; min-width: 0; flex: 1; }
 .cart-item-title {
-  font-family: var(--font-display);
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: -0.005em;
   font-size: 17px;
   color: var(--off-white);
   line-height: 1.1;
@@ -2627,6 +2678,9 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   align-items: center;
   cursor: pointer;
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 .player-seek::before {
   content: '';
@@ -2676,6 +2730,9 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   align-items: center;
   cursor: pointer;
   touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 .player-vol::before {
   content: '';
@@ -2714,6 +2771,17 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .player-btn--close { color: var(--gray); }
 .player-btn--close:hover { color: var(--off-white); }
 
+/* Touch devices: no hover means the scrub thumbs would be invisible — keep
+   them shown, make them bigger, and fatten the hit areas so a finger can
+   actually grab and drag them. */
+@media (hover: none) {
+  .player-seek-thumb,
+  .player-vol-thumb { opacity: 1; width: 14px; height: 14px; }
+  .player-seek { height: 26px; }
+  .card-prog-bar { height: 28px; }
+  .card-prog-thumb { width: 14px; height: 14px; }
+}
+
 /* Keep page content clear of the fixed bar */
 body:has(#playerBar.visible) { padding-bottom: var(--player-bar-total); }
 
@@ -2723,12 +2791,16 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 /* Tablet / mobile — seek + close on top, track + controls beneath */
 @media (max-width: 760px) {
   :root { --player-bar-h: 120px; }
+  /* Three columns so the seek bar's width is decoupled from the controls
+     cluster below it: the wide controls row used to inflate column 2 and
+     squeeze the seek bar. Now seek spans cols 1-2 and only stops for the
+     small mute/close group (col 3). */
   .player-bar {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     grid-template-areas:
-      "seek     right"
-      "track    controls";
+      "seek  seek     right"
+      "track controls controls";
     align-items: center;
     gap: 10px 12px;
     padding: 8px 14px calc(12px + env(safe-area-inset-bottom, 0px));
@@ -2737,7 +2809,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   /* In the grid (not absolute) so the row's align-items:center lines the
      mute/close buttons up with the seek bar + timestamps beside them. */
   .player-right    { grid-area: right; justify-self: end; gap: 4px; }
-  .player-controls { grid-area: controls; }
+  .player-controls { grid-area: controls; justify-self: end; }
   .player-seek-row { grid-area: seek; width: 100%; min-width: 0; }
   .player-vol { display: none; }
   #playerVolBtn { display: none; }
@@ -2814,7 +2886,8 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   text-transform: uppercase; color: var(--yellow); margin: 0 0 8px;
 }
 .beat-detail-title {
-  font-family: var(--font-display); font-size: 2.4rem; line-height: 1.05;
+  font-family: var(--font-title); font-weight: 800; letter-spacing: -0.01em;
+  font-size: 2.4rem; line-height: 1.05;
   color: var(--off-white); margin: 0 0 10px;
 }
 .beat-detail-title em { font-style: italic; }
@@ -2952,11 +3025,31 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .modal-license-btn.active .modal-license-price { color: rgba(0, 0, 0, 0.75); }
 
 /* One-line trust strip: the buy box's footer, inside the same hairline. */
-.modal-trust-strip {
-  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--gray); text-align: center;
-  margin: 0; padding: 10px 14px;
-  border-top: 1px solid #2a2a2a;
+/* Trust row — sits above the license details / buy box, not inside it. */
+.purchase-trust {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+.purchase-trust li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+  white-space: nowrap;
+}
+.purchase-trust svg {
+  width: 12px;
+  height: 12px;
+  color: var(--yellow);
+  flex-shrink: 0;
 }
 
 /* "Get Notified" is an <a> wearing the secondary-button style. */
@@ -3002,7 +3095,8 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .glass-close svg { width: 14px; height: 14px; }
 .glass-close:hover { background: rgba(255,255,255,0.16); }
 .glass-logo {
-  font-family: var(--font-display); font-style: italic; font-size: 20px;
+  font-family: var(--font-display); font-style: italic; font-size: 19px;
+  font-weight: 800; letter-spacing: -0.02em;
   color: var(--off-white); letter-spacing: -0.01em; text-decoration: none;
 }
 

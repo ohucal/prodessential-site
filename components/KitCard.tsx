@@ -11,7 +11,7 @@ function isNewKit(dateAdded?: string): boolean {
 
 type Variant = 'store' | 'compact';
 
-export default function KitCard({ kit, mounted = false, variant = 'store' }: { kit: Kit; mounted?: boolean; variant?: Variant }) {
+export default function KitCard({ kit, mounted = false, variant = 'store', onOpen }: { kit: Kit; mounted?: boolean; variant?: Variant; onOpen?: (id: string) => void }) {
   const openKit = useUI((s) => s.openKit);
   const inCart = useCart((s) => s.items.some((it) => String(it.beatId) === String(kit.id)));
   // Gated on mounted — see BeatCard.tsx for why (static export build-time vs
@@ -25,7 +25,8 @@ export default function KitCard({ kit, mounted = false, variant = 'store' }: { k
   const openOverlay = (e: React.MouseEvent) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
-    openKit(kit.id);
+    if (onOpen) onOpen(kit.id);
+    else openKit(kit.id);
   };
 
   return (

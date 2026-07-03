@@ -103,7 +103,7 @@ export default function GlassModal() {
           </button>
         )}
         <div className="glass-panel-scroll">
-          <BeatDetail beat={beat} isModal onBrowseAll={goBrowse} />
+          <BeatDetail beat={beat} isModal onNavigate={openBeat} onBrowseAll={goBrowse} />
         </div>
       </div>
       <div className="glass-rail glass-rail--right" onMouseDown={(e) => { if (e.target === e.currentTarget) dismiss(); }} />

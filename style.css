@@ -1601,10 +1601,12 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 .modal-license-btn {
+  position: relative;
   font-family: 'DM Mono', monospace;
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  text-align: left;
   width: 100%;
   display: flex; align-items: center; justify-content: space-between;
   padding: 12px 16px;
@@ -1614,6 +1616,11 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   cursor: pointer;
   transition: all 0.12s;
   line-height: 1;
+}
+/* Tier label — left-aligned even when it wraps to two lines (Premium + Stems) */
+.modal-license-name {
+  line-height: 1.35;
+  padding-right: 8px;
 }
 .modal-license-btn:hover {
   border-color: #555;
@@ -1693,15 +1700,19 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   border-bottom-color: var(--off-white);
 }
 
-/* ─── BUY ROW: price left, button right ───────────────────────────────────── */
+/* ─── BUY ROW: price left, buttons right, trust strip as the box footer ───── */
 .modal-buy-row {
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  margin-top: 10px;
+}
+.modal-buy-main {
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  background: #1a1a1a;
-  border: 1px solid #333;
   gap: 0;
-  margin-top: 10px;
 }
 
 .modal-price-wrap {
@@ -2219,7 +2230,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 /* ─── CART + BUY ACTIONS MOBILE ───────────────────────────────────────────── */
 @media (max-width: 600px) {
   .cart-drawer { width: 100%; max-width: 100%; border-left: none; }
-  .modal-buy-row { flex-direction: column; align-items: stretch; }
+  .modal-buy-main { flex-direction: column; align-items: stretch; }
   .modal-price-wrap { align-items: flex-start; padding: 14px 18px; }
   .modal-buy-actions { width: 100%; border-top: 0.5px solid #333; }
   .modal-add-btn,
@@ -2386,8 +2397,8 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 /* Slim note under the license grid */
 .license-free-note {
-  max-width: 1200px;
-  margin: 16px auto 0;
+  max-width: 680px;
+  margin: 20px auto 0;
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.08em;
@@ -2854,7 +2865,6 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   display: flex;
   flex-direction: column;
   min-width: 0;
-  border-left: 1px solid #333;
 }
 .beat-purchase-detail .modal-license-details {
   flex: 1;
@@ -2919,23 +2929,31 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .modal-license-btn--premium.active {
   border-width: 2px; border-color: var(--yellow);
 }
+/* "Most Popular" rides the premium button's top border as a solid lavender
+   tag — out of the label row, so the price column stays clean. */
 .modal-license-popular {
-  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--purple-bright); flex-shrink: 0; margin-left: 8px;
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  font-family: 'DM Mono', monospace; font-size: 8px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 2px 7px;
+  background: var(--purple); color: var(--near-black);
+  pointer-events: none;
 }
-.modal-license-btn.active .modal-license-popular { color: rgba(0,0,0,0.6); }
 
-/* Right side of a tier button: optional "Most Popular" pill + the tier price,
-   so the whole $25 -> $250 ladder is visible before any click. */
-.modal-license-meta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: 8px; }
-.modal-license-price { color: var(--gray); }
+/* Tier price on the button's right edge — the whole $25 -> $250 ladder is
+   visible before any click. */
+.modal-license-price { color: var(--gray); flex-shrink: 0; margin-left: 8px; }
 .modal-license-btn:hover .modal-license-price { color: var(--off-white); }
 .modal-license-btn.active .modal-license-price { color: rgba(0, 0, 0, 0.75); }
 
-/* One-line trust strip under the buy row. */
-.modal-trust-row {
-  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--gray); margin: 10px 0 0; text-align: center;
+/* One-line trust strip: the buy box's footer, inside the same hairline. */
+.modal-trust-strip {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gray); text-align: center;
+  margin: 0; padding: 10px 14px;
+  border-top: 1px solid #2a2a2a;
 }
 
 /* "Get Notified" is an <a> wearing the secondary-button style. */
@@ -2944,12 +2962,11 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   text-decoration: none; text-transform: uppercase;
 }
 
-/* Mobile: keep license buttons stacked vertically in the purchase picker;
-   hide "Most Popular" since it overflows the narrower button width. */
+/* Mobile: keep license buttons stacked vertically in the purchase picker.
+   ("Most Popular" is a corner tag now, so it fits at any width.) */
 @media (max-width: 760px) {
   .beat-purchase-picker .modal-license-grid { flex-direction: column !important; }
-  .beat-purchase-picker .modal-license-btn { width: 100% !important; justify-content: flex-start; min-height: 44px; padding: 10px 12px; font-size: 11px; }
-  .modal-license-popular { display: none; }
+  .beat-purchase-picker .modal-license-btn { width: 100% !important; justify-content: space-between; min-height: 44px; padding: 10px 12px; font-size: 11px; }
 }
 .glass-panel-scroll {
   overflow-y: auto; height: 100%;
@@ -2973,7 +2990,6 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   background: rgba(17, 17, 17, 0.72);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 .glass-close {
   width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;

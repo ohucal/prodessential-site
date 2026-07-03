@@ -15,7 +15,7 @@ function isNewBeat(dateAdded?: string): boolean {
 
 type Variant = 'store' | 'compact';
 
-export default function BeatCard({ beat, mounted = false, variant = 'store' }: { beat: Beat; mounted?: boolean; variant?: Variant }) {
+export default function BeatCard({ beat, mounted = false, variant = 'store', onOpen }: { beat: Beat; mounted?: boolean; variant?: Variant; onOpen?: (id: string) => void }) {
   const isActive = usePlayer((s) => s.activeBeatId === beat.id);
   const isPlaying = usePlayer((s) => s.isPlaying && s.activeBeatId === beat.id);
   const currentTime = usePlayer((s) => (s.activeBeatId === beat.id ? s.currentTime : 0));
@@ -70,12 +70,14 @@ export default function BeatCard({ beat, mounted = false, variant = 'store' }: {
   // controls call preventDefault() to cancel that navigation and act instead.
   const play = (e: React.SyntheticEvent) => { e.preventDefault(); e.stopPropagation(); toggleBeat(beat); };
 
-  // Left-click opens the glass overlay; modifier/middle clicks fall through to the
-  // anchor so "open in new tab" still loads the real static page.
+  // Left-click opens the glass overlay (or the parent-supplied handler);
+  // modifier/middle clicks fall through to the anchor so "open in new tab"
+  // still loads the real static page.
   const openOverlay = (e: React.MouseEvent) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
-    openBeat(beat.id);
+    if (onOpen) onOpen(beat.id);
+    else openBeat(beat.id);
   };
 
   return (

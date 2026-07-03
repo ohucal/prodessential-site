@@ -8,6 +8,7 @@ import { coverStyle } from '@/lib/assets';
 import { trackEcommerce } from '@/lib/analytics';
 import { beatVisibleGenre, beatBodyCopy } from '@/lib/keywords';
 import { usePlayer } from '@/stores/usePlayer';
+import { scrollToTopThen } from '@/lib/scrollNav';
 import BeatCard from './BeatCard';
 import BeatPurchase from './BeatPurchase';
 
@@ -27,6 +28,7 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
   const isPlayingThis = usePlayer((s) => s.isPlaying && s.activeBeatId === beat.id);
   const [freeClick, setFreeClick] = useState(0);
   const articleRef = useRef<HTMLElement>(null);
+  const relatedRef = useRef<HTMLElement>(null);
   const [navPos, setNavPos] = useState<{ prevLeft: number; nextLeft: number } | null>(null);
 
   const free = freeEligible(beat);
@@ -39,6 +41,16 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
   function navigate(id: string) {
     if (onNavigate) onNavigate(id);
     else router.push(`/beats/${id}/`);
+  }
+
+  // Related-beat click: glide back to the top first, then swap the beat in once
+  // the suggestions strip is out of view — reads like a seamless page change.
+  function openRelated(id: string) {
+    const container = articleRef.current?.closest<HTMLElement>('.glass-panel-scroll') ?? null;
+    scrollToTopThen(container, relatedRef.current, () => {
+      if (onNavigate) onNavigate(id);
+      else router.push(`/beats/${id}/`, { scroll: false });
+    });
   }
 
   // Return to the beat store without a full reload so any playing beat keeps
@@ -116,11 +128,11 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
       </section>
 
       {related.length > 0 && (
-        <section className="product-related">
+        <section className="product-related" ref={relatedRef}>
           <h2 className="product-section-title">More of my beats</h2>
           <div className="product-related-grid">
             {related.map((b) => (
-              <BeatCard key={b.id} beat={b} variant="compact" />
+              <BeatCard key={b.id} beat={b} variant="compact" onOpen={openRelated} />
             ))}
           </div>
           <a href="/#beats" className="product-related-browse" onClick={browseAll}>Browse all beats</a>

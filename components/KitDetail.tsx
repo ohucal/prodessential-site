@@ -8,6 +8,7 @@ import { coverStyle } from '@/lib/assets';
 import { trackEcommerce } from '@/lib/analytics';
 import { useUI } from '@/stores/useUI';
 import { useCart, kitCartItem } from '@/stores/useCart';
+import { scrollToTopThen } from '@/lib/scrollNav';
 import KitCard from './KitCard';
 
 function relatedKits(id: string, type: string): Kit[] {
@@ -30,6 +31,7 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
   const [showViewCart, setShowViewCart] = useState(false);
   const [shareLabel, setShareLabel] = useState('Copy Link');
   const articleRef = useRef<HTMLElement>(null);
+  const relatedRef = useRef<HTMLElement>(null);
   const [navPos, setNavPos] = useState<{ prevLeft: number; nextLeft: number } | null>(null);
 
   const addable = kit._state === 'addable' || kit._state === 'novariant';
@@ -42,6 +44,16 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
   function navigate(id: string) {
     if (onNavigate) onNavigate(id);
     else router.push(`/kits/${id}/`);
+  }
+
+  // Related-kit click: glide back to the top first, then swap the kit in once
+  // the suggestions strip is out of view — reads like a seamless page change.
+  function openRelated(id: string) {
+    const container = articleRef.current?.closest<HTMLElement>('.glass-panel-scroll') ?? null;
+    scrollToTopThen(container, relatedRef.current, () => {
+      if (onNavigate) onNavigate(id);
+      else router.push(`/kits/${id}/`, { scroll: false });
+    });
   }
 
   // Return to the kits section without a full reload so any playing beat keeps
@@ -115,27 +127,29 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
       <section className="beat-detail-license">
         <h2 className="product-section-title">Get &ldquo;{kit.title}&rdquo;</h2>
         <div className="modal-buy-row">
-          <div className="modal-price-wrap">
-            <span className="modal-price-label">Price</span>
-            <span className="modal-price-value">${kit.price}</span>
+          <div className="modal-buy-main">
+            <div className="modal-price-wrap">
+              <span className="modal-price-label">Price</span>
+              <span className="modal-price-value">${kit.price}</span>
+            </div>
+            <div className="modal-buy-actions">
+              {addable ? (
+                <>
+                  <button className="modal-add-btn" type="button" onClick={addToCart}>{inCart ? 'In Cart ✓' : 'Add to Cart'}</button>
+                  <button className="modal-buy-btn--secondary" type="button" onClick={() => buyNow(kitCartItem(kit))}>Buy Now</button>
+                </>
+              ) : (
+                <>
+                  <button className="modal-add-btn modal-btn--disabled" type="button" disabled>Coming Soon</button>
+                  <a className="modal-buy-btn--secondary modal-notify-link" href="/#newsletter">Get Notified →</a>
+                </>
+              )}
+            </div>
           </div>
-          <div className="modal-buy-actions">
-            {addable ? (
-              <>
-                <button className="modal-add-btn" type="button" onClick={addToCart}>{inCart ? 'In Cart ✓' : 'Add to Cart'}</button>
-                <button className="modal-buy-btn--secondary" type="button" onClick={() => buyNow(kitCartItem(kit))}>Buy Now</button>
-              </>
-            ) : (
-              <>
-                <button className="modal-add-btn modal-btn--disabled" type="button" disabled>Coming Soon</button>
-                <a className="modal-buy-btn--secondary modal-notify-link" href="/#newsletter">Get Notified →</a>
-              </>
-            )}
-          </div>
+          {addable && (
+            <p className="modal-trust-strip">Instant delivery&nbsp;&nbsp;·&nbsp;&nbsp;Secure Payhip checkout</p>
+          )}
         </div>
-        {addable && (
-          <p className="modal-trust-row">Instant delivery&nbsp;&nbsp;·&nbsp;&nbsp;Secure Payhip checkout</p>
-        )}
         {addConfirm && <div className="modal-add-confirm visible" aria-live="polite">{addConfirm}</div>}
         {showViewCart && <button className="modal-view-cart-btn" onClick={openCart}>View Cart →</button>}
         <button className="modal-share-btn kit-detail-share" onClick={copyShare}>
@@ -145,11 +159,11 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
       </section>
 
       {related.length > 0 && (
-        <section className="product-related">
+        <section className="product-related" ref={relatedRef}>
           <h2 className="product-section-title">More of my kits &amp; packs</h2>
           <div className="product-related-grid product-related-grid--kits">
             {related.map((k) => (
-              <KitCard key={k.id} kit={k} variant="compact" />
+              <KitCard key={k.id} kit={k} variant="compact" onOpen={openRelated} />
             ))}
           </div>
           <a href="/#kits" className="product-related-browse" onClick={browseAll}>Browse all kits &amp; packs</a>

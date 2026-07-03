@@ -101,18 +101,16 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
     <div className="beat-purchase">
       <div className="beat-purchase-picker">
         <div className="modal-license-grid">
-          {free && <button className={`modal-license-btn modal-license-btn--free${license === 'free' ? ' active' : ''}`} onClick={selectFree}>Free</button>}
+          {free && <button className={`modal-license-btn modal-license-btn--free${license === 'free' ? ' active' : ''}`} onClick={selectFree}><span className="modal-license-name">Free</span></button>}
           {LICENSE_KEYS.map((key) => beat.licenses[key] && (
             <button
               key={key}
               className={`modal-license-btn${key === 'premium' ? ' modal-license-btn--premium' : ''}${key === license ? ' active' : ''}`}
               onClick={() => selectLicense(key)}
             >
-              {beat.licenses[key].label}
-              <span className="modal-license-meta">
-                {key === 'premium' && <span className="modal-license-popular">Most Popular</span>}
-                <span className="modal-license-price">{beat.licenses[key].price === null ? 'Contact' : `$${beat.licenses[key].price}`}</span>
-              </span>
+              <span className="modal-license-name">{beat.licenses[key].label}</span>
+              {key === 'premium' && <span className="modal-license-popular">Most Popular</span>}
+              {beat.licenses[key].price !== null && <span className="modal-license-price">{`$${beat.licenses[key].price}`}</span>}
             </button>
           ))}
         </div>
@@ -157,29 +155,31 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
 
         {!freeMode && (
           <div className="modal-buy-row" ref={buyRowRef}>
-            <div className="modal-price-wrap">
-              <span className="modal-price-label">Price</span>
-              <span className="modal-price-value">{priceText}</span>
+            <div className="modal-buy-main">
+              <div className="modal-price-wrap">
+                <span className="modal-price-label">Price</span>
+                <span className="modal-price-value">{priceText}</span>
+              </div>
+              <div className={`modal-buy-actions${state === 'contact' ? ' modal-buy-actions--single' : ''}`}>
+                {state === 'contact' ? (
+                  <button className="modal-add-btn" type="button" onClick={() => { window.location.href = CONTACT_EMAIL; }}>Get In Touch</button>
+                ) : state === 'unavailable' || state === 'misconfigured' ? (
+                  <>
+                    <button className="modal-add-btn modal-btn--disabled" type="button" disabled>Coming Soon</button>
+                    <button className="modal-buy-btn--secondary modal-btn--disabled" type="button" disabled>Unavailable</button>
+                  </>
+                ) : (
+                  <>
+                    <button className="modal-add-btn" type="button" onClick={addToCart}>{inCartThisTier ? 'In Cart ✓' : 'Add to Cart'}</button>
+                    <button className="modal-buy-btn--secondary" type="button" onClick={doBuyNow}>Buy Now</button>
+                  </>
+                )}
+              </div>
             </div>
-            <div className={`modal-buy-actions${state === 'contact' ? ' modal-buy-actions--single' : ''}`}>
-              {state === 'contact' ? (
-                <button className="modal-add-btn" type="button" onClick={() => { window.location.href = CONTACT_EMAIL; }}>Get In Touch</button>
-              ) : state === 'unavailable' || state === 'misconfigured' ? (
-                <>
-                  <button className="modal-add-btn modal-btn--disabled" type="button" disabled>Coming Soon</button>
-                  <button className="modal-buy-btn--secondary modal-btn--disabled" type="button" disabled>Unavailable</button>
-                </>
-              ) : (
-                <>
-                  <button className="modal-add-btn" type="button" onClick={addToCart}>{inCartThisTier ? 'In Cart ✓' : 'Add to Cart'}</button>
-                  <button className="modal-buy-btn--secondary" type="button" onClick={doBuyNow}>Buy Now</button>
-                </>
-              )}
-            </div>
+            {(state === 'addable' || state === 'novariant') && (
+              <p className="modal-trust-strip">Instant delivery&nbsp;&nbsp;·&nbsp;&nbsp;Secure Payhip checkout&nbsp;&nbsp;·&nbsp;&nbsp;Written license included</p>
+            )}
           </div>
-        )}
-        {!freeMode && (state === 'addable' || state === 'novariant') && (
-          <p className="modal-trust-row">Instant delivery&nbsp;&nbsp;·&nbsp;&nbsp;Secure Payhip checkout&nbsp;&nbsp;·&nbsp;&nbsp;Written license included</p>
         )}
         {addConfirm && <div className="modal-add-confirm visible" aria-live="polite">{addConfirm}</div>}
         {showViewCart && <button className="modal-view-cart-btn" onClick={openCart}>View Cart →</button>}

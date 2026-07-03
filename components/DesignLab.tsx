@@ -13,6 +13,9 @@ const THEMES = [
   { id: 'pressing-plant', label: 'Pressing Plant', note: 'Archivo + IBM Plex Mono' },
   { id: 'dubplate', label: 'Dubplate', note: 'Xanh Mono + Sometype Mono' },
   { id: 'after-hours', label: 'After Hours', note: 'Besley + Fragment Mono' },
+  { id: 'test-pressing', label: 'Test Pressing', note: 'Unbounded + Martian Mono' },
+  { id: 'deadstock', label: 'Deadstock', note: 'Big Shoulders + Chivo Mono' },
+  { id: 'cutting-room', label: 'Cutting Room', note: 'Bricolage Grotesque + Space Mono' },
 ];
 
 const STORAGE_KEY = 'design-lab-theme';

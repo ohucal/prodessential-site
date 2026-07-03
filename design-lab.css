@@ -94,6 +94,89 @@ html[data-lab='after-hours'] .logo.logo {
   html[data-lab='after-hours'] .hero-headline.hero-headline { font-size: 34px; }
 }
 
+/* ---------- 5. TEST PRESSING — Unbounded (rounded geometric) + Martian Mono ---------- */
+html[data-lab='test-pressing'] {
+  --font-display: 'Unbounded', sans-serif;
+  --font-mono: 'Martian Mono', monospace;
+}
+html[data-lab='test-pressing']
+  :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
+    .section-label span, .newsletter-headline, .licensing-title, .license-name,
+    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
+    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
+    .confirmed-section-title, .confirmed-footer) {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+html[data-lab='test-pressing'] .hero-headline.hero-headline {
+  font-size: 40px;
+  line-height: 1.12;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+html[data-lab='test-pressing'] .logo.logo {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+@media (max-width: 900px) {
+  html[data-lab='test-pressing'] .hero-headline.hero-headline { font-size: 30px; }
+}
+
+/* ---------- 6. DEADSTOCK — Big Shoulders Display (ultra-condensed industrial) + Chivo Mono ---------- */
+html[data-lab='deadstock'] {
+  --font-display: 'Big Shoulders Display', sans-serif;
+  --font-mono: 'Chivo Mono', monospace;
+}
+html[data-lab='deadstock']
+  :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
+    .section-label span, .newsletter-headline, .licensing-title, .license-name,
+    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
+    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
+    .confirmed-section-title, .confirmed-footer) {
+  font-weight: 800;
+  letter-spacing: 0.005em;
+}
+html[data-lab='deadstock'] .hero-headline.hero-headline {
+  font-size: 60px;
+  line-height: 0.96;
+  font-weight: 700;
+}
+html[data-lab='deadstock'] .logo.logo {
+  font-size: 21px;
+  font-weight: 700;
+}
+@media (max-width: 900px) {
+  html[data-lab='deadstock'] .hero-headline.hero-headline { font-size: 42px; }
+}
+
+/* ---------- 7. CUTTING ROOM — Bricolage Grotesque (quirky variable grotesque) + Space Mono ---------- */
+html[data-lab='cutting-room'] {
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+html[data-lab='cutting-room']
+  :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
+    .section-label span, .newsletter-headline, .licensing-title, .license-name,
+    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
+    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
+    .confirmed-section-title, .confirmed-footer) {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+html[data-lab='cutting-room'] .hero-headline.hero-headline {
+  font-size: 44px;
+  line-height: 1.06;
+  font-weight: 500;
+}
+html[data-lab='cutting-room'] .logo.logo {
+  font-size: 17px;
+  font-weight: 600;
+}
+@media (max-width: 900px) {
+  html[data-lab='cutting-room'] .hero-headline.hero-headline { font-size: 32px; }
+}
+
 /* ---------- Switcher panel ---------- */
 .design-lab {
   position: fixed;
@@ -109,6 +192,8 @@ html[data-lab='after-hours'] .logo.logo {
   flex-direction: column;
   gap: 6px;
   max-width: 168px;
+  max-height: calc(100vh - var(--player-bar-total, 86px) - 90px);
+  overflow-y: auto;
 }
 .design-lab-title {
   font-family: 'DM Mono', monospace;

@@ -75,7 +75,7 @@ export default function PlayerBar() {
           className="player-seek"
           ref={seekRef}
           onPointerDown={(e) => { seekDrag.current = true; e.currentTarget.setPointerCapture(e.pointerId); seekAt(e.clientX); e.preventDefault(); }}
-          onPointerMove={(e) => { if (seekDrag.current) seekAt(e.clientX); }}
+          onPointerMove={(e) => { if (seekDrag.current) { seekAt(e.clientX); e.preventDefault(); } }}
           onPointerUp={() => { seekDrag.current = false; }}
           onPointerCancel={() => { seekDrag.current = false; }}
         >
@@ -95,7 +95,7 @@ export default function PlayerBar() {
           className="player-vol"
           ref={volRef}
           onPointerDown={(e) => { volDrag.current = true; e.currentTarget.setPointerCapture(e.pointerId); volAt(e.clientX); e.preventDefault(); }}
-          onPointerMove={(e) => { if (volDrag.current) volAt(e.clientX); }}
+          onPointerMove={(e) => { if (volDrag.current) { volAt(e.clientX); e.preventDefault(); } }}
           onPointerUp={() => { volDrag.current = false; }}
           onPointerCancel={() => { volDrag.current = false; }}
         >

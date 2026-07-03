@@ -117,6 +117,22 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
       </div>
 
       <div className="beat-purchase-detail">
+        {!freeMode && (state === 'addable' || state === 'novariant') && (
+          <ul className="purchase-trust">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+              Instant delivery
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+              Secure Payhip checkout
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="9" y1="15" x2="15" y2="15" /></svg>
+              Written license included
+            </li>
+          </ul>
+        )}
         {!freeMode && details && (
           <div className="modal-license-details">
             <span className="modal-license-format">{details.format}</span>
@@ -176,9 +192,6 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
                 )}
               </div>
             </div>
-            {(state === 'addable' || state === 'novariant') && (
-              <p className="modal-trust-strip">Instant delivery&nbsp;&nbsp;·&nbsp;&nbsp;Secure Payhip checkout&nbsp;&nbsp;·&nbsp;&nbsp;Written license included</p>
-            )}
           </div>
         )}
         {addConfirm && <div className="modal-add-confirm visible" aria-live="polite">{addConfirm}</div>}

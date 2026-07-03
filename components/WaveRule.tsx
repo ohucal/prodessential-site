@@ -24,14 +24,18 @@ function lerp(a: number, b: number, t: number) {
 
 // The section-label horizontal rule: a flat hairline when idle; the same
 // hairline bends into an oscilloscope waveform while a track plays.
-export default function WaveRule() {
+// `active` (optional) overrides the trigger: pass it to scope the waveform to a
+// subset of beats (e.g. the hero's Featured Beats rule only reacts to featured
+// tracks); omitted, any playing track animates it.
+export default function WaveRule({ active }: { active?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number>(0);
   const mixRef = useRef(0); // 0 = flat rule, 1 = full waveform
   const energyRef = useRef(0);
   const waveRef = useRef<Float32Array | null>(null);
 
-  const isPlaying = usePlayer((s) => s.isPlaying);
+  const globalPlaying = usePlayer((s) => s.isPlaying);
+  const isPlaying = active ?? globalPlaying;
 
   // Make sure the analyser graph exists (recovers after dev hot-reloads).
   useEffect(() => {

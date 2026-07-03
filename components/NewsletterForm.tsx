@@ -38,12 +38,14 @@ export default function NewsletterForm() {
         <span className="newsletter-toggle-label" style={{ opacity: collapsed ? 1 : 0 }}>Free Loops Weekly</span>
       </div>
       <div className="newsletter-content">
+        <p className="newsletter-kicker">Newsletter</p>
         <h2 className="newsletter-headline">Free Loops Weekly</h2>
         <p className="newsletter-desc">Join the list to get weekly free loops, exclusive kits and early access to new beats sent straight to your inbox.</p>
         <form className="newsletter-form" onSubmit={submit}>
           <input type="email" placeholder="YOUR EMAIL ADDRESS" required className="newsletter-input" value={email} onChange={(e) => setEmail(e.target.value)} />
           <button type="submit" className="btn-primary" style={{ border: 'none' }} disabled={submitting}>{submitting ? 'SENDING...' : 'SUBSCRIBE'}</button>
         </form>
+        <p className="newsletter-fineprint">No spam · Unsubscribe anytime</p>
         <p className={`newsletter-status${status.kind ? ` newsletter-status--${status.kind}` : ''}`}>{status.text}</p>
       </div>
     </section>

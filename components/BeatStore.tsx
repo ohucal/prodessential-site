@@ -153,12 +153,19 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
         </div>
         <div className="filter-controls-row">
           <div className="filter-mode-wrap" hidden={activeTagCount < 2}>
-            <span className="mode-label">Showing beats with</span>
-            <div className="match-seg">
-              <button className={`mode-toggle-btn${mode === 'any' ? ' active' : ''}`} onClick={() => setMode('any')}>Any</button>
-              <button className={`mode-toggle-btn${mode === 'all' ? ' active' : ''}`} onClick={() => setMode('all')}>All</button>
+            <span className="mode-label">Match:</span>
+            <div className="match-seg" role="group" aria-label="Tag match mode">
+              <button
+                className={`mode-toggle-btn${mode === 'any' ? ' active' : ''}`}
+                onClick={() => setMode('any')}
+                title={`Show beats that have at least one of the ${activeTagCount} selected tags`}
+              >Any tag</button>
+              <button
+                className={`mode-toggle-btn${mode === 'all' ? ' active' : ''}`}
+                onClick={() => setMode('all')}
+                title={`Show only beats that have all ${activeTagCount} selected tags`}
+              >All tags</button>
             </div>
-            <span className="mode-label">of the {activeTagCount} selected tags</span>
           </div>
           <div className="sort-wrap">
             <span className="mode-label">Sort:</span>

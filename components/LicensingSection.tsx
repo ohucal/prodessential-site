@@ -21,24 +21,24 @@ export default function LicensingSection() {
           </ul>
           <a href="#" className="license-btn" onClick={read('basic')}>Read Full License</a>
         </div>
-        <div className="license-card">
+        <div className="license-card license-card--featured">
+          <div className="license-badge">Most Popular</div>
           <div className="license-top">
             <span className="license-name">Premium</span><span className="license-price">$40</span><span className="license-format">WAV + MP3 (Untagged)</span>
           </div>
           <ul className="license-features">
             <li>Untagged WAV + MP3</li><li>Up to 100,000 streams</li><li>Up to 3,000 copies</li><li>1 monetized video</li><li>For-profit performances</li><li>Non-exclusive</li>
           </ul>
-          <a href="#" className="license-btn" onClick={read('premium')}>Read Full License</a>
+          <a href="#" className="license-btn license-btn--featured" onClick={read('premium')}>Read Full License</a>
         </div>
-        <div className="license-card license-card--featured">
-          <div className="license-badge">Most Popular</div>
+        <div className="license-card">
           <div className="license-top">
             <span className="license-name">Premium + Stems</span><span className="license-price">$90</span><span className="license-format">WAV + MP3 + Track Stems</span>
           </div>
           <ul className="license-features">
             <li>Untagged WAV + MP3</li><li>Full track stems included</li><li>Up to 500,000 streams</li><li>Up to 10,000 copies</li><li>Unlimited music videos</li><li>For-profit performances</li><li>Non-exclusive</li>
           </ul>
-          <a href="#" className="license-btn license-btn--featured" onClick={read('stems')}>Read Full License</a>
+          <a href="#" className="license-btn" onClick={read('stems')}>Read Full License</a>
         </div>
         <div className="license-card">
           <div className="license-top">

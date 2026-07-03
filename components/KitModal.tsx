@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { getKit, kits } from '@/lib/products';
 import { useUI } from '@/stores/useUI';
 import { useFocusTrap } from '@/lib/useFocusTrap';
+import { lockScroll, unlockScroll } from '@/lib/scrollLock';
 import KitDetail from './KitDetail';
 
 export default function KitModal() {
@@ -23,13 +24,19 @@ export default function KitModal() {
   const prevKit = currentIndex >= 0 ? kits[(currentIndex - 1 + kits.length) % kits.length] : null;
   const nextKit = currentIndex >= 0 ? kits[(currentIndex + 1) % kits.length] : null;
 
-  // Lock body scroll + Escape to dismiss while open.
+  // Lock body scroll + Escape to dismiss while open. When the cart drawer or
+  // license modal is stacked above this overlay, Escape belongs to that layer.
   useEffect(() => {
     if (!kit) return;
-    document.body.style.overflow = 'hidden';
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeKit(); };
+    lockScroll();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      const { cartOpen, licenseModalTier } = useUI.getState();
+      if (cartOpen || licenseModalTier) return;
+      closeKit();
+    };
     document.addEventListener('keydown', onKey);
-    return () => { document.body.style.overflow = ''; document.removeEventListener('keydown', onKey); };
+    return () => { unlockScroll(); document.removeEventListener('keydown', onKey); };
   }, [kit, closeKit]);
 
   // Close overlay and return home without a full reload (keeps playback alive).

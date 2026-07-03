@@ -8,6 +8,7 @@ import { useUI } from '@/stores/useUI';
 import { useCart, beatCartItem } from '@/stores/useCart';
 import { usePlayer } from '@/stores/usePlayer';
 import { useFocusTrap } from '@/lib/useFocusTrap';
+import { lockScroll, unlockScroll } from '@/lib/scrollLock';
 
 export default function CartDrawer() {
   const cartOpen = useUI((s) => s.cartOpen);
@@ -26,10 +27,13 @@ export default function CartDrawer() {
 
   useEffect(() => {
     if (!cartOpen) return;
-    document.body.style.overflow = 'hidden';
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeCart(); };
+    lockScroll();
+    const onKey = (e: KeyboardEvent) => {
+      // The license modal stacks above the cart; let it consume Escape first.
+      if (e.key === 'Escape' && !useUI.getState().licenseModalTier) closeCart();
+    };
     document.addEventListener('keydown', onKey);
-    return () => { document.body.style.overflow = ''; document.removeEventListener('keydown', onKey); };
+    return () => { unlockScroll(); document.removeEventListener('keydown', onKey); };
   }, [cartOpen, closeCart]);
 
   return (

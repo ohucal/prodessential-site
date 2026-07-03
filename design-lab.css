@@ -147,6 +147,59 @@ html[data-lab='180-gram'] .logo.logo {
   html[data-lab='180-gram'] .hero-headline.hero-headline { font-size: 28px; }
 }
 
+/* ---------- 6. MASTER CUT — the composite: Pressing Plant + 180 Gram + Boxcar ---------- */
+/* Assembles the 3 approved directions into one system instead of a single
+   swap: Pressing Plant (Archivo) owns brand/section headers, 180 Gram
+   (Hanken Grotesk) owns beat/track titles, Boxcar (Antonio, wide-tracked)
+   owns the small uppercase utility layer — nav, kicker, buttons. */
+html[data-lab='master-cut'] {
+  --font-display: 'Archivo', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+/* Headers — Pressing Plant (logo, hero headline, section titles, "Featured Beats") */
+html[data-lab='master-cut']
+  :is(.contact-title, .logo, .hero-headline, .hero-right-label,
+    .section-label span, .newsletter-headline, .licensing-title, .license-name,
+    .license-price, .modal-price-value, .cart-header-title,
+    .cart-subtotal-value, .product-section-title, .glass-logo,
+    .confirmed-section-title, .confirmed-footer) {
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+html[data-lab='master-cut'] .hero-headline.hero-headline {
+  font-size: 46px;
+  line-height: 1.02;
+}
+html[data-lab='master-cut'] .logo.logo,
+html[data-lab='master-cut'] .glass-logo.glass-logo {
+  font-stretch: 100%;
+  font-size: 19px;
+}
+@media (max-width: 900px) {
+  html[data-lab='master-cut'] .hero-headline.hero-headline { font-size: 34px; }
+}
+
+/* Beat/track titles — 180 Gram (Hanken Grotesk), quieter than the headers around them */
+html[data-lab='master-cut']
+  :is(.beat-title, .beat-detail-title, .cart-item-title) {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+/* Small uppercase utility layer — Boxcar (Antonio), wide-tracked condensed caps */
+html[data-lab='master-cut']
+  :is(nav a, .hero-kicker, .btn-primary, .btn-ghost) {
+  font-family: 'Antonio', sans-serif;
+  font-weight: 600;
+}
+html[data-lab='master-cut'] nav a { letter-spacing: 0.22em; }
+html[data-lab='master-cut'] .hero-kicker { letter-spacing: 0.32em; }
+html[data-lab='master-cut'] .btn-primary,
+html[data-lab='master-cut'] .btn-ghost { letter-spacing: 0.18em; }
+
 /* ---------- Switcher panel ---------- */
 .design-lab {
   position: fixed;

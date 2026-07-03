@@ -14,6 +14,7 @@ const THEMES = [
   { id: 'boxcar', label: 'Boxcar', note: 'Antonio + Chivo Mono — condensed, wide tracking, caps' },
   { id: 'blackout', label: 'Blackout', note: 'Gasoek One + Fragment Mono — huge, single-weight poster' },
   { id: '180-gram', label: '180 Gram', note: 'Hanken Grotesk + Sometype Mono — smaller, quieter, clean' },
+  { id: 'master-cut', label: 'Master Cut', note: 'Pressing Plant headers + 180 Gram beat titles + Boxcar nav/labels' },
 ];
 
 const STORAGE_KEY = 'design-lab-theme';

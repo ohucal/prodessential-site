@@ -338,7 +338,8 @@ nav a:hover { color: var(--yellow); }
 .hero-right-label {
   font-family: var(--font-display);
   font-size: 16px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--off-white);
   margin-bottom: 8px;
 }

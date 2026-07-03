@@ -17,7 +17,7 @@
 }
 
 .contact-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 24px;
   color: var(--yellow);
@@ -25,7 +25,7 @@
 }
 
 .contact-email {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   color: var(--mid-gray);
   letter-spacing: 0.05em;
@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.15em;
   text-decoration: none;
@@ -121,6 +121,8 @@
 html { scrollbar-gutter: stable; }
 
 :root {
+  --font-mono: 'DM Mono', monospace;
+  --font-display: 'DM Serif Display', serif;
   --warm-gray: #f5f4f0;
   --near-black: #111111;
   --off-white: #f7f7f5;
@@ -147,7 +149,7 @@ html { scrollbar-gutter: stable; }
 
 body {
   background: var(--near-black);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   color: var(--off-white);
   min-height: 100vh;
 }
@@ -169,7 +171,7 @@ header {
 }
 
 .logo {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 20px;
   color: var(--off-white);
@@ -184,7 +186,7 @@ nav {
 }
 
 nav a {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -250,7 +252,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .hero-headline {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 52px;
   line-height: 1.05;
   color: var(--off-white);
@@ -276,7 +278,7 @@ nav a:hover { color: var(--yellow); }
 .btn-primary {
   background: var(--yellow);
   color: var(--near-black);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -293,7 +295,7 @@ nav a:hover { color: var(--yellow); }
 .btn-ghost {
   background: transparent;
   color: var(--off-white);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -334,7 +336,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .hero-right-label {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 16px;
   letter-spacing: 0.02em;
   color: var(--off-white);
@@ -384,7 +386,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .beat-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 15px;
   color: var(--off-white);
   white-space: nowrap;
@@ -601,7 +603,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .section-label span {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 24px;
   flex-shrink: 0;
   white-space: nowrap;
@@ -654,7 +656,7 @@ nav a:hover { color: var(--yellow); }
 
 .search-input {
   width: 100%;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--off-white);
@@ -713,7 +715,7 @@ nav a:hover { color: var(--yellow); }
 .tag-filters::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 
 .tag-filter-btn {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -782,7 +784,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .mode-toggle-btn {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -824,7 +826,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .custom-select-btn {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -877,7 +879,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .custom-select-item {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -961,7 +963,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .newsletter-toggle-label {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1026,7 +1028,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .newsletter-headline {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 32px;
   margin-bottom: 16px;
   color: var(--yellow);
@@ -1050,7 +1052,7 @@ nav a:hover { color: var(--yellow); }
   border: 1px solid #555;
   color: var(--off-white);
   padding: 12px 16px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.1em;
   outline: none;
@@ -1095,7 +1097,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .licensing-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 24px;
   font-style: italic;
   letter-spacing: 0.1em;
@@ -1174,7 +1176,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .license-badge {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 8px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1194,7 +1196,7 @@ nav a:hover { color: var(--yellow); }
 
 .license-name {
   display: block;
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 20px;
   font-style: italic;
   color: var(--off-white);
@@ -1204,7 +1206,7 @@ nav a:hover { color: var(--yellow); }
 
 .license-price {
   display: block;
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 36px;
   color: var(--yellow);
   line-height: 1;
@@ -1269,7 +1271,7 @@ nav a:hover { color: var(--yellow); }
 }
 
 .license-btn {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1490,7 +1492,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 .card-time {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.06em;
   color: var(--mid-gray);
@@ -1502,7 +1504,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   line-height: 1.7;
   color: var(--mid-gray);
   letter-spacing: 0.03em;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
 }
 
 .kit-desc-hero {
@@ -1529,7 +1531,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 .kit-stat-num {
   font-size: 28px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   color: var(--yellow);
   letter-spacing: -0.03em;
   line-height: 1;
@@ -1537,7 +1539,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 .kit-stat-label {
   font-size: 7.5px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--mid-gray);
@@ -1545,7 +1547,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 .kit-desc-total {
   font-size: 8px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--mid-gray);
@@ -1567,7 +1569,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   align-items: flex-start;
   gap: 10px;
   font-size: 11px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   color: var(--light-gray);
   letter-spacing: 0.03em;
   line-height: 1.55;
@@ -1584,7 +1586,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 .kit-desc-compat {
   font-size: 8.5px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--purple);
@@ -1602,7 +1604,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 .modal-license-btn {
   position: relative;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1644,7 +1646,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 .modal-license-format {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1662,7 +1664,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 .modal-license-bullets li {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.05em;
   color: var(--mid-gray);
@@ -1682,7 +1684,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 .modal-read-license {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1727,11 +1729,11 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--mid-gray);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
 }
 
 .modal-price-value {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 32px;
   color: var(--off-white);
   line-height: 1;
@@ -1742,7 +1744,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   background: none;
   border: 1px solid #333;
   color: var(--off-white);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1823,7 +1825,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .license-modal::-webkit-scrollbar-thumb { background: #333; }
 
 .license-modal-title {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -1841,7 +1843,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   margin-bottom: 28px;
 }
 .lic-meta {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.04em;
   color: var(--mid-gray);
@@ -1851,7 +1853,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .lic-meta:last-child { margin-bottom: 0; }
 
 .lic-section {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -1926,7 +1928,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   border-radius: 8px;
   background: var(--yellow);
   color: var(--near-black);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 500;
   line-height: 16px;
@@ -1970,7 +1972,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   flex-shrink: 0;
 }
 .cart-header-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 22px;
   color: var(--off-white);
 }
@@ -2004,14 +2006,14 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 .cart-empty { padding: 56px 24px; text-align: center; }
 .cart-empty-title {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.06em;
   color: var(--off-white);
   margin-bottom: 6px;
 }
 .cart-empty-sub {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   color: var(--mid-gray);
 }
@@ -2053,13 +2055,13 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .cart-item-play.playing { opacity: 1; }
 .cart-item-info { display: flex; flex-direction: column; gap: 9px; min-width: 0; flex: 1; }
 .cart-item-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 17px;
   color: var(--off-white);
   line-height: 1.1;
 }
 .cart-item-tier {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   color: var(--off-white);
   background: var(--surface);
@@ -2070,7 +2072,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 .cart-item-tier:hover { border-color: var(--mid-gray); }
 .cart-item-tier-static {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2083,7 +2085,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   flex-shrink: 0;
 }
 .cart-item-price {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   color: var(--yellow);
 }
@@ -2111,14 +2113,14 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   margin-bottom: 14px;
 }
 .cart-subtotal-label {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mid-gray);
 }
 .cart-subtotal-value {
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-display);
   font-size: 26px;
   color: var(--off-white);
 }
@@ -2126,7 +2128,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   width: 100%;
   background: var(--yellow);
   color: var(--near-black);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -2142,7 +2144,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   background: none;
   border: none;
   color: var(--mid-gray);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2165,7 +2167,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   padding: 0 14px;
   border: 1px solid transparent;
   cursor: pointer;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -2198,7 +2200,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   cursor: not-allowed;
 }
 .modal-add-confirm {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #a8c5a0;
@@ -2213,7 +2215,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   margin-top: 10px;
 }
 .modal-view-cart-btn {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;
   color: #f5c518;
@@ -2291,7 +2293,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   gap: 14px;
 }
 .modal-free-summary {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   line-height: 1.6;
   letter-spacing: 0.03em;
@@ -2304,7 +2306,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   gap: 12px;
 }
 .modal-free-input {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
   padding: 12px 14px;
@@ -2319,7 +2321,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: flex;
   align-items: flex-start;
   gap: 9px;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   line-height: 1.5;
   letter-spacing: 0.04em;
@@ -2333,7 +2335,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 .modal-free-agree a { color: var(--purple-bright); text-decoration: underline; }
 .modal-free-btn {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -2364,7 +2366,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   cursor: not-allowed;
 }
 .modal-free-status {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.05em;
   min-height: 1em;
@@ -2377,14 +2379,14 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   gap: 10px;
 }
 .modal-free-success-msg {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   line-height: 1.6;
   letter-spacing: 0.04em;
   color: var(--purple-bright);
 }
 .modal-free-upsell {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.04em;
   color: var(--purple-bright);
@@ -2399,7 +2401,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .license-free-note {
   max-width: 680px;
   margin: 20px auto 0;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.08em;
   line-height: 1.6;
@@ -2419,7 +2421,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   align-items: center;
   gap: 7px;
   margin-left: auto;            /* push to the right edge of the controls row */
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2513,7 +2515,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 .player-track-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
 .player-track-title {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
   color: var(--off-white);
@@ -2522,7 +2524,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 .player-track:hover .player-track-title { color: var(--yellow); }
 .player-track-meta {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.06em;
   color: var(--mid-gray);
@@ -2596,7 +2598,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: none;
   align-items: center;
   justify-content: center;
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   line-height: 1;
 }
 
@@ -2608,7 +2610,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   min-width: 0;
 }
 .player-time {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   color: var(--mid-gray);
   min-width: 32px;
@@ -2758,7 +2760,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .product-breadcrumb span { color: var(--off-white); }
 
 .product-section-title {
-  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.5rem; color: var(--off-white);
+  font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--off-white);
   margin: 0 0 18px;
 }
 .product-related { margin-top: 56px; }
@@ -2774,7 +2776,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .product-related-browse {
   display: block;
   color: var(--light-gray);
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 0.82rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -2807,23 +2809,23 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .beat-detail-play:hover { background: var(--yellow); color: var(--near-black); transform: scale(1.06); }
 .beat-detail-head { flex: 1 1 320px; min-width: 0; }
 .beat-detail-kicker {
-  font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--yellow); margin: 0 0 8px;
 }
 .beat-detail-title {
-  font-family: 'DM Serif Display', serif; font-size: 2.4rem; line-height: 1.05;
+  font-family: var(--font-display); font-size: 2.4rem; line-height: 1.05;
   color: var(--off-white); margin: 0 0 10px;
 }
 .beat-detail-title em { font-style: italic; }
 .beat-detail-meta {
-  font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 0.06em;
+  font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.06em;
   color: var(--light-gray); margin: 0 0 16px;
 }
 .beat-detail-tags { margin: 0 0 16px; }
 .beat-detail-copy { color: var(--light-gray); font-size: 0.95rem; line-height: 1.6; max-width: 560px; margin: 0; }
 .beat-detail-free {
   display: inline-flex; align-items: center; gap: 5px;
-  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  font-family: var(--font-mono); font-size: 0.72rem;
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow);
   margin: 0 0 16px; background: none; border: none; padding: 0; cursor: pointer;
   transition: opacity 0.12s;
@@ -2935,7 +2937,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   position: absolute;
   top: -8px;
   right: 10px;
-  font-family: 'DM Mono', monospace; font-size: 8px; font-weight: 500;
+  font-family: var(--font-mono); font-size: 8px; font-weight: 500;
   letter-spacing: 0.14em; text-transform: uppercase;
   padding: 2px 7px;
   background: var(--purple); color: var(--near-black);
@@ -2950,7 +2952,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 
 /* One-line trust strip: the buy box's footer, inside the same hairline. */
 .modal-trust-strip {
-  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.14em;
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--gray); text-align: center;
   margin: 0; padding: 10px 14px;
   border-top: 1px solid #2a2a2a;
@@ -2999,7 +3001,7 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .glass-close svg { width: 14px; height: 14px; }
 .glass-close:hover { background: rgba(255,255,255,0.16); }
 .glass-logo {
-  font-family: 'DM Serif Display', serif; font-style: italic; font-size: 20px;
+  font-family: var(--font-display); font-style: italic; font-size: 20px;
   color: var(--off-white); letter-spacing: -0.01em; text-decoration: none;
 }
 
@@ -3023,12 +3025,12 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .confirmed-subhead { font-size: 13px; line-height: 1.9; color: var(--gray); max-width: 460px; }
 .confirmed-section { border-bottom: 0.5px solid var(--border-dark); padding-bottom: 56px; margin-bottom: 56px; }
 .confirmed-section--last { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-.confirmed-section-title { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 28px; color: var(--yellow); margin-bottom: 18px; }
+.confirmed-section-title { font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--yellow); margin-bottom: 18px; }
 .confirmed-section-copy { font-size: 12px; line-height: 1.85; color: var(--gray); max-width: 440px; margin-bottom: 32px; }
 .confirmed-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 .confirmed-panel .producer-contacts { justify-content: flex-start; }
 .confirmed-footer-wrap { border-top: 0.5px solid var(--border-dark); margin-top: 56px; padding-top: 36px; }
-.confirmed-footer { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 18px; color: var(--off-white); }
+.confirmed-footer { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--off-white); }
 @media (max-width: 768px) {
   .confirmed-shell { padding: 40px 16px 72px; }
   .confirmed-panel { padding: 48px 32px 56px; }

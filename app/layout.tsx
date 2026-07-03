@@ -3,7 +3,9 @@ import Script from 'next/script';
 import { GA_ID } from '@/lib/analytics';
 import { orgJsonLd } from '@/lib/jsonld';
 import AppChrome from '@/components/AppChrome';
+import DesignLab from '@/components/DesignLab';
 import '@/style.css';
+import '@/design-lab.css';
 
 export const viewport: Viewport = {
   themeColor: '#0a0a1a',
@@ -44,6 +46,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap"
           rel="stylesheet"
         />
+        {/* DESIGN LAB (testing branch only): candidate font directions */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Xanh+Mono:ital@0;1&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Besley:ital,wght@0,400..900;1,400..900&family=Fragment+Mono:ital@0;1&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <script
@@ -52,6 +59,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         {children}
         <AppChrome />
+        {/* DESIGN LAB (testing branch only): font-direction switcher */}
+        <DesignLab />
 
         {/* Google Analytics (GA4) */}
         <Script

@@ -296,10 +296,11 @@ nav a:hover { color: var(--yellow); }
   background: var(--yellow);
   color: var(--near-black);
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 12px 24px;
+  padding: 13px 26px;
   border: 1px solid var(--yellow);
   cursor: pointer;
   text-decoration: none;
@@ -313,10 +314,11 @@ nav a:hover { color: var(--yellow); }
   background: transparent;
   color: var(--off-white);
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 12px 24px;
+  padding: 13px 26px;
   border: 1px solid var(--off-white);
   cursor: pointer;
   text-decoration: none;
@@ -360,6 +362,9 @@ nav a:hover { color: var(--yellow); }
   min-height: 22px;
 }
 .section-label--hero span { font-size: 16px; }
+/* Scaled-down wave rule so the hero label keeps its compact height.
+   (Doubled class beats the later `.section-label .wave-rule` height rule.) */
+.section-label--hero.section-label--hero .wave-rule { height: 22px; }
 
 /* HERO FEATURED — tracklist treatment: numbered rows with hairline separators
    instead of floating gray boxes. */
@@ -507,10 +512,13 @@ nav a:hover { color: var(--yellow); }
 .beat-price-free-main {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 116%;
   font-size: 12px;
-  color: #e8c832;
-  letter-spacing: 0.05em;
+  color: var(--yellow);
+  letter-spacing: 0.02em;
 }
 
 .beat-price-free-sub {
@@ -596,10 +604,16 @@ nav a:hover { color: var(--yellow); }
   transform: scale(1);
 }
 
+/* Prices speak the display face (like the license cards), not the utility
+   mono — slightly expanded Archivo, so "From $30" / "$20" reads as a price
+   tag instead of metadata. */
 .beat-price {
-  font-size: 12px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 116%;
+  font-size: 13px;
   color: var(--yellow);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.01em;
 }
 
 /* Anchor scroll offset — clears the 60px sticky header plus breathing room */
@@ -787,10 +801,12 @@ nav a:hover { color: var(--yellow); }
 .filter-controls-row {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
+  /* Wraps when the match segment + sort + shuffle can't share one line
+     (narrow columns / mobile) instead of overflowing the column. */
+  flex-wrap: wrap;
   gap: 12px 20px;
-  margin-top: 0;
-  margin-bottom: 6px;
+  margin-top: 14px;
+  margin-bottom: 8px;
   width: 100%;
   min-height: 28px;
   overflow: visible;
@@ -812,17 +828,19 @@ nav a:hover { color: var(--yellow); }
 }
 .filter-mode-wrap[hidden] { display: none; }   /* override display:flex when hidden */
 
+/* Joined segmented control — same square/mono language as the sort dropdown. */
 .match-seg {
   display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  align-items: stretch;
+  border: 1px solid #333;
+  background: var(--surface);
 }
 
 .mode-label {
-  font-size: 10px; 
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--mid-gray); 
+  color: var(--mid-gray);
   font-weight: 500;
 }
 
@@ -832,24 +850,27 @@ nav a:hover { color: var(--yellow); }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 6px 12px;
-  border: 1px solid #555;
-  border-radius: 12px;
+  border: none;
   background: transparent;
   cursor: pointer;
   color: var(--mid-gray);
-  transition: all 0.2s;
+  transition: background 0.12s ease, color 0.12s ease;
   white-space: nowrap;
+  line-height: 1;
+}
+
+.mode-toggle-btn + .mode-toggle-btn {
+  border-left: 1px solid #333;
 }
 
 .mode-toggle-btn:hover {
-  border-color: var(--off-white);
   color: var(--off-white);
+  background: var(--surface-2);
 }
 
 .mode-toggle-btn.active {
-  border-color: var(--purple);
-  color: var(--off-white);
-  background: #2d1f4a;
+  color: var(--near-black);
+  background: var(--yellow);
 }
 
 /* CUSTOM SORT DROPDOWN */
@@ -985,6 +1006,7 @@ nav a:hover { color: var(--yellow); }
 .newsletter {
   background: #1a1a1a;
   color: var(--off-white);
+  border-top: 0.5px solid var(--border-dark);
   padding: 0 40px;
   display: flex;
   flex-direction: column;
@@ -1070,6 +1092,14 @@ nav a:hover { color: var(--yellow); }
   padding: 10px 0;
 }
 
+.newsletter-kicker {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-bottom: 14px;
+}
+
 .newsletter-headline {
   font-family: var(--font-display);
   font-size: 32px;
@@ -1083,6 +1113,24 @@ nav a:hover { color: var(--yellow); }
   color: var(--gray);
   margin-bottom: 32px;
 }
+
+.newsletter-fineprint {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid-gray);
+  margin-top: 14px;
+}
+
+.newsletter-status {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gray);
+  margin-top: 10px;
+  min-height: 14px;
+}
+.newsletter-status--success { color: var(--yellow); }
+.newsletter-status--error { color: #e07a5f; }
 
 .newsletter-form {
   display: flex;
@@ -1844,7 +1892,8 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.72);
-  z-index: 600;
+  /* Topmost reading surface — above glass overlays (500) and the cart (640). */
+  z-index: 700;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1993,7 +2042,10 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
-  z-index: 200;
+  /* Topmost layer: above glass overlays (500), the player bar (520) and the
+     license modal (600) — "View Cart" from inside a beat/kit overlay must
+     surface the drawer over it, never behind it. */
+  z-index: 640;
 }
 .cart-overlay.active { opacity: 1; pointer-events: all; }
 
@@ -2514,7 +2566,9 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .player-bar {
   position: fixed;
   left: 0; right: 0; bottom: 0;
-  z-index: 520;   /* above .modal-overlay (500) so it's never painted over, even mid-transition */
+  z-index: 660;   /* above overlays (500) and the cart backdrop (640) — the drawer
+                     already shortens to clear the bar, so playback stays usable
+                     with the cart open; only the license modal (700) covers it */
   /* Total height includes the safe-area inset; the matching bottom padding
      keeps the controls clear of the iPhone home indicator. */
   height: var(--player-bar-total);
@@ -2835,6 +2889,13 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 .product-section-title {
   font-family: var(--font-display); font-style: italic; font-size: 1.5rem; color: var(--off-white);
   margin: 0 0 18px;
+  /* Hairline filling the space right of the title — same treatment as the
+     store/kits section labels. */
+  display: flex; align-items: center; gap: 20px;
+}
+.product-section-title::after {
+  content: ''; flex: 1 1 0; min-width: 24px;
+  border-top: 0.5px solid var(--border-dark);
 }
 .product-related { margin-top: 56px; }
 

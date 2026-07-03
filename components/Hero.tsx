@@ -21,7 +21,6 @@ export default function Hero() {
       </div>
 
       <div className="hero-right">
-        <div className="section-label section-label--hero"><span>Featured Beats</span><hr /></div>
         <FeaturedBeats beats={list} />
       </div>
     </section>

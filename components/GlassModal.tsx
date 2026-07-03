@@ -8,6 +8,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { beats, getBeat } from '@/lib/products';
 import { useUI } from '@/stores/useUI';
 import { useFocusTrap } from '@/lib/useFocusTrap';
+import { lockScroll, unlockScroll } from '@/lib/scrollLock';
 import BeatDetail from './BeatDetail';
 
 export default function GlassModal() {
@@ -43,13 +44,20 @@ export default function GlassModal() {
     return () => window.removeEventListener('popstate', onPop);
   }, [closeBeat]);
 
-  // Lock body scroll + Escape to dismiss while open.
+  // Lock body scroll + Escape to dismiss while open. When the cart drawer or
+  // license modal is stacked above this overlay, Escape belongs to that layer —
+  // otherwise one keypress would close everything at once.
   useEffect(() => {
     if (!beat) return;
-    document.body.style.overflow = 'hidden';
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') dismiss(); };
+    lockScroll();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      const { cartOpen, licenseModalTier } = useUI.getState();
+      if (cartOpen || licenseModalTier) return;
+      dismiss();
+    };
     document.addEventListener('keydown', onKey);
-    return () => { document.body.style.overflow = ''; document.removeEventListener('keydown', onKey); };
+    return () => { unlockScroll(); document.removeEventListener('keydown', onKey); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [beat]);
 

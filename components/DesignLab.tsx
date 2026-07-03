@@ -9,13 +9,11 @@ import { useEffect, useState } from 'react';
 
 const THEMES = [
   { id: '', label: 'Current', note: 'DM Serif Display + DM Mono' },
-  { id: 'liner-notes', label: 'Liner Notes', note: 'Fraunces + DM Mono' },
-  { id: 'pressing-plant', label: 'Pressing Plant', note: 'Archivo + IBM Plex Mono' },
-  { id: 'dubplate', label: 'Dubplate', note: 'Xanh Mono + Sometype Mono' },
-  { id: 'after-hours', label: 'After Hours', note: 'Besley + Fragment Mono' },
-  { id: 'test-pressing', label: 'Test Pressing', note: 'Unbounded + Martian Mono' },
-  { id: 'deadstock', label: 'Deadstock', note: 'Big Shoulders + Chivo Mono' },
-  { id: 'cutting-room', label: 'Cutting Room', note: 'Bricolage Grotesque + Space Mono' },
+  { id: 'pressing-plant', label: 'Pressing Plant', note: 'Archivo + IBM Plex Mono — tight tracking, true expansion' },
+  { id: 'shrink-wrap', label: 'Shrink Wrap', note: 'Syne + Martian Mono — dense, very tight, large' },
+  { id: 'boxcar', label: 'Boxcar', note: 'Antonio + Chivo Mono — condensed, wide tracking, caps' },
+  { id: 'blackout', label: 'Blackout', note: 'Gasoek One + Fragment Mono — huge, single-weight poster' },
+  { id: '180-gram', label: '180 Gram', note: 'Hanken Grotesk + Sometype Mono — smaller, quieter, clean' },
 ];
 
 const STORAGE_KEY = 'design-lab-theme';

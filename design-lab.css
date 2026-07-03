@@ -3,31 +3,12 @@
    Font-direction mockups driven by html[data-lab="…"].
    Base look (no attribute) = current DM Mono + DM Serif Display.
    Delete this file + <DesignLab /> to remove the experiment.
+   All directions below share one lane: bold, modern, expanded/condensed
+   sans display faces — each pushes a different lever (tracking, width,
+   scale, weight) rather than a different genre.
    ============================================================ */
 
-/* Every selector that renders in the display face, for per-theme tuning */
-/* prettier-ignore */
-:root { --lab-display-selectors: ''; } /* documentation only; see :is() lists below */
-
-/* ---------- 1. LINER NOTES — Fraunces italic ---------- */
-html[data-lab='liner-notes'] {
-  --font-display: 'Fraunces', serif;
-}
-html[data-lab='liner-notes']
-  :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
-    .section-label span, .newsletter-headline, .licensing-title, .license-name,
-    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
-    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
-    .confirmed-section-title, .confirmed-footer) {
-  font-weight: 540;
-  letter-spacing: -0.01em;
-}
-html[data-lab='liner-notes'] .hero-headline.hero-headline {
-  font-weight: 480;
-  letter-spacing: -0.015em;
-}
-
-/* ---------- 2. PRESSING PLANT — Archivo expanded + IBM Plex Mono ---------- */
+/* ---------- 1. PRESSING PLANT — Archivo expanded black + IBM Plex Mono ---------- */
 html[data-lab='pressing-plant'] {
   --font-display: 'Archivo', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
@@ -54,127 +35,116 @@ html[data-lab='pressing-plant'] .logo.logo {
   html[data-lab='pressing-plant'] .hero-headline.hero-headline { font-size: 34px; }
 }
 
-/* ---------- 3. DUBPLATE — Xanh Mono italic + Sometype Mono ---------- */
-html[data-lab='dubplate'] {
-  --font-display: 'Xanh Mono', monospace;
-  --font-mono: 'Sometype Mono', monospace;
+/* ---------- 2. SHRINK WRAP — Syne (dense, asymmetric grotesque) + Martian Mono ---------- */
+/* Lever: tight negative tracking + large scale, no width axis — reads as a
+   compressed dense mass rather than Archivo's true stretched-expansion. */
+html[data-lab='shrink-wrap'] {
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Martian Mono', monospace;
 }
-html[data-lab='dubplate'] .hero-headline.hero-headline {
-  font-size: 54px;
-  line-height: 1.0;
-  letter-spacing: -0.04em;
-}
-@media (max-width: 900px) {
-  html[data-lab='dubplate'] .hero-headline.hero-headline { font-size: 38px; }
-}
-
-/* ---------- 4. AFTER HOURS — Besley black + Fragment Mono ---------- */
-html[data-lab='after-hours'] {
-  --font-display: 'Besley', serif;
-  --font-mono: 'Fragment Mono', monospace;
-}
-html[data-lab='after-hours']
+html[data-lab='shrink-wrap']
   :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
     .section-label span, .newsletter-headline, .licensing-title, .license-name,
     .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
     .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
     .confirmed-section-title, .confirmed-footer) {
   font-weight: 800;
+  letter-spacing: -0.03em;
+}
+html[data-lab='shrink-wrap'] .hero-headline.hero-headline {
+  font-size: 54px;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+html[data-lab='shrink-wrap'] .logo.logo {
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+@media (max-width: 900px) {
+  html[data-lab='shrink-wrap'] .hero-headline.hero-headline { font-size: 38px; }
+}
+
+/* ---------- 3. BOXCAR — Antonio (condensed) + Chivo Mono ---------- */
+/* Lever: wide positive tracking on condensed uppercase letterforms —
+   stenciled crate-stamp look, opposite spacing direction from the others. */
+html[data-lab='boxcar'] {
+  --font-display: 'Antonio', sans-serif;
+  --font-mono: 'Chivo Mono', monospace;
+}
+html[data-lab='boxcar']
+  :is(.contact-title, .logo, .hero-right-label, .beat-title,
+    .section-label span, .newsletter-headline, .licensing-title, .license-name,
+    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
+    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
+    .confirmed-section-title, .confirmed-footer) {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+html[data-lab='boxcar'] .hero-headline.hero-headline {
+  font-size: 50px;
+  line-height: 1.0;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+html[data-lab='boxcar'] .logo.logo {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@media (max-width: 900px) {
+  html[data-lab='boxcar'] .hero-headline.hero-headline { font-size: 32px; letter-spacing: 0.05em; }
+}
+
+/* ---------- 4. BLACKOUT — Gasoek One (single-weight geometric poster) + Fragment Mono ---------- */
+/* Lever: maximum scale, minimum modulation — one heavy geometric face used
+   sparingly, the loudest and most poster-like of the set. */
+html[data-lab='blackout'] {
+  --font-display: 'Gasoek One', sans-serif;
+  --font-mono: 'Fragment Mono', monospace;
+}
+html[data-lab='blackout'] .hero-headline.hero-headline {
+  font-size: 62px;
+  line-height: 0.94;
+  letter-spacing: -0.01em;
+}
+html[data-lab='blackout'] .logo.logo {
+  font-size: 15px;
+}
+@media (max-width: 900px) {
+  html[data-lab='blackout'] .hero-headline.hero-headline { font-size: 40px; }
+}
+
+/* ---------- 5. 180 GRAM — Hanken Grotesk (clean semi-bold) + Sometype Mono ---------- */
+/* Lever: smaller scale, moderate weight, loose tracking — the quiet end of
+   the range: solid and modern without shouting. */
+html[data-lab='180-gram'] {
+  --font-display: 'Hanken Grotesk', sans-serif;
+  --font-mono: 'Sometype Mono', monospace;
+}
+html[data-lab='180-gram']
+  :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
+    .section-label span, .newsletter-headline, .licensing-title, .license-name,
+    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
+    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
+    .confirmed-section-title, .confirmed-footer) {
+  font-weight: 700;
   letter-spacing: -0.005em;
 }
-html[data-lab='after-hours'] .hero-headline.hero-headline {
-  font-size: 48px;
-  font-weight: 750;
+html[data-lab='180-gram'] .hero-headline.hero-headline {
+  font-size: 38px;
+  line-height: 1.12;
+  font-weight: 650;
+  letter-spacing: 0;
 }
-html[data-lab='after-hours'] .logo.logo {
+html[data-lab='180-gram'] .logo.logo {
   font-size: 18px;
   font-weight: 700;
 }
 @media (max-width: 900px) {
-  html[data-lab='after-hours'] .hero-headline.hero-headline { font-size: 34px; }
-}
-
-/* ---------- 5. TEST PRESSING — Unbounded (rounded geometric) + Martian Mono ---------- */
-html[data-lab='test-pressing'] {
-  --font-display: 'Unbounded', sans-serif;
-  --font-mono: 'Martian Mono', monospace;
-}
-html[data-lab='test-pressing']
-  :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
-    .section-label span, .newsletter-headline, .licensing-title, .license-name,
-    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
-    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
-    .confirmed-section-title, .confirmed-footer) {
-  font-weight: 700;
-  letter-spacing: -0.015em;
-}
-html[data-lab='test-pressing'] .hero-headline.hero-headline {
-  font-size: 40px;
-  line-height: 1.12;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-html[data-lab='test-pressing'] .logo.logo {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-@media (max-width: 900px) {
-  html[data-lab='test-pressing'] .hero-headline.hero-headline { font-size: 30px; }
-}
-
-/* ---------- 6. DEADSTOCK — Big Shoulders Display (ultra-condensed industrial) + Chivo Mono ---------- */
-html[data-lab='deadstock'] {
-  --font-display: 'Big Shoulders Display', sans-serif;
-  --font-mono: 'Chivo Mono', monospace;
-}
-html[data-lab='deadstock']
-  :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
-    .section-label span, .newsletter-headline, .licensing-title, .license-name,
-    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
-    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
-    .confirmed-section-title, .confirmed-footer) {
-  font-weight: 800;
-  letter-spacing: 0.005em;
-}
-html[data-lab='deadstock'] .hero-headline.hero-headline {
-  font-size: 60px;
-  line-height: 0.96;
-  font-weight: 700;
-}
-html[data-lab='deadstock'] .logo.logo {
-  font-size: 21px;
-  font-weight: 700;
-}
-@media (max-width: 900px) {
-  html[data-lab='deadstock'] .hero-headline.hero-headline { font-size: 42px; }
-}
-
-/* ---------- 7. CUTTING ROOM — Bricolage Grotesque (quirky variable grotesque) + Space Mono ---------- */
-html[data-lab='cutting-room'] {
-  --font-display: 'Bricolage Grotesque', sans-serif;
-  --font-mono: 'Space Mono', monospace;
-}
-html[data-lab='cutting-room']
-  :is(.contact-title, .logo, .hero-headline, .hero-right-label, .beat-title,
-    .section-label span, .newsletter-headline, .licensing-title, .license-name,
-    .license-price, .modal-price-value, .cart-header-title, .cart-item-title,
-    .cart-subtotal-value, .product-section-title, .beat-detail-title, .glass-logo,
-    .confirmed-section-title, .confirmed-footer) {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-html[data-lab='cutting-room'] .hero-headline.hero-headline {
-  font-size: 44px;
-  line-height: 1.06;
-  font-weight: 500;
-}
-html[data-lab='cutting-room'] .logo.logo {
-  font-size: 17px;
-  font-weight: 600;
-}
-@media (max-width: 900px) {
-  html[data-lab='cutting-room'] .hero-headline.hero-headline { font-size: 32px; }
+  html[data-lab='180-gram'] .hero-headline.hero-headline { font-size: 28px; }
 }
 
 /* ---------- Switcher panel ---------- */

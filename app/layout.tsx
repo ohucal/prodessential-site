@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         {/* DESIGN LAB (testing branch only): candidate font directions */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Xanh+Mono:ital@0;1&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&family=Besley:ital,wght@0,400..900;1,400..900&family=Fragment+Mono:ital@0;1&family=Unbounded:wght@400..900&family=Martian+Mono:wght@400..700&family=Big+Shoulders+Display:wght@400..900&family=Chivo+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Syne:wght@400..800&family=Martian+Mono:wght@400..700&family=Antonio:wght@100..700&family=Chivo+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Gasoek+One&family=Fragment+Mono:ital@0;1&family=Hanken+Grotesk:wght@400..900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap"
           rel="stylesheet"
         />
       </head>

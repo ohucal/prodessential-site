@@ -2,6 +2,7 @@
 // results and AI answer engines.
 import type { Beat, Kit } from './products';
 import { beatKeywords, kitKeywords } from './keywords';
+import { FAQ } from './faq';
 
 const SITE = 'https://prodessential.com';
 const ORG_ID = `${SITE}/#org`;
@@ -105,5 +106,23 @@ export function kitJsonLd(kit: Kit) {
       },
       orgJsonLd(),
     ],
+  };
+}
+
+// FAQPage structured data for the home-page FAQ. AI answer engines and Google
+// rich results lift these Q&A pairs directly, so it's derived from the same
+// lib/faq.ts source the visible accordion renders.
+export function faqJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
   };
 }

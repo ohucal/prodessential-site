@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="hero-left">
         <p className="hero-kicker">Based In Michigan</p>
         <h1 className="hero-headline"><em>prod. essential</em></h1>
-        <p className="hero-desc">Browse beats, drum kits, one shot kits, loops and tons of free stuff.</p>
+        <p className="hero-desc">A collection of some of my beats. Free downloads available. Serum banks, drum kits and tons of free stuff coming very soon!</p>
         <HeroActions />
       </div>
 

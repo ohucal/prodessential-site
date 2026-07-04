@@ -204,7 +204,13 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
             </span>
           </button>
         </div>
-        <div className="item-count">{filtered.length} item{filtered.length !== 1 ? 's' : ''}</div>
+        <div className="item-count-row">
+          <span className="store-hint">
+            <svg viewBox="0 0 24 24" fill="none" width="9" height="9" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor" /></svg>
+            tap any cover to preview
+          </span>
+          <span className="item-count">{filtered.length} item{filtered.length !== 1 ? 's' : ''}</span>
+        </div>
       </div>
       <div className="scroll-list" id="beatList">
         {filtered.length === 0 ? (

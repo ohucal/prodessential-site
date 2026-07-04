@@ -62,3 +62,6 @@ Working rules that cut credit use without cutting quality:
 - `ROADMAP.md` — prioritized backlog (SEO, conversion, perf, features). Pull tasks from here.
 - `PROMPTS.md` — copy-paste prompt library for common jobs.
 - `PROD_ESSENTIAL_PLAYBOOK.md` — business/growth strategy (not technical). Only read if the task is about marketing/pricing/roadmap.
+- `AUDIT_RESULTS.md` — log of the last full `SPECS/AUDIT.md` run (2026-07-02).
+- `SITE_AUDIT_NOTES_2026-07-03.md` — follow-up audit session: confirmed-working list, ranked open items (kit checkout URLs, hero desc, FAQ block, meta description length, Meta Pixel), and ready-to-drop FAQ copy. Options/context, not a locked plan.
+- `MARKETING_STRATEGY_OPTIONS.md` — marketing/funnel/content research for producer products (kits, packs, banks) from a 2026-07-03 session. Informational menu to pull from, not a decision — supplements `PROD_ESSENTIAL_PLAYBOOK.md`.

@@ -1034,6 +1034,33 @@ nav a:hover { color: var(--yellow); }
   text-transform: uppercase;
 }
 
+/* Row sharing the item count with a discovery hint. Sits in the same grid
+   row as the count so it adds no height (keeps the Beat Store / Kits headers
+   aligned). */
+.item-count-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.item-count-row .item-count { margin-bottom: 0; }
+
+/* "▶ tap any cover to preview" — signals that covers are playable. */
+.store-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--mid-gray);
+}
+.store-hint svg { color: var(--yellow); flex-shrink: 0; }
+
+.store-hint--hero { margin: -8px 0 16px; }
+
 /* NEWSLETTER SECTION */
 .newsletter {
   background: #1a1a1a;
@@ -1536,19 +1563,36 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.55);
+  background: transparent;      /* no full scrim by default — keep the art visible */
   border: none;
   cursor: pointer;
   color: var(--off-white);
-  opacity: 0;
-  transition: opacity 0.15s;
+  opacity: 1;                   /* badge is always present so it reads as clickable (esp. on touch) */
+  transition: background 0.15s;
   padding: 0;
 }
 
-.beat-card:hover .card-play-btn { opacity: 1; }
+/* Always-visible chip behind the play/pause glyph, legible over any artwork */
+.card-play-btn svg {
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: content-box;
+  opacity: 0.9;
+  transition: transform 0.15s, opacity 0.15s, background 0.15s;
+}
 
-/* Keep visible when inline player is showing */
-.beat-card:has(.card-inline-player.visible) .card-play-btn { opacity: 1; }
+/* Hover / currently-playing → deepen to the full dark scrim + bright icon */
+.beat-card:hover .card-play-btn,
+.beat-card:has(.card-inline-player.visible) .card-play-btn {
+  background: rgba(0,0,0,0.55);
+}
+.beat-card:hover .card-play-btn svg,
+.beat-card:has(.card-inline-player.visible) .card-play-btn svg {
+  background: transparent;
+  opacity: 1;
+  transform: scale(1.05);
+}
 
 /* ─── CARD INLINE PLAYER ─────────────────────────────────────────────────── */
 .card-inline-player {
@@ -3253,4 +3297,150 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   .confirmed-panel .hero-headline { font-size: 40px; }
   .confirmed-section-title { font-size: 23px; }
   .confirmed-panel .producer-contacts { justify-content: center; }
+}
+
+/* ─── FAQ ──────────────────────────────────────────────────────────────────── */
+.faq {
+  background: var(--near-black);
+  padding: 64px 40px 88px;
+  border-top: 0.5px solid var(--border-dark);
+}
+
+.faq-header {
+  max-width: 860px;
+  margin: 0 auto 8px;
+}
+
+.faq-header span { color: var(--off-white); }
+
+.faq-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 860px;
+}
+
+.faq-item {
+  border-bottom: 0.5px solid var(--border-dark);
+}
+
+/* Question row — full-width clickable header. */
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--light-gray);
+  transition: color 0.2s ease;
+}
+
+.faq-q:hover { color: var(--off-white); }
+.faq-item--open .faq-q { color: var(--off-white); }
+
+.faq-q:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.faq-q-text {
+  font-family: var(--font-title);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 1.35;
+}
+
+/* Plus/minus indicator built from two bars; the vertical bar rotates out on
+   open, turning "+" into "−". */
+.faq-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: var(--mid-gray);
+  transition: color 0.2s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.faq-icon::before {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  transform: translateY(-50%);
+}
+
+.faq-icon::after {
+  left: 50%;
+  top: 0;
+  width: 1.5px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.faq-q:hover .faq-icon { color: var(--yellow); }
+.faq-item--open .faq-icon { color: var(--yellow); }
+.faq-item--open .faq-icon::after {
+  transform: translateX(-50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* Smooth height reveal via the 0fr → 1fr grid-row trick (no JS measuring). */
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s ease;
+}
+
+.faq-item--open .faq-a {
+  grid-template-rows: 1fr;
+}
+
+.faq-a-text {
+  overflow: hidden;
+  min-height: 0;
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.85;
+  color: var(--gray);
+  max-width: 640px;
+  /* padding lives inside the clipped grid item so it collapses cleanly */
+  padding-right: 38px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.28s ease 0.04s, transform 0.28s ease 0.04s;
+}
+
+.faq-item--open .faq-a-text {
+  padding-bottom: 24px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-a,
+  .faq-a-text,
+  .faq-icon::before,
+  .faq-icon::after { transition: none; }
+}
+
+@media (max-width: 768px) {
+  .faq { padding: 48px 20px 64px; }
+  .faq-q { padding: 18px 2px; gap: 18px; }
+  .faq-q-text { font-size: 15px; }
+  .faq-a-text { padding-right: 8px; }
 }

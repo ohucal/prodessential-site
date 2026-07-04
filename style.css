@@ -428,16 +428,15 @@ nav a:hover { color: var(--yellow); }
   background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
 }
 
-/* Store/featured cards (not compact, not kit): let the cover stretch to
-   exactly match the info column's height instead of a fixed 52px centered in
-   the row, so its top lines up with the title and its bottom lines up with
-   the tag row — while staying square via aspect-ratio. */
-.beat-card:not(.beat-card--compact):not(.kit-card) .beat-card-main {
-  align-items: stretch;
-}
+/* Store/featured cards (not compact, not kit): a definite square cover.
+   Must NOT be sized via `width/height: auto` + `aspect-ratio` off a
+   flex `align-items: stretch` cross-axis — iOS Safari (WebKit) collapses
+   that circular resolution to zero width, so the cover (and its
+   background-image) vanishes on mobile while desktop/Chromium render fine.
+   A definite height with aspect-ratio deriving width resolves everywhere. */
 .beat-card:not(.beat-card--compact):not(.kit-card) .beat-cover {
-  width: auto;
-  height: auto;
+  width: 60px;
+  height: 60px;
   aspect-ratio: 1 / 1;
 }
 

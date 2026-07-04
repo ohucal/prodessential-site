@@ -3,6 +3,7 @@
 // add cover-image preview playback and link to each beat page.
 import { beats } from '@/lib/products';
 import FeaturedBeats from './FeaturedBeats';
+import HeroActions from './HeroActions';
 
 export default function Hero() {
   const featured = beats.filter((b) => b.featured);
@@ -14,10 +15,7 @@ export default function Hero() {
         <p className="hero-kicker">Based In Michigan</p>
         <h1 className="hero-headline"><em>prod. essential</em></h1>
         <p className="hero-desc">Browse beats, drum kits, one shot kits, loops and tons of free stuff.</p>
-        <div className="hero-actions">
-          <a href="/#beats" className="btn-primary">Browse Beats</a>
-          <a href="/#kits" className="btn-ghost">Shop Kits</a>
-        </div>
+        <HeroActions />
       </div>
 
       <div className="hero-right">

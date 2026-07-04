@@ -126,6 +126,7 @@ html { scrollbar-gutter: stable; }
   --font-mono: 'DM Mono', monospace;
   --font-display: 'Archivo', sans-serif;
   --font-title: 'Hanken Grotesk', sans-serif;
+  --font-price: 'Chakra Petch', sans-serif; /* $ price figures on beat/kit cards */
   --warm-gray: #f5f4f0;
   --near-black: #111111;
   --off-white: #f7f7f5;
@@ -417,10 +418,27 @@ nav a:hover { color: var(--yellow); }
   background: #1e1e1e;
   position: relative;
   overflow: hidden;
+  /* Beat-reactive pulse (useBeatPulse) scales this thumbnail on the playing
+     beat's card; keep it compositor-only and thumping in place. */
+  transform-origin: center;
+  will-change: transform;
 }
 
 .beat-cover.no-img {
   background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+}
+
+/* Store/featured cards (not compact, not kit): let the cover stretch to
+   exactly match the info column's height instead of a fixed 52px centered in
+   the row, so its top lines up with the title and its bottom lines up with
+   the tag row — while staying square via aspect-ratio. */
+.beat-card:not(.beat-card--compact):not(.kit-card) .beat-card-main {
+  align-items: stretch;
+}
+.beat-card:not(.beat-card--compact):not(.kit-card) .beat-cover {
+  width: auto;
+  height: auto;
+  aspect-ratio: 1 / 1;
 }
 
 .beat-info {
@@ -509,20 +527,24 @@ nav a:hover { color: var(--yellow); }
   gap: 2px;
 }
 
+/* "FREE DOWNLOAD" CTA — Hanken Grotesk reads as a friendly label (no "$"). */
 .beat-price-free-main {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-family: var(--font-display);
+  font-family: var(--font-title);
   font-weight: 800;
-  font-stretch: 116%;
   font-size: 12px;
   color: var(--yellow);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
+/* Sub-price under FREE DOWNLOAD carries a "$", so it speaks the price face. */
 .beat-price-free-sub {
+  font-family: var(--font-price);
+  font-weight: 600;
   font-size: 10px;
+  letter-spacing: 0.01em;
   color: var(--dark-gray);
 }
 
@@ -604,16 +626,14 @@ nav a:hover { color: var(--yellow); }
   transform: scale(1);
 }
 
-/* Prices speak the display face (like the license cards), not the utility
-   mono — slightly expanded Archivo, so "From $30" / "$20" reads as a price
-   tag instead of metadata. */
+/* Dollar prices ("From $30" / "$20") speak Chakra Petch — its squared, techy
+   figures read as a price tag distinct from the softer FREE DOWNLOAD label. */
 .beat-price {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-stretch: 116%;
+  font-family: var(--font-price);
+  font-weight: 700;
   font-size: 13px;
   color: var(--yellow);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 
 /* Anchor scroll offset — clears the 60px sticky header plus breathing room */
@@ -812,6 +832,18 @@ nav a:hover { color: var(--yellow); }
   overflow: visible;
   position: relative;
   z-index: 2;
+}
+
+/* Desktop: the tag bar's fixed height leaves dead space under the last row,
+   which compounds with the controls-row margin into an oversized gap. Tighten
+   both on desktop only (mobile spacing already reads fine). */
+@media (min-width: 769px) {
+  /* The fixed tag-bar height leaves ~24px of dead space under the last row on
+     wide layouts, which compounds with the controls-row margin into an
+     oversized gap. Trim the height + margin on desktop (~half the gap); tags
+     still scroll if they ever need a third row. Mobile keeps its spacing. */
+  .tag-filters { height: 66px; }
+  .filter-controls-row { margin-top: 8px; }
 }
 
 /* Invisible twin of the beat-store shuffle button — keeps sort rows aligned. */
@@ -2545,6 +2577,16 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   border-color: var(--yellow);
 }
 .shuffle-btn svg { display: block; }
+/* Icon spins each time Shuffle is pressed — the SVG re-mounts on click (React
+   key bump), which replays this one-shot animation from the start. */
+.shuffle-icon--spin { animation: shuffle-spin 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes shuffle-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shuffle-icon--spin { animation: none; }
+}
 /* The X that appears on an active Shuffle button to turn it back off */
 .shuffle-clear {
   display: none;
@@ -2897,6 +2939,13 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   content: ''; flex: 1 1 0; min-width: 24px;
   border-top: 0.5px solid var(--border-dark);
 }
+/* Licensing title: the trailing hairline is replaced by a live waveform canvas
+   that reacts to this beat's playback (same treatment as the store rules). */
+.product-section-title--wave::after { display: none; }
+.product-section-title--wave > span { flex-shrink: 0; }
+.product-section-title--wave .wave-rule {
+  flex: 1 1 0; width: 0; min-width: 24px; height: 28px; display: block;
+}
 .product-related { margin-top: 56px; }
 
 /* minmax(0,1fr) lets columns shrink below content min-width (long nowrap kit
@@ -2938,9 +2987,12 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
   display: flex; align-items: center; justify-content: center;
   border: none; border-radius: 50%; cursor: pointer; color: var(--off-white);
   background: rgba(17,17,17,0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-  transition: background 0.15s, transform 0.15s;
+  /* transform is driven per-frame by the beat pulse (useBeatPulse) — no
+     transition on it, so the thump stays crisp; keep it on the compositor. */
+  transition: background 0.15s;
+  transform-origin: center; will-change: transform;
 }
-.beat-detail-play:hover { background: var(--yellow); color: var(--near-black); transform: scale(1.06); }
+.beat-detail-play:hover { background: var(--yellow); color: var(--near-black); }
 .beat-detail-head { flex: 1 1 320px; min-width: 0; }
 .beat-detail-kicker {
   font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.18em;
@@ -2970,7 +3022,10 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 
 /* Kit detail (shares the beat-detail layout; kit-specific bits only) */
 .kit-detail-desc { margin: 0; max-width: 560px; }
-.kit-detail-share { margin-top: 14px; align-self: flex-start; width: fit-content; }
+/* Copy Link + native Share buttons (ShareButtons) on beat/kit detail views. */
+.share-row { display: flex; flex-wrap: wrap; gap: 8px; align-self: flex-start; }
+.kit-detail-share { margin-top: 14px; }
+.beat-detail-share { margin-top: 24px; }
 
 /* Two-column purchase layout: license tiers picker on the left, the selected
    tier's details + price/buy panel on the right. Fills the width cleanly

@@ -10,6 +10,7 @@ import { useUI } from '@/stores/useUI';
 import { useCart, kitCartItem } from '@/stores/useCart';
 import { scrollToTopThen } from '@/lib/scrollNav';
 import KitCard from './KitCard';
+import ShareButtons from './ShareButtons';
 
 function relatedKits(id: string, type: string): Kit[] {
   return kits
@@ -29,7 +30,6 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
 
   const [addConfirm, setAddConfirm] = useState('');
   const [showViewCart, setShowViewCart] = useState(false);
-  const [shareLabel, setShareLabel] = useState('Copy Link');
   const articleRef = useRef<HTMLElement>(null);
   const relatedRef = useRef<HTMLElement>(null);
   const [navPos, setNavPos] = useState<{ prevLeft: number; nextLeft: number } | null>(null);
@@ -66,7 +66,7 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
 
   // Reset transient state when the kit changes (modal prev/next navigation).
   useEffect(() => {
-    setAddConfirm(''); setShowViewCart(false); setShareLabel('Copy Link');
+    setAddConfirm(''); setShowViewCart(false);
   }, [kit.id]);
 
   // Measure the article's viewport-relative position to place fixed arrows exactly
@@ -95,11 +95,6 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
     setAddConfirm(result === 'updated' ? 'Cart updated ✓' : 'Added to cart ✓');
     setShowViewCart(true);
   }
-  function copyShare() {
-    const url = `${location.origin}/kits/${kit.id}/`;
-    navigator.clipboard.writeText(url).then(() => { setShareLabel('Copied!'); setTimeout(() => setShareLabel('Copy Link'), 2000); });
-  }
-
   return (
     <article ref={articleRef} className="beat-detail">
       {!isModal && navPos && (
@@ -161,10 +156,7 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
         </div>
         {addConfirm && <div className="modal-add-confirm visible" aria-live="polite">{addConfirm}</div>}
         {showViewCart && <button className="modal-view-cart-btn" onClick={openCart}>View Cart →</button>}
-        <button className="modal-share-btn kit-detail-share" onClick={copyShare}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" /></svg>
-          <span>{shareLabel}</span>
-        </button>
+        <ShareButtons path={`/kits/${kit.id}/`} title={kit.title} className="kit-detail-share" />
       </section>
 
       {related.length > 0 && (

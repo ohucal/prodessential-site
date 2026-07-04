@@ -1,3 +1,30 @@
+import type { MouseEvent } from 'react';
+
+// Smooth-scroll the window to an in-page section (by element id), honoring the
+// section's scroll-margin-top so it clears the sticky header. prefers-reduced-
+// motion gets an instant jump. Returns false if the section isn't on this page.
+export function smoothScrollToId(id: string): boolean {
+  const el = document.getElementById(id);
+  if (!el) return false;
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  // Reflect the section in the URL without adding a history entry (keeps the
+  // overlay back-button logic in GlassModal/KitModal untouched).
+  if (history.replaceState) history.replaceState(null, '', '#' + id);
+  return true;
+}
+
+// onClick for same-page hash links (header nav, hero CTAs): smooth-scroll to the
+// target section instead of the browser's instant jump. Falls through to normal
+// navigation when the section isn't on this page (product pages, new-tab, etc.).
+export function onHashNavClick(e: MouseEvent<HTMLAnchorElement>): void {
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+  const id = (e.currentTarget.getAttribute('href') || '').split('#')[1];
+  if (!id || !document.getElementById(id)) return;
+  e.preventDefault();
+  smoothScrollToId(id);
+}
+
 // Smoothly scroll a product detail view (overlay scroller or the window) back
 // to the top before swapping in a new product. The swap fires once `watch`
 // (the related-items strip the user clicked) has left the viewport — so the

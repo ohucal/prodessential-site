@@ -25,11 +25,12 @@ function matchesSearch(b: (typeof beats)[number], q: string): boolean {
 export default function BeatStore({ mounted }: { mounted: boolean }) {
   const tagList = useMemo(() => ['All', ...beatTagList()], []);
   const [selected, setSelected] = useState<string[]>(['All']);
-  const [mode, setMode] = useState<'any' | 'all'>('any');
+  const [mode, setMode] = useState<'any' | 'all'>('all');
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<Sort>('newest');
   const [sortOpen, setSortOpen] = useState(false);
   const [shuffleOrder, setShuffleOrder] = useState<string[]>([]);
+  const [spinKey, setSpinKey] = useState(0);
   const prevSortRef = useRef<Sort>('newest');
   const sortRef = useRef<HTMLDivElement>(null);
   const setFilteredIds = usePlayer((s) => s.setFilteredIds);
@@ -120,6 +121,7 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
     }
     setShuffleOrder(ids);
     setSort('shuffle');
+    setSpinKey((k) => k + 1);
   }
   function stopShuffle(e: React.MouseEvent) {
     e.stopPropagation();
@@ -195,7 +197,7 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
             </div>
           </div>
           <button className={`shuffle-btn${sort === 'shuffle' ? ' active' : ''}`} onClick={doShuffle} aria-label="Shuffle beats" title="Shuffle beats randomly">
-            <svg className="shuffle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14"><polyline points="16 3 21 3 21 8" /><line x1="4" y1="20" x2="21" y2="3" /><polyline points="21 16 21 21 16 21" /><line x1="15" y1="15" x2="21" y2="21" /><line x1="4" y1="4" x2="9" y2="9" /></svg>
+            <svg key={spinKey} className={`shuffle-icon${spinKey > 0 ? ' shuffle-icon--spin' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14"><polyline points="16 3 21 3 21 8" /><line x1="4" y1="20" x2="21" y2="3" /><polyline points="21 16 21 21 16 21" /><line x1="15" y1="15" x2="21" y2="21" /><line x1="4" y1="4" x2="9" y2="9" /></svg>
             <span>Shuffle</span>
             <span className="shuffle-clear" role="button" tabIndex={0} onClick={stopShuffle} aria-label="Turn off shuffle" title="Turn off shuffle">
               <svg viewBox="0 0 12 12" fill="none" width="11" height="11"><path d="M1 1L11 11M11 1L1 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>

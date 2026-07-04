@@ -6,6 +6,7 @@ import { freeEligible } from '@/lib/products';
 import { coverStyle } from '@/lib/assets';
 import { formatTime } from '@/lib/format';
 import { usePlayer } from '@/stores/usePlayer';
+import { useBeatPulse } from '@/lib/useBeatPulse';
 import { useUI } from '@/stores/useUI';
 import { useCart } from '@/stores/useCart';
 
@@ -24,6 +25,7 @@ export default function BeatCard({ beat, mounted = false, variant = 'store', onO
   const seekPct = usePlayer((s) => s.seekPct);
   const openBeat = useUI((s) => s.openBeat);
   const inCart = useCart((s) => s.items.some((it) => String(it.beatId) === String(beat.id)));
+  const pulseRef = useBeatPulse<HTMLDivElement>(isPlaying);
   const barRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
 
@@ -88,7 +90,7 @@ export default function BeatCard({ beat, mounted = false, variant = 'store', onO
       onClick={openOverlay}
     >
       <div className="beat-card-main">
-        <div className={`beat-cover${beat.imgFile ? '' : ' no-img'}`} style={coverStyle(beat.imgFile, beat.imgGradient)}>
+        <div ref={pulseRef} className={`beat-cover${beat.imgFile ? '' : ' no-img'}`} style={coverStyle(beat.imgFile, beat.imgGradient)}>
           <span
             className="card-play-btn"
             role="button"

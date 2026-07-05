@@ -25,7 +25,7 @@
       "title": "Glass",
       "bpm": 140,
       "key": "Gm",
-      "tags": ["melodic"],
+      "tags": ["melodic", "chaotic"],
       "basePrice": 25,
       "featured": false,
       "dateAdded": "2025-04-29",
@@ -129,7 +129,7 @@
       "title": "Eclipse",
       "bpm": 142,
       "key": "Am",
-      "tags": ["chill", "melodic"],
+      "tags": ["chill", "melodic", "chaotic"],
       "basePrice": 25,
       "featured": false,
       "dateAdded": "2026-04-29",
@@ -670,7 +670,7 @@
       "title": "Manifest",
       "bpm": 144,
       "key": "Bm",
-      "tags": ["melodic", "piano", "lucki", "upbeat"],
+      "tags": ["melodic", "piano", "lucki", "upbeat", "chaotic"],
       "basePrice": 25,
       "featured": true,
       "dateAdded": "2026-06-23",
@@ -710,7 +710,7 @@
       "title": "Fiji",
       "bpm": 146,
       "key": "C#m",
-      "tags": ["dark", "brass"],
+      "tags": ["dark", "brass", "chaotic"],
       "basePrice": 25,
       "featured": true,
       "dateAdded": "2026-06-28",
@@ -743,6 +743,66 @@
         "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BCWeGR%5D=1782970041208&cart_links%5B%5D=CWeGR&qty%5BCWeGR%5D=1" },
         "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BCWeGR%5D=1782970042836&cart_links%5B%5D=CWeGR&qty%5BCWeGR%5D=1" },
         "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BCWeGR%5D=1782970043900&cart_links%5B%5D=CWeGR&qty%5BCWeGR%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "react",
+      "title": "React",
+      "bpm": 140,
+      "key": "Cm",
+      "tags": ["chaotic"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-11-30",
+      "imgGradient": "linear-gradient(135deg, #1a1a1a 0%, #333 100%)",
+      "imgFile": "images/react.jpg",
+      "audioFile": "audio/react.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BkXz0C%5D=1783211771016&cart_links%5B%5D=kXz0C&qty%5BkXz0C%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BkXz0C%5D=1783211771987&cart_links%5B%5D=kXz0C&qty%5BkXz0C%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BkXz0C%5D=1783211772873&qty%5BkXz0C%5D=1&cart_links%5B%5D=kXz0C" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BkXz0C%5D=1783211773775&cart_links%5B%5D=kXz0C&qty%5BkXz0C%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "activate",
+      "title": "Activate",
+      "bpm": 136,
+      "key": "Dm",
+      "tags": ["brass", "chaotic"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2025-12-01",
+      "imgGradient": "linear-gradient(135deg, #1a0a00 0%, #3d1500 100%)",
+      "imgFile": "images/activate.jpg",
+      "audioFile": "audio/activate.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BYabkI%5D=1783211705250&cart_links%5B%5D=YabkI&qty%5BYabkI%5D=1" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BYabkI%5D=1783211706720&cart_links%5B%5D=YabkI&qty%5BYabkI%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BYabkI%5D=1783211707825&cart_links%5B%5D=YabkI&qty%5BYabkI%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BYabkI%5D=1783211708689&cart_links%5B%5D=YabkI&qty%5BYabkI%5D=1" },
+        "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
+      }
+    },
+    {
+      "id": "grateful",
+      "title": "Grateful",
+      "bpm": 138,
+      "key": "Bm",
+      "tags": ["brass"],
+      "basePrice": 25,
+      "featured": false,
+      "dateAdded": "2026-07-04",
+      "imgGradient": "linear-gradient(135deg, #1a1200 0%, #2e2000 100%)",
+      "imgFile": "images/grateful.jpg",
+      "audioFile": "audio/grateful.mp3",
+      "licenses": {
+        "basic":    { "label": "Basic",           "format": "MP3 Tagged",              "price": 25,  "checkoutUrl": "https://payhip.com/buy?s=1&link=dBIA5&variant_combination[dBIA5]=1783212108593", "payhipKey": "dBIA5" },
+        "premium":  { "label": "Premium",         "format": "WAV + MP3 Untagged",      "price": 40,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BdBIA5%5D=1783212112167&cart_links%5B%5D=dBIA5&qty%5BdBIA5%5D=1" },
+        "stems":    { "label": "Premium + Stems", "format": "WAV + MP3 + Stems",       "price": 90,  "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BdBIA5%5D=1783212113080&cart_links%5B%5D=dBIA5&qty%5BdBIA5%5D=1" },
+        "unlimited":{ "label": "Unlimited",       "format": "WAV + MP3 + Stems",       "price": 250, "checkoutUrl": "https://payhip.com/buy?s=1&variant_combination%5BdBIA5%5D=1783212114325&cart_links%5B%5D=dBIA5&qty%5BdBIA5%5D=1" },
         "exclusive":{ "label": "Exclusive",       "format": "All Files + Sole Rights", "price": null, "checkoutUrl": "mailto:prodessential@gmail.com" }
       }
     }

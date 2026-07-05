@@ -810,7 +810,7 @@
   "kits": [
     {
       "id": "complete-kit-vol-1",
-      "title": "@prod.essential Complete Kit Vol. 1",
+      "title": "@prod.essential Complete Kit",
       "type": "Drum kits",
       "price": 25,
       "dateAdded": "2026-05-10",
@@ -821,18 +821,18 @@
     },
     {
       "id": "cashed-out-multi-kit-vol-1",
-      "title": "Cashed Out Multi Kit Vol. 1",
+      "title": "Cashed Out Multi Kit",
       "type": "Multi kits",
       "price": 15,
       "dateAdded": "2026-06-29",
       "imgGradient": "linear-gradient(135deg, #444 0%, #222 100%)",
-      "imgFile": "images/cashed-out-multikit.jpg",
+      "imgFile": "images/cashed-out-drumkit.jpg",
       "checkoutUrl": "#",
       "description": "Multi Kit Coming Soon... Follow me on ig @prod.essential for updates."
     },
     {
       "id": "essential-one-shots-vol-1",
-      "title": "Essential One Shots Vol. 1",
+      "title": "Essential One Shots",
       "type": "One shot kits",
       "price": 10,
       "dateAdded": "2026-05-06",
@@ -843,7 +843,7 @@
     },
     {
       "id": "vertigo-serum2-bank-vol-1",
-      "title": "Vertigo Serum 2 Bank - Vol. 1",
+      "title": "Vertigo Serum 2 Bank",
       "author": "prod.essential",
       "type": "Serum banks",
       "price": 15,
@@ -856,13 +856,13 @@
     },
     {
       "id": "sub-zero-serum-bank-vol-1",
-      "title": "Sub-Zero Serum Bank - Vol. 1",
+      "title": "Sub-Zero Serum Bank",
       "author": "prod.essential",
       "type": "Serum banks",
       "price": 15,
       "dateAdded": "2026-06-28",
       "imgGradient": "linear-gradient(135deg, #2a4a66 0%, #16323e 100%)",
-      "imgFile": "images/sub-zero-serum-bank.jpg",
+      "imgFile": "images/subzero-serum-bank.jpg",
       "checkoutUrl": "#",
       "description": "128 presets. 128 one-shots. 20 MIDIs. 276 files total. Built on the original Serum, so it works in both Serum 1 and Serum 2.",
       "descriptionHtml": "<div class=\"kit-desc-hero\"><div class=\"kit-desc-stat\"><span class=\"kit-stat-num\">128</span><span class=\"kit-stat-label\">Serum Presets</span></div><div class=\"kit-desc-stat\"><span class=\"kit-stat-num\">128</span><span class=\"kit-stat-label\">WAV One-Shots</span></div><div class=\"kit-desc-stat\"><span class=\"kit-stat-num\">20</span><span class=\"kit-stat-label\">MIDI Files</span></div></div><div class=\"kit-desc-total\">276 files total</div><div class=\"kit-desc-features\"><div class=\"kit-desc-feature\"><span class=\"kit-feat-dot\"></span><span>Every preset in this bank was built from scratch.</span></div><div class=\"kit-desc-feature\"><span class=\"kit-feat-dot\"></span><span>Each preset bounced to WAV. Use them without owning Serum.</span></div><div class=\"kit-desc-feature\"><span class=\"kit-feat-dot\"></span><span>20 MIDI files included to get sessions moving faster.</span></div></div><div class=\"kit-desc-compat\">Compatible with Serum 1 &amp; 2 &middot; Works in any DAW</div>"

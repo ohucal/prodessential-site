@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useUI } from '@/stores/useUI';
 import { useCart } from '@/stores/useCart';
 import { track } from '@/lib/analytics';
+import { onHashNavClick } from '@/lib/scrollNav';
 
 export default function Header() {
   const openCart = useUI((s) => s.openCart);
@@ -16,16 +17,16 @@ export default function Header() {
     <header>
       <a href="/" className="logo">prod.essential</a>
       <nav>
-        <a href="/#beats">Beats</a>
-        <a href="/#kits">Kits</a>
+        <a href="/#beats" onClick={onHashNavClick}>Beats</a>
+        <a href="/#kits" onClick={onHashNavClick}>Kits</a>
         <a
           href="/#newsletter"
-          onClick={() => track('weekly_loops_nav_click')}
+          onClick={(e) => { track('weekly_loops_nav_click'); onHashNavClick(e); }}
         >
           Weekly Loops
         </a>
-        <a href="/#licensing">Licensing</a>
-        <a href="/#contact">Contact</a>
+        <a href="/#licensing" onClick={onHashNavClick}>Licensing</a>
+        <a href="/#contact" onClick={onHashNavClick}>Contact</a>
         <a
           href="/#beats"
           className="nav-cta"

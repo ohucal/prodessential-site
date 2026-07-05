@@ -8,9 +8,12 @@ import { coverStyle } from '@/lib/assets';
 import { trackEcommerce } from '@/lib/analytics';
 import { beatVisibleGenre, beatBodyCopy } from '@/lib/keywords';
 import { usePlayer } from '@/stores/usePlayer';
+import { useBeatPulse } from '@/lib/useBeatPulse';
 import { scrollToTopThen } from '@/lib/scrollNav';
 import BeatCard from './BeatCard';
 import BeatPurchase from './BeatPurchase';
+import ShareButtons from './ShareButtons';
+import WaveRule from './WaveRule';
 
 function relatedBeats(id: string, tags: string[]): Beat[] {
   const tagSet = new Set(tags);
@@ -26,6 +29,8 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
   const router = useRouter();
   const toggleBeat = usePlayer((s) => s.toggleBeat);
   const isPlayingThis = usePlayer((s) => s.isPlaying && s.activeBeatId === beat.id);
+  // Pulse the play button (not the artwork) to the beat on the large header.
+  const pulseRef = useBeatPulse<HTMLButtonElement>(isPlayingThis);
   const [freeClick, setFreeClick] = useState(0);
   const articleRef = useRef<HTMLElement>(null);
   const relatedRef = useRef<HTMLElement>(null);
@@ -96,7 +101,7 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
       )}
       <div className="beat-detail-top">
         <div className="beat-detail-art" style={coverStyle(beat.imgFile, beat.imgGradient)}>
-          <button className="beat-detail-play" onClick={() => toggleBeat(beat)} aria-label={isPlayingThis ? 'Pause preview' : 'Play preview'}>
+          <button ref={pulseRef} className="beat-detail-play" onClick={() => toggleBeat(beat)} aria-label={isPlayingThis ? 'Pause preview' : 'Play preview'}>
             {isPlayingThis ? (
               <svg viewBox="0 0 24 24" fill="none" width="22" height="22"><rect x="5" y="3" width="4" height="18" fill="currentColor" /><rect x="15" y="3" width="4" height="18" fill="currentColor" /></svg>
             ) : (
@@ -122,9 +127,13 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
       </div>
 
       <section className="beat-detail-license">
-        <h2 className="product-section-title">Licensing for &ldquo;{beat.title}&rdquo;</h2>
+        <h2 className="product-section-title product-section-title--wave">
+          <span>Licensing for &ldquo;{beat.title}&rdquo;</span>
+          <WaveRule active={isPlayingThis} />
+        </h2>
         <BeatPurchase beat={beat} freeClick={freeClick} />
         {free && <p className="license-free-note">This beat includes a free tagged download for non-profit use. Credit &ldquo;prod.essential&rdquo; is required. Pick the Free option above to grab it.</p>}
+        <ShareButtons path={`/beats/${beat.id}/`} title={beat.title} className="beat-detail-share" />
       </section>
 
       {related.length > 0 && (

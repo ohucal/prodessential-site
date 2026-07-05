@@ -36,7 +36,10 @@ export function ensureAudioAnalyser(el: HTMLAudioElement): AnalyserNode | null {
   }
   const analyser = ctx.createAnalyser();
   analyser.fftSize = 2048;
-  analyser.smoothingTimeConstant = 0.82;
+  // Lower smoothing keeps kick transients intact for the beat-reactive pulse
+  // (useBeatPulse), which reads getByteFrequencyData. The waveform (WaveRule)
+  // reads time-domain data, which this constant does not affect either way.
+  analyser.smoothingTimeConstant = 0.6;
   source.connect(analyser);
   analyser.connect(ctx.destination);
   g.__peAudioAnalyser = { ctx, analyser, el };

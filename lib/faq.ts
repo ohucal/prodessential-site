@@ -51,6 +51,6 @@ export const FAQ: FaqItem[] = [
   },
   {
     q: 'do you offer refunds?',
-    a: "everything is a digital download, so all sales are final. if something's wrong with your files, email prodessential@gmail.com and i'll fix it.",
+    a: "kits, packs and banks come with a 7 day money back guarantee, just email prodessential@gmail.com. beat licenses are final once the files are delivered, per the license agreement. if anything is wrong with your files, email me and i'll fix it.",
   },
 ];

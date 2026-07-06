@@ -45,7 +45,9 @@ export default function NewsletterForm() {
           <input type="email" placeholder="YOUR EMAIL ADDRESS" required className="newsletter-input" value={email} onChange={(e) => setEmail(e.target.value)} />
           <button type="submit" className="btn-primary" style={{ border: 'none' }} disabled={submitting}>{submitting ? 'SENDING...' : 'SUBSCRIBE'}</button>
         </form>
-        <p className="newsletter-fineprint">No spam · Unsubscribe anytime</p>
+        <p className="newsletter-fineprint">
+          no spam. unsubscribe anytime. see the <a href="/privacy/">privacy policy</a>.
+        </p>
         <p className={`newsletter-status${status.kind ? ` newsletter-status--${status.kind}` : ''}`}>{status.text}</p>
       </div>
     </section>

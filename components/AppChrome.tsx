@@ -8,6 +8,7 @@ import GlassModal from './GlassModal';
 import KitModal from './KitModal';
 import LicenseModal from './LicenseModal';
 import DeepLink from './DeepLink';
+import CookieBanner from './CookieBanner';
 
 export default function AppChrome() {
   return (
@@ -19,6 +20,7 @@ export default function AppChrome() {
       <PlayerBar />
       <AudioEngine />
       <DeepLink />
+      <CookieBanner />
     </>
   );
 }

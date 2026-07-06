@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { GA_ID } from '@/lib/analytics';
 import { orgJsonLd } from '@/lib/jsonld';
 import AppChrome from '@/components/AppChrome';
+import Footer from '@/components/Footer';
 import '@/style.css';
 
 export const viewport: Viewport = {
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', ...orgJsonLd() }) }}
         />
         {children}
+        <Footer />
         <AppChrome />
 
         {/* Google Analytics (GA4) */}
@@ -64,6 +66,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            // Consent Mode v2: deny storage by default so GA (and any future ad
+            // tags) run cookieless until the visitor accepts via the cookie notice.
+            gtag('consent', 'default', {
+              analytics_storage: 'denied',
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied'
+            });
+            // Re-apply a stored "granted" choice immediately so returning visitors
+            // are measured from the first pageview without being re-prompted.
+            try {
+              var c = JSON.parse(localStorage.getItem('pe_consent') || 'null');
+              if (c && c.choice === 'granted') {
+                gtag('consent', 'update', {
+                  analytics_storage: 'granted',
+                  ad_storage: 'granted',
+                  ad_user_data: 'granted',
+                  ad_personalization: 'granted'
+                });
+              }
+            } catch (e) {}
             gtag('js', new Date());
             gtag('config', '${GA_ID}');
           `}

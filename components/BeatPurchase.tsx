@@ -153,6 +153,7 @@ export default function BeatPurchase({ beat, freeClick }: { beat: Beat; freeClic
             {!freeSuccess ? (
               <form className="modal-free-form" onSubmit={submitFree}>
                 <input type="email" className="modal-free-input" placeholder="YOUR EMAIL ADDRESS" required autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <p className="modal-free-fineprint">no spam. unsubscribe anytime. see the <a href="/privacy/">privacy policy</a>.</p>
                 <label className="modal-free-agree">
                   <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
                   <span>I agree to the <a href="#" onClick={(e) => { e.preventDefault(); e.stopPropagation(); openLicense('free'); }}>Free License terms</a></span>

@@ -31,6 +31,13 @@ Live in `public/` (served at site root). Beat audio → `public/audio/<name>.mp3
 - Verify UI changes in the preview (`preview_*` tools), not by asking the user to check.
 - ⚠️ **Never run `next build` while a dev server is running.** This is `output: 'export'`, so build and `next dev` share the same `.next` dir — a build corrupts the dev server's webpack chunks (symptoms: "Cannot find module './NNN.js'", unstyled page). To recover: stop the server, `rm -rf .next`, restart. To verify compilation without building, rely on the dev server + typecheck (`npx tsc --noEmit`).
 
+## Deployment (Netlify)
+Deploys from GitHub. Publishes the static `out/` folder (`netlify.toml` → `publish = "out"`).
+
+⚠️ **The Next.js runtime is intentionally force-disabled** via two env vars in `netlify.toml` (`NEXT_PLUGIN_FORCE_RUN = "false"` and `NETLIFY_NEXT_PLUGIN_SKIP = "true"`). Do not remove them. Reason: Netlify auto-detects Next.js and runs its runtime, which overrides our `trailingSlash: true` and 301-redirects `/beats/x/` → `/beats/x`. That made Google Search Console flag every product page as "Page with redirect" and refuse to index them. Because this is a pure static export (no SSR/API routes/middleware), disabling the runtime is safe — it just serves the folder-based export as flat files with the trailing slash intact, matching our canonicals and `sitemap.xml`.
+
+Verify after any deploy that touches routing/config: `curl -I https://prodessential.com/beats/manifest/` must return `200`, not a `301` to the non-slash URL. If it 301s again, the runtime is back on — check whether it was reinstalled via the Netlify UI (Project configuration → integrations/runtime), which overrides the env vars and must be uninstalled there.
+
 ## Adding a beat
 Use the `/add-beat` skill — it has the full checklist and JSON template.
 

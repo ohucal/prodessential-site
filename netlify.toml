@@ -1,7 +1,13 @@
 # Next.js static export → publish the generated out/ folder as a static site.
+# Force-disable Netlify's Next.js runtime so it serves the static export as flat
+# files and honors our trailingSlash: true folder structure. Without this the
+# runtime strips the trailing slash and 301-redirects /beats/x/ → /beats/x,
+# which Google Search Console flags as "Page with redirect".
 [build]
   command = "npm run build"
   publish = "out"
 
 [build.environment]
   NODE_VERSION = "20"
+  NEXT_PLUGIN_FORCE_RUN = "false"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"

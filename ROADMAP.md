@@ -18,6 +18,12 @@ Raw dump zone. Drop anything here the moment you notice it — a bug, a half-for
 - Kit slugs were renamed 2026-07-02 (`melodic-textures`→`cashed-out-multi-kit-vol-1`, `vintage-keys`→`essential-one-shots-vol-1`, `solar-flare-serum2-bank`→`vertigo-serum2-bank-vol-1`, `essentials-essentials-vol-1`→`complete-kit-vol-1`, `sub-zero-serum-bank`→`sub-zero-serum-bank-vol-1`). If any old `/kits/<id>/` or `?kit=` links were shared externally, add Netlify `_redirects` entries.
 - "Essential One Shots Vol. 1" description says "sampled from vintage keyboards" — confirm that matches the actual pack contents (couldn't verify from the repo).
 - Two kits (complete-kit-vol-1, essential-one-shots-vol-1) have no cover art — owner adding separately; once ready just set `imgFile` in `products.json`.
+- **Legal-doc follow-ups (2026-07-06 review, owner/external action — can't be done in code):**
+  - **Before any paid tier / free tier goes live:** confirm Payhip actually captures the EU/UK immediate-delivery consent + 14-day-withdrawal waiver at checkout (TOS §7 relies on it), and that the correct license PDF is attached per product variant with a pre-purchase link (TOS §4). Finish ASCAP writer-IPI registration — the license DOCX files still carry the IPI placeholder and ship with every sale.
+  - **At Meta Pixel launch:** revisit the "we do not sell or share" line in the Privacy Policy (§4/§9) — live Pixel audience-building likely counts as "sharing for cross-context behavioral advertising" under CA CPRA; add a "Do Not Sell or Share" opt-out path if so (the one-click reject banner may already cover it).
+  - **When the Michigan LLC forms:** sweep the entity name into both legal pages ("Owen Hucal d/b/a prod.essential"), the license agreements, ASCAP, and Payhip.
+  - **Product clarity (business decision, not a doc bug):** once the free tagged tier ships, decide whether Basic ($25) stays tagged or moves to untagged, to avoid two tagged products sitting side by side. Docs already distinguish them (Free = non-profit/demo only; Basic = limited release rights).
+  - Optional/easy: self-host the Google fonts (Archivo / Hanken Grotesk / DM Mono / Chakra Petch) to drop the Google Fonts IP disclosure and speed load. NOTE: the external review misidentified the fonts as "DM Serif Display" — the site does not use it.
 
 ## Now (audit + fix window)
 - [x] **P0 · S** Run `SPECS/AUDIT.md` → `AUDIT_RESULTS.md`. Fixed all in-repo P0/P1; the one open P0 (kit Payhip URLs) needs owner action — see Inbox. (2026-07-02)

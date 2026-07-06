@@ -75,8 +75,9 @@ export default function PrivacyPage() {
           <p>
             <strong>Analytics data.</strong> We use Google Analytics 4 to understand how visitors use the Site
             (pages viewed, approximate location, device type, how you found us). Google Analytics uses cookies and
-            collects data such as your IP address and browsing behavior on the Site. Analytics cookies are only set
-            after you accept them through our cookie notice. You can decline and the Site will work normally.
+            uses your IP address to estimate your approximate location; it does not store your full IP address.
+            Analytics cookies are only set after you accept them through our cookie notice. You can decline and the
+            Site will work normally.
           </p>
           <p>
             <strong>Advertising data.</strong> If we run paid advertising campaigns, we may use advertising tools

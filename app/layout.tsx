@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Type system: Archivo (expanded display) + Hanken Grotesk (titles) + DM Mono (utility/body)
             + Chakra Petch (price tags — the "$" figures on beat/kit cards) */}
         <link
-          href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Chakra+Petch:wght@600;700&family=Hanken+Grotesk:ital,wght@0,400..900;1,400..900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Chakra+Petch:wght@600;700&family=Hanken+Grotesk:ital,wght@0,400..900;1,400..900&family=Anton&family=Space+Grotesk:wght@500;700&display=swap"
           rel="stylesheet"
         />
       </head>

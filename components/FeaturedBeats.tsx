@@ -22,7 +22,7 @@ export default function FeaturedBeats({ beats }: { beats: Beat[] }) {
       <div className="section-label section-label--hero"><span>Featured Beats</span><WaveRule active={featuredPlaying} /></div>
       <span className="store-hint store-hint--hero">
         <svg viewBox="0 0 24 24" fill="none" width="9" height="9" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor" /></svg>
-        tap any cover to preview
+        tap play on any cover to listen
       </span>
       <div id="heroFeatured">
         {beats.map((beat) => (

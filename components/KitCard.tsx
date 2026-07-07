@@ -32,24 +32,21 @@ export default function KitCard({ kit, mounted = false, variant = 'store', onOpe
   return (
     <Link
       href={`/kits/${kit.id}/`}
-      className={`beat-card${compact ? ' beat-card--compact' : ' kit-card'}${mounted && inCart && !compact ? ' in-cart' : ''}`}
+      className={`beat-card${compact ? ' beat-card--compact' : ' kit-card'}${mounted && inCart && !compact ? ' in-cart' : ''}${!compact && !comingSoon && isNew ? ' is-new' : ''}`}
       data-id={kit.id}
       onClick={openOverlay}
     >
       <div className="beat-card-main">
-        <div className={`beat-cover${kit.imgFile ? '' : ' no-img'}`} style={coverStyle(kit.imgFile, kit.imgGradient)}></div>
+        <div className={`beat-cover${kit.imgFile ? '' : ' no-img'}${comingSoon ? ' is-soon' : ''}`} style={coverStyle(kit.imgFile, kit.imgGradient)}>
+          {!compact && comingSoon && <span className="cover-soon">Coming Soon</span>}
+        </div>
         <div className="beat-info">
           <span className="beat-title-row">
             <span className="beat-title">{kit.title}</span>
+            {!compact && !comingSoon && isNew && <span className="new-tag">New</span>}
             {!compact && <span className="cart-dot"></span>}
           </span>
           <span className="beat-bpm-key">{kit.type}</span>
-          {!compact && (
-            <div className="beat-tags">
-              {comingSoon && <span className="beat-tag kit-tag--soon">Coming Soon</span>}
-              {isNew && <span className="beat-tag beat-tag--new">NEW</span>}
-            </div>
-          )}
         </div>
         {!compact && (
           <div className="beat-price-wrap">

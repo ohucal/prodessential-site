@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { beats, freeEligible, type Beat } from '@/lib/products';
+import { NEW_TAG_FONT, NEW_TAG_FONTS } from '@/lib/newTag';
 import { coverStyle } from '@/lib/assets';
 import { trackEcommerce } from '@/lib/analytics';
 import { beatVisibleGenre, beatBodyCopy } from '@/lib/keywords';
@@ -14,6 +15,10 @@ import BeatCard from './BeatCard';
 import BeatPurchase from './BeatPurchase';
 import ShareButtons from './ShareButtons';
 import WaveRule from './WaveRule';
+
+function isNewBeat(dateAdded?: string): boolean {
+  return !!dateAdded && (Date.now() - new Date(dateAdded).getTime()) / 86400000 <= 30;
+}
 
 function relatedBeats(id: string, tags: string[]): Beat[] {
   const tagSet = new Set(tags);
@@ -32,6 +37,23 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
   // Pulse the play button (not the artwork) to the beat on the large header.
   const pulseRef = useBeatPulse<HTMLButtonElement>(isPlayingThis);
   const [freeClick, setFreeClick] = useState(0);
+  // Gated on mount — see BeatCard.tsx for why (static export build-time vs
+  // hydration-time clock mismatch at the 30-day "new" boundary).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const isNew = mounted && isNewBeat(beat.dateAdded);
+
+  // Dev-only helper to audition the "NEW" sticker fonts without a rebuild:
+  // run window.setNewFont('anton') in the console (options logged on load).
+  // Once you've picked one, set NEW_TAG_FONT in lib/newTag.ts to keep it.
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') return;
+    (window as unknown as { setNewFont?: (f: string) => void }).setNewFont = (f: string) => {
+      document.querySelectorAll('.new-stamp').forEach((el) => el.setAttribute('data-newfont', f));
+      console.log(`NEW sticker font → ${f}`);
+    };
+    console.log(`Try window.setNewFont('<key>'). Options: ${NEW_TAG_FONTS.join(', ')}`);
+  }, []);
   const articleRef = useRef<HTMLElement>(null);
   const relatedRef = useRef<HTMLElement>(null);
   const [navPos, setNavPos] = useState<{ prevLeft: number; nextLeft: number } | null>(null);
@@ -100,6 +122,7 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
         </>
       )}
       <div className="beat-detail-top">
+        {isNew && <span className="new-stamp" data-newfont={NEW_TAG_FONT}>New</span>}
         <div className="beat-detail-art" style={coverStyle(beat.imgFile, beat.imgGradient)}>
           <button ref={pulseRef} className="beat-detail-play" onClick={() => toggleBeat(beat)} aria-label={isPlayingThis ? 'Pause preview' : 'Play preview'}>
             {isPlayingThis ? (
@@ -113,9 +136,6 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
           <p className="beat-detail-kicker">{beatVisibleGenre(beat)}</p>
           <h1 className="beat-detail-title"><em>{beat.title}</em></h1>
           <p className="beat-detail-meta">{beat.bpm} BPM &nbsp;·&nbsp; <span className="beat-key">{beat.key}</span></p>
-          <div className="beat-tags beat-detail-tags">
-            {beat.tags.map((t) => <span key={t} className="beat-tag">{t}</span>)}
-          </div>
           {free && (
             <button className="beat-detail-free" onClick={() => setFreeClick((c) => c + 1)} aria-label="Select free download">
               FREE DOWNLOAD

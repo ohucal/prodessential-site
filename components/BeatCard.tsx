@@ -85,7 +85,7 @@ export default function BeatCard({ beat, mounted = false, variant = 'store', onO
   return (
     <Link
       href={`/beats/${beat.id}/`}
-      className={`beat-card${mounted && inCart && !compact ? ' in-cart' : ''}${compact ? ' beat-card--compact' : ''}`}
+      className={`beat-card${mounted && inCart && !compact ? ' in-cart' : ''}${compact ? ' beat-card--compact' : ''}${!compact && isNew ? ' is-new' : ''}`}
       data-id={beat.id}
       onClick={openOverlay}
     >
@@ -109,17 +109,10 @@ export default function BeatCard({ beat, mounted = false, variant = 'store', onO
         <div className="beat-info">
           <span className="beat-title-row">
             <span className="beat-title">{beat.title}</span>
+            {!compact && isNew && <span className="new-tag">New</span>}
             {!compact && <span className="cart-dot"></span>}
           </span>
           <span className="beat-bpm-key">{beat.bpm} BPM · <span className="beat-key">{beat.key}</span></span>
-          {!compact && (
-            <div className="beat-tags">
-              {isNew && <span className="beat-tag beat-tag--new">NEW</span>}
-              {beat.tags.map((t) => (
-                <span key={t} className="beat-tag">{t}</span>
-              ))}
-            </div>
-          )}
         </div>
         {!compact && (
           <div className="beat-price-wrap">

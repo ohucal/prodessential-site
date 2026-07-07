@@ -109,17 +109,31 @@ export function beatDescription(beat: Beat): string {
   return `${beat.title} is a ${beat.bpm} BPM ${beat.key} underground type beat by prod.essential${artist}. Stream the preview and license instantly from $${beat.basePrice}.${free}`;
 }
 
-// Clean, visitor-facing genre label for the on-page kicker — moods + subgenres
-// only (no artist names, no "type beat" phrasing). Keywords live in the <head>.
+// Clean, visitor-facing tag line for the on-page kicker — the single place tags
+// appear on the beat page: moods + subgenres + instruments (no artist names,
+// no "type beat" phrasing). Keywords live in the <head>.
 export function beatVisibleGenre(beat: Beat): string {
   const g = group(beat.tags);
-  const parts = [...g.moods, ...g.subgenres];
+  const parts = [...g.moods, ...g.subgenres, ...g.instruments];
   return parts.length ? parts.join(' · ') : 'Beat';
 }
 
-// One natural sentence for the visible page body — descriptive, not keyword-y.
+// Visible page-body copy. Deliberately varied per beat (deterministic on the
+// id so the static export is stable) — 40+ pages of one identical template
+// sentence reads machine-made.
 export function beatBodyCopy(beat: Beat): string {
-  return `${beat.title} is a ${beat.bpm} BPM underground beat in the key of ${beat.key}. Preview it below and pick the license that fits your release. Every tier includes instant delivery.`;
+  const g = group(beat.tags);
+  const mood = g.moods[0]?.toLowerCase();
+  const rawInst = g.instruments[0]?.toLowerCase();
+  const inst = rawInst === 'sample' ? 'samples' : rawInst;
+  const hash = [...beat.id].reduce((a, c) => a + c.charCodeAt(0), 0);
+  const variants = [
+    `${beat.title} is a ${beat.bpm} BPM underground beat in the key of ${beat.key}. Preview it below and pick the license that fits your release.`,
+    mood ? `A ${mood} one: ${beat.bpm} BPM in ${beat.key}${inst ? `, built around ${inst}` : ''}. Run the preview, then grab the license that matches your release.` : null,
+    `${beat.bpm} BPM in ${beat.key}. If ${beat.title} fits your sound, licensing starts below and every tier delivers instantly.`,
+    mood ? `${beat.title} keeps it ${mood} at ${beat.bpm} BPM in ${beat.key}. Preview it below; files land right after checkout.` : null,
+  ].filter((v): v is string => v !== null);
+  return variants[hash % variants.length];
 }
 
 // ── Kits ─────────────────────────────────────────────────────────────────────

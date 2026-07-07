@@ -72,3 +72,4 @@ Working rules that cut credit use without cutting quality:
 - `AUDIT_RESULTS.md` — log of the last full `SPECS/AUDIT.md` run (2026-07-02).
 - `SITE_AUDIT_NOTES_2026-07-03.md` — follow-up audit session: confirmed-working list, ranked open items (kit checkout URLs, hero desc, FAQ block, meta description length, Meta Pixel), and ready-to-drop FAQ copy. Options/context, not a locked plan.
 - `MARKETING_STRATEGY_OPTIONS.md` — marketing/funnel/content research for producer products (kits, packs, banks) from a 2026-07-03 session. Informational menu to pull from, not a decision — supplements `PROD_ESSENTIAL_PLAYBOOK.md`.
+- `docs/AI_SLOP_AUDIT.md` — owner's reference checklist for spotting "vibe-coded / AI-generated" tells (visual, copy, code). Kept for safekeeping; a reference to consult, not a spec to run or follow literally.

@@ -8,16 +8,16 @@
 
 ## 0. Status snapshot (read first)
 
-ASCAP membership is set up. There are TWO sides, and one IPI is live, one is pending:
+ASCAP membership is set up. Both IPIs are now live:
 
 | Side | Entity | Member ID | IPI / CAE | Status |
 |---|---|---|---|---|
 | Publisher | PROD.ESSENTIAL PUBLISHING | 8312487 | **1358011863** | Accepted ✅ |
-| Writer | Owen Hucal | 8312488 | _pending (2–4 wks)_ | Pending ⏳ |
+| Writer | Owen Hucal | 8312488 | **1358905222** | Accepted ✅ (2026-07-08) |
 
-**Implication:** the publisher IPI is final and can go in now. The writer IPI is not issued
-yet. Where this spec shows `[WRITER_IPI]`, leave it as a literal placeholder until the writer
-IPI email arrives, then do the one-line follow-up edit in §A1. Everything else can ship today.
+**Implication:** both IPIs are final and are now filled in everywhere (`lib/licenseTexts.ts`
++ the 5 shipped license `.docx` files). The `[WRITER_IPI]` placeholder and the
+`(REMINDER: INSERT ASCAP WRITER IPI ONCE RECEIVED)` tags have been removed. Complete.
 
 ---
 
@@ -29,7 +29,7 @@ IPI email arrives, then do the one-line follow-up edit in §A1. Everything else 
 - PRO: **ASCAP**
 - Publishing company: **prod.essential Publishing**
 - Publisher IPI/CAE: **1358011863**
-- Writer IPI/CAE: **[WRITER_IPI]**  ← fill when issued
+- Writer IPI/CAE: **1358905222**
 - Contact: prodessential@gmail.com
 
 ---
@@ -183,4 +183,4 @@ These are manual, outside the code edits, but required for the changes to actual
 - [x] Reviewer fix 2: "Except as expressly stated below" warranty qualifier added to all 5 paid tiers (docx + site)
 - [x] Cleanup: removed stray "subject to the caps in this Section" from Unlimited (it has no caps)
 - [ ] C: re-export PDFs, re-attach in Payhip, replace hosted free license
-- [ ] Later: replace `[WRITER_IPI]` when issued (7 places — see §A1 follow-up)
+- [x] Writer IPI issued 2026-07-08 (`1358905222`) — filled in all 5 `.docx` licenses + `lib/licenseTexts.ts`, reminder tags removed

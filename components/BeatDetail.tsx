@@ -135,7 +135,6 @@ export default function BeatDetail({ beat, isModal, onNavigate, onBrowseAll }: {
         <div className="beat-detail-head">
           <p className="beat-detail-kicker">{beatVisibleGenre(beat)}</p>
           <h1 className="beat-detail-title"><em>{beat.title}</em></h1>
-          <p className="beat-detail-meta">{beat.bpm} BPM &nbsp;·&nbsp; <span className="beat-key">{beat.key}</span></p>
           {free && (
             <button className="beat-detail-free" onClick={() => setFreeClick((c) => c + 1)} aria-label="Select free download">
               FREE DOWNLOAD

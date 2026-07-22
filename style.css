@@ -1747,7 +1747,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .kit-desc-hero {
   display: flex;
   gap: 0;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .kit-desc-stat {
@@ -1755,11 +1755,12 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 14px 8px;
+  justify-content: center;
+  padding: 18px 8px;
   background: #161616;
   border: 0.5px solid #2a2a2a;
   border-right: none;
-  gap: 5px;
+  gap: 7px;
 }
 
 .kit-desc-stat:last-child {
@@ -1767,7 +1768,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 .kit-stat-num {
-  font-size: 28px;
+  font-size: 30px;
   font-family: var(--font-mono);
   color: var(--yellow);
   letter-spacing: -0.03em;
@@ -1775,41 +1776,46 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 }
 
 .kit-stat-label {
-  font-size: 7.5px;
+  font-size: 8.5px;
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--mid-gray);
+  letter-spacing: 0.13em;
+  color: var(--light-gray);
+  text-align: center;
 }
 
+/* "276 files total" — a caption bar welded to the bottom of the stat strip so
+   the numbers and their sum read as one spec card, not two floating rows. */
 .kit-desc-total {
-  font-size: 8px;
+  font-size: 9px;
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.24em;
   color: var(--mid-gray);
-  text-align: right;
-  padding: 5px 2px 16px;
-  border-bottom: 0.5px solid #2a2a2a;
-  margin-bottom: 16px;
+  text-align: center;
+  padding: 9px 2px;
+  background: #121212;
+  border: 0.5px solid #2a2a2a;
+  border-top: none;
+  margin-bottom: 22px;
 }
 
 .kit-desc-features {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .kit-desc-feature {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 11px;
+  gap: 11px;
+  font-size: 11.5px;
   font-family: var(--font-mono);
   color: var(--light-gray);
   letter-spacing: 0.03em;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .kit-feat-dot {
@@ -1818,17 +1824,20 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   height: 5px;
   border-radius: 50%;
   background: var(--yellow);
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
+/* Compatibility stamp — outlined, with a purple spine so it reads as an
+   intentional spec mark rather than a generic badge chip. */
 .kit-desc-compat {
   font-size: 8.5px;
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--purple);
-  padding: 8px 12px;
+  padding: 9px 13px;
   border: 0.5px solid #2a2a2a;
+  border-left: 2px solid var(--purple);
   display: inline-block;
 }
 
@@ -1961,7 +1970,8 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 24px;
+  gap: 5px;
+  padding: 0 26px;
 }
 
 .modal-price-label {
@@ -1974,7 +1984,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 
 .modal-price-value {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 36px;
   color: var(--off-white);
   line-height: 1;
 }
@@ -2409,7 +2419,7 @@ body:has(#playerBar.visible) .modal-overlay .modal { max-height: calc(var(--moda
 .modal-buy-btn--secondary {
   flex: 1;
   min-width: 0;
-  height: 80px;
+  height: 68px;
   padding: 0 14px;
   border: 1px solid transparent;
   cursor: pointer;
@@ -3131,6 +3141,18 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 
 /* Kit detail (shares the beat-detail layout; kit-specific bits only) */
 .kit-detail-desc { margin: 0; max-width: 560px; }
+
+/* Kit hero balance: the spec column (stats + features + compat) runs tall, so
+   give the artwork more presence and tighten the head's vertical rhythm so the
+   two sides read as a balanced pair rather than a small cover beside a long list.
+   Desktop-only — the mobile art rule (width:82%) must still win below 760px. */
+@media (min-width: 761px) {
+  .beat-detail--kit .beat-detail-top { gap: 34px; }
+  .beat-detail--kit .beat-detail-art { width: 300px; }
+}
+.beat-detail--kit .beat-detail-title { margin-bottom: 6px; }
+.beat-detail--kit .beat-detail-meta { margin-bottom: 20px; }
+.beat-detail--kit .beat-detail-license { margin-top: 36px; }
 /* Copy Link + native Share buttons (ShareButtons) on beat/kit detail views. */
 .share-row { display: flex; flex-wrap: wrap; gap: 8px; align-self: flex-start; }
 .kit-detail-share { margin-top: 14px; }
@@ -3253,18 +3275,18 @@ body:has(#playerBar.visible) .cart-drawer { height: calc(100% - var(--player-bar
 /* Trust row — sits above the license details / buy box, not inside it. */
 .purchase-trust {
   list-style: none;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 18px;
+  gap: 7px 22px;
 }
 .purchase-trust li {
   display: flex;
   align-items: center;
   gap: 7px;
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--light-gray);

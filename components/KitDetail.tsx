@@ -96,7 +96,7 @@ export default function KitDetail({ kit, isModal, onNavigate, onBrowseAll }: { k
     setShowViewCart(true);
   }
   return (
-    <article ref={articleRef} className="beat-detail">
+    <article ref={articleRef} className="beat-detail beat-detail--kit">
       {!isModal && navPos && (
         <>
           <button className="beat-page-nav" style={{ left: navPos.prevLeft }} onClick={() => navigate(prevKit.id)} aria-label="Previous kit">

@@ -53,6 +53,7 @@ export interface Kit {
   description: string;
   descriptionHtml?: string;
   author?: string;
+  hidden?: boolean;
   // derived:
   _state?: CheckoutState;
   _payhipKey?: string | null;
@@ -85,10 +86,10 @@ function deriveCheckout(obj: License | Kit, isExclusive: boolean): void {
   if (url === '#' || url === '') {
     obj._state = 'unavailable'; obj._payhipKey = null; obj._variantId = null; return;
   }
-  if (!/payhip\.com/i.test(url)) {
+  if (!/(payhip\.com|checkout\.prodessential\.com)/i.test(url)) {
     obj._state = 'misconfigured'; obj._payhipKey = null; obj._variantId = null; return;
   }
-  const shortMatch = url.match(/payhip\.com\/b\/([A-Za-z0-9]+)/);
+  const shortMatch = url.match(/(?:payhip\.com|checkout\.prodessential\.com)\/b\/([A-Za-z0-9]+)/);
   if (obj.payhipKey || shortMatch) {
     obj._payhipKey = obj.payhipKey || (shortMatch ? shortMatch[1] : null);
     obj._variantId = null;
@@ -108,7 +109,7 @@ function deriveCheckout(obj: License | Kit, isExclusive: boolean): void {
 // Build the normalized, derived dataset once (module-level, shared across pages).
 function normalize() {
   const beats = (raw.beats as Beat[]).map((b) => ({ ...b, licenses: { ...b.licenses } }));
-  const kits = (raw.kits as Kit[]).map((k) => ({ ...k }));
+  const kits = (raw.kits as Kit[]).map((k) => ({ ...k })).filter((k) => !k.hidden);
 
   beats.forEach((beat) => {
     (Object.keys(beat.licenses) as LicenseTier[]).forEach((tierKey) => {

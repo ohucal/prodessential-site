@@ -10,8 +10,8 @@ export default function LowerGrid() {
   useEffect(() => setMounted(true), []);
   return (
     <div className="lower-grid">
-      <BeatStore mounted={mounted} />
       <KitStore mounted={mounted} />
+      <BeatStore mounted={mounted} />
     </div>
   );
 }

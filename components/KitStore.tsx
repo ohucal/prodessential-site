@@ -49,7 +49,7 @@ export default function KitStore({ mounted }: { mounted: boolean }) {
   }, [selected, query, sort]);
 
   return (
-    <section id="kits" className="grid-column">
+    <section id="kits" className="grid-column left-col">
       <div className="section-header">
         <div className="section-label"><span>Kits &amp; Packs</span><div className="section-rule"><hr /></div></div>
         <div className="search-wrap">

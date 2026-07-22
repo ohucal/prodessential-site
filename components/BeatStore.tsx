@@ -132,7 +132,7 @@ export default function BeatStore({ mounted }: { mounted: boolean }) {
   const sortLabel = sort === 'shuffle' ? 'Shuffled' : SORT_LABELS[sort];
 
   return (
-    <section id="beats" className="grid-column left-col">
+    <section id="beats" className="grid-column">
       <div className="section-header">
         <div className="section-label"><span>Beat Store</span><WaveRule /></div>
         <div className="search-wrap">

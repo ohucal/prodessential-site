@@ -1,5 +1,5 @@
 // Payhip checkout URL building (ported from the original inline script).
-export const CHECKOUT_DOMAIN = 'https://payhip.com';
+export const CHECKOUT_DOMAIN = 'https://checkout.prodessential.com';
 
 export interface CartItem {
   beatId: string;
